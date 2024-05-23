@@ -1,8 +1,8 @@
-title: Just the Docs Template
-description: A starter template for a Jeykll site using the Just the Docs theme!
+title: Isalos Analytics Platform Docs
+description: The Documentations of Isalos Analytics Platform powered by Just the docs
 theme: just-the-docs
 
-url: https://just-the-docs.github.io
+url: https://www.docs.isalos.novamechanics.com/
 
 aux_links:
   Template Repository: https://github.com/just-the-docs/just-the-docs-template
