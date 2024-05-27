@@ -11,11 +11,15 @@ GEM
       http_parser.rb (~> 0)
     eventmachine (1.2.7)
     ffi (1.16.3)
+    ffi (1.16.3-x64-mingw-ucrt)
     forwardable-extended (2.6.0)
     google-protobuf (4.27.0)
       bigdecimal
       rake (>= 13)
     google-protobuf (4.27.0-arm64-darwin)
+      bigdecimal
+      rake (>= 13)
+    google-protobuf (4.27.0-x64-mingw-ucrt)
       bigdecimal
       rake (>= 13)
     google-protobuf (4.27.0-x86_64-darwin)
@@ -83,6 +87,8 @@ GEM
       google-protobuf (>= 3.25, < 5.0)
     sass-embedded (1.77.2-arm64-darwin)
       google-protobuf (>= 3.25, < 5.0)
+    sass-embedded (1.77.2-x64-mingw-ucrt)
+      google-protobuf (>= 3.25, < 5.0)
     sass-embedded (1.77.2-x86-cygwin)
       google-protobuf (>= 3.25, < 5.0)
     sass-embedded (1.77.2-x86-mingw-ucrt)
@@ -90,6 +96,8 @@ GEM
     sass-embedded (1.77.2-x86_64-cygwin)
       google-protobuf (>= 3.25, < 5.0)
     sass-embedded (1.77.2-x86_64-darwin)
+      google-protobuf (>= 3.25, < 5.0)
+    sass-embedded (1.77.2-x86_64-linux-gnu)
       google-protobuf (>= 3.25, < 5.0)
     strscan (3.1.0)
     terminal-table (3.0.2)
@@ -101,6 +109,7 @@ PLATFORMS
   aarch64-mingw-ucrt
   arm64-darwin
   ruby
+  x64-mingw-ucrt
   x86-cygwin
   x86-mingw-ucrt
   x86_64-cygwin
