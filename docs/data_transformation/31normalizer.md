@@ -59,7 +59,7 @@ Data matrix with standardized data. If categorical features are included in the 
 In the left-hand spreadsheet of the tab import the data matrix that is going to be standardized.
 
 <div style="text-align: center;">
-<img src="../docs/images/Normalizers_input.png" alt="Z-Score input" width="400" height="300" class="img-responsive">
+<img src="../../images/Normalizers_input.png" alt="Z-Score input" width="400" height="300" class="img-responsive">
 </div>
 
 ##### Configuration
@@ -70,7 +70,7 @@ In the left-hand spreadsheet of the tab import the data matrix that is going to 
 1. Click on the `Execute` button [4] to apply the standardization on the selected columns.
 
 <div style="text-align: center;">
-<img src="../docs/images/z-score_configuration.png" alt="Z-Score configuration" width="400" height="300" class="img-responsive">
+<img src="../../images/z-score_configuration.png" alt="Z-Score configuration" width="400" height="300" class="img-responsive">
 </div>
 
 ##### Output
@@ -78,7 +78,7 @@ In the left-hand spreadsheet of the tab import the data matrix that is going to 
 In the right-hand spreadsheet of the tab the output data matrix with the standardized columns A and C is presented.
 
 <div style="text-align: center;">
-<img src="../docs/images/z-score_output.png" alt="Z-score output" width="400" height="300" class="img-responsive">
+<img src="../../images/z-score_output.png" alt="Z-score output" width="400" height="300" class="img-responsive">
 </div>
 
 ---
@@ -125,7 +125,7 @@ Data matrix with normalized data. If categorical features are included in the in
 In the left-hand spreadsheet of the tab import the data matrix that is going to be normalized.
 
 <div style="text-align: center;">
-<img src="../docs/images/Normalizers_input.png" alt="Min-Max input" width="400" height="300" class="img-responsive">
+<img src="../../images/Normalizers_input.png" alt="Min-Max input" width="400" height="300" class="img-responsive">
 </div>
 
 ##### Configuration
@@ -137,7 +137,7 @@ In the left-hand spreadsheet of the tab import the data matrix that is going to 
 1. Click on the `Execute` button [5] to apply the normalization on the selected columns.
 
 <div style="text-align: center;">
-<img src="../docs/images/Min-Max_configuration.png" alt="Min-Max configuration" width="400" height="300" class="img-responsive">
+<img src="../../images/Min-Max_configuration.png" alt="Min-Max configuration" width="400" height="300" class="img-responsive">
 </div>
 
 ##### Output
@@ -145,7 +145,7 @@ In the left-hand spreadsheet of the tab import the data matrix that is going to 
 In the right-hand spreadsheet of the tab the output data matrix with the normalized columns B and C is presented.
 
 <div style="text-align: center;">
-<img src="../docs/images/Min-Max_output.png" alt="Min-Max output" width="400" height="300" class="img-responsive">
+<img src="../../images/Min-Max_output.png" alt="Min-Max output" width="400" height="300" class="img-responsive">
 </div>
 
 ---
