@@ -3,6 +3,7 @@ layout: default
 title: 4.2 Classification
 parent: 4. Analytics
 nav_order: 2
+permalink: /classification.html
 ---
 
 # Classification

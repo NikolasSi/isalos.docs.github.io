@@ -3,6 +3,7 @@ layout: default
 title: 4.3 Clustering
 parent: 4. Analytics
 nav_order: 3
+permalink: /clustering.html
 ---
 
 # Clustering

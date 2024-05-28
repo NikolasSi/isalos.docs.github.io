@@ -3,6 +3,7 @@ layout: default
 title: 6.1 Pie Chart
 parent: 6. Plot
 nav_order: 1
+permalink: /pie-chart.html
 ---
 
 # Pie Chart

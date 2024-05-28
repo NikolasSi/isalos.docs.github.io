@@ -3,6 +3,7 @@ layout: default
 title: 3.2 Data Manipulation
 parent: 3. Data Transformation
 nav_order: 2
+permalink: /data-manipulation.html
 ---
 
 # Data Manipulation

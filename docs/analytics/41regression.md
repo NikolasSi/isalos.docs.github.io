@@ -3,6 +3,7 @@ layout: default
 title: 4.1 Regression
 parent: 4. Analytics
 nav_order: 1
+permalink: /regression.html
 ---
 
 # Regression

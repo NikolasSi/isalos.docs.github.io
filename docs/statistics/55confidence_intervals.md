@@ -3,6 +3,7 @@ layout: default
 title: 5.5 Confidence Intervals
 parent: 5. Statistics
 nav_order: 5
+permalink: /confidence-intervals.html
 ---
 
 # Confidence Intervals

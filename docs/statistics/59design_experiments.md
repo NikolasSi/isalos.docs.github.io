@@ -3,6 +3,7 @@ layout: default
 title: 5.9 Design of Experiments
 parent: 5. Statistics
 nav_order: 9
+permalink: /design-of-experiments.html
 ---
 
 # Design of Experiments

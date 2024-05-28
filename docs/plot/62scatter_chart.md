@@ -3,6 +3,7 @@ layout: default
 title: 6.2 Scatter/Line Chart
 parent: 6. Plot
 nav_order: 2
+permalink: /scatter-line-chart.html
 ---
 
 # Scatter/Line Chart 
