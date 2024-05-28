@@ -3,6 +3,7 @@ layout: default
 title: 3.4 Variable Selection
 parent: 3. Data Transformation
 nav_order: 4
+permalink: /variable-selection.html
 ---
 
 # Variable Selection

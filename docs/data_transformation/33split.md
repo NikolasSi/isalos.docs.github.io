@@ -3,6 +3,7 @@ layout: default
 title: 3.3 Split
 parent: 3. Data Transformation
 nav_order: 3
+permalink: /split.html
 ---
 
 # Split

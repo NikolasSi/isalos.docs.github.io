@@ -3,6 +3,7 @@ layout: default
 title: 5.2 Model Metrics
 parent: 5. Statistics
 nav_order: 2
+permalink: /model-metrics.html
 ---
 
 # Model Metrics
