@@ -47,7 +47,7 @@ Data matrix with processed data according to the applied model parameters.
 In the left-hand spreadsheet of the tab insert the data matrix to be transformed. In this case, the test set data is going to be normalized according to a normalization model developed under the same project.
 
 <div style="text-align: center;">
-<img src="../../images/existing_input.png" alt="Existing Model input" width="400" height="300" class="img-responsive">
+<img src="../../images/Existing model utilization/existing_input.png" alt="Existing Model input" width="400" height="300" class="img-responsive">
 </div>
 
 ##### Configuration
@@ -57,7 +57,7 @@ In the left-hand spreadsheet of the tab insert the data matrix to be transformed
 1. Select from the dropdown list [1] the `Model` of interest.
 
 <div style="text-align: center;">
-<img src="../../images/Existing Model Utilization - configuration 1.png" alt="Existing Model configuration" width="400" height="300" class="img-responsive">
+<img src="../../images/Existing model utilization/Existing Model Utilization - configuration 1.png" alt="Existing Model configuration" width="400" height="300" class="img-responsive">
 </div>
 
 {:style="counter-reset:none"}
@@ -65,7 +65,7 @@ In the left-hand spreadsheet of the tab insert the data matrix to be transformed
 1. Click on the `Execute` button [5] to apply the selected model on the input data.
 
 <div style="text-align: center;">
-<img src="../../images/Existing Model Utilization - configuration 2.png" alt="Existing Model configuration" width="400" height="300" class="img-responsive">
+<img src="../../images/Existing model utilization/Existing Model Utilization - configuration 2.png" alt="Existing Model configuration" width="400" height="300" class="img-responsive">
 </div>
 
 ##### Output
@@ -73,7 +73,7 @@ In the left-hand spreadsheet of the tab insert the data matrix to be transformed
 In the right-hand spreadsheet of the tab the output data matrix with the normalized columns is presented.
 
 <div style="text-align: center;">
-<img src="../../images/existing_output.png" alt="Existing Model output" width="400" height="300" class="img-responsive">
+<img src="../../images/Existing model utilization/existing_output.png" alt="Existing Model output" width="400" height="300" class="img-responsive">
 </div>
 
 ---
@@ -83,7 +83,7 @@ In the right-hand spreadsheet of the tab the output data matrix with the normali
 The `Existing Model Utilization` function is useful in cases when test/external data shall be transformed the same as way as training data has been processed, or when predictions shall be generated for a dataset using an already developed machine learning model.
 
 ## See also
-Different types of models can be applied on data including [`Normalizers`](https://www.docs.isalos.novamechanics.com/docs/data_transformation/normalizers.html), [`Regression`](https://www.docs.isalos.novamechanics.com/docs/analytics/regression.html), [`Classification`](https://www.docs.isalos.novamechanics.com/docs/analytics/classification.html) and [`Clustering`](https://www.docs.isalos.novamechanics.com/docs/analytics/clustering.html) models, and the applicability [`Domain – APD limits`](https://www.docs.isalos.novamechanics.com/docs/statistics/domain-apd.html).
+Different types of models can be applied on data including [`Normalizers`](https://www.docs.isalos.novamechanics.com/normalizers.html), [`Regression`](https://www.docs.isalos.novamechanics.com/regression.html), [`Classification`](https://www.docs.isalos.novamechanics.com/classification.html) and [`Clustering`](https://www.docs.isalos.novamechanics.com/clustering.html) models, and the applicability [`Domain – APD limits`](https://www.docs.isalos.novamechanics.com/domain-apd.html).
 
 For model import from a library of existing models refer to `Import Model from` and `Export Model from` options.
 
@@ -95,3 +95,4 @@ For model import from a library of existing models refer to `Import Model from` 
 ## Version History
 Introduced in Isalos Analytics Platform v0.1.18
 
+_Instructions last updated on May 2024_
