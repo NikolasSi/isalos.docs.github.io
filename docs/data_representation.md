@@ -2,6 +2,7 @@
 layout: default
 title: 2. Data Representation
 nav_order: 2
+permalink: /data-representation.html
 ---
 
 # Data Representation
