@@ -6,9 +6,12 @@ nav_order: 2
 
 # Data Representation
 {: .no_toc }
+Isalos Predictive Analytics Platform (in short Isalos) is a simple and user-friendly software application that allows data manipulation and model development by non-programmers, as coding skills are not necessary to use the platform. Isalos enables you to manipulate your data using the well-known spreadsheet environment. In the spreadsheets data are represented as tables of instances: in the columns the values of the different variables-features are included, and each row contains an instance-example which is characterized by the values of the different features. The core concept in the operation of Isalos is that each tab acts like a node, where data are imported and exported in a tabular format, following processing and transformation using specific functions. 
 
-Just the Docs has some specific configuration parameters that can be defined in your Jekyll site's \_config.yml file.
-{: .fs-6 .fw-300 }
+<div style="text-align: center;">
+<img src="../images/Data representation/core-concept.svg" alt="core-concept" width="700" height="300" class="img-responsive">
+</div>
+
 
 ## Table of contents
 {: .no_toc .text-delta }
@@ -17,7 +20,120 @@ Just the Docs has some specific configuration parameters that can be defined in 
 {:toc}
 
 ---
+In practice, each tab consists of an input spreadsheet (left-hand) [1] from which data are imported to the function-node [2] and an output spreadsheet (right-hand) [3] where results are presented. The output spreadsheet of the tab can be imported to the next tab [4] and eventually it is possible to build predictive models through a series of spreadsheets that comprise a workflow [5] of well-defined steps<sup>[1](#references-data-representation)</sup>. The main Isalos functionalities are available through the top ribbon of the user interface: [`Data Transformation`](https://www.docs.isalos.novamechanics.com/data-transformation.html) [6], [`Analytics`](https://www.docs.isalos.novamechanics.com/analytics.html) [7], [`Statistics`](https://www.docs.isalos.novamechanics.com/statistics.html) [8], and [`Plot`](https://www.docs.isalos.novamechanics.com/plot.html) [9].  
 
+<div style="text-align: center;">
+<img src="../images/Data representation/GUI.svg" alt="GUI" width="800" class="img-responsive">
+</div>
+
+## Data Input
+You can import your data to Isalos from an existing file, an existing spreadsheet within the current project, or by manually entering the data values.
+
+### Import from file
+{: .no_toc }
+To import data into a new tab, right-click on the spreadsheet located on the left-hand side and select `Import from file` [1]. Then, choose the directory containing your data file and select the file you wish to upload [2]. Accepted formats include CSV, XLSX, and XLS.
+
+<div style="text-align: center;">
+<img src="../images/Data representation/import-from-file.svg" alt="import-from-file" width="500" class="img-responsive">
+</div>
+
+<div style="text-align: center;">
+<img src="../images/Data representation/import-from-file1.svg" alt="import-from-file1" width="600" class="img-responsive">
+</div>
+
+In the pop-up window select if the first row contains column name headers and if the first column contains row IDs by selecting the boxes `User Header` and  `User Row ID`, respectively [3]. In case that an XLSX or a XLS file is imported, select the sheet from which data are imported from the `Select Sheet dropdown` list [4]. From the `Select Separator` dropdown list [5] select the character string delimiting columns between semicolon (`;`) and comma (`,`). Click on the `Execute` button [6] to complete the data import.
+
+<div style="text-align: center;">
+<img src="../images/Data representation/import-from-file2.svg" alt="import-from-file2" width="400" class="img-responsive">
+</div>
+
+### Import from spreadsheet {#import-from-spreadsheet}
+{: .no_toc }
+To import data from an existing spreadsheet, right-click on the spreadsheet located on the left-hand side and select `Import from SpreadSheet` [1]. Then, choose from the `Select input tab` dropdown list the name of the tab from which data are going to be read and imported [2]. Please note that data cannot be imported from the spreadsheet of the first tab of the workflow.
+
+<div style="text-align: center;">
+<img src="../images/Data representation/import-from-spreadsheet.svg" alt="import-from-spreadsheet" width="600" class="img-responsive">
+</div>
+
+### Manual import
+{: .no_toc }
+Alternatively, you can directly insert your data by manually typing the values on the left-hand side spreadsheet. It is also possible to copy and paste your data to the input spreadsheet from an external file.
+
+### Export spreadsheet data
+{: .no_toc }
+You can export the processed data and the results at any stage of the analysis workflow by right-clicking on any of the two input and output spreadsheets and selecting `Export SpreadSheet` data [1]. 
+
+<div style="text-align: center;">
+<img src="../images/Data representation/export-spreadsheet.svg" alt="export-from-spreadsheet" width="800" class="img-responsive">
+</div>
+
+In the `File Preferences` window select the `File Extension` between the XLSX and CSV [2] and check the boxes of `User Header` and `User Row ID` [3] if you wish to save the column and row names respectively. In case that the XLSX extension is selected, select also if the input or output spreadsheet (depending on your initial selection of spreadsheet) is also going to be exported in the file, by clicking on the `Include Input Sheet` (or `Include Output Sheet`) [4]. In this case, the input and output spreadsheets are going to be saved as different sheets in your XLSX file [5]. In case that the CSV extension is selected, click on the `Select Separator` dropdown menu [6], and select the the character string delimiting columns between semicolon (`;`) and comma (`,`). 
+
+<div style="text-align: center;">
+<img src="../images/Data representation/file-preferences.svg" alt="file-preferences" width="650" class="img-responsive">
+</div>
+
+<div style="text-align: center;">
+<img src="../images/Data representation/exported-xlsx.svg" alt="exported-xlsx" width="300" class="img-responsive">
+</div>
+
+Click on the `Execute` button [7] and type the name of the file and select the folder where it is going to be saved [8] and click on the `Save` button to complete the export process.
+
+<div style="text-align: center;">
+<img src="../images/Data representation/select-folder.svg" alt="select-folder" width="450" class="img-responsive">
+</div>
+
+### Clear spreadsheet
+{: .no_toc }
+By right-clicking on any spreadsheet and by selecting `Clear SpreadSheet`, its data is removed.
+
+## Workflow Development
+In Isalos each tab acts like a node, where data are imported (through the left-hand spreadsheet), processed (using one of the available functions), and exported (through the right-hand spreadsheet). In each tab a specific function is applied on the data so, to develop a complete analysis workflow, you should add more tabs and allow data flow between input and output spreadsheets. 
+
+### Insert new tabs
+{: .no_toc }
+When you open an empty Isalos project, a single tab named `Action` is displayed [1]. You can rename this tab by right clicking on the name of the tab and selecting `Rename` [2]. In the presented configuration window, type the new name of the tab [3] and click on `OK` button [4]. You can follow this process whenever you wish to rename an existing tab. 
+
+<div style="text-align: center;">
+<img src="../images/Data representation/rename-tab.svg" alt="rename-tab" width="550" class="img-responsive">
+</div>
+
+By clicking on the `+` symbol next to the name of the last tab [5], you can insert a new tab-node to your analysis workflow. In the configuration window, type the name of the tab [6] and click on `OK` button [7]. An empty tab is created, ready for data input and analysis. 
+
+<div style="text-align: center;">
+<img src="../images/Data representation/add-new-tab.svg" alt="add-new-tab" width="250" class="img-responsive">
+</div>
+
+Right-clicking on any tab and selecting `Delete` will remove the tab [8]. This action is irreversible.
+
+<div style="text-align: center;">
+<img src="../images/Data representation/delete-tab.svg" alt="delete-tab" width="300" class="img-responsive">
+</div>
+
+### Workflow representation
+{: .no_toc }
+Each tab functions as a node in the data analysis workflow. These nodes are represented in the workflow outline area at the top of the interface [1]. When a new tab is added, a corresponding node is automatically created in the workflow outline [2]. As the analysis progresses and data flows between tabs (see [Import from spreadsheet](#import-from-spreadsheet)), the nodes are automatically connected, forming a fully integrated workflow [3]. Clicking on a specific node switches the interface to the related tab.
+
+<div style="text-align: center;">
+<img src="../images/Data representation/workflow.svg" alt="workflow" width="600" class="img-responsive">
+</div>
+
+## Tips
+* You can periodically save the intermediate results of your data analysis or modelling using the `Export SpreadSheet` data option, for further analysis or study of the effects of each workflow step. This is particularly useful for debugging purposes.
+* To have an overview of the analysis through the workflow outline, as the analysis progresses choose to import your data using the `Import from SpreadSheet` option rather than copying and pasting data between tabs.
+
+
+## References {#references-data-representation}
+1. Varsou D-D, Tsoumanis A, Papadiamantis AG, Melagraki G, Afantitis A. Isalos Predictive Analytics Platform: Cheminformatics, Nanoinformatics, and Data Mining Applications. Springer International Publishing; 2023. [doi.org/10.1007/978-3-031-20730-3_9](https://doi.org/10.1007/978-3-031-20730-3_9).
+
+---
+
+## Version History
+Introduced in Isalos Analytics Platform v0.1.18
+
+_Instructions last updated on May 2024_
+
+<!--
 View this site's [\_config.yml](https://github.com/just-the-docs/just-the-docs/tree/main/_config.yml) file as an example.
 
 ## Site logo (*)
@@ -324,3 +440,4 @@ just_the_docs:
 When *all* your pages are in a single collection, its name is not displayed.
 
 The navigation for each collection is a separate name space for page titles: a page in one collection cannot be a child of a page in a different collection, or of a normal page.
+-->

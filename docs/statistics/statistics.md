@@ -3,7 +3,7 @@ layout: default
 title: 5. Statistics
 nav_order: 5
 has_children: true
-permalink: docs/statistics
+permalink: /statistics.html
 ---
 
 # Statistics

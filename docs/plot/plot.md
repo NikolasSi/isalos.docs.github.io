@@ -3,7 +3,7 @@ layout: default
 title: 6. Plot
 nav_order: 6
 has_children: true
-permalink: /docs/plot
+permalink: /plot.html
 ---
 
 # Plot

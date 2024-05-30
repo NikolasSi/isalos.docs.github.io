@@ -3,10 +3,11 @@ layout: default
 title: 3. Data Transformation
 nav_order: 3
 has_children: true
-permalink: /docs/data_transformation
+permalink: /data-transformation.html
 ---
 
 # Data Transformation
 
-To make it as easy as possible to write documentation in plain Markdown, most UI components are styled using default Markdown elements with few additional CSS classes needed.
+The `Data Transformation` menu includes functions that enable you to prepare your data for modelling. These functionalities correspond to standard pre-processing steps for the development of machine learning workflows, such as normalization, filtering, feature selection, and data partitioning.
+
 {: .fs-6 .fw-300 }
