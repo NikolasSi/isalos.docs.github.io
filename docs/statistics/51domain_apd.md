@@ -57,7 +57,7 @@ A data matrix including the calculated distance (`Domain`) to the nearest instan
 In the left-hand spreadsheet of the tab insert the training set data. In case that categorical-string columns are included in the set, these are not taken into account for the calculation of the applicability domain limits. Remove also the response variable column (if included in the set).
 
 <div style="text-align: center;">
-<img src="../../images/Domain - APD/domain_input.PNG" alt="domain input" width="400" height="300" class="img-responsive">
+<img src="images/Domain - APD/domain_input.PNG" alt="domain input" width="400" height="300" class="img-responsive">
 </div>
 
 ##### Configuration
@@ -69,7 +69,7 @@ In the left-hand spreadsheet of the tab insert the training set data. In case th
 1. Click on the `Execute` button [3] to calculate the applicability domain limits.
 
 <div style="text-align: center;">
-<img src="../../images/Domain - APD/domain_configuration.png" alt="domain configuration" width="400" height="300" class="img-responsive">
+<img src="images/Domain - APD/domain_configuration.png" alt="domain configuration" width="400" height="300" class="img-responsive">
 </div>
 
 ##### Output
@@ -77,7 +77,7 @@ In the left-hand spreadsheet of the tab insert the training set data. In case th
 In the right-hand spreadsheet of the tab the output data matrix with the `Domain`, `APD`, and `Prediction` columns are presented.
 
 <div style="text-align: center;">
-<img src="../../images/Domain - APD/domain_output.PNG" alt="domain output" width="400" height="300" class="img-responsive">
+<img src="images/Domain - APD/domain_output.PNG" alt="domain output" width="400" height="300" class="img-responsive">
 </div>
 
 ##### Application on an external set {#example}
@@ -86,21 +86,21 @@ You can apply the generated Domain – APD model to any external data using the 
 1. Impοrt the external data in the left-hand spreadsheet of the tab. Include the same columns used to build the applicability domain model.
 
 <div style="text-align: center;">
-<img src="../../images/Domain - APD/domain_apply_input.PNG" alt="domain output" width="400" height="300" class="img-responsive">
+<img src="images/Domain - APD/domain_apply_input.PNG" alt="domain output" width="400" height="300" class="img-responsive">
 </div>
 
 {:style="counter-reset:none"}
 1. Select `Analytics` $$\rightarrow$$ `Existing Model Utilization`. Select the `Domain – APD` model [1] and click on the `Execute` button [2].
 
 <div style="text-align: center;">
-<img src="../../images/Domain - APD/domain_apply.png" alt="domain output" width="400" height="300" class="img-responsive">
+<img src="images/Domain - APD/domain_apply.png" alt="domain output" width="400" height="300" class="img-responsive">
 </div>
 
 {:style="counter-reset:none"}
 1. Inspect the results in the right-hand spreadsheet of the tab.
 
 <div style="text-align: center;">
-<img src="../../images/Domain - APD/domain_apply_output.PNG" alt="domain output" width="400" height="300" class="img-responsive">
+<img src="images/Domain - APD/domain_apply_output.PNG" alt="domain output" width="400" height="300" class="img-responsive">
 </div>
 ---
 
