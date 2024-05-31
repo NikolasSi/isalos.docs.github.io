@@ -66,7 +66,7 @@ In the left-hand spreadsheet of the tab import the data matrix that is going to 
 {: .no_toc }
 
 1. Select `Data Transformation` $$\rightarrow$$ `Normalizers` $$\rightarrow$$ `Z Score`.
-1. Select the columns that are going to be standardized by clicking on the arrow buttons [3] and moving columns between the `Excluded Columns` [1] and `Included Columns` [2] lists. The columns containing categorical values are not subject to normalization. In this case only columns A and C are going to be normalized.
+1. Select the columns that are going to be standardized by clicking on the arrow buttons [3] and moving columns between the `Excluded Columns` [1] and `Included Columns` [2] lists. The columns containing categorical values are not subject to normalization. In this case only columns "A" and "C" are going to be normalized.
 1. Click on the `Execute` button [4] to apply the standardization on the selected columns.
 
 <div style="text-align: center;">
@@ -75,7 +75,7 @@ In the left-hand spreadsheet of the tab import the data matrix that is going to 
 
 ##### Output
 {: .no_toc }
-In the right-hand spreadsheet of the tab the output data matrix with the standardized columns A and C is presented.
+In the right-hand spreadsheet of the tab the output data matrix with the standardized columns "A" and "C" is presented.
 
 <div style="text-align: center;">
 <img src="images/Normalizers/z-score_output.png" alt="Z-score output" width="400" height="300" class="img-responsive">
@@ -132,7 +132,7 @@ In the left-hand spreadsheet of the tab import the data matrix that is going to 
 {: .no_toc }
 
 1. Select `Data Transformation` $$\rightarrow$$ `Normalizers` $$\rightarrow$$ `Min-Max`.
-1. Select the columns that are going to be normalized by clicking on the arrow buttons [3] and moving columns between the `Excluded Columns` [1] and `Included Columns` [2] lists. The columns containing categorical values are not subject to normalization. In this case only columns B and C are going to be normalized.
+1. Select the columns that are going to be normalized by clicking on the arrow buttons [3] and moving columns between the `Excluded Columns` [1] and `Included Columns` [2] lists. The columns containing categorical values are not subject to normalization. In this case only columns "B" and "C" are going to be normalized.
 1. Select the lower-`Min` and upper-`Max` limits [4] for the normalization.
 1. Click on the `Execute` button [5] to apply the normalization on the selected columns.
 
@@ -142,7 +142,7 @@ In the left-hand spreadsheet of the tab import the data matrix that is going to 
 
 ##### Output
 {: .no_toc }
-In the right-hand spreadsheet of the tab the output data matrix with the normalized columns B and C is presented.
+In the right-hand spreadsheet of the tab the output data matrix with the normalized columns "B" and "C" is presented.
 
 <div style="text-align: center;">
 <img src="images/Normalizers/Min-Max_output.png" alt="Min-Max output" width="400" height="300" class="img-responsive">
