@@ -47,7 +47,7 @@ Data matrix with processed data according to the applied model parameters.
 In the left-hand spreadsheet of the tab insert the data matrix to be transformed. In this case, the test set data is going to be normalized according to a normalization model developed under the same project.
 
 <div style="text-align: center;">
-<img src="../../images/Existing model utilization/existing_input.png" alt="Existing Model input" width="400" height="300" class="img-responsive">
+<img src="images/Existing model utilization/existing_input.png" alt="Existing Model input" width="400" height="300" class="img-responsive">
 </div>
 
 ##### Configuration
@@ -57,7 +57,7 @@ In the left-hand spreadsheet of the tab insert the data matrix to be transformed
 1. Select from the dropdown list [1] the `Model` of interest.
 
 <div style="text-align: center;">
-<img src="../../images/Existing model utilization/Existing Model Utilization - configuration 1.png" alt="Existing Model configuration" width="400" height="300" class="img-responsive">
+<img src="images/Existing model utilization/Existing Model Utilization - configuration 1.png" alt="Existing Model configuration" width="400" height="300" class="img-responsive">
 </div>
 
 {:style="counter-reset:none"}
@@ -65,7 +65,7 @@ In the left-hand spreadsheet of the tab insert the data matrix to be transformed
 1. Click on the `Execute` button [5] to apply the selected model on the input data.
 
 <div style="text-align: center;">
-<img src="../../images/Existing model utilization/Existing Model Utilization - configuration 2.png" alt="Existing Model configuration" width="400" height="300" class="img-responsive">
+<img src="images/Existing model utilization/Existing Model Utilization - configuration 2.png" alt="Existing Model configuration" width="400" height="300" class="img-responsive">
 </div>
 
 ##### Output
@@ -73,7 +73,7 @@ In the left-hand spreadsheet of the tab insert the data matrix to be transformed
 In the right-hand spreadsheet of the tab the output data matrix with the normalized columns is presented.
 
 <div style="text-align: center;">
-<img src="../../images/Existing model utilization/existing_output.png" alt="Existing Model output" width="400" height="300" class="img-responsive">
+<img src="images/Existing model utilization/existing_output.png" alt="Existing Model output" width="400" height="300" class="img-responsive">
 </div>
 
 ---
