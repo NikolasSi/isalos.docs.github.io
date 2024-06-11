@@ -25,18 +25,11 @@ permalink: /design-of-experiments.html
 ---
 ## Full Factorial
 ---
-## Halton Design
+## Mixtures
 ---
 ## LHS
 ---
-## LHS Space Filling
+## Robust Parameter
 ---
 ## Mixtures
 ---
-## Plackett Burman
----
-## Robust Parameter
----
-## Sukharev Grid
----
-## Uniform

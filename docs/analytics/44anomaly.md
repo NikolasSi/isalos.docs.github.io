@@ -156,3 +156,4 @@ By default text is justified left. Use these `text-` classes to override setting
 | `.text-left`   | `text-align: left`   |
 | `.text-right`  | `text-align: right`  |
 | `.text-center` | `text-align: center` |
+
