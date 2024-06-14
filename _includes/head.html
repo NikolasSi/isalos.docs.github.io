@@ -9,7 +9,6 @@
     ga_tracking_ids, ga_property, file, favicon.
   Should not be cached, because included files depend on page.
 {%- endcomment -%}
-
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge">
@@ -17,7 +16,7 @@
   <link rel="stylesheet" href="{{ '/assets/css/just-the-docs-default.css' | relative_url }}">
 
   <link rel="stylesheet" href="{{ '/assets/css/just-the-docs-head-nav.css' | relative_url }}" id="jtd-head-nav-stylesheet">
-
+  <link rel="icon" href="{{ 'images/icons/Isalos1.png' | relative_url }}" type="image/x-icon">
   <style id="jtd-nav-activation">
   {% include css/activation.scss.liquid %}
   </style>
