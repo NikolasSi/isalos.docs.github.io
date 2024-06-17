@@ -20,54 +20,6 @@ permalink: /confidence-intervals.html
 ## Raw Data
  
 ---
-
-## Sample Size, Mean, and Standard Deviation
-
-Use the `lh-` classes to explicitly apply line height to text.
-
-| Class         | `line-height` value  | Notes                         |
-|:--------------|:---------------------|:------------------------------|
-| `.lh-0`       | 0                    |                               |
-| `.lh-tight`   | 1.1                  | Default for headings          |
-| `.lh-default` | 1.4                  | Default for body (paragraphs) |
-
-<div class="code-example" markdown="1">
-No Line height
-No Line height
-{: .lh-0 }
-
-Tight line height
-Tight line height
-{: .lh-tight }
-
-Default line height
-Default line height
-{: .fh-default }
+<div style="text-align: center;">
+<img src="images/icons/under_construction.svg" alt="a" width="1500" height="1000" class="img-responsive">
 </div>
-```markdown
-In Markdown, use the `{: }` wrapper to apply custom classes:
-
-No Line height
-No Line height
-{: .lh-0 }
-
-Tight line height
-Tight line height
-{: .lh-tight }
-
-Default line height
-Default line height
-{: .fh-default }
-```
-
----
-
-## Population Proportion
-
-By default text is justified left. Use these `text-` classes to override settings:
-
-| Class          | What it does         |
-|:---------------|:---------------------|
-| `.text-left`   | `text-align: left`   |
-| `.text-right`  | `text-align: right`  |
-| `.text-center` | `text-align: center` |

@@ -9,3 +9,6 @@ permalink: /weight-cases.html
 # Weight Cases
 {: .no_toc }
  
+<div style="text-align: center;">
+<img src="images/icons/under_construction.svg" alt="a" width="1500" height="1000" class="img-responsive">
+</div>

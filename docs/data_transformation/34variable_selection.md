@@ -29,43 +29,6 @@ permalink: /variable-selection.html
 ---
 ## Regression Analysis
 
-Use labels as a way to add an additional mark to a section of your docs. Labels come in a few colors. By default, labels will be blue.
-
-<div class="code-example" markdown="1">
-Default label
-{: .label }
-
-Blue label
-{: .label .label-blue }
-
-Stable
-{: .label .label-green }
-
-New release
-{: .label .label-purple }
-
-Coming soon
-{: .label .label-yellow }
-
-Deprecated
-{: .label .label-red }
+<div style="text-align: center;">
+<img src="images/icons/under_construction.svg" alt="a" width="1500" height="1000" class="img-responsive">
 </div>
-```markdown
-Default label
-{: .label }
-
-Blue label
-{: .label .label-blue }
-
-Stable
-{: .label .label-green }
-
-New release
-{: .label .label-purple }
-
-Coming soon
-{: .label .label-yellow }
-
-Deprecated
-{: .label .label-red }
-```
