@@ -8,6 +8,7 @@ permalink: /anomaly-detection.html
 
 # Anomaly Detection
 {: .no_toc }
+Anomaly detection is an important technique in data analytics that involves identifying unusual patterns or outliers in datasets. It is widely used in various applications like fraud detection, network security, and fault diagnosis. Anomalies in these datasets can indicate critical incidents such as breaches, failing components, or fraudulent transactions. To identify these anomalies, statistical, machine learning, or other data-driven methods are used to analyze data in real-time or in batches. This helps in identifying data points that deviate significantly from the expected behavior. By detecting and flagging these anomalies, organizations can proactively address potential issues, leading to improved operational efficiency and security.<sup>[1](#anomaly-detection)</sup>
 
 ## Table of contents
 {: .no_toc .text-delta }
@@ -17,143 +18,128 @@ permalink: /anomaly-detection.html
 
 ---
 
-## First Algorithm
+### One-Class Support Vector Machine (One-Class SVM)
+The One-Class Support Vector Machine (One-Class SVM) anomaly detection algorithm is specifically designed to detect outliers or anomalies in a dataset by defining a normative region and identifying data points that deviate significantly from it. It accomplishes this by mapping the input data to a high-dimensional feature space using a kernel function. Subsequently, it seeks to find a hyperplane that maximizes the margin, separating most of the data points from the origin. The algorithm uses four types of kernel functions to achieve this transformation:<sup>[2](#anomaly-detection)</sup>
 
-Use the `.fs-1` - `.fs-10` to set an explicit `font-size`.
+**1.Linear Kernel:**
+<span id="eq. linear-kernerl1">
+$$
+\begin{equation}
+K(x, x') = \langle x, x' \rangle
+\end{equation}   
+$$
+</span>
 
-| Class   | Small screen size `font-size`  | Large screen size `font-size` |
-|:--------|:-------------------------------|:------------------------------|
-| `.fs-1` | 9px                            | 10px                          |
-| `.fs-2` | 11px                           | 12px                          |
-| `.fs-3` | 12px                           | 14px                          |
-| `.fs-4` | 14px                           | 16px                          |
-| `.fs-5` | 16px                           | 18px                          |
-| `.fs-6` | 18px                           | 24px                          |
-| `.fs-7` | 24px                           | 32px                          |
-| `.fs-8` | 32px                           | 38px                          |
-| `.fs-9` | 38px                           | 42px                          |
-| `.fs-10`| 42px                           | 48px                          |
+This kernel represents a single dot product between two vectors. The terms x and x' represent vectors and are used to denote any two data points for which you are calculating the kernel. The dot product is a scalar representation of the projection of one vector onto another, indicating how much of one vector goes in the direction of another.
 
-<div class="code-example" markdown="1">
-Font size 1
-{: .fs-1 }
-Font size 2
-{: .fs-2 }
-Font size 3
-{: .fs-3 }
-Font size 4
-{: .fs-4 }
-Font size 5
-{: .fs-5 }
-Font size 6
-{: .fs-6 }
-Font size 7
-{: .fs-7 }
-Font size 8
-{: .fs-8 }
-Font size 9
-{: .fs-9 }
-Font size 10
-{: .fs-10 }
-</div>
-```markdown
-In Markdown, use the `{: }` wrapper to apply custom classes:
+**2.Polynomial Kernel:**
+<span id="eq. linear-kernerl2">
+$$
+\begin{equation}
+K(x, x') = \left( \gamma \cdot \langle x, x' \rangle + r \right)^{d}
+\end{equation}   
+$$
+</span>
 
-Font size 1
-{: .fs-1 }
-Font size 2
-{: .fs-2 }
-Font size 3
-{: .fs-3 }
-Font size 4
-{: .fs-4 }
-Font size 5
-{: .fs-5 }
-Font size 6
-{: .fs-6 }
-Font size 7
-{: .fs-7 }
-Font size 8
-{: .fs-8 }
-Font size 9
-{: .fs-9 }
-Font size 10
-{: .fs-10 }
-```
+In the above expression 
+<span id="eq. linear-kernerl2">
+$$
+\begin{equation}
+\gamma \cdot \langle x, x' \rangle
+\end{equation}   
+$$
+</span>
+involves a scalar multiplication of  (a predefined scaling factor) with the dot product
+<span id="eq. linear-kernerl2text">
+$$
+\begin{equation}
+\langle x, x' \rangle
+\end{equation}   
+$$
+</span>
+of the input vectors x and x'. This kernel maps inputs into a polynomial feature space, controlled by degree d, where higher degrees allow for more complex decision boundaries. Coefficient r adjusts the influence of higher-degree terms, and  scales the input data.
 
-## Font weight (*)
+**3.RBF (Radial Basis Function) Kernel:**
+<span id="eq. linear-kernerl2">
+$$
+\begin{equation}
+K(x, x') = \exp\left( -\gamma \|x - x'\|^{2} \right)
+\end{equation}   
+$$
+</span>
 
-Use the `.fw-300` - `.fw-700` to set an explicit `font-weight`.
+The RBF kernel introduces a Gaussian function of the distance between points, controlled by  (here  multiplies the square of the Euclidean distance), allowing it to handle varied data distributions by forming region-based boundaries.
 
-<div class="code-example" markdown="1">
-Font weight 300
-{: .fw-300 }
-Font weight 400
-{: .fw-400 }
-Font weight 500
-{: .fw-500 }
-Font weight 700
-{: .fw-700 }
-</div>
-```markdown
-In Markdown, use the `{: }` wrapper to apply custom classes:
+**4.Sigmoid Kernel:**
+<span id="eq. linear-kernerl2">
+$$
+\begin{equation}
+K(x, x') = \tanh\left( \gamma \cdot \langle x, x' \rangle + r \right)
+\end{equation}   
+$$
+</span>
 
-Font weight 300
-{: .fw-300 }
-Font weight 400
-{: .fw-400 }
-Font weight 500
-{: .fw-500 }
-Font weight 700
-{: .fw-700 }
-```
+Similarly, to the polynomial kernel, this involves a dot product scaled by  and offset by r , followed by the hyperbolic tangent function. This kernel uses a hyperbolic tangent function, transforming the data similar to the activation function in neural networks, which can create complex, non-linear decision boundaries.
 
-## Line height (*)
+<br>
+One-Class SVM aims to maximize the margin between the data and the origin in the feature space, effectively identifying outliers in scenarios where a clear "normal" class exists. The parameters v (nu) and C determine the balance between capturing all the "normal" data points within the boundary and allowing flexibility for some outliers. This trade-off is crucial for accurate anomaly detection in applications like fraud detection and system health monitoring.
 
-Use the `lh-` classes to explicitly apply line height to text.
+Use the Anomaly detection function by browsing in the top ribbon: 
 
-| Class         | `line-height` value  | Notes                         |
-|:--------------|:---------------------|:------------------------------|
-| `.lh-0`       | 0                    |                               |
-| `.lh-tight`   | 1.1                  | Default for headings          |
-| `.lh-default` | 1.4                  | Default for body (paragraphs) |
+|Analytics $$\rightarrow$$ Anomaly Detection $$\rightarrow$$ First algorithm|
 
-<div class="code-example" markdown="1">
-No Line height
-No Line height
-{: .lh-0 }
+### Input
+{: .no_toc}
+The data input should consist of numerical (“normal”) instances, without any missing values. There are no inherent limitations on the number of columns or rows.
 
-Tight line height
-Tight line height
-{: .lh-tight }
+### Configuration
+{: .no_toc}
 
-Default line height
-Default line height
-{: .fh-default }
-</div>
-```markdown
-In Markdown, use the `{: }` wrapper to apply custom classes:
+|**Type of Kernel**| You can choose from different types of kernels including linear, polynomial, RBF, and sigmoid. <br> You can also set parameters like C, Nu, Tolerance, and Cache to optimize the performance and efficiency of anomaly detection.|
 
-No Line height
-No Line height
-{: .lh-0 }
+### Output
+{: .no_toc}
+The output sheet will have two columns: one for the prediction (expected or anomalous) and the other for the scoring.
 
-Tight line height
-Tight line height
-{: .lh-tight }
+### Example
+{: .no_toc}
 
-Default line height
-Default line height
-{: .fh-default }
-```
+##### Input
+{: .no_toc}
+The data are inserted as shown below in the data input sheet on the left-hand side.
 
-## Text justification (*)
+<div style="text-align: center;">
+<img src="images/Anomaly/oneclass-svm-input.png" alt="Oneclass SVM input" width="300" height="400" class="img-responsive">
+</div> 
 
-By default text is justified left. Use these `text-` classes to override settings:
+##### Configuration
+{: .no_toc }
+*   Select `Analytics` $$\rightarrow$$ `Anomaly Detection` $$\rightarrow$$ `First algorithm`
+*   Select the `type` of kernel [1] and specify the parameter values [2] in the kernel equation. Choose appropriate values for the `generic parameters` to optimize the performance and efficiency of anomaly detection [3].
+*   Click on the `Execute` button [4] to apply the anomaly detection calculation.
 
-| Class          | What it does         |
-|:---------------|:---------------------|
-| `.text-left`   | `text-align: left`   |
-| `.text-right`  | `text-align: right`  |
-| `.text-center` | `text-align: center` |
+<div style="text-align: center;">
+<img src="images/Anomaly/oneclass-svm.svg" alt="Oneclass SVM" width="300" height="400" class="img-responsive">
+</div> 
+
+##### Output
+{: .no_toc }
+The right-hand spreadsheet tab presents two columns in the output: one for predicting whether the result is expected or anomalous, and another for the scoring.
+
+<div style="text-align: center;">
+<img src="images/Anomaly/oneclass-svm-output.png" alt="Oneclass SVM output" width="300" height="400" class="img-responsive">
+</div> 
+
+
+## References {#anomaly-detection}
+1.	Mehrotra, K.G., et al., Anomaly detection. 2017: Springer.
+2. 	Zhang, R., S. Zhang, S. Muthuraman, and J. Jiang. One class support vector machine for anomaly detection in the communication network performance data. in Proceedings of the 5th conference on Applied electromagnetics, wireless and optical communications. 2007. Citeseer.
+ 
+
+---
+
+## Version History
+Introduced in Isalos Analytics Platform v0.2.4
+
+_Instructions last updated on June 2024_
 
