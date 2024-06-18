@@ -69,7 +69,7 @@ In the left-hand spreadsheet of the tab import the data matrix including the tar
 {: .no_toc }
 In the right-hand spreadsheet of the tab the output data matrix with the actual and the predicted value of the target is presented. Also, the k most proximate identified instances from the training set are given for each data point, along with the corresponding inverted Euclidean distances from each neighbor. Note that the 'Closest NN1' represents the nearest neighbor, which is the data point itself when applied on the training set. Consequently, the 'Distance from NN1' is 0 for all given training instances.
 <div style="text-align: center;">
-<img src="images/Regression/knn-output.png" alt="kNN input" width="700" height="900" class="img-responsive">
+<img src="images/Regression/knn-output.png" alt="kNN output" width="700" height="900" class="img-responsive">
 </div> 
 
 ##### Application on external set
