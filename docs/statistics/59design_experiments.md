@@ -232,20 +232,244 @@ A list of experiments (combinations) is generated in the output datasheet along 
 </div>
 
 ---
-
-***UNDER CONSTRUCTION***
-
----
 ## Full Factorial
+
+A Full Factorial Design of Experiment (DoE) is a comprehensive method used in experimental research to investigate all possible combinations of factor levels, allowing for a complete analysis of two or more factors. Each factor is tested at different discrete levels, and the total number of experimental combinations (n) is determined by multiplying the number of levels (lf) of each factor (f). This relationship is mathematically expressed as:
+
+<div id="eq. fullfactorial1">
+$$
+\begin{equation}
+n = \prod_{f=1}^{F} l_{f}
+\end{equation}  
+$$
+</div>
+
+here, n is the number of total experimental combinations, F is the total number of factors and lf is the number of levels of the f factor.
+
+The strength of Full Factorial DoE lies in its thoroughness. By examining every possible combination of factors and their levels, it provides a detailed mapping of the experimental space. This design is particularly powerful for elucidating not only the individual effects of each factor but also any interactions between them. Such interactions can often be critical, influencing the outcome in ways that would not be evident from studying the factors independently.
+
+Full Factorial DoE ensures that every potential interaction is explored, offering a robust understanding of the system under investigation. This is crucial for drawing reliable conclusions and making informed decisions based on the experiment's results. However, while Full Factorial DoE is unmatched in its comprehensiveness, it can become extremely resource-intensive, especially as the number of factors or levels increases. Each additional factor exponentially increases the number of experiments needed, which can escalate costs and time requirements significantly.
+
+Thus, while Full Factorial DoE provides an unmatched depth of understanding due to its exhaustive exploration of all factor combinations, its practical application must be carefully considered. 
+
+Balancing the need for comprehensive data with the practical limitations of experimental resources is essential. In cases where resources are limited or the number of factors is high, alternative designs like fractional factorial designs or response surface methodologies might be employed to efficiently capture the most critical information without conducting every possible experimental combination.
+
+Use the Full Factorial function by browsing in the top ribbon: 
+
+|Statistics $$\rightarrow$$ Design of Experiments $$\rightarrow$$ Full Factorial|
+
+### Input
+{: .no_toc}
+
+Numerical values should be specified in the input datasheet. The minimum requirement is to specify 2 columns (factors) along with two levels (values/rows) each representing min and max levels, respectively.
+
+### Configuration
+{: .no_toc}
+
+| **Number of Center Points** | Select manually the Number of Center Points to be included in the output list of experiments. There is no minimum requirement or any other limitation. |
+| **Number of Blocks** | Select manually the Number of Blocks. The lowest value that can get is 1. |
+| **Random Standard order** | You can tick/select the box if randomness is required in the output list of experiments. |
+| **Time-based RNG Seed** | If randomness is selected, then you have the option to also tick/select the box to set the random generated number seed based on time. |
+| **RNG Seed** | Select manually the random generated number seed if required. |
+| **Include/exclude columns** | Select manually the columns through the dialog window: Use the buttons to move columns between the Included Columns and Excluded Columns list. Single-arrow buttons will move all selected columns and double-arrow buttons will move all columns. |
+
+### Output
+{: .no_toc}
+
+A list of experiments (combinations) is generated in the output datasheet along with the Block number and the Standard order based on the Full Factorial design method selected.
+
+### Example
+{: .no_toc}
+
+##### Input
+{: .no_toc}
+
+In the input datasheet minimum requirement is to specify two factors (columns) and insert minimum two levels (values) for each factor (column), as shown below.
+
+<div style="text-align: center;">
+<img src="images/Design of experiments/full-factorial-input.png" alt="Full Factorial input" width="500" height="400" class="img-responsive">
+</div> 
+
+##### Configuration
+{: .no_toc }
+
+*   Select `Data Statistics`→ `Design of Experiments` →`Full Factorial`.
+*   Select the `Number of Center Points` [1] to be generated in the output list of experiments.
+*   Select the `Number of Blocks` [2]. The lowest value that can be set is 1.
+*   Select/tick if required the `Random Standard order` [3] to imply randomness in the output list of experiments.
+*   If randomness is selected either select/tick to generate the number seed for randomness based on time [4] or by manually setting a value [5].
+*   Select the columns by clicking on the arrow buttons [8] and moving columns between the `Excluded Columns` [6] and `Included Columns` [7] lists.
+*   Click on the `Execute` button [9] to perform Full Factorial design method.
+
+<div style="text-align: center;">
+<img src="images/Design of experiments/full-factorial.svg" alt="Full Factorial" width="500" height="400" class="img-responsive">
+</div> 
+
+##### Output 
+{: .no_toc}
+
+The output list of experiments is generated for the two factors outlining a list of 4 experiments based on the Full Factorial design. Block number is presented in Col1 as shown below and the standard order is provided in Col2.
+
+<div style="text-align: center;">
+<img src="images/Design of experiments/full-factorial-output.png" alt="Full Factorial output" width="500" height="400" class="img-responsive">
+</div> 
+
 ---
 ## Mixtures
+
+Mixture design (experiment) is a special class of response surface method (RSM). These experiments focus on understanding how various proportions of components influence the overall characteristics of a mixture. A critical aspect of mixture experiments is that the factors being tested are the proportions of each component within the mixture. There's an inherent constraint in these experiments: the sum of the proportions of all components must always equal 1. This constraint introduces unique challenges in both the design and analysis phases of the experiments.
+
+To effectively address these challenges, two popular designs are often employed: the simplex lattice design and the simplex centroid design. The simplex lattice design offers a comprehensive approach by testing at all possible combinations of component proportions, including those at the vertices, edges, and faces of the simplex. This design allows for a detailed exploration of the interactions between components across the entire range of possible formulations.
+
+In contrast, the simplex centroid design focuses on the centroid of each subspace of the simplex, including the overall centroid. This method is particularly beneficial for initial studies where a full-scale experimental approach may be impractical. It provides a more streamlined set of experiments that can still yield valuable insights into the main effects and some interactions among the mixture components.
+
+Both the simplex lattice and simplex centroid designs are instrumental in overcoming the challenges posed by the fixed sum constraint in mixture experiments. They enable researchers to systematically explore and optimize different formulations, making them invaluable tools in the development of new products and processes where mixture proportions are critical.
+
+Use the Mixtures function by browsing in the top ribbon: 
+
+|Analytics $$\rightarrow$$ Design of Experiments $$\rightarrow$$ Mixtures|
+
+### Input 
+{: .no_toc}
+
+Input data for Mixtures design is not required.
+
+### Configuration 
+{: .no_toc}
+
+| **Number of Blocks** | Select manually the Number of Blocks. The lowest value that can get is 1. |
+| **Random Standard order** | You can tick/select the box if randomness is required in the output list of experiments. |
+| **Time-based RNG Seed** | If randomness is selected, then you have the option to also tick/select the box to set the random generated number seed based on time. |
+| **RNG Seed** | Select manually the random generated number seed if required. |
+| **Select Design** | Select Design offers two options either Simplex Centroid or Simplex Lattice. |
+| **Number of components** | Select the Number of components (factors) from the drop-down list. |
+| **Degree of Lattice** | If Simplex Lattice design is chosen, then select the Degree of Lattice from the drop-down list. |
+| **Augment the Design with Axial Points** | Select/tick the box to Augment the Design with Axial Points if desired. |
+| **Augment the Design with Center Points** | If Simplex Lattice design is chosen, then there is also the option to select/tick to Augment the Design with Center Points. |
+| **Component** | Drag the horizontal value bars for each component to specify the min and max (composition) value for each component. |
+
+### Output 
+{: .no_toc}
+
+A list of experiments (combinations) is generated in the output datasheet along with the Block number and the Standard order based on the Mixtures design method selected.
+
+### Example 
+{: .no_toc}
+
+##### Input
+{: .no_toc}
+
+No input data is required in the input datasheet.
+
+##### Configuration
+{: .no_toc}
+
+*   Select `Data Statistics`$$\rightarrow$$ `Design of Experiments` $$\rightarrow$$ `Mixtures`.
+*   Select the `Number of Blocks` [1]. The lowest value that can be set is 1.
+*   Select/tick if required the `Random Standard order` [2] to imply randomness in the output list of experiments.
+*   If randomness is selected either select/tick to generate the number seed for randomness based on time [3] or by manually setting a value [4].
+*   Select Design to be either `Simplex Centroid` or `Simplex Lattice` [5].
+*   Select `Number of components` in the Mixture from the drop-down list [6].
+*   If Simplex Lattice design method is selected, then select the Degree of Lattice from the drop-down list [7].
+*   Select/tick to `Augment the Design with Axial Points` [8].
+*   If `Simplex Lattice` design method is selected, then select/tick to `Augment the Design with Center Points` [9].
+*   Drag the horizonal value bars for each component [10] and [11] to specify the min and max (composition) value for each component.
+*   Click on the `Execute` button [12] to perform Mixtures design method.
+
+<div style="text-align: center;">
+<img src="images/Design of experiments/mixtures.svg" alt="Mixtures" width="500" height="400" class="img-responsive">
+</div> 
+
+##### Output
+{: .no_toc}
+
+The output list of experiments is generated for the two components outlining a list of 4 experiments based on the Mixtures design. Block number is presented in Col1 as shown below and the standard order is provided in Col2.
+
+<div style="text-align: center;">
+<img src="images/Design of experiments/mixtures-output.png" alt="Mixtures output" width="500" height="400" class="img-responsive">
+</div> 
+
+
 ---
-## LHS
----
+
 ## Robust Parameter
+
+Robust parameter design (RPD) is a crucial technique within the broader context of response surface methods, aimed at optimizing process settings to achieve desirable outcomes under varying conditions. In robust parameter design, the primary objective is to find factor settings that not only produce a mean response within specified limits but also minimize the response variability due to noise factors. Noise factors are variables that cannot be controlled during normal operation but significantly affect the process outcome. By controlling these noise factors during a process robustness study, it becomes possible to understand how fluctuations in these factors influence the response under different settings of the controllable factors.
+
+The methodology typically involves fitting a second-order model for the controllable factors to capture the curvature of the response surface accurately. Additionally, the first-order effects and interactions of noise factors with controllable factors are modelled. These interactions are crucial as they help in understanding how changes in controllable factors can mitigate the effect of noise, thereby making the process more robust.
+
+From the robust parameter design, two new models are developed. One model predicts the mean of the response as a function of the controllable factors, while the other predicts the variance. Notably, noise factors do not explicitly appear in these models; however, the parameter estimates for the interactions between control and noise factors critically influence the shape of the response surface for variance.
+
+The Taguchi method is a well-known approach within robust parameter design, popularized for its structured way of studying the effects of multiple noise factors. Taguchi's key contribution is the use of orthogonal arrays to systematically analyze the effects of noise and control factors, reducing the number of experiments needed to gather sufficient data. This method places a strong emphasis on cost-effectiveness and efficiency in experimental design.
+
+Combined array designs, often associated with Taguchi methods, involve the simultaneous consideration of both control and noise factors in a single experimental setup. This approach enables the experimenter to assess the interaction effects directly and is particularly useful in complex processes where interactions between control and noise factors are significant.
+
+Both Taguchi methods and combined designs underscore the philosophy of robust design: optimizing product performance and quality under a range of operating conditions by systematically controlling and examining variability. These methodologies are integral to developing products and processes that are consistently reliable and meet customer expectations in the real world.
+
+Use the Robust Parameter design function by browsing in the top ribbon: 
+
+|Statistics $$\rightarrow$$ Design of Experiments $$\rightarrow$$ Robust Parameter|
+
+### Input
+{: .no_toc}
+
+Numerical values should be specified in the input datasheet. Minimum of three columns (factors) should be specified as the minimum requirement for performing Robust Parameter design calculation is to have at least two control factors and one noise factor. Two levels/values should be specified for each factor (column) as minimum requirement.
+
+### Configuration
+{: .no_toc}
+
+|**Number of Blocks**| Select manually the Number of Blocks. The lowest value that can get is 1.|
+|**Random Standard order**|You can tick/select the box if randomness is required in the output list of experiments.|
+|**Time-based RNG Seed**|If in the randomness is selected, then you have the option to also tick/select the box to set the random generated number seed based on time.|
+|**RNG Seed**|Select manually the random generated number seed if required.|
+|**Taguchi Design**|Select/tick the radio button corresponding to Taguchi Design if required.|
+|**Combined Design**|Select/tick the radio button corresponding to Combined Design if required.|
+|**Noise Factor/Available Columns/Control Factor**|Select manually from the Available Columns using the buttons the required columns which to be specified as control factors to the Control Factor dialog box and the one that required to be specified as noise factors to the Noise Factor dialog box.|
+
+### Output
+{: .no_toc}
+
+A list of experiments (combinations) is generated in the output datasheet along with the Block number and the Standard order based on the Robust Parameter design method selected.
+
+### Example
+{: .no_toc}
+
+##### Input
+{: .no_toc}
+
+In the input datasheet minimum requirement is to specify three factors (columns) and insert minimum two levels (values) for each factor (column), as shown below.
+
+<div style="text-align: center;">
+<img src="images/Design of experiments/robust-input.png" alt="Robust Parameter input" width="500" height="400" class="img-responsive">
+</div> 
+
+##### Configuration
+{: .no_toc}
+
+*   Select `Data Statistics`$$\rightarrow$$ `Design of Experiments` $$\rightarrow$$ `Robust Parameter`.
+*   Select the `Number of Blocks` [1]. The lowest value that can be set is 1.
+*   Select/tick if required the `Random Standard order` [3] to imply randomness in the output list of experiments.
+*   If randomness is selected either select/tick to generate the number seed for randomness based on time [4] or by manually setting a value [5].
+*   Select/Tick either the `Taguchi Design` [5] radio button or the `Combined Design` [6] radio button.
+*   Select the columns from the `Available Columns` window [7] that correspond to noise factors by using the arrows [10] to move them to the `Noise Factor` window [8] and the one that correspond to control factors by using the `arrows` [11] to move them to the `Control Factor` window [9].
+*   Click on the `Execute` button [12] to perform `Robust Parameter design method.
+
+<div style="text-align: center;">
+<img src="images/Design of experiments/robust.svg" alt="Robust Parameter" width="500" height="400" class="img-responsive">
+</div> 
+
+
+##### Output
+{: .no_toc}
+
+The output list of experiments is generated for the two control factors and one noise factor outlining a list of 16 experiments based on the Robust Parameter Taguchi design. Block number is presented in Col1 as shown below and the standard order is provided in Col2.
+
+<div style="text-align: center;">
+<img src="images/Design of experiments/robust-output.png" alt="Robust Parameter Output" width="500" height="400" class="img-responsive">
+</div> 
+
 ---
-## Mixtures
----
+
 
 ## References {#design-of-experiments}
 1. Box, G.E. and D.W. Behnken, Some new three level designs for the study of quantitative variables. Technometrics, 1960. 2(4): p. 455-475.
