@@ -13,7 +13,7 @@ Data scaling (normalization or standardization) is considered as a standard pre-
 ## Table of contents
 {: .no_toc .text-delta }
 
-- TOC
+1. TOC
 {:toc}
 
 ---

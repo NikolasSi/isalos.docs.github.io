@@ -8,7 +8,7 @@ permalink: /anomaly-detection.html
 
 # Anomaly Detection
 {: .no_toc }
-Anomaly detection is an important technique in data analytics that involves identifying unusual patterns or outliers in datasets. It is widely used in various applications like fraud detection, network security, and fault diagnosis. Anomalies in these datasets can indicate critical incidents such as breaches, failing components, or fraudulent transactions. To identify these anomalies, statistical, machine learning, or other data-driven methods are used to analyze data in real-time or in batches. This helps in identifying data points that deviate significantly from the expected behavior. By detecting and flagging these anomalies, organizations can proactively address potential issues, leading to improved operational efficiency and security.<sup>[1](#anomaly-detection)</sup>
+Anomaly detection is an important technique in data analytics that involves identifying unusual patterns or outliers in datasets. It is widely used in various applications like fraud detection, network security, and fault diagnosis. Anomalies in these datasets can indicate critical incidents such as breaches, failing components, or fraudulent transactions. To identify these anomalies, statistical, machine learning, or other data-driven methods are used to analyze data in real-time or in batches. This helps in identifying data points that deviate significantly from the expected behavior. By detecting and flagging these anomalies, organizations can proactively address potential issues, leading to improved operational efficiency and security.<sup>[1](#anomaly-detection-references)</sup>
 
 ## Table of contents
 {: .no_toc .text-delta }
@@ -19,7 +19,7 @@ Anomaly detection is an important technique in data analytics that involves iden
 ---
 
 ### One-Class Support Vector Machine (One-Class SVM)
-The One-Class Support Vector Machine (One-Class SVM) anomaly detection algorithm is specifically designed to detect outliers or anomalies in a dataset by defining a normative region and identifying data points that deviate significantly from it. It accomplishes this by mapping the input data to a high-dimensional feature space using a kernel function. Subsequently, it seeks to find a hyperplane that maximizes the margin, separating most of the data points from the origin. The algorithm uses four types of kernel functions to achieve this transformation:<sup>[2](#anomaly-detection)</sup>
+The One-Class Support Vector Machine (One-Class SVM) anomaly detection algorithm is specifically designed to detect outliers or anomalies in a dataset by defining a normative region and identifying data points that deviate significantly from it. It accomplishes this by mapping the input data to a high-dimensional feature space using a kernel function. Subsequently, it seeks to find a hyperplane that maximizes the margin, separating most of the data points from the origin. The algorithm uses four types of kernel functions to achieve this transformation:<sup>[2](#anomaly-detection-references)</sup>
 
 **1.Linear Kernel:**
 <span id="eq. linear-kernerl1">
@@ -84,7 +84,7 @@ Similarly, to the polynomial kernel, this involves a dot product scaled by  and 
 <br>
 One-Class SVM aims to maximize the margin between the data and the origin in the feature space, effectively identifying outliers in scenarios where a clear "normal" class exists. The parameters v (nu) and C determine the balance between capturing all the "normal" data points within the boundary and allowing flexibility for some outliers. This trade-off is crucial for accurate anomaly detection in applications like fraud detection and system health monitoring.
 
-Use the Anomaly detection function by browsing in the top ribbon: 
+Use the `Anomaly Detection` function by browsing in the top ribbon: 
 
 |Analytics $$\rightarrow$$ Anomaly Detection $$\rightarrow$$ First algorithm|
 
@@ -114,9 +114,9 @@ The data are inserted as shown below in the data input sheet on the left-hand si
 
 ##### Configuration
 {: .no_toc }
-*   Select `Analytics` $$\rightarrow$$ `Anomaly Detection` $$\rightarrow$$ `First algorithm`
-*   Select the `type` of kernel [1] and specify the parameter values [2] in the kernel equation. Choose appropriate values for the `generic parameters` to optimize the performance and efficiency of anomaly detection [3].
-*   Click on the `Execute` button [4] to apply the anomaly detection calculation.
+1.   Select `Analytics` $$\rightarrow$$ `Anomaly Detection` $$\rightarrow$$ `First algorithm`
+1.   Select the `Type` of kernel [1] and specify the parameter values [2] in the kernel equation. Choose appropriate values for the `Generic parameters` to optimize the performance and efficiency of anomaly detection [3].
+1.   Click on the `Execute` button [4] to apply the anomaly detection calculation.
 
 <div style="text-align: center;">
 <img src="images/Anomaly/oneclass-svm.svg" alt="Oneclass SVM" width="300" height="400" class="img-responsive">
@@ -131,11 +131,10 @@ The right-hand spreadsheet tab presents two columns in the output: one for predi
 </div> 
 
 
-## References {#anomaly-detection}
-1.	Mehrotra, K.G., et al., Anomaly detection. 2017: Springer.
-2. 	Zhang, R., S. Zhang, S. Muthuraman, and J. Jiang. One class support vector machine for anomaly detection in the communication network performance data. in Proceedings of the 5th conference on Applied electromagnetics, wireless and optical communications. 2007. Citeseer.
+## References {#anomaly-detection-references}
+1.	Mehrotra, K.G., et al., Anomaly detection. 2017: Springer. [doi.org/10.1007/978-3-319-67526-8](https://doi.org/10.1007/978-3-319-67526-8).
+1. 	Zhang, R., S. Zhang, S. Muthuraman, and J. Jiang. One class support vector machine for anomaly detection in the communication network performance data. in Proceedings of the 5th conference on Applied electromagnetics, wireless and optical communications. 2007. Citeseer. [api.semanticscholar.org/CorpusID:111342328](https://api.semanticscholar.org/CorpusID:111342328)
  
-
 ---
 
 ## Version History

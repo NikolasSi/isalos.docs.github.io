@@ -19,7 +19,7 @@ The assessment of a machine learning model’s performance can be achieved using
 ---
 
 ## Regression Metrics 
-The computed statistical metrics include the mean squared error (MSE, [Eq. 1](#eq. MSE)), the root mean squared error (RMSE, [Eq. 2](#eq. RMSE)), the mean absolute error (MAE, [Eq. 3](#eq. MAE)), and the R Square (R<sup>2</sup>, [Eq. 4](#eq. R2))<sup>[1,2](#references-metrics)</sup>. 
+The computed statistical metrics include the mean squared error (MSE, [Eq. 1](#eq. MSE)), the root mean squared error (RMSE, [Eq. 2](#eq. RMSE)), the mean absolute error (MAE, [Eq. 3](#eq. MAE)), and the R Square ($R^2$, [Eq. 4](#eq. R2))<sup>[1,2](#references-metrics)</sup>. 
 
 <div id="eq. MSE">
 $$
