@@ -30,9 +30,9 @@ $$
 f(x) = 
 \begin{cases}
 1, \: \mathrm{for} \: x \in \mathbb{R}\cap[0, 1) \\
-0, \: \mathrm{for} \: x \: \in \mathbb{R}\cap((-\infty, 0)\cup[1, +\infty)) {\qquad [1] \qquad}
+0, \: \mathrm{for} \: x \: \in \mathbb{R}\cap((-\infty, 0)\cup[1, +\infty))
 \end{cases}
-\end{equation}
+\end{equation} {\qquad [1] \qquad}
 $$
 </div>
 
@@ -48,9 +48,9 @@ $$
 f(x) = 
 \begin{cases}
 \frac{1}{b-a}, \: \mathrm{for} \: x \in \mathbb{Z}\cap[a, b) \\
-0, \: \mathrm{for} \: x \: \in \mathbb{Z}\cap((-\infty, a)\cup[b, +\infty)) {\qquad [2] \qquad}
+0, \: \mathrm{for} \: x \: \in \mathbb{Z}\cap((-\infty, a)\cup[b, +\infty))
 \end{cases}
-\end{equation}
+\end{equation} {\qquad [2] \qquad}
 $$
 </div>
 
@@ -66,9 +66,9 @@ $$
 f(x) = 
 \begin{cases}
 \frac{1}{b-a}, \: \mathrm{for} \: x \in \mathbb{R}\cap[a, b) \\
-0, \: \mathrm{for} \: x \: \in \mathbb{R}\cap((-\infty, a)\cup[b, +\infty)) {\qquad [3] \qquad}
+0, \: \mathrm{for} \: x \: \in \mathbb{R}\cap((-\infty, a)\cup[b, +\infty))
 \end{cases}
-\end{equation}
+\end{equation} {\qquad [3] \qquad}
 $$
 </div>
 

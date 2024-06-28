@@ -11,6 +11,15 @@ permalink: /confidence-intervals.html
 
 A confidence interval (CI) is a statistical tool used to estimate the range within which a population parameter (like a mean or proportion) is likely to fall, based on information from sample data<sup>[1](#confidence)</sup>. This interval is constructed around the sample estimate and provides an indication of where the true parameter might be with a certain level of confidence, usually expressed as a percentage like 95% or 99% <sup>[2](#confidence)</sup>.
 
+## Table of contents
+{: .no_toc .text-delta }
+
+1. TOC
+{:toc}
+
+
+---
+
 To calculate a confidence interval, you typically need the sample mean (which provides a central estimate), the standard deviation (which measures the spread of the data), and the sample size (the number of data points). For proportions, you use the sample proportion instead of the mean. The formula for a confidence interval generally involves the sample statistic plus or minus a margin of error, which is derived from the standard deviation and the sample size, adjusted by a factor from a statistical distribution (like the Z-score in large samples or the t-score in smaller samples) [1, 2].
 
 The confidence interval when considering sample data is calculated based on below formula:

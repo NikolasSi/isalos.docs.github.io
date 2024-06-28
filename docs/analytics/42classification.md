@@ -8,7 +8,7 @@ permalink: /classification.html
 
 # Classification
 {: .no_toc }
-Classification is a typical supervised learning technique in predictive modeling that aims to categorize data into predefined classes. Classification analysis is used when the target is a categorical value, and algorithms are trained on labeled datasets to predict the category of unseen objects. There are two types of classification problems; Binary classification where the possible outcome can be one of two distinct classes, and Multiclass classification where the outcome can be one of several categories. <sup>[1](#classification)</sup>
+Classification is a typical supervised learning technique in predictive modeling that aims to categorize data into predefined classes. Classification analysis is used when the target is a categorical value, and algorithms are trained on labeled datasets to predict the category of unseen objects. There are two types of classification problems; Binary classification where the possible outcome can be one of two distinct classes, and Multiclass classification where the outcome can be one of several categories. <sup>[1](#references-classification)</sup>
 
 
 ## Table of contents
@@ -21,9 +21,9 @@ Classification is a typical supervised learning technique in predictive modeling
 
 ## k Nearest Neighbors (kNN)
 
-k Nearest Neighbors (kNN) is a simple non-parametric algorithm that operates by identifying the data points from the training set that are most proximate to a new unseen input. This instance-based learning method calculates the Euclidean distance between all attribute values in order to determine the closeness between data points. The **k** parameter denotes the number of nearest neighbors to consider, and the inverted distance is used as the weighting factor. [1,2]
-The classification prediction of a new instance is assigned based on the class label that is most frequently represented among the k-nearest neighbors.
-Use the k Nearest Neighbors classification function by browsing in the top ribbon: 
+k Nearest Neighbors (kNN) is a simple non-parametric algorithm that operates by identifying the data points from the training set that are most proximate to a new unseen input. This instance-based learning method calculates the Euclidean distance between instances considering all attribute values in order to determine the closeness between data points. The _k_ parameter denotes the number of nearest neighbors to consider for the prediction. <sup>[1,2](#references-classification)</sup> The prediction of a new instance is assigned based on the class label that is most frequently represented among the k-nearest neighbors using the inverted distance as the weighting factor. As calculations of Euclidean distances are performed, scaling of data is performed within the function.
+
+Use the `k Nearest Neighbors` classification function by browsing in the top ribbon: 
 
 |Analytics $$\rightarrow$$ Classification $$\rightarrow$$ k Nearest Neighbors (kNN)|
 
@@ -34,12 +34,12 @@ Data matrix with training set data. The categories of the target feature should 
 ### Configuration
 {: .no_toc}
 
-|**Target Column**| Select manually from the drop-down menu the column containing the variable that is going to be predicted. Columns with categorical features should not be selected as targets.|
-|**Number of Neighbors**|An integer representing the number of closest data points (k) used to make predictions for a new data point.|
+|**Target Column**| Select manually from the drop-down menu the column containing the target (dependent) variable that is going to be predicted. Columns with categorical features should not be selected as targets.|
+|**Number of Neighbors**|An integer representing the number of closest data points (_k_) used to make predictions for a new data point.|
 
 ### Output
 {: .no_toc}
-A data matrix including the actual target value and the value predicted by the algorithm (‘kNN Prediction’). For each data point, the closest neighbors from the training set are listed in the 'Closest NN' columns, along with their corresponding distances in the 'Distance from NN' columns.
+A data matrix including the actual target value and the value predicted by the algorithm ("kNN Prediction"). For each data point, the closest neighbors from the training set are listed in the "Closest NN" columns, along with their corresponding distances in the "Distance from NN" columns.
 
 ### Example
 {: .no_toc}
@@ -54,10 +54,10 @@ In the left-hand spreadsheet of the tab import the data matrix including the tar
 ##### Configuration
 {: .no_toc }
 
-*   Select `Analytics` $$\rightarrow$$ `Classification` $$\rightarrow$$ `k Nearest Neighbors (kNN)`.
-*   Select the column that is going to be predicted from the `drop-down menu` [1]. The columns containing categorical features should not be selected for prediction.
-*   Select the `Number of Neighbors` [2] to consider.
-*   Click on the `Execute` button [3] to apply the training algorithm on the input columns.
+1.   Select `Analytics` $$\rightarrow$$ `Classification` $$\rightarrow$$ `k Nearest Neighbors (kNN)`.
+1.   Select the column that is going to be predicted from the `drop-down menu` [1]. The columns containing categorical features should not be selected for prediction.
+1.   Select the `Number of Neighbors` [2] to consider.
+1.   Click on the `Execute` button [3] to apply the training algorithm on the input columns.
 
 <div style="text-align: center;">
 <img src="images/Classification/knn.svg" alt="kNN" width="400" height="300" class="img-responsive">
@@ -74,14 +74,15 @@ In the right-hand spreadsheet of the tab the output data matrix with the actual 
 {: .no_toc }
 You can apply the trained k Nearest Neighbors (kNN) model to any external (test) data using the Existing Model Utilization function:
 
-*   Import the external data in the left-hand spreadsheet of the tab. Include the same columns used to build the k Nearest Neighbor model.
-*   Select `Analytics` $$\rightarrow$$ `Existing Model Utilization`. Select the `kNN model` [1] and click on the `Execute` button [2].
+1.   Import the external data in the left-hand spreadsheet of the tab. Include the same columns used to build the k Nearest Neighbor model.
+1.   Select `Analytics` $$\rightarrow$$ `Existing Model Utilization`. Select the `kNN model` [1] and click on the `Execute` button [2].
 
 <div style="text-align: center;">
 <img src="images/Classification/knn-application.svg" alt="kNN application" width="400" height="300" class="img-responsive">
 </div> 
 
-*   Inspect the results in the right-hand spreadsheet of the tab. Note that in this case the closest neighbor listed in the 'Closest NN1' belongs to the training set, and the 'Distance from NN1' is not zero.
+{:style="counter-reset:none"}
+1.  Inspect the results in the right-hand spreadsheet of the tab. Note that in this case the closest neighbor listed in the 'Closest NN1' belongs to the training set, and the 'Distance from NN1' is not zero.
 
 <div style="text-align: center;">
 <img src="images/Classification/knn-application.png" alt="kNN application" width="700" height="900" class="img-responsive">
@@ -91,7 +92,7 @@ You can apply the trained k Nearest Neighbors (kNN) model to any external (test)
 
 ## MLP
 
-A multilayer perceptron (MLP) is a type of feedforward artificial neural network consisting of multiple layers of neurons. It consists of an input layer, one or more hidden layers and an outer layer, which are fully connected with each other. A variety of non-linear activation functions are typically used in the hidden layer, allowing the network to learn complex patterns in data. MLP uses a backpropagation algorithm to train the model and classify instances. [1,2]
+A multilayer perceptron (MLP) is a type of feedforward artificial neural network consisting of multiple layers of neurons. It consists of an input layer, one or more hidden layers and an outer layer, which are fully connected with each other. A variety of non-linear activation functions are typically used in the hidden layer, allowing the network to learn complex patterns in data. MLP uses a backpropagation algorithm to train the model and classify instances. <sup>[1,2](#references-classification)</sup>
 Use the MLP classification function by browsing in the top ribbon: 
 
 ### Input
@@ -125,13 +126,13 @@ In the left-hand spreadsheet of the tab import the data matrix including the tar
 ##### Configuration
 {: .no_toc}
 
-*   Select `Analytics` $$\rightarrow$$ `Classification` $$\rightarrow$$ `MLP`
-*    Select the hyperparameters that determine the training procedure: the `Batch Size` [1], the `Number of Epochs` [2], the `Learning Rate` [3] and the `Momentum` [4].
-*    Select the hyperparameters that determine the Hidden Layers [5] of the neural network: the number of neurons [6] and the activation function [7] of each layer.
-*    Add [8] or remove [9] hidden layers to define the architecture of the neural network.
-*    Select the column that is going to be predicted from the drop-down menu [10]. Only columns containing categorical features should be selected for prediction.
-*    Select a Seed for reproducible results or a random number generated `Time-based (RNG) Seed` [11].
-*    Click on the `Execute` button [12] to apply the training algorithm on the input columns.
+1.   Select `Analytics` $$\rightarrow$$ `Classification` $$\rightarrow$$ `MLP`
+1.    Select the hyperparameters that determine the training procedure: the `Batch Size` [1], the `Number of Epochs` [2], the `Learning Rate` [3] and the `Momentum` [4].
+1.   Select the hyperparameters that determine the Hidden Layers [5] of the neural network: the number of neurons [6] and the activation function [7] of each layer.
+1.    Add [8] or remove [9] hidden layers to define the architecture of the neural network.
+1.    Select the column that is going to be predicted from the drop-down menu [10]. Only columns containing categorical features should be selected for prediction.
+1.    Select a Seed for reproducible results or a random number generated `Time-based (RNG) Seed` [11].
+1.   Click on the `Execute` button [12] to apply the training algorithm on the input columns.
 
 <div style="text-align: center;">
 <img src="images/Classification/mlp.svg" alt="MLP" width="400" height="300" class="img-responsive">
@@ -150,7 +151,7 @@ In the right-hand spreadsheet of the tab the output data matrix with the actual 
 
 ## SOM
 
-Self-Organizing Maps (SOMs) are a special type of single-layer neural network for unsupervised learning, used for dimensionality reduction of high-dimensional data. A SOM operates by clustering data points using competitive learning instead of error-correction learning utilized in other neural networks. The space defined by the training instances is represented in a map (usually two-dimensional), where the topological features of the input space are preserved. The neurons in a SOM represent different clusters of the data, and their arrangement on the map reflects the similarity between data points. [3,4]
+Self-Organizing Maps (SOMs) are a special type of single-layer neural network for unsupervised learning, used for dimensionality reduction of high-dimensional data. A SOM operates by clustering data points using competitive learning instead of error-correction learning utilized in other neural networks. The space defined by the training instances is represented in a map (usually two-dimensional), where the topological features of the input space are preserved. The neurons in a SOM represent different clusters of the data, and their arrangement on the map reflects the similarity between data points. <sup>[3,4](#references-classification)</sup>
 
 Use the SOM classification function by browsing in the top ribbon: 
 
@@ -185,10 +186,10 @@ In the left-hand spreadsheet of the tab import the data matrix including the tar
 ##### Configuration
 {: .no_toc}
 
-*   Select `Analytics` $$\rightarrow$$ `Classification` $$\rightarrow$$ `SOM`
-*   Select the column that is going to be predicted from the drop-down menu [1]. Only columns containing categorical features should be selected for prediction.
-*   Select a Seed for reproducible results or a random number generated Time-based (RNG) Seed [6].
-*   Click on the `Execute` button [7] to apply the training algorithm on the input columns.
+1.   Select `Analytics` $$\rightarrow$$ `Classification` $$\rightarrow$$ `SOM`
+1.   Select the column that is going to be predicted from the drop-down menu [1]. Only columns containing categorical features should be selected for prediction.
+1.   Select a Seed for reproducible results or a random number generated Time-based (RNG) Seed [6].
+1.  Click on the `Execute` button [7] to apply the training algorithm on the input columns.
 
 <div style="text-align: center;">
 <img src="images/Classification/som.svg" alt="SOM" width="400" height="300" class="img-responsive">
@@ -203,7 +204,7 @@ In the right-hand spreadsheet of the tab the output data matrix with the actual 
 
 ## RBF
 
-Radial basis function networks (RBF) network is an artificial neural network that employs RBF kernels as activation functions. The network consists of three layers: the input layer modeling a vector that passes data, the hidden layer that performs computations and the output layer designated for classification problems. The output layer of the neural network is a linear combination of the activation (output) from the hidden units. [5,6]
+Radial basis function networks (RBF) network is an artificial neural network that employs RBF kernels as activation functions. The network consists of three layers: the input layer modeling a vector that passes data, the hidden layer that performs computations and the output layer designated for classification problems. The output layer of the neural network is a linear combination of the activation (output) from the hidden units. <sup>[5,6](#references-classification)</sup>
 
 A Radial Basis Function is a real-valued function **φ(r)** that is dependent only on the distance between a fixed input point (**r**) to the center (**c**) of each neuron as reference point (Eq. 1) <sup>[6](#classification)</sup>:
 
@@ -279,7 +280,7 @@ $$
 
 Use the Radial Basis Function (RBF) classification function by browsing in the top ribbon: 
 
-|`Analytics` $$\rightarrow$$ `Classification` $$\rightarrow$$ Radial Basis Function (RBF)|
+|Analytics $$\rightarrow$$ Classification $$\rightarrow$$ Radial Basis Function (RBF)|
 
 ### Input
 {: .no_toc}
@@ -312,13 +313,13 @@ In the left-hand spreadsheet of the tab import the data matrix including the tar
 <img src="images/Classification/rbf-input.png" alt="Rbf input" width="700" height="900" class="img-responsive">
 </div> 
 
-*   Select `Analytics` $$\rightarrow$$ `Classification` $$\rightarrow$$ `Radial Basis Function (RBF)`
-*   Select the number (integer) of `Hidden Neurons` [1].
-*   Select the `RBF Kernel` [2] used as activation function of the hidden layer and subsequently select the `Epsilon` [3] or K parameter where applicable.
-*   Select the `Point Selection` [4] method to determine the center of the network.
-*   Select a Seed for reproducible results or a random number generated `Time-based (RNG) Seed `[5].
-*   Select the column that is going to be predicted from the drop-down menu [6]. Only columns containing categorical features should be selected for prediction.
-*   Click on the `Execute` button [7] to apply the normalization on the selected columns.
+1.   Select `Analytics` $$\rightarrow$$ `Classification` $$\rightarrow$$ `Radial Basis Function (RBF)`
+1.   Select the number (integer) of `Hidden Neurons` [1].
+1.  Select the `RBF Kernel` [2] used as activation function of the hidden layer and subsequently select the `Epsilon` [3] or K parameter where applicable.
+1.  Select the `Point Selection` [4] method to determine the center of the network.
+1.  Select a Seed for reproducible results or a random number generated `Time-based (RNG) Seed `[5].
+1.  Select the column that is going to be predicted from the drop-down menu [6]. Only columns containing categorical features should be selected for prediction.
+1.   Click on the `Execute` button [7] to apply the normalization on the selected columns.
 
 <div style="text-align: center;">
 <img src="images/Classification/rbf.svg" alt="Rbf" width="500" height="400" class="img-responsive">
@@ -336,7 +337,7 @@ In the right-hand spreadsheet of the tab the output data matrix with the actual 
 
 ## XGBoost
 
-The Extreme Gradient Boosting (XGBoost) open-source library <sup>[7](#classification)</sup> is used to implement the gradient boosting framework. The library uses a class of ensemble machine learning algorithms constructed from decision tree models. Ensemble learning operates by combining different individual base learners to obtain a final prediction. <sup>[8](#classification)</sup> In an iterative process, trees are added to the ensemble so that the prediction error (loss) of previous models is reduced. In classification tasks, there are different loss functions available for binary and multiclass problems. <sup>[9](#classification)</sup>
+The Extreme Gradient Boosting (XGBoost) open-source library <sup>[7](#references-classification)</sup> is used to implement the gradient boosting framework. The library uses a class of ensemble machine learning algorithms constructed from decision tree models. Ensemble learning operates by combining different individual base learners to obtain a final prediction. <sup>[8](#references-classification)</sup> In an iterative process, trees are added to the ensemble so that the prediction error (loss) of previous models is reduced. In classification tasks, there are different loss functions available for binary and multiclass problems. <sup>[9](#references-classification)</sup>
 
 Use the XGBoost classification function by browsing in the top ribbon: 
 
@@ -385,13 +386,13 @@ In the left-hand spreadsheet of the tab import the data matrix including the tar
 ##### Configuration
 {: .no_toc}
 
-*   Select `Analytics` $$\rightarrow$$ `Classification` $$\rightarrow$$ `XGBoost` .
-*   Select the column that is going to be predicted from the drop-down menu [1]. Only columns containing categorical features should be selected for prediction.
-*   Select the tree `booster` [2] method, the `objective` function [3] for loss and the `number of estimators` [4] involved in the ensemble. 
-*   Select the hyperparameters involved in the regularization of the model: `eta` [5], `gamma` [6], `lambda` [12] and `alpha` [13]. Select the hyperparameters involved in tree construction: `max depth` [7] and `min child weight` [8]. Select the `column sampling rate by tree` [9] and the overall `subsampling rates` [10]. Default values, data types (double or integer) and acceptable ranges are indicated as guidance on the input parameter values.
-*   Select the `tree construction algorithm` [11] used in XGBoost.
-*   Select a Seed for reproducible results or a random number generated `Time-based (RNG) Seed` [14].
-*   Click on the `Execute` button [15] to apply the training algorithm on the input columns. 
+1.   Select `Analytics` $$\rightarrow$$ `Classification` $$\rightarrow$$ `XGBoost` .
+1.   Select the column that is going to be predicted from the drop-down menu [1]. Only columns containing categorical features should be selected for prediction.
+1.   Select the tree `booster` [2] method, the `objective` function [3] for loss and the `number of estimators` [4] involved in the ensemble. 
+1.   Select the hyperparameters involved in the regularization of the model: `eta` [5], `gamma` [6], `lambda` [12] and `alpha` [13]. Select the hyperparameters involved in tree construction: `max depth` [7] and `min child weight` [8]. Select the `column sampling rate by tree` [9] and the overall `subsampling rates` [10]. Default values, data types (double or integer) and acceptable ranges are indicated as guidance on the input parameter values.
+1.   Select the `tree construction algorithm` [11] used in XGBoost.
+1.   Select a Seed for reproducible results or a random number generated `Time-based (RNG) Seed` [14].
+1.   Click on the `Execute` button [15] to apply the training algorithm on the input columns. 
 
 <div style="text-align: center;">
 <img src="images/Classification/xgboost.svg" alt="XGBoost" width="500" height="400" class="img-responsive">
@@ -410,9 +411,9 @@ In the right-hand spreadsheet of the tab the output data matrix with the actual 
 
 ## J48
 
-J48 is an open-source Java implementation of the C4.5 statistical classifier, which performs classification based on pruned or unpruned decision trees or rules generated from them. In this interpretation, the algorithm uses the normalized information gain as criterion to split the dataset into subsets and uses the most influential attribute to make the decision in each node. J48 uses the pruning technique, which refers to the removal of branches from a decision tree that have limited contribution to the predictive performance of the model. [1,10]
+J48 is an open-source Java implementation of the C4.5 statistical classifier, which performs classification based on pruned or unpruned decision trees or rules generated from them. In this interpretation, the algorithm uses the normalized information gain as criterion to split the dataset into subsets and uses the most influential attribute to make the decision in each node. J48 uses the pruning technique, which refers to the removal of branches from a decision tree that have limited contribution to the predictive performance of the model. <sup>[1,10](#references-classification)</sup>
 
-Use the J48 classification function by browsing in the top ribbon: 
+Use the `J48` classification function by browsing in the top ribbon: 
 
 |Analytics $$\rightarrow$$ Classification $$\rightarrow$$ J48|
 
@@ -448,10 +449,10 @@ In the left-hand spreadsheet of the tab import the data matrix including the tar
 ##### Configuration
 {: .no_toc}
 
-*   Select `Analytics` $$\rightarrow$$ `Classification` $$\rightarrow$$ `J48`
-*   Select the hyperparameters that determine the structure of the decision tree: the `Min sample split` [1] and `Max Depth` [2]. Default values, data types and acceptable ranges are indicated as guidance on the input parameter values.
-*   Select the column that is going to be predicted from the drop-down menu [3]. Only columns containing categorical features should be selected for prediction.
-*   Click on the `Execute` button [4] to apply the training algorithm on the input columns.
+1.   Select `Analytics` $$\rightarrow$$ `Classification` $$\rightarrow$$ `J48`
+1.   Select the hyperparameters that determine the structure of the decision tree: the `Min sample split` [1] and `Max Depth` [2]. Default values, data types and acceptable ranges are indicated as guidance on the input parameter values.
+1.   Select the column that is going to be predicted from the drop-down menu [3]. Only columns containing categorical features should be selected for prediction.
+1.   Click on the `Execute` button [4] to apply the training algorithm on the input columns.
 
 <div style="text-align: center;">
 <img src="images/Classification/j48.svg" alt="J48" width="500" height="400" class="img-responsive">
@@ -478,9 +479,11 @@ The decision tree appears in a new window, offering a detailed view to help unde
 <img src="images/Classification/j48-decision-tree.png" alt="J48 output" width="600" height="600" class="img-responsive">
 </div>
 
+---
+
 ## Random Forest
 
-Random forest classifier is an ensemble learning method that operates by building multiple randomized decision trees during training and obtaining the category prediction from each tree. The decision trees are constructed in parallel, with no interaction between them, using random subsets of training data and input attributes to ensure diversity. Classifications independently made by all the trees in the forest are aggregated and the majority vote is selected as the final class prediction. [8,11]
+Random forest classifier is an ensemble learning method that operates by building multiple randomized decision trees during training and obtaining the category prediction from each tree. The decision trees are constructed in parallel, with no interaction between them, using random subsets of training data and input attributes to ensure diversity. Classifications independently made by all the trees in the forest are aggregated and the majority vote is selected as the final class prediction. <sup>[8,11](#references-classification)</sup>
 
 Use the Random Forest function by browsing in the top ribbon: 
 
@@ -520,11 +523,11 @@ In the left-hand spreadsheet of the tab import the data matrix including the tar
 ##### Configuration
 {: .no_toc}
 
-*   Select `Analytics` `Classification` `Random Forest`.
-*   Select the hyperparameters that determine the structure of the model: the `Features fraction` [1], `Min impurity decrease` [2] and `Number of ensembles` [4]. Default values, data types (double or integer) and acceptable ranges are indicated as guidance on the input parameter values.
-*   Select a Seed for reproducible results or a random number generated `Time-based (RNG) Seed` [3].
-*   Select the column that is going to be predicted from the drop-down menu [5]. Only columns containing categorical features should be selected for prediction.
-*   Click on the `Execute` button [6] to apply the training algorithm on the input columns.
+1.   Select `Analytics` $$\rightarrow$$ `Classification` $$\rightarrow$$ `Random Forest`.
+1.   Select the hyperparameters that determine the structure of the model: the `Features fraction` [1], `Min impurity decrease` [2] and `Number of ensembles` [4]. Default values, data types (double or integer) and acceptable ranges are indicated as guidance on the input parameter values.
+1.   Select a Seed for reproducible results or a random number generated `Time-based (RNG) Seed` [3].
+1.   Select the column that is going to be predicted from the drop-down menu [5]. Only columns containing categorical features should be selected for prediction.
+1.   Click on the `Execute` button [6] to apply the training algorithm on the input columns.
 
 <div style="text-align: center;">
 <img src="images/Classification/random-forest.svg" alt="Random Forest" width="500" height="400" class="img-responsive">
@@ -544,46 +547,41 @@ In the right-hand spreadsheet of the tab the output data matrix with the actual 
  
 ## Tips
 
-k Nearest neighbors:
+k Nearest Νeighbors:
 *   It works more efficiently for small to medium datasets and low-dimensional data. kNN is sensitive to missing data.
-*   The performance of the model is highly influenced by the selection of **k**.
-*   As calculations of Euclidean distances are performed, consider scaling the data beforehand using a Normalizer function.
+*   The performance of the model is highly influenced by the selection of _k_.
 
-SOM: *
+<!--SOM: *-->
 
 RBF:
 *   The number of neurons in the hidden layer has a high impact on the model performance, since a large number of neurons can lead to overfitting.
 
-Linear SGD:
-*   It is effective in large datasets and can handle high-dimensional feature spaces. Higher learning rates may be required when Huber loss is selected, because it is less sensitive to outliers.
-*   Consider scaling the input data with a Z score normalizer to center them to mean and have a unit standard deviation.
-
 XGBoost:
-*   Be cautious during hyperparameter tuning: Choosing smaller eta values, as well as increasing the lambda, alpha and gamma values result in a more conservative boosting process. Increasing the value of max depth parameter makes the model more complex, more likely to overfit.
+*   Be cautious during hyperparameter tuning: Choosing smaller `eta` values, as well as increasing the `lambda`, `alpha` and `gamma` values result in a more conservative boosting process. Increasing the value of `max depth` parameter makes the model more complex, more likely to overfit.
 
 Random Forest:
 *   This algorithm performs well with datasets that contain missing values. However, it is not as efficient with a large number of sparse features or with categorical variables of many levels that are improperly encoded.
 
 ## See also 
 
-The model generated by any of the k Nearest Neighbors, MLP, SOM, RBF, XGBoost or Random Forest classification algorithms can be applied to any input data through the Existing Model Utilization function (e.g., a classification algorithm trained from the training set data of a machine learning model can be applied to the test/external set data).
+The model generated by any of the `k Nearest Neighbors (kNN)`, `MLP`, `SOM`, `RBF`, `XGBoost` or `Random Forest` classification algorithms can be applied to any input data through the [`Existing Model Utilization`](https://www.docs.isalos.novamechanics.com/existing-model-utilization.html) function (e.g., a classification algorithm trained from the training set data of a machine learning model can be applied to the test/external set data).
 
 ### Workflows
 {: .no_toc }
-List of workflows (e.g., a general machine learning workflow).
 
-## References {#classification}
+
+## References {#references-classification}
 1.	Witten Ian H and Frank, Eibe and Hall, Mark A and Pal CJ. Data Mining: Practical Machine Learning Tools and Techniques. Fourth. Morgan Kaufmann; 2011. [https://doi.org/10.1016/C2009-0-19715-5](https://doi.org/10.1016/C2009-0-19715-5).
-2. 	Murphy KP. Machine Learning: A Probabilistic Perspective. The MIT Press; 2012. 10.5555/2380985
-3.	Kohonen T. Self-organized formation of topologically correct feature maps. Biol Cybern 1982;43:59–69. [https://doi.org/10.1007/BF00337288](https://doi.org/10.1007/BF00337288).
-4.  Van Hulle MM. Self-organizing Maps. In: Rozenberg G, Bäck T, Kok JN, editors. Handbook of Natural Computing, Berlin, Heidelberg: Springer Berlin Heidelberg; 2012, p. 585–622. [https://doi.org/10.1007/978-3-540-92910-9_19](https://doi.org/10.1007/978-3-540-92910-9_19).
-5.  Lee C-C, Chung P-C, Tsai J-R, Chang C-I. Robust radial basis function neural networks. IEEE Transactions on Systems, Man, and Cybernetics, Part B (Cybernetics) 1999;29:674–85. [https://doi.org/10.1109/3477.809023](https://doi.org/10.1109/3477.809023). 
-6.  Ghosh J, Nag A. An Overview of Radial Basis Function Networks. In: Howlett RJ, Jain LC, editors. Radial Basis Function Networks 2: New Advances in Design, Heidelberg: Physica-Verlag HD; 2001, p. 1–36. [https://doi.org/10.1007/978-3-7908-1826-0_1](https://doi.org/10.1007/978-3-7908-1826-0_1).
-7.  XGBoost Parameters — xgboost 2.1.0-dev documentation n.d. [https://xgboost.readthedocs.io/en/latest/parameter.html](https://xgboost.readthedocs.io/en/latest/parameter.html) (accessed June 3, 2024). 
-8.  Hastie T, Tibshirani R, Friedman J. The Elements of Statistical Learning. New York, NY: Springer New York; 2009. [https://doi.org/10.1007/978-0-387-84858-7](https://doi.org/10.1007/978-0-387-84858-7).
-9.  Chen T, Guestrin C. XGBoost: A Scalable Tree Boosting System. Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining, 2016, p. 785–94. [https://doi.org/10.1145/2939672.2939785](https://doi.org/10.1145/2939672.2939785).
-10. Salzberg SL. C4.5: Programs for Machine Learning by J. Ross Quinlan. Morgan Kaufmann Publishers, Inc., 1993. Mach Learn 1994;16:235–40. [https://doi.org/10.1007/BF00993309](https://doi.org/10.1007/BF00993309).
-11. Breiman L. Random Forests. Machine Learning 2001;45:5–32. [https://doi.org/10.1023/A:1010933404324](https://doi.org/10.1023/A:1010933404324).
+1. 	Murphy KP. Machine Learning: A Probabilistic Perspective. The MIT Press; 2012. [10.5555/2380985](https://dl.acm.org/doi/book/10.5555/2380985).
+1.	Kohonen T. Self-organized formation of topologically correct feature maps. Biol Cybern 1982;43:59–69. [https://doi.org/10.1007/BF00337288](https://doi.org/10.1007/BF00337288).
+1.  Van Hulle MM. Self-organizing Maps. In: Rozenberg G, Bäck T, Kok JN, editors. Handbook of Natural Computing, Berlin, Heidelberg: Springer Berlin Heidelberg; 2012, p. 585–622. [https://doi.org/10.1007/978-3-540-92910-9_19](https://doi.org/10.1007/978-3-540-92910-9_19).
+1.  Lee C-C, Chung P-C, Tsai J-R, Chang C-I. Robust radial basis function neural networks. IEEE Transactions on Systems, Man, and Cybernetics, Part B (Cybernetics) 1999;29:674–85. [https://doi.org/10.1109/3477.809023](https://doi.org/10.1109/3477.809023). 
+1.  Ghosh J, Nag A. An Overview of Radial Basis Function Networks. In: Howlett RJ, Jain LC, editors. Radial Basis Function Networks 2: New Advances in Design, Heidelberg: Physica-Verlag HD; 2001, p. 1–36. [https://doi.org/10.1007/978-3-7908-1826-0_1](https://doi.org/10.1007/978-3-7908-1826-0_1).
+1.  XGBoost Parameters — xgboost 2.1.0-dev documentation n.d. [https://xgboost.readthedocs.io/en/latest/parameter.html](https://xgboost.readthedocs.io/en/latest/parameter.html) (accessed June 3, 2024). 
+1.  Hastie T, Tibshirani R, Friedman J. The Elements of Statistical Learning. New York, NY: Springer New York; 2009. [https://doi.org/10.1007/978-0-387-84858-7](https://doi.org/10.1007/978-0-387-84858-7).
+1.  Chen T, Guestrin C. XGBoost: A Scalable Tree Boosting System. Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining, 2016, p. 785–94. [https://doi.org/10.1145/2939672.2939785](https://doi.org/10.1145/2939672.2939785).
+1. Salzberg SL. C4.5: Programs for Machine Learning by J. Ross Quinlan. Morgan Kaufmann Publishers, Inc., 1993. Mach Learn 1994;16:235–40. [https://doi.org/10.1007/BF00993309](https://doi.org/10.1007/BF00993309).
+1. Breiman L. Random Forests. Machine Learning 2001;45:5–32. [https://doi.org/10.1023/A:1010933404324](https://doi.org/10.1023/A:1010933404324).
 
 ---
 
