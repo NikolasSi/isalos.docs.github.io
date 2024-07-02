@@ -75,7 +75,7 @@ In the right-hand spreadsheet of the tab the output data matrix with the actual 
 {: .no_toc }
 You can apply the trained `k Nearest Neighbors (kNN)` model to any external (test) data using the [`Existing Model Utilization`](https://www.docs.isalos.novamechanics.com/existing-model-utilization.html) function:
 
-1. Import the external data in the left-hand spreadsheet of the tab. Include the same columns used to build the k Nearest Neighbor model.
+1. Import the external data in the left-hand spreadsheet of the tab. Include the same columns used to build the kNN model.
 1. Select `Analytics` $$\rightarrow$$ `Existing Model Utilization`. Select the trained kNN model [1] and click on the `Execute` button [2].
 
 <div style="text-align: center;">
@@ -91,11 +91,77 @@ You can apply the trained `k Nearest Neighbors (kNN)` model to any external (tes
 
 ---
 
+## Multiple Layer Perceptron (MLP)
+
+A multiple layer perceptron (MLP) is a type of feedforward artificial neural network consisting of multiple layers of neurons. It consists of an input layer, one or more hidden layers and an outer layer, which are fully connected with each other. A variety of non-linear activation functions are typically used in the hidden layer, allowing the network to learn complex patterns in data. MLP uses a backpropagation algorithm to train the model and classify instances.<sup>[1,2](#references-regression)</sup>
+
+Use the `Multiple Layer Perceptron (MLP)` function by browsing in the top ribbon: 
+
+|Analytics $$\rightarrow$$ Regression $$\rightarrow$$ Multiple Layer Perceptron (MLP)|
+
+### Input
+{: .no_toc}
+Data matrix with training set data. String columns are not taken into account in the algorithm implementation, therefore categorical features must be removed or encoded into numerical values.
+
+### Configuration
+{: .no_toc}
+
+| **Batch Size** | Select from the drop-down menu the number of training instances that will be propagated through the network. Four options are available for selection: `16`, `32`, `64`, and `128`. |
+| **Number of Epochs** | Specify the number (integer) of complete passes through the data during training. |
+| **Learning Rate** | Specify the learning rate (between 0 and 1), which controls the size of the steps taken during optimization. |
+| **Momentum** | Specify the momentum rate (between 0 and 1) for the backpropagation algorithm. |
+| **+/-** | Click on the `+` and `-` buttons to add or remove hidden layers, respectively. |
+| **Hidden Layers** | For each added hidden layer, specify the number of neurons and select the non-linear activation function used to map the weighted inputs to the output of each neuron. Options for the activation functions include: <br> &nbsp;&nbsp;&nbsp;&nbsp;- `RELU`, <br> &nbsp;&nbsp;&nbsp;&nbsp;- `RELU6`, <br> &nbsp;&nbsp;&nbsp;&nbsp;- `LEAKYRELU`, <br> &nbsp;&nbsp;&nbsp;&nbsp;- `SELU`, <br> &nbsp;&nbsp;&nbsp;&nbsp;- `SWISH`, <br> &nbsp;&nbsp;&nbsp;&nbsp;- `RRELU`, <br> &nbsp;&nbsp;&nbsp;&nbsp;- `SIGMOID`, <br> &nbsp;&nbsp;&nbsp;&nbsp;- `SOFTMAX`, <br> &nbsp;&nbsp;&nbsp;&nbsp;- `SOFTPLUS`, <br> &nbsp;&nbsp;&nbsp;&nbsp;- `SOFTSIGN`, <br> &nbsp;&nbsp;&nbsp;&nbsp;- `TANH`, <br> &nbsp;&nbsp;&nbsp;&nbsp;- `THRESHOLDEDRELU`, <br> &nbsp;&nbsp;&nbsp;&nbsp;- `GELU`, <br> &nbsp;&nbsp;&nbsp;&nbsp;- `ELU`, <br> &nbsp;&nbsp;&nbsp;&nbsp;- `MISH`, <br> &nbsp;&nbsp;&nbsp;&nbsp;- `CUBE`, <br> &nbsp;&nbsp;&nbsp;&nbsp;- `HARDSIGMOID`, <br> &nbsp;&nbsp;&nbsp;&nbsp;- `HARDTANH`, <br> &nbsp;&nbsp;&nbsp;&nbsp;- `IDENTITY`, <br> &nbsp;&nbsp;&nbsp;&nbsp;- `RATIONALTANH`, and <br> &nbsp;&nbsp;&nbsp;&nbsp;- `RECTIFIEDTANH`. |
+| **Target Column** | Select from the drop-down menu the column containing the feature that is going to be predicted. |
+| **RNG Seed** | Select an integer as seed to get reproducible results. The option to select a time-based random number-generated seed is available. |
+
+### Output
+{: .no_toc }
+A data matrix including the actual target value and the value predicted by the algorithm ("Prediction") is presented. 
+
+### Example
+{: .no_toc}
+
+##### Input
+{: .no_toc}
+
+In the left-hand spreadsheet of the tab import the data matrix including the target variable with at least two distinct categories for prediction. In case that categorical-string columns are included in the set, these should be encoded into representative numerical values.
+
+<div style="text-align: center;">
+<img src="images/Regression/mlp-input.PNG" alt="MLP input" width="400" height="300" class="img-responsive">
+</div>
+
+##### Configuration
+{: .no_toc}
+
+1.  Select `Analytics` $$\rightarrow$$ `Regression` $$\rightarrow$$ `Multiple Layer Perceptron (MLP)`
+1.  Select the hyperparameters that determine the training procedure: the `Batch Size` [1], the `Number of Epochs` [2], the `Learning Rate` [3] and the `Momentum` [4].
+1.  Select the hyperparameters that determine the `Hidden Layers` [5] of the neural network: the number of neurons [6] and the activation function [7] of each layer.
+1.  Add [8] or remove [9] hidden layers to define the architecture of the neural network.
+1.  Select the column that is going to be predicted from the drop-down menu [10].
+1.  Select a Seed for reproducible results or a random number generated `Time-based (RNG) Seed` [11].
+1.  Click on the `Execute` button [12] to apply the training algorithm on the input columns.
+
+<div style="text-align: center;">
+<img src="images/Classification/mlp.svg" alt="MLP" width="550" height="300" class="img-responsive">
+</div>
+
+##### Output
+{: .no_toc}
+
+In the right-hand spreadsheet of the tab the output data matrix with the actual and the predicted values of the target is presented.
+
+<div style="text-align: center;">
+<img src="images/Regression/mlp-output.PNG" alt="MLP output" width="300" height="300" class="img-responsive">
+</div>
+
+---
+
 ## Radial basis function networks  (RBF)
 
 Radial basis function networks (RBF) network is an artificial neural network that employs RBF kernels as activation functions. The network consists of three layers: the input layer modeling a vector that passes data, the hidden layer that performs computations and the output layer designated for regression problems. The output layer of the neural network is a linear combination of the activation (output) from the hidden units.<sup>[1, 3](#references-regression)</sup>
 
-A Radial Basis Function is a real-valued function $φ(r)$ that is dependent only on the distance between a fixed input point ($r$) to the center ($c$) of each neuron as reference point [Eq. 1](#eq. rbf1)<sup>[3](#references-regression)</sup>. 
+A Radial Basis Function is a real-valued function $φ(r)$ that is dependent only on the distance between a fixed input point ($r$) to the center ($c$) of each neuron as reference point [Eq. 1](#eq. rbf1).<sup>[3](#references-regression)</sup> 
 
 <div id="eq. rbf1">
 $$
@@ -220,10 +286,10 @@ In the left-hand spreadsheet of the tab import the data matrix including the tar
 ##### Configuration
 {: .no_toc }
 1. Select `Analytics` $$\rightarrow$$ `Regression` $$\rightarrow$$ `Radial Basis Function (RBF)`
-1. Select the number (integer) of `Hidden Neurons` [1].
+1. Type the number (integer) of `Hidden Neurons` [1].
 1. Select the `RBF Kernel` [2] used as activation function of the hidden layer and subsequently select the `Epsilon` [3] or `K` parameter where applicable.
 1. Select the `Point Selection` [4] method to determine the center of the network.
-1. Type a `RNG Seed` for reproducible results or a random number generated `Time-based (RNG) Seed` [5].
+1. Type an `RNG Seed` for reproducible results or a random number generated `Time-based (RNG) Seed` [5].
 1. Select the `Target Column` that is going to be predicted from the drop-down menu [6]. Columns with categorical features cannot be selected as targets. 
 1. Click on the `Execute` button [7] to proceed with training.
 
@@ -305,7 +371,7 @@ In the right-hand spreadsheet of the tab the output data matrix with the actual 
 
 ---
 
-## XGBoost Regression
+## XGBoost 
 
 The Extreme Gradient Boosting (XGBoost) open-source library<sup>[6](#references-regression)</sup> is used to implement the gradient boosting framework. The library uses a class of ensemble machine learning algorithms constructed from decision tree models. Ensemble learning operates by combining different individual base learners to obtain a final prediction.<sup>[7](#references-regression)</sup> In an iterative process, trees are added to the ensemble so that the prediction error (loss) of previous models is reduced. In regression problems, the mean squared error is used as loss function.<sup>[8](#references-regression)</sup>
 
@@ -321,7 +387,7 @@ Data matrix with training set data. String columns are not taken into account in
 ### Configuration
 {: .no_toc }
 
-| **Target Column** | Select from the drop-down menu the column containing the target variable that is going to be predicted. Columns with categorical features  cannot be selected as targets. |
+| **Target Column** | Select from the drop-down menu the column containing the target variable that is going to be predicted. Columns with categorical features cannot be selected as targets. |
 | **booster** | Select from the drop-down menu which booster to use. Three options are available for selection, namely: <br> &nbsp;&nbsp;&nbsp;&nbsp;- `gbtree`: default tree-based models, <br> &nbsp;&nbsp;&nbsp;&nbsp;- `dart`: tree-based models, and <br> &nbsp;&nbsp;&nbsp;&nbsp;- `gblinear`: linear functions. |
 | **objective** | Select from the drop-down menu the learning objective of the method. Options include: <br> &nbsp;&nbsp;&nbsp;&nbsp;- `reg:squarederror`: regression with squared loss, <br> &nbsp;&nbsp;&nbsp;&nbsp;- `reg:gamma`: gamma regression with log-link, whose output is a mean of gamma distribution, and <br> &nbsp;&nbsp;&nbsp;&nbsp;- `reg:tweedie`: tweedie regression with log-link. |
 | **number of estimators** | Type the number of models (integer) to train in the learning ensemble. |
@@ -359,7 +425,7 @@ In the left-hand spreadsheet of the tab import the data matrix including the tar
 1.   Select the column that is going to be predicted from the drop-down menu [1]. 
 1.   Select the tree `booster` [2] method, the `objective` function [3] for loss and type the `number of estimators` [4] involved in the ensemble. 
 1.   Select the hyperparameters involved in the regularization of the model: `eta` [5], `gamma` [6], `lambda` [12] and `alpha` [13]. Select the hyperparameters involved in tree construction: `max depth` [7] and` min child weight` [8]. Select the column sampling rate by tree [9] and the overall subsampling rates [10]. Default values, data types (double or integer) and acceptable ranges are indicated as guidance on the input parameter values.
-1.   Select the tree construction algorithm [11] used in XGBoost.
+1.   Select the tree construction algorithm [11] used in the XGBoost.
 1.   Type an `RNG Seed` for reproducible results or a random number generated `Time-based RNG Seed` [14].
 1.   Click on the `Execute` button [15] to apply the training algorithm on the input data. 
 
@@ -484,5 +550,5 @@ The model generated by either the `k Nearest Neighbors (kNN)`, `Multiple Layer P
 ## Version History
 Introduced in Isalos Analytics Platform v0.1.18
 
-_Instructions last updated on June 2024_
+_Instructions last updated on July 2024_
 
