@@ -18,35 +18,43 @@ Anomaly detection is an important technique in data analytics that involves iden
 
 ---
 
-### One-Class Support Vector Machine (One-Class SVM)
+### First Algorithm
 The One-Class Support Vector Machine (One-Class SVM) anomaly detection algorithm is specifically designed to detect outliers or anomalies in a dataset by defining a normative region and identifying data points that deviate significantly from it. It accomplishes this by mapping the input data to a high-dimensional feature space using a kernel function. Subsequently, it seeks to find a hyperplane that maximizes the margin, separating most of the data points from the origin. The algorithm uses four types of kernel functions to achieve this transformation:<sup>[2](#anomaly-detection-references)</sup>
 
-**1.Linear Kernel:**
+##### Linear Kernel
+{: .no_toc}
+
+<div style="text-align: center;">
 <span id="eq. linear-kernerl1">
 $$
 \begin{equation}
-K(x, x') = \langle x, x' \rangle
+K(x, x') = \langle x, x' \rangle {\qquad [1] \qquad}
 \end{equation}   
 $$
 </span>
+</div>
 
-This kernel represents a single dot product between two vectors. The terms x and x' represent vectors and are used to denote any two data points for which you are calculating the kernel. The dot product is a scalar representation of the projection of one vector onto another, indicating how much of one vector goes in the direction of another.
+This kernel represents a single dot product between two vectors. The terms $x$ and $x'$ represent vectors and are used to denote any two data points for which you are calculating the kernel. The dot product is a scalar representation of the projection of one vector onto another, indicating how much of one vector goes in the direction of another.
 
-**2.Polynomial Kernel:**
+##### Polynomial Kernel
+{: .no_toc}
+
+<div style="text-align: center;">
 <span id="eq. linear-kernerl2">
 $$
 \begin{equation}
-K(x, x') = \left( \gamma \cdot \langle x, x' \rangle + r \right)^{d}
+K(x, x') = \left( \gamma \cdot \langle x, x' \rangle + r \right)^{d} {\qquad [2] \qquad}
 \end{equation}   
 $$
 </span>
+</div>
 
 In the above expression 
-<span id="eq. linear-kernerl2">
+<span id="eq. linear-kernerl3">
 $$
 \begin{equation}
-\gamma \cdot \langle x, x' \rangle
-\end{equation}   
+\gamma \cdot \langle x, x' \rangle 
+\end{equation}  
 $$
 </span>
 involves a scalar multiplication of  (a predefined scaling factor) with the dot product
@@ -57,34 +65,41 @@ $$
 \end{equation}   
 $$
 </span>
-of the input vectors x and x'. This kernel maps inputs into a polynomial feature space, controlled by degree d, where higher degrees allow for more complex decision boundaries. Coefficient r adjusts the influence of higher-degree terms, and  scales the input data.
+of the input vectors $x$ and $x'$. This kernel maps inputs into a polynomial feature space, controlled by degree $d$, where higher degrees allow for more complex decision boundaries. Coefficient $r$ adjusts the influence of higher-degree terms, and  scales the input data.
 
-**3.RBF (Radial Basis Function) Kernel:**
-<span id="eq. linear-kernerl2">
+##### RBF (Radial Basis Function) Kernel
+{: .no_toc}
+
+<div style="text-align: center;">
+<span id="eq. linear-kernerl3">
 $$
 \begin{equation}
-K(x, x') = \exp\left( -\gamma \|x - x'\|^{2} \right)
+K(x, x') = \exp\left( -\gamma \|x - x'\|^{2} \right) {\qquad [3] \qquad}
 \end{equation}   
 $$
 </span>
+</div>
 
 The RBF kernel introduces a Gaussian function of the distance between points, controlled by  (here  multiplies the square of the Euclidean distance), allowing it to handle varied data distributions by forming region-based boundaries.
 
-**4.Sigmoid Kernel:**
-<span id="eq. linear-kernerl2">
+##### Sigmoid Kernel
+{: .no_toc}
+
+<div style="text-align: center;">
+<span id="eq. linear-kernerl4">
 $$
 \begin{equation}
-K(x, x') = \tanh\left( \gamma \cdot \langle x, x' \rangle + r \right)
+K(x, x') = \tanh\left( \gamma \cdot \langle x, x' \rangle + r \right) {\qquad [4] \qquad}
 \end{equation}   
 $$
 </span>
+</div>
 
-Similarly, to the polynomial kernel, this involves a dot product scaled by  and offset by r , followed by the hyperbolic tangent function. This kernel uses a hyperbolic tangent function, transforming the data similar to the activation function in neural networks, which can create complex, non-linear decision boundaries.
+Similarly, to the polynomial kernel, this involves a dot product scaled by  and offset by $r$, followed by the hyperbolic tangent function. This kernel uses a hyperbolic tangent function, transforming the data similar to the activation function in neural networks, which can create complex, non-linear decision boundaries.
 
-<br>
-One-Class SVM aims to maximize the margin between the data and the origin in the feature space, effectively identifying outliers in scenarios where a clear "normal" class exists. The parameters v (nu) and C determine the balance between capturing all the "normal" data points within the boundary and allowing flexibility for some outliers. This trade-off is crucial for accurate anomaly detection in applications like fraud detection and system health monitoring.
+One-Class SVM aims to maximize the margin between the data and the origin in the feature space, effectively identifying outliers in scenarios where a clear "normal" class exists. The parameters v(nu) and C determine the balance between capturing all the "normal" data points within the boundary and allowing flexibility for some outliers. This trade-off is crucial for accurate anomaly detection in applications like fraud detection and system health monitoring.
 
-Use the `Anomaly Detection` function by browsing in the top ribbon: 
+Use the `First algorithm` function by browsing in the top ribbon: 
 
 |Analytics $$\rightarrow$$ Anomaly Detection $$\rightarrow$$ First algorithm|
 
@@ -95,7 +110,8 @@ The data input should consist of numerical (“normal”) instances, without any
 ### Configuration
 {: .no_toc}
 
-|**Type of Kernel**| You can choose from different types of kernels including linear, polynomial, RBF, and sigmoid. <br> You can also set parameters like C, Nu, Tolerance, and Cache to optimize the performance and efficiency of anomaly detection.|
+|**Type of Kernel**| You can choose from different types of kernels including `Linear`, `Polynomial`, `RBF`, and `Sigmoid`. Depending on the user-selection specify the parameter values in the kernel equation (Eqs. [1](#eq. linear-kernerl1)-[4](#eq. linear-kernerl4)). |
+|**Generic parameters**| You can also set parameters like `C`, `Nu`, `Tolerance`, and `Cache` to optimize the performance and efficiency of anomaly detection.|
 
 ### Output
 {: .no_toc}
@@ -140,5 +156,5 @@ The right-hand spreadsheet tab presents two columns in the output: one for predi
 ## Version History
 Introduced in Isalos Analytics Platform v0.2.4
 
-_Instructions last updated on June 2024_
+_Instructions last updated on July 2024_
 

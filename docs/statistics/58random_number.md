@@ -20,7 +20,7 @@ Random numbers are widely used in data science and machine learning model develo
 
 There are two options for generating random numbers in Isalos: decimal numbers between 0 and 1, and integer or real numbers between a user defined interval.
 
-### Decimal random number between 0 and 1
+##### Decimal random number between 0 and 1
 {: .no_toc }
 A decimal random number between $[0, 1)$ interval is selected according to a uniform probability distribution function. This means that the application of the `Random Number Generator` function for infinite times leads to a set of numbers satisfying the uniform probability distribution function (see [Eq. 1](#eq. uniform)).
 
@@ -38,7 +38,7 @@ $$
 
 where $x$ is the random number, and $f(x)$ is the uniform probability distribution function.
 
-### Integer random number between a user defined interval
+##### Integer random number between a user defined interval
 {: .no_toc }
 An integer random number between $[a, b)$ interval is selected according to a uniform probability distribution function. This means that the application of the `Random Number Generator` function for infinite times leads to a set of numbers satisfying the uniform probability distribution function for the user defined interval (see [Eq. 2](#eq. uniform2)). 
 
@@ -56,7 +56,7 @@ $$
 
 where $x$ is the integer random number, $f(x)$ is the uniform probability distribution function, and $a$ and $b$ are integer numbers that define the upper and the lower limit of the interval where the probability function is non-zero.
 
-### Real random number between a user defined interval
+##### Real random number between a user defined interval
 {: .no_toc }
 A real random number between $[a, b)$ interval is selected according to a uniform probability distribution function. This means that the application of the `Random Number Generator` function for infinite times leads to a set of numbers satisfying the uniform probability distribution function for the user defined interval (see [Eq. 3](#eq. uniform3)). 
 

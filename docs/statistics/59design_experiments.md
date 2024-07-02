@@ -8,7 +8,7 @@ permalink: /design-of-experiments.html
 
 # Design of Experiments
 {: .no_toc }
-Design of Experiments (DOE) is a systematic approach to planning, conducting, and analyzing controlled tests to understand the factors that influence a particular outcome. It involves manipulating one or more independent variables to observe their effects on a dependent variable, allowing researchers to determine cause-and-effect relationships and optimize processes. By using techniques such as randomization, replication, and blocking, DOE enhances the reliability and validity of experimental results, making it a crucial tool in scientific research and industrial applications.  
+Design of Experiments (DoE) is a systematic approach to planning, conducting, and analyzing controlled tests to understand the factors that influence a particular outcome. It involves manipulating one or more independent variables to observe their effects on a dependent variable, allowing researchers to determine cause-and-effect relationships and optimize processes. By using techniques such as randomization, replication, and blocking, DoE enhances the reliability and validity of experimental results, making it a crucial tool in scientific research and industrial applications.  
 
 
 ## Table of contents
@@ -21,7 +21,7 @@ Design of Experiments (DOE) is a systematic approach to planning, conducting, an
 
 ## Box Behnken
 
-Box-Behnken<sup>[1](#design-of-experiments)</sup>. designs are an integral component of response surface methodology (RSM) in experimental statistics, tailored for optimizing systems with multiple interacting variables. Renowned for their efficiency, these designs effectively capture interactions among variables while avoiding some of the complexities and potential pitfalls of full factorial designs.
+Box-Behnken<sup>[1](#design-of-experiments)</sup> designs are an integral component of response surface methodology (RSM) in experimental statistics, tailored for optimizing systems with multiple interacting variables. Renowned for their efficiency, these designs effectively capture interactions among variables while avoiding some of the complexities and potential pitfalls of full factorial designs.
 
 A defining feature of Box-Behnken designs is the assignment of each factor to one of three equally spaced values: typically coded as -1, 0, and +1. These values correspond to the low, medium, and high levels for each factor, respectively. Such systematic placement of factors facilitates a comprehensive exploration of the response surface by allowing for a detailed investigation into how different factor levels influence the outcome.
 
@@ -33,9 +33,9 @@ Furthermore, Box-Behnken designs aim to minimize the variation in estimation var
 
 In summary, Box-Behnken designs offer an optimal trade-off between the completeness of information gathered and the experimental effort required. This makes them a sophisticated yet practical choice for exploring and understanding complex experimental landscapes, especially in scenarios where multiple variables interact in potentially nonlinear ways.
 
-Use the Box Behnken function by browsing in the top ribbon: 
+Use the `Box Behnken` function by browsing in the top ribbon: 
 
-| Statistics $$\rightarrow$$ Design of Experiments Box Behnken |
+| Statistics $$\rightarrow$$ Design of Experiments $$\rightarrow$$ Box Behnken |
  
 ### Input
 {: .no_toc }
@@ -44,12 +44,12 @@ In the input data sheet, numerical values should be specified with minimum 3 col
 ### Configuration
 {: .no_toc }
 
-|**Number of Center Points**| Select manually the Number of Center Points to be included in the output list of experiments. There is no minimum requirement or any other limitation. |
-|**Number of Blocks**|Select manually the Number of Blocks. The lowest value that can get is 1.|
+|**Number of Center Points**| Select manually the `Number of Center Points` to be included in the output list of experiments. There is no minimum requirement or any other limitation. |
+|**Number of Blocks**|Select manually the `Number of Blocks`. The lowest value that can get is 1.|
 |**Random Standard order**| You can tick/select the box if randomness is required in the output list of experiments. |
 |**Time-based RNG Seed**| If in the randomness is selected, then you have the option to also tick/select the box to set the random generated number seed based on time.   |
 |**RNG Seed**|Select manually the random generated number seed if required.    |
-|**Include/exclude columns**| Select manually the columns through the dialog window: Use the buttons to move columns between the Included Columns and Excluded Columns list. Single-arrow buttons will move all selected columns and double-arrow buttons will move all columns. |
+|**Include/exclude columns**| Select manually the columns through the dialog window: Use the buttons to move columns between the `Included Columns` and `Excluded Columns` list. Single-arrow buttons will move all selected columns and double-arrow buttons will move all columns. |
 
 ### Output
 {: .no_toc }
@@ -69,13 +69,13 @@ In the input datasheet in the right-hand side, you can specify minimum of three 
 ##### Configuration
 {: .no_toc }
 
-*   Select `Data Statistics` $$\rightarrow$$ `Design of Experiments` $$\rightarrow$$ `Box Behnken`.
-*   Select the `Number of Center Points` [1] to be generated in the output list of experiments.
-*   Select the `Number of Blocks` [2]. The lowest value that can be set is 1.
-*   Select/tick if required the `Random Standard order` [3] to imply randomness in the output list of experiments.
-*   If randomness is selected either select/tick to generate `the number seed for randomness` based on `time` [4] or by manually setting a value [5].
-*   Select the columns by clicking on the `arrow` buttons [8] and moving columns between the `Excluded Columns` [6] and `Included Columns` [7] lists.
-*   Click on the `Execute` button [9] to perform Box Behnken design method.
+1.   Select `Data Statistics` $$\rightarrow$$ `Design of Experiments` $$\rightarrow$$ `Box Behnken`.
+1.   Type the `Number of Center Points` [1] to be generated in the output list of experiments.
+1.   Type the `Number of Blocks` [2]. The lowest value that can be set is 1.
+1.   Select/tick if required the `Random Standard order` [3] to imply randomness in the output list of experiments.
+1.   If randomness is selected either select/tick to generate the number seed for randomness based on time [4] or by manually setting a value [5].
+1.  Select the columns by clicking on the arrow buttons [8] and moving columns between the `Excluded Columns` [6] and `Included Columns` [7] lists.
+1.   Click on the `Execute` button [9] to perform Box Behnken design method.
 
 <div style="text-align: center;">
 <img src="images/Design of experiments/behnken.svg" alt="Box Behnken" width="400" height="300" class="img-responsive">
@@ -86,9 +86,11 @@ In the input datasheet in the right-hand side, you can specify minimum of three 
 
 The output list of experiments is generated for the three factors outlining a list of 12 experiments based on the Box Behnken design. Block number is presented in Col1 as shown below.
 <div style="text-align: center;">
-<img src="images/Design of experiments/behnken-output.png" alt="Box Behnken" width="400" height="300" class="img-responsive">
+<img src="images/Design of experiments/behnken-output.png" alt="Box Behnken" width="350" height="300" class="img-responsive">
 </div>
+
 ---
+
 ## Central Composite
 
 The Central Composite Design (CCD), introduced by George E. P. Box and K. B. Wilson in 1951 and followed up by Box and Hunder in 1957,<sup>[2](#design-of-experiments)</sup> is a foundational technique in Response Surface Methodology (RSM) designed to explore the entire response surface of a process and locate the optimal response within that surface. The structure of CCD includes a factorial or fractional factorial design, augmented with center points and a set of “star points”. These star points are strategically placed along the axes of the factors under investigation at a distance that extends beyond the factorial points, crucial for estimating the curvature of the response surface. This design is adept at fitting a full quadratic model, capturing both the interactions between factors and their squared effects.
@@ -101,25 +103,25 @@ CCD is divided into three primary variations, each tailored to meet specific exp
 
 Each of these designs is tailored to fit different experimental conditions and requirements, allowing researchers to choose based on the number of factors, the limitations on factor levels, the necessity to explore beyond the factorial space, and the resources available for conducting experiments. By providing a range of configurations, CCDs offer a flexible and robust framework for experimenters aiming to optimize processes and responses effectively.
 
-Use the Central Composite function by browsing in the top ribbon: 
+Use the `Central Composite` function by browsing in the top ribbon: 
 
 |Statistics $$\rightarrow$$ Design of Experiments $$\rightarrow$$ Central Composite|
 
-### Input
+### Input 
 {: .no_toc }
 Numerical values should be specified in the input datasheet. The minimum requirement is to specify 2 columns (factors) along with two levels (values/rows) each representing min and max levels, respectively.
 
 ### Configuration
 {: .no_toc }
 
-|**Number of Center Points** |Select manually the Number of Center Points to be included in the output list of experiments. There is no minimum requirement or any other limitation. |
-|**Number of Blocks** | Select manually the Number of Blocks. The lowest value that can get is 1. |
+|**Number of Center Points** |Select manually the `Number of Center Points` to be included in the output list of experiments. There is no minimum requirement or any other limitation. |
+|**Number of Blocks** | Select manually the `Number of Blocks`. The lowest value that can get is 1. |
 |**Random Standard order** | You can tick/select the box if randomness is required in the output list of experiments. |
 |**Time-based RNG Seed** | If in the randomness is selected, then you have the option to also tick/select the box to set the random generated number seed based on time. |
 |**RNG Seed** | Select manually the random generated number seed if required. |
-|**Select Design** | Choose among the options, ccc, ccf, cci representing circumscribed design, faced design and inscribed design, respectively. |
-|**Select alpha method** | If ccc or cci designs are previously selected, then select either orthogonal or rotatable design. |
-|**Include/exclude columns**| Select manually the columns through the dialog window: Use the buttons to move columns between the Included Columns and Excluded Columns list. Single-arrow buttons will move all selected columns and double-arrow buttons will move all columns. | 
+|**Select Design** | Choose among the options, `ccc`, `ccf`, `cci` representing circumscribed design, faced design and inscribed design, respectively. |
+|**Select alpha method** | If `ccc` or `cci` designs are previously selected, then select either orthogonal or rotatable design. |
+|**Include/exclude columns**| Select manually the columns through the dialog window: Use the buttons to move columns between the `Included Columns` and `Excluded Columns` list. Single-arrow buttons will move all selected columns and double-arrow buttons will move all columns. | 
 
 ### Output
 {: .no_toc }
@@ -133,21 +135,21 @@ A list of experiments (combinations) is generated in the output datasheet along 
 In the input datasheet minimum requirement is to specify three factors (columns) and insert minimum two levels (values) for each factor (column), as shown below..
 
 <div style="text-align: center;">
-<img src="images/Design of experiments/central-input.png" alt="Central Composite input" width="400" height="300" class="img-responsive">
+<img src="images/Design of experiments/central-input.png" alt="Central Composite input" width="350" height="300" class="img-responsive">
 </div>
 
 ##### Configuration
 {: .no_toc }
 
-*   Select `Data Statistics` $$\rightarrow$$ `Design of Experiments` $$\rightarrow$$ `Central Composite`.
-*   Select the `Number of Center Points` [1] to be generated in the output list of experiments.
-*   Select the `Number of Blocks` [2]. The lowest value that can be set is 1.
-*   Select/tick if required the `Random Standard order` [3] to imply randomness in the output list of experiments.
-*   If randomness is selected either select/tick to generate `the number seed for randomness` based on `time` [4] or by manually setting a value [5].
-*   Choose to `Select Design` [6] method among the options, ccc, ccf and cci representing circumscribed, faced and inscribed designs, respectively.
-*   If ccc or cci designs are previously selected, then `Select alpha method` [7] either to have `orthogonal` or `rotatable` design.
-*   Select the columns by clicking on the `arrow` buttons [10] and moving columns between the `Excluded Columns` [8] and `Included Columns` [9] lists.
-*   Click on the Execute button [11] to perform `Central Composite` design method.
+1.   Select `Data Statistics` $$\rightarrow$$ `Design of Experiments` $$\rightarrow$$ `Central Composite`.
+1.   Select the `Number of Center Points` [1] to be generated in the output list of experiments.
+1.   Select the `Number of Blocks` [2]. The lowest value that can be set is 1.
+1.   Select/tick if required the `Random Standard order` [3] to imply randomness in the output list of experiments.
+1.   If randomness is selected either select/tick to generate the number seed for randomness based on time [4] or by manually setting a value [5].
+1.   Choose to `Select Design` [6] method among the options, `ccc`, `ccf` and `cci` representing circumscribed, faced and inscribed designs, respectively.
+1.   If ccc or cci designs are previously selected, then `Select alpha method` [7] either to have `orthogonal` or `rotatable` design.
+1.   Select the columns by clicking on the arrow buttons [10] and moving columns between the `Excluded Columns` [8] and `Included Columns` [9] lists.
+1.   Click on the `Execute` button [11] to apply the Central Composite design method.
 
 <div style="text-align: center;">
 <img src="images/Design of experiments/central.svg" alt="Central Composite" width="400" height="300" class="img-responsive">
@@ -165,7 +167,7 @@ The output list of experiments is generated for the two factors outlining a list
 ---
 ## Fractional Factorial
 
-Fractional factorial designs represent a refined approach within the framework of Design of Experiments (DoE) that addresses the challenge of studying systems with multiple factors without resorting to the exhaustive method used in full factorial designs. By selectively sampling a fraction of the full factorial design, these designs allow researchers to explore the effects of various factors using a substantially reduced number of experimental runs. This method is particularly valuable when dealing with a large number of factors, where a full factorial design would require an impractically large set of experiments, escalating costs and resource usage.
+Fractional factorial designs represent a refined approach within the framework of DoE that addresses the challenge of studying systems with multiple factors without resorting to the exhaustive method used in full factorial designs. By selectively sampling a fraction of the full factorial design, these designs allow researchers to explore the effects of various factors using a substantially reduced number of experimental runs. This method is particularly valuable when dealing with a large number of factors, where a full factorial design would require an impractically large set of experiments, escalating costs and resource usage.
 
 The efficiency of fractional factorial designs comes from their strategic choice of factor level combinations, capturing essential information about the system while significantly cutting down on the number of required experiments. This efficiency, however, introduces the primary challenge of confounding. Confounding occurs when the effects of some factor combinations become indistinguishable from others. For instance, in a four-factor experimental setup, a typical confounding pattern such as “A - B - C - BC” implies that the effect of the fourth factor is entangled with the combined effects of the second and third factors. This overlap means that while the design is more efficient, it sacrifices some ability to precisely attribute effects to individual factors or their specific combinations.
 
@@ -173,7 +175,7 @@ Despite this trade-off, with meticulous design and a clear understanding of the 
 
 Moreover, fractional factorial designs prove exceptionally useful in scenarios where some factors are presumed to have minimal or no effect, or where certain interactions are deemed negligible. In these cases, the designs can provide nearly as comprehensive information as full factorial designs but at a fraction of the operational cost and effort. This makes fractional factorial designs a highly strategic tool in experimental research, balancing resource management with the acquisition of critical data points necessary for effective decision-making in system optimization and improvement.
 
-Use the Fractional Factorial function by browsing in the top ribbon: 
+Use the `Fractional Factorial` function by browsing in the top ribbon: 
 
 | Statistics $$\rightarrow$$ Design of Experiments $$\rightarrow$$ Fractional Factorial|
 
@@ -184,13 +186,13 @@ Numerical values should be specified in the input datasheet. Fractional factoria
 ### Configuration
 {: .no_toc }
 
-|**Number of Center Points** | Select manually the Number of Center Points to be included in the output list of experiments. There is no minimum requirement or any other limitation. |
-|**Number of Blocks** | Select manually the Number of Blocks. The lowest value that can get is 1. |
+|**Number of Center Points** | Select manually the Number of `Center Points` to be included in the output list of experiments. There is no minimum requirement or any other limitation. |
+|**Number of Blocks** | Select manually the `Number of Blocks`. The lowest value that can get is 1. |
 |**Random Standard order** | You can tick/select the box if randomness is required in the output list of experiments. |
 |**Time-based RNG Seed** | If in the randomness is selected, then you have the option to also tick/select the box to set the random generated number seed based on time |
 |**RNG Seed** | Select manually the random generated number seed if required. |
-|**Fraction Relationship** | Select manually the Fraction Relationship to perform the desire Fractional Factorial design. |
-|**Include/exclude columns** | Select manually the columns through the dialog window: Use the buttons to move columns between the Included Columns and Excluded Columns list. Single-arrow buttons will move all selected columns and double-arrow buttons will move all columns. |
+|**Fraction Relationship** | Select manually the `Fraction Relationship` to perform the desire Fractional Factorial design. |
+|**Include/exclude columns** | Select manually the columns through the dialog window: Use the buttons to move columns between the `Included Columns` and `Excluded Columns` list. Single-arrow buttons will move all selected columns and double-arrow buttons will move all columns. |
 
 ### Output
 {: .no_toc }
@@ -210,14 +212,14 @@ In the input datasheet minimum requirement is to specify three factors (columns)
 ##### Configuration
 {: .no_toc }
 
-*   Select `Data Statistics` $$\rightarrow$$ `Design of Experiments` $$\rightarrow$$ `Fractional Factorial`.
-*   Select the `Number of Center Points` [1] to be generated in the output list of experiments.
-*   Select the `Number of Blocks` [2]. The lowest value that can be set is 1.
-*   Select/tick if required the `Random Standard order` [3] to imply randomness in the output list of experiments.
-*   If randomness is selected either select/tick to generate `the number seed for randomness` based on `time` [4] or by manually setting a value [5].
-*   Select `Fraction Relationship` [6] lists.
-*   Select the columns by clicking on the `arrow` buttons [9] and moving columns between the `Excluded Columns` [7] and `Included Columns` [8] lists.
-*   Click on the `Execute` button [10] to perform Fractional Factorial design method.
+1.   Select `Data Statistics` $$\rightarrow$$ `Design of Experiments` $$\rightarrow$$ `Fractional Factorial`.
+1.   Select the `Number of Center Points` [1] to be generated in the output list of experiments.
+1.   Select the `Number of Blocks` [2]. The lowest value that can be set is 1.
+1.   Select/tick if required the `Random Standard order` [3] to imply randomness in the output list of experiments.
+1.   If randomness is selected either select/tick to generate the number seed for randomness based on time [4] or by manually setting a value [5].
+1.   Select `Fraction Relationship` [6] lists.
+1.   Select the columns by clicking on the arrow buttons [9] and moving columns between the `Excluded Columns` [7] and `Included Columns` [8] lists.
+1.   Click on the `Execute` button [10] to perform Fractional Factorial design method.
 
 <div style="text-align: center;">
 <img src="images/Design of experiments/fractional.svg" alt="Franctional Factorial" width="400" height="300" class="img-responsive">
@@ -234,17 +236,17 @@ A list of experiments (combinations) is generated in the output datasheet along 
 ---
 ## Full Factorial
 
-A Full Factorial Design of Experiment (DoE) is a comprehensive method used in experimental research to investigate all possible combinations of factor levels, allowing for a complete analysis of two or more factors. Each factor is tested at different discrete levels, and the total number of experimental combinations (n) is determined by multiplying the number of levels (lf) of each factor (f). This relationship is mathematically expressed as:
+A Full Factorial Design of Experiment (DoE) is a comprehensive method used in experimental research to investigate all possible combinations of factor levels, allowing for a complete analysis of two or more factors. Each factor is tested at different discrete levels, and the total number of experimental combinations ($n$) is determined by multiplying the number of levels ($l_f$) of each factor ($f$). This relationship is mathematically expressed as:
 
 <div id="eq. fullfactorial1">
 $$
 \begin{equation}
-n = \prod_{f=1}^{F} l_{f}
+n = \prod_{f=1}^{F} l_{f}  {\qquad [1] \qquad}
 \end{equation}  
 $$
 </div>
 
-here, n is the number of total experimental combinations, F is the total number of factors and lf is the number of levels of the f factor.
+where, $n$ is the number of total experimental combinations, $F$ is the total number of factors and $l_f$ is the number of levels of the $f$ factor.
 
 The strength of Full Factorial DoE lies in its thoroughness. By examining every possible combination of factors and their levels, it provides a detailed mapping of the experimental space. This design is particularly powerful for elucidating not only the individual effects of each factor but also any interactions between them. Such interactions can often be critical, influencing the outcome in ways that would not be evident from studying the factors independently.
 
@@ -254,7 +256,7 @@ Thus, while Full Factorial DoE provides an unmatched depth of understanding due 
 
 Balancing the need for comprehensive data with the practical limitations of experimental resources is essential. In cases where resources are limited or the number of factors is high, alternative designs like fractional factorial designs or response surface methodologies might be employed to efficiently capture the most critical information without conducting every possible experimental combination.
 
-Use the Full Factorial function by browsing in the top ribbon: 
+Use the `Full Factorial` function by browsing in the top ribbon: 
 
 |Statistics $$\rightarrow$$ Design of Experiments $$\rightarrow$$ Full Factorial|
 
@@ -266,12 +268,12 @@ Numerical values should be specified in the input datasheet. The minimum require
 ### Configuration
 {: .no_toc}
 
-| **Number of Center Points** | Select manually the Number of Center Points to be included in the output list of experiments. There is no minimum requirement or any other limitation. |
-| **Number of Blocks** | Select manually the Number of Blocks. The lowest value that can get is 1. |
+| **Number of Center Points** | Select manually the `Number of Center Points` to be included in the output list of experiments. There is no minimum requirement or any other limitation. |
+| **Number of Blocks** | Select manually the `Number of Blocks`. The lowest value that can get is 1. |
 | **Random Standard order** | You can tick/select the box if randomness is required in the output list of experiments. |
 | **Time-based RNG Seed** | If randomness is selected, then you have the option to also tick/select the box to set the random generated number seed based on time. |
 | **RNG Seed** | Select manually the random generated number seed if required. |
-| **Include/exclude columns** | Select manually the columns through the dialog window: Use the buttons to move columns between the Included Columns and Excluded Columns list. Single-arrow buttons will move all selected columns and double-arrow buttons will move all columns. |
+| **Include/exclude columns** | Select manually the columns through the dialog window: Use the buttons to move columns between the `Included Columns` and `Excluded Columns` list. Single-arrow buttons will move all selected columns and double-arrow buttons will move all columns. |
 
 ### Output
 {: .no_toc}
@@ -287,22 +289,22 @@ A list of experiments (combinations) is generated in the output datasheet along 
 In the input datasheet minimum requirement is to specify two factors (columns) and insert minimum two levels (values) for each factor (column), as shown below.
 
 <div style="text-align: center;">
-<img src="images/Design of experiments/full-factorial-input.png" alt="Full Factorial input" width="500" height="400" class="img-responsive">
+<img src="images/Design of experiments/full-factorial-input.png" alt="Full Factorial input" width="350" height="400" class="img-responsive">
 </div> 
 
 ##### Configuration
 {: .no_toc }
 
-*   Select `Data Statistics`→ `Design of Experiments` →`Full Factorial`.
-*   Select the `Number of Center Points` [1] to be generated in the output list of experiments.
-*   Select the `Number of Blocks` [2]. The lowest value that can be set is 1.
-*   Select/tick if required the `Random Standard order` [3] to imply randomness in the output list of experiments.
-*   If randomness is selected either select/tick to generate the number seed for randomness based on time [4] or by manually setting a value [5].
-*   Select the columns by clicking on the arrow buttons [8] and moving columns between the `Excluded Columns` [6] and `Included Columns` [7] lists.
-*   Click on the `Execute` button [9] to perform Full Factorial design method.
+1.   Select `Data Statistics` $$\rightarrow$$ `Design of Experiments` $$\rightarrow$$ `Full Factorial`.
+1.   Select the `Number of Center Points` [1] to be generated in the output list of experiments.
+1.   Select the `Number of Blocks` [2]. The lowest value that can be set is 1.
+1.   Select/tick if required the `Random Standard order` [3] to imply randomness in the output list of experiments.
+1.   If randomness is selected either select/tick to generate the number seed for randomness based on time [4] or by manually setting a value [5].
+1.   Select the columns by clicking on the arrow buttons [8] and moving columns between the `Excluded Columns` [6] and `Included Columns` [7] lists.
+1.   Click on the `Execute` button [9] to perform Full Factorial design method.
 
 <div style="text-align: center;">
-<img src="images/Design of experiments/full-factorial.svg" alt="Full Factorial" width="500" height="400" class="img-responsive">
+<img src="images/Design of experiments/full-factorial.svg" alt="Full Factorial" width="400" height="400" class="img-responsive">
 </div> 
 
 ##### Output 
@@ -311,7 +313,7 @@ In the input datasheet minimum requirement is to specify two factors (columns) a
 The output list of experiments is generated for the two factors outlining a list of 4 experiments based on the Full Factorial design. Block number is presented in Col1 as shown below and the standard order is provided in Col2.
 
 <div style="text-align: center;">
-<img src="images/Design of experiments/full-factorial-output.png" alt="Full Factorial output" width="500" height="400" class="img-responsive">
+<img src="images/Design of experiments/full-factorial-output.png" alt="Full Factorial output" width="400" height="400" class="img-responsive">
 </div> 
 
 ---
@@ -325,7 +327,7 @@ In contrast, the simplex centroid design focuses on the centroid of each subspac
 
 Both the simplex lattice and simplex centroid designs are instrumental in overcoming the challenges posed by the fixed sum constraint in mixture experiments. They enable researchers to systematically explore and optimize different formulations, making them invaluable tools in the development of new products and processes where mixture proportions are critical.
 
-Use the Mixtures function by browsing in the top ribbon: 
+Use the `Mixtures` function by browsing in the top ribbon: 
 
 |Analytics $$\rightarrow$$ Design of Experiments $$\rightarrow$$ Mixtures|
 
@@ -337,15 +339,15 @@ Input data for Mixtures design is not required.
 ### Configuration 
 {: .no_toc}
 
-| **Number of Blocks** | Select manually the Number of Blocks. The lowest value that can get is 1. |
+| **Number of Blocks** | Select manually the `Number of Blocks`. The lowest value that can get is 1. |
 | **Random Standard order** | You can tick/select the box if randomness is required in the output list of experiments. |
 | **Time-based RNG Seed** | If randomness is selected, then you have the option to also tick/select the box to set the random generated number seed based on time. |
 | **RNG Seed** | Select manually the random generated number seed if required. |
-| **Select Design** | Select Design offers two options either Simplex Centroid or Simplex Lattice. |
-| **Number of components** | Select the Number of components (factors) from the drop-down list. |
-| **Degree of Lattice** | If Simplex Lattice design is chosen, then select the Degree of Lattice from the drop-down list. |
+| **Select Design** | Select Design offers two options either `Simplex Centroid` or `Simplex Lattice`. |
+| **Number of components** | Select the `Number of components` (factors) from the drop-down list. |
+| **Degree of Lattice** | If `Simplex Lattice` design is chosen, then select the `Degree of Lattice` from the drop-down list. |
 | **Augment the Design with Axial Points** | Select/tick the box to Augment the Design with Axial Points if desired. |
-| **Augment the Design with Center Points** | If Simplex Lattice design is chosen, then there is also the option to select/tick to Augment the Design with Center Points. |
+| **Augment the Design with Center Points** | If `Simplex Lattice` design is chosen, then there is also the option to select/tick to Augment the Design with Center Points. |
 | **Component** | Drag the horizontal value bars for each component to specify the min and max (composition) value for each component. |
 
 ### Output 
@@ -364,17 +366,17 @@ No input data is required in the input datasheet.
 ##### Configuration
 {: .no_toc}
 
-*   Select `Data Statistics`$$\rightarrow$$ `Design of Experiments` $$\rightarrow$$ `Mixtures`.
-*   Select the `Number of Blocks` [1]. The lowest value that can be set is 1.
-*   Select/tick if required the `Random Standard order` [2] to imply randomness in the output list of experiments.
-*   If randomness is selected either select/tick to generate the number seed for randomness based on time [3] or by manually setting a value [4].
-*   Select Design to be either `Simplex Centroid` or `Simplex Lattice` [5].
-*   Select `Number of components` in the Mixture from the drop-down list [6].
-*   If Simplex Lattice design method is selected, then select the Degree of Lattice from the drop-down list [7].
-*   Select/tick to `Augment the Design with Axial Points` [8].
-*   If `Simplex Lattice` design method is selected, then select/tick to `Augment the Design with Center Points` [9].
-*   Drag the horizonal value bars for each component [10] and [11] to specify the min and max (composition) value for each component.
-*   Click on the `Execute` button [12] to perform Mixtures design method.
+1.   Select `Data Statistics`$$\rightarrow$$ `Design of Experiments` $$\rightarrow$$ `Mixtures`.
+1.   Select the `Number of Blocks` [1]. The lowest value that can be set is 1.
+1.   Select/tick if required the `Random Standard order` [2] to imply randomness in the output list of experiments.
+1.   If randomness is selected either select/tick to generate the number seed for randomness based on time [3] or by manually setting a value [4].
+1.   Select Design to be either `Simplex Centroid` or `Simplex Lattice` [5].
+1.   Select `Number of components` in the Mixture from the drop-down list [6].
+1.   If Simplex Lattice design method is selected, then select the Degree of Lattice from the drop-down list [7].
+1.   Select/tick to `Augment the Design with Axial Points` [8].
+1.   If `Simplex Lattice` design method is selected, then select/tick to `Augment the Design with Center Points` [9].
+1.   Drag the horizonal value bars for each component [10] and [11] to specify the min and max (composition) value for each component.
+1.   Click on the `Execute` button [12] to perform Mixtures design method.
 
 <div style="text-align: center;">
 <img src="images/Design of experiments/mixtures.svg" alt="Mixtures" width="500" height="400" class="img-responsive">
@@ -386,7 +388,7 @@ No input data is required in the input datasheet.
 The output list of experiments is generated for the two components outlining a list of 4 experiments based on the Mixtures design. Block number is presented in Col1 as shown below and the standard order is provided in Col2.
 
 <div style="text-align: center;">
-<img src="images/Design of experiments/mixtures-output.png" alt="Mixtures output" width="500" height="400" class="img-responsive">
+<img src="images/Design of experiments/mixtures-output.png" alt="Mixtures output" width="400" height="400" class="img-responsive">
 </div> 
 
 
@@ -406,7 +408,7 @@ Combined array designs, often associated with Taguchi methods, involve the simul
 
 Both Taguchi methods and combined designs underscore the philosophy of robust design: optimizing product performance and quality under a range of operating conditions by systematically controlling and examining variability. These methodologies are integral to developing products and processes that are consistently reliable and meet customer expectations in the real world.
 
-Use the Robust Parameter design function by browsing in the top ribbon: 
+Use the `Robust Parameter` design function by browsing in the top ribbon: 
 
 |Statistics $$\rightarrow$$ Design of Experiments $$\rightarrow$$ Robust Parameter|
 
@@ -440,22 +442,22 @@ A list of experiments (combinations) is generated in the output datasheet along 
 In the input datasheet minimum requirement is to specify three factors (columns) and insert minimum two levels (values) for each factor (column), as shown below.
 
 <div style="text-align: center;">
-<img src="images/Design of experiments/robust-input.png" alt="Robust Parameter input" width="500" height="400" class="img-responsive">
+<img src="images/Design of experiments/robust-input.png" alt="Robust Parameter input" width="350" height="400" class="img-responsive">
 </div> 
 
 ##### Configuration
 {: .no_toc}
 
-*   Select `Data Statistics`$$\rightarrow$$ `Design of Experiments` $$\rightarrow$$ `Robust Parameter`.
-*   Select the `Number of Blocks` [1]. The lowest value that can be set is 1.
-*   Select/tick if required the `Random Standard order` [3] to imply randomness in the output list of experiments.
-*   If randomness is selected either select/tick to generate the number seed for randomness based on time [4] or by manually setting a value [5].
-*   Select/Tick either the `Taguchi Design` [5] radio button or the `Combined Design` [6] radio button.
-*   Select the columns from the `Available Columns` window [7] that correspond to noise factors by using the arrows [10] to move them to the `Noise Factor` window [8] and the one that correspond to control factors by using the `arrows` [11] to move them to the `Control Factor` window [9].
-*   Click on the `Execute` button [12] to perform `Robust Parameter design method.
+1.   Select `Data Statistics`$$\rightarrow$$ `Design of Experiments` $$\rightarrow$$ `Robust Parameter`.
+1.   Select the `Number of Blocks` [1]. The lowest value that can be set is 1.
+1.   Select/tick if required the `Random Standard order` [3] to imply randomness in the output list of experiments.
+1.   If randomness is selected either select/tick to generate the number seed for randomness based on time [4] or by manually setting a value [5].
+1.   Select/Tick either the `Taguchi Design` [5] radio button or the `Combined Design` [6] radio button.
+1.   Select the columns from the `Available Columns` window [7] that correspond to noise factors by using the arrows [10] to move them to the `Noise Factor` window [8] and the one that correspond to control factors by using the `arrows` [11] to move them to the `Control Factor` window [9].
+1.   Click on the `Execute` button [12] to perform `Robust Parameter design method.
 
 <div style="text-align: center;">
-<img src="images/Design of experiments/robust.svg" alt="Robust Parameter" width="500" height="400" class="img-responsive">
+<img src="images/Design of experiments/robust.svg" alt="Robust Parameter" width="400" height="450" class="img-responsive">
 </div> 
 
 
@@ -465,20 +467,20 @@ In the input datasheet minimum requirement is to specify three factors (columns)
 The output list of experiments is generated for the two control factors and one noise factor outlining a list of 16 experiments based on the Robust Parameter Taguchi design. Block number is presented in Col1 as shown below and the standard order is provided in Col2.
 
 <div style="text-align: center;">
-<img src="images/Design of experiments/robust-output.png" alt="Robust Parameter Output" width="500" height="400" class="img-responsive">
+<img src="images/Design of experiments/robust-output.png" alt="Robust Parameter Output" width="400" height="400" class="img-responsive">
 </div> 
 
 ---
 
 
 ## References {#design-of-experiments}
-1. Box, G.E. and D.W. Behnken, Some new three level designs for the study of quantitative variables. Technometrics, 1960. 2(4): p. 455-475.
+1. Box, G.E. and D.W. Behnken, Some new three level designs for the study of quantitative variables. Technometrics, 1960. 2(4): p. 455-475. [doi.org/10.1080/00401706.1960.10489912](https://doi.org/10.1080/00401706.1960.10489912).
 
-2. Box, G.E. and K.B. Wilson, On the experimental attainment of optimum conditions, in Breakthroughs in statistics: methodology and distribution. 1992, Springer. p. 270-310.
+1. Box, G.E. and K.B. Wilson, On the experimental attainment of optimum conditions, in Breakthroughs in statistics: methodology and distribution. 1992, Springer. p. 270-310. [doi.org/10.1007/978-1-4612-4380-9_23](https://doi.org/10.1007/978-1-4612-4380-9_23).
 
 ---
 
 ## Version History
 Introduced in Isalos Analytics Platform v0.2.4
 
-_Instructions last updated on June 2024_
+_Instructions last updated on July 2024_
