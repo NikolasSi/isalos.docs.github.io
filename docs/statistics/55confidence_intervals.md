@@ -104,8 +104,8 @@ Users are allowed to input numerical values in any columns of their choice, with
 ### Configuration
 {: .no_toc}
 
-| **Confidence level (α)** | Manually insert confidence level which may range from 0 to 1. |
-| **Standard Deviation Method** | Select any of the two options available, user-defined (`Select by the user`) or calculate the standard deviation based on the provided data (`Autocalculate from inout data`). |
+| **Confidence level (α)** | Manually insert confidence level which may range from 0 to 100. |
+| **Standard Deviation Method** | Select any of the two options available, user-defined (`Select by the user`) or calculate the standard deviation based on the provided data (`Autocalculate from input data`). |
 | **Standard Deviation** | If the previous option, `Select by the user` is chosen then enter manually the value that represents the standard deviation of the sample data. |
 | **Include/exclude columns** | Select manually the columns that are going to be used for the calculation of the confidence interval through the dialog window: Use the buttons to move columns between the `Included Columns` and `Excluded Columns` list. Single-arrow buttons will move all selected columns and double-arrow buttons will move all columns. |
 
@@ -130,7 +130,7 @@ In the left-hand spreadsheet, each column specifies a data set for which we are 
 {: .no_toc}
 
 1.   Select `Statistics` $$\rightarrow$$ `Confidence Intervals` $$\rightarrow$$ `Raw Data`. 
-1.   Select `Confidence Level (α)` [1]. The value will range from 0 to 1.
+1.   Select `Confidence Level (α)` [1]. The value will range from 0 to 100.
 1.   Select one of the two available options for the `Standard Deviation Method` [2]: either `Autocalculate from input data` or `Select by the user`. If you choose the option to `Select by the user`, enter the value of the `Standard Deviation` [3].
 1.   Select the columns that are going to be used in the calculation by clicking on the arrow buttons [4] and moving columns between the `Excluded Columns` and `Included Columns` lists.
 1.   Click on the `Execute` button [5] to apply the confidence intervals calculation on the selected columns.
@@ -161,12 +161,12 @@ Use the `Sample Size, Mean and Standard Deviation` function for calculating conf
 ### Input
 {: .no_toc}
 
-This method only allows the computation of the confidence intervals for a single column therefore users should only fill one column with numerical values and not nominal values.
+No input data are needed to use this function.
 
 ### Configuration
 {: .no_toc}
 
-| **Confidence level (α)** | Manually insert confidence level which may range from 0 to 1. |
+| **Confidence level (α)** | Manually insert confidence level which may range from 0 to 100. |
 | **Sample size (n)** | Insert the number of data points in the dataset. |
 | **Mean ($\overline{\text{x}}$)** | Type the mean value of the dataset. |
 | **Population/Sample** | Select any of the two options available, `σ` or `s` that denotes that the dataset is population or sample data, respectively. |
@@ -193,7 +193,7 @@ The left-hand spreadsheet contains a column that is populated with the necessary
 {: .no_toc}
 
 1.   Select `Statistics` $$\rightarrow$$ `Confidence Intervals` $$\rightarrow$$ `Sample Size, Mean and Standard Deviation`.
-1.   Type the `Confidence Level` [1]. The value will range from 0 to 1.
+1.   Type the `Confidence Level` [1]. The value will range from 0 to 100.
 1.   Type the  `Sample Size (n)` [2].
 1.   Type the  `Mean ($\overline{\text{x}}$)` [3].
 1.   Select one of the two available options for the `Population/Sample` [4]: either `σ` or `s` that denotes that the dataset is population or sample data, respectively.
@@ -230,7 +230,7 @@ Ensure that the input datasheet contains only one column of data. The data shoul
 ### Configuration
 {: .no_toc}
 
-| **Confidence level** | Manually insert confidence level which may range from 0 to 1. |
+| **Confidence level** | Manually insert confidence level which may range from 0 to 100. |
 | **Sample size (n)** | Insert the number of data points in the dataset. |
 | **Possibility (p)** | Enter the value that represents the sample proportion. |
 
@@ -256,7 +256,7 @@ The left-hand spreadsheet contains a column that is populated with the necessary
 {: .no_toc}
 
 1.   Select `Statistics` $$\rightarrow$$ `Confidence Intervals` $$\rightarrow$$ `Population Proportion`.
-1.   Type the  `Confidence Level` [1]. The value will range from 0 to 1.
+1.   Type the  `Confidence Level` [1]. The value will range from 0 to 100.
 1.   Type the  `Sample Size (n)` [2].
 1.   Type the  `Possibility (p)` [3].
 1.   Click on the `Execute` button [4] to apply the confidence intervals calculation.
