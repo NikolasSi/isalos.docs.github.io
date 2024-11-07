@@ -106,7 +106,7 @@ In the right-hand spreadsheet of the tab the metrics values are presented [6].
 ---
  
 ## Classification Metrics
-The results of the classification are summarized in a confusion matrix, which is a table showing the number of True Positives (TP), False Positives (FP), True Negatives (TN) and False Negatives (FN). From the confusion matrix the following statistical metrics are calculated: accuracy ([Eq. 5](#eq. Accuracy)), precision ([Eq. 6](#eq. Precision)), sensitivity/recall ([Eq. 7](#eq. Recall)), specificity ([Eq. 8](#eq. Specificity)) and the F<sub>1</sub> score and F<sub>$$\mathrm{\beta}$$</sub> scores ([Eqs. 9](#eq. F1) and [10](#eq. Fbeta))<sup>[1,2](#references-metrics)</sup>. 
+The results of the classification are summarized in a confusion matrix, which is a table showing the number of True Positives (TP), False Positives (FP), True Negatives (TN) and False Negatives (FN). From the confusion matrix the following statistical metrics are calculated: accuracy ([Eq. 5](#eq. Accuracy)), precision ([Eq. 6](#eq. Precision)), sensitivity/recall ([Eq. 7](#eq. Recall)), specificity ([Eq. 8](#eq. Specificity)), F<sub>1</sub> score and F<sub>$$\mathrm{\beta}$$</sub> scores ([Eqs. 9](#eq. F1) and [10](#eq. Fbeta)) and the Matthews correlation coefficient (MCC, [Eq. 11](#eq. MCC))<sup>[1,2](#references-metrics)</sup>. 
 
 | | **Actual Class** |
 | **Predicted Class** | Positive | Negative |
@@ -157,6 +157,14 @@ $$
 $$
 \begin{equation}
 F_\beta = (1 + \beta^2) \cdot \frac{\text{Precision} \cdot \text{Recall}}{(\beta^2 \cdot \text{Precision}) + \text{Recall}} {\qquad [10] \qquad}
+\end{equation}
+$$
+</div>
+
+<div id="eq. MCC">
+$$
+\begin{equation}
+MCC = \frac{ TP \times TN - FP \times FN }{ \sqrt{ (TP + FP)(TP + FN)(TN + FP)(TN + FN) } } {\qquad [11] \qquad}
 \end{equation}
 $$
 </div>
