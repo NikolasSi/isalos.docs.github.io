@@ -1,12 +1,12 @@
 ---
 layout: default
-title: 2.1 Installation
+title: 2.1 Installation and Configuration
 parent: 2. Getting Started
 nav_order: 1
 permalink: /installation.html
 ---
 
-# Installation
+# Installation and Configuration
 {: .no_toc }
 Getting started with Isalos is a straightforward process thanks to its plug-and-play setup. The platform comes pre-packaged with everything necessary to run it and get started with your workflows, ensuring a seamless installation with no external dependencies.
 
@@ -66,7 +66,6 @@ You also have the option to create a desktop shortcut for the Isalos application
 Finally, Isalos is ready to be installed, by clicking the `Install` button [12], you may be prompted by User Access Control to allow the installation of the software, of which you can accept to go through with the installation. This completes the installation process on Windows. Click on the `Finish` button to close the installation wizard [13].
 
 
-
 <div style="text-align: center;">
 <img src="images/Getting started/windows7.svg" alt="step7" width="800" class="img-responsive">
 </div>
@@ -105,6 +104,33 @@ A window with the End User License Agreement [3] will appear. After reading the 
 
 Upon accepting the terms, Isalos will be unlocked and ready to use.
 
+## Uninstall Isalos
+To uninstall Isalos, please follow the steps specific to your computer's operating system.
+
+#### Windows
+{: .no_toc }
+To uninstall Isalos, there are two alternative options: 
+
+1. Go to Windows Settings $$\rightarrow$$ Apps & features $$\rightarrow$$ Installed Apps, find Isalos, click the three dots [1], and select Uninstall [2].
+
+<div style="text-align: center;">
+<img src="images/Getting started/Uninstall_windows1.svg" alt="license activation2" width="600" class="img-responsive">
+</div>
+
+2. Go to Control Panel $$\rightarrow$$ Programs and Features, find Isalos, right-click on it, and select Uninstall [1].
+
+<div style="text-align: center;">
+<img src="images/Getting started/Uninstall_windows2.svg" alt="license activation2" width="600" class="img-responsive">
+</div>
+
+
+
+#### MacOS
+{: .no_toc }
+
+#### Linux
+{: .no_toc }
+
 ---
 
-_Instructions last updated on October 2024_
+_Instructions last updated on December 2024_

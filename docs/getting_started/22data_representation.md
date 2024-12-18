@@ -118,8 +118,8 @@ Each tab functions as a node in the data analysis workflow. These nodes are repr
 </div>
 
 ## Tips
-* You can periodically save the intermediate results of your data analysis or modelling using the `Export SpreadSheet` data option, for further analysis or study of the effects of each workflow step. This is particularly useful for debugging purposes.
-* To have an overview of the analysis through the workflow outline, as the analysis progresses choose to import your data using the `Import from SpreadSheet` option rather than copying and pasting data between tabs.
+* You can periodically save the intermediate results of your data analysis or modelling using the [`Export SpreadSheet`](https://www.docs.isalos.novamechanics.com/save_import.html#exporting-data) data option, for further analysis or study of the effects of each workflow step. This is particularly useful for debugging purposes.
+* To have an overview of the analysis through the workflow outline, as the analysis progresses choose to import your data using the [`Import from SpreadSheet`](https://www.docs.isalos.novamechanics.com/data-representation.html#import-from-spreadsheet) option rather than copying and pasting data between tabs.
 
 
 ## References {#references-data-representation}

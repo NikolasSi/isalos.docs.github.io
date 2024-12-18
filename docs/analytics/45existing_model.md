@@ -85,7 +85,7 @@ The `Existing Model Utilization` function is useful in cases when test/external 
 ## See also
 Different types of models can be applied on data including [`Normalizers`](https://www.docs.isalos.novamechanics.com/normalizers.html), [`Regression`](https://www.docs.isalos.novamechanics.com/regression.html), [`Classification`](https://www.docs.isalos.novamechanics.com/classification.html) and [`Clustering`](https://www.docs.isalos.novamechanics.com/clustering.html) models, and the applicability [`Domain – APD limits`](https://www.docs.isalos.novamechanics.com/domain-apd.html).
 
-For model import from a library of existing models refer to `Import Model from` and `Export Model from` options.
+For model import from a library of existing models refer to [`Import Model from`](https://www.docs.isalos.novamechanics.com/save_import.html#importing-projectsmodels) and [`Export Model from`](https://www.docs.isalos.novamechanics.com/save_import.html#exporting-models) options.
 
 ### Workflows
 {: .no_toc }

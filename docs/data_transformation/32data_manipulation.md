@@ -19,7 +19,7 @@ This menu includes functionalities that enable the users to prepare their data f
 ---
 
 ## Remove Column(s)
-This function identifies and removes columns containing redundant data. It removes input columns where the number of instances of the unique values falls below a user-defined threshold.
+This function identifies and removes columns containing redundant data. It removes included columns if there exists at least one distinct value that the percentage of its instances in the specific column is above the user-defined threshold.
 
 Use the `Remove Column(s)` function by browsing in the top ribbon: 
 
@@ -299,6 +299,16 @@ In the right-hand spreadsheet of the tab, the missing values of the input table 
 Fill Missing Column(s) Values:
 
 * The use of the methods `Mean of Nearby Points`, `Median of Nearby Points`, and `Linear Trend at point` is recommended when the missing values are part of a time series, but they can also be used in other cases non-restrictively.
+
+## See also 
+
+### Workflows
+{: .no_toc }
+
+#### Credit card case study
+{: .no_toc }
+* [Isalos workflow](files/Classification/Credit card/cd.ekk)
+* [Report](files/Classification/Credit card/Credit Card.pdf)
 
 ---
 ## Version History
