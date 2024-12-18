@@ -1,12 +1,12 @@
 ---
 layout: default
-title: 2.3 Save and Import Project/Models
+title: 2.3 Save/Import Project and Models
 parent: 2. Getting Started
 nav_order: 3
 permalink: /save_import.html
 ---
 
-# Save and Import Project/Models
+# Save/Import Project and Models
 {: .no_toc }
 Isalos offers various options for managing your projects and models. You can save, open, and import projects or models directly from the `File` menu for easy workflow management.
 
@@ -34,7 +34,7 @@ Make sure to also click `File` $$\rightarrow$$ `Save` [2] or press `Ctrl` + `S` 
 <img src="images/Getting started/save.svg" alt="save" width="500" class="img-responsive">
 </div>
 
-To save a specific model in your project, you must select `File` $$\rightarrow$$ `Import Model from` > `Current project` [3] and select the model you would like to import [4]. This will save the model in Isalos’ native format for models (.ekkm file), in the application models folder [6] within your Isalos installation directory.
+To save a specific model in your project, you must select `File` $$\rightarrow$$ `Import Model from` $$\rightarrow$$ `Current project` [3] and select the model you would like to import [4]. This will save the model in Isalos’ native format for models (.ekkm file), in the application models folder [6] within your Isalos installation directory.
 
 <div style="text-align: center;">
 <img src="images/Getting started/save model.svg" alt="save model" width="800" class="img-responsive">
@@ -47,7 +47,7 @@ To revisit a saved project and pick up from where you left off, click `File` $$\
 <img src="images/Getting started/open.svg" alt="open" width="200" class="img-responsive">
 </div>
 
-If you would like to import a specific model into an existing workflow, select select `File` $$\rightarrow$$ `Import Model from` > `File` [2] and browse and select the model you would like to import into your project.
+If you would like to import a specific model into an existing workflow, select select `File` $$\rightarrow$$ `Import Model from` $$\rightarrow$$ `File` [2] and browse and select the model you would like to import into your project.
 
 <div style="text-align: center;">
 <img src="images/Getting started/import.svg" alt="import" width="300" class="img-responsive">
@@ -73,6 +73,11 @@ You can also export your project data of choice into an Excel workbook. Select `
 <div style="text-align: center;">
 <img src="images/Getting started/export data.svg" alt="export data" width="600" class="img-responsive">
 </div>
+
+---
+
+## See also
+To employ one or more imported models to your analysis workflow use the [`Existing Model Utilization`](https://www.docs.isalos.novamechanics.com/existing-model-utilization.html#existing-model-utilization) function.
 
 ---
 

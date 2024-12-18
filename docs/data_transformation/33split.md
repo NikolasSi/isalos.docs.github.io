@@ -161,7 +161,7 @@ In the left-hand spreadsheet of the tab import the data matrix that is going to 
 
 
 ## See also
-The generated train and test sets from the splitting function can be imported to subsequent tabs/nodes (see [Data Representation](https://www.docs.isalos.novamechanics.com/data-representation.html)). For data scaling refer to the [Normalizers](https://www.docs.isalos.novamechanics.com/normalizers.html) functions.
+The generated train and test sets from the splitting function can be imported to subsequent tabs/nodes (see [`Data Representation`](https://www.docs.isalos.novamechanics.com/data-representation.html)). For data scaling refer to the [`Normalizers`](https://www.docs.isalos.novamechanics.com/normalizers.html) functions.
 
 ### Workflows
 {: .no_toc }
