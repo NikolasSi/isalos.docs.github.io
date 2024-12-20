@@ -235,6 +235,51 @@ For the development of regression models refer to the [`Regression`](https://www
 ### Workflows
 {: .no_toc }
 
+#### Bodyfat prediction case study
+{: .no_toc }
+* [Isalos workflow](files/Regression/Bodyfat prediction/bf.ekk)
+* [Report](files/Regression/Bodyfat prediction/Bodyfat Prediction.pdf)
+
+#### House pricing case study
+{: .no_toc }
+* [Isalos workflow](files/Regression/Housing prices/hp.ekk)
+* [Report](files/Regression/Housing prices/Housing Prices.pdf)
+
+#### Insurance charges case study
+{: .no_toc }
+* [Isalos workflow](files/Regression/Insurance charges/ic.ekk)
+* [Report](files/Regression/Insurance charges/Insurance Charges.pdf)
+
+#### MA score case study
+{: .no_toc }
+* [Isalos workflow](files/Regression/MA score/ma_score_data.ekk)
+* [Report](files/Regression/MA score/MA score Data.pdf)
+
+#### Salary prediction case study
+{: .no_toc }
+* [Isalos workflow](files/Regression/Salary prediction/sp.ekk)
+* [Report](files/Regression/Salary prediction/Salary Prediction.pdf)
+
+#### Breast cancer case study
+{: .no_toc }
+* [Isalos workflow](files/Classification/Breast cancer/bc.ekk)
+* [Report](files/Classification/Breast cancer/Breast Cancer.pdf)
+
+#### Credit card case study
+{: .no_toc }
+* [Isalos workflow](files/Classification/Credit card/cc.ekk)
+* [Report](files/Classification/Credit card/Credit Card.pdf)
+
+#### Parkinson's disease case study
+{: .no_toc }
+* [Isalos workflow](files/Classification/Parkinson's disease/pd.ekk)
+* [Report](files/Classification/Parkinson's disease/Parkinson's Disease.pdf)
+
+#### Students' performance case study
+{: .no_toc }
+* [Isalos workflow](files/Classification/Student's performance/sp.ekk)
+* [Report](files/Classification/Student's performance/Students' Performance.pdf)
+
 ## References {#references-metrics}
 1. Naser MZ, Alavi AH. Error Metrics and Performance Fitness Indicators for Artificial Intelligence and Machine Learning in Engineering and Sciences. Archit Struct Constr 2021. [doi.org/10.1007/s44150-021-00015-8](https://doi.org/10.1007/s44150-021-00015-8).
 1. Witten Ian H and Frank, Eibe and Hall, Mark A and Pal CJ. Data Mining: Practical Machine Learning Tools and Techniques. Fourth. Morgan Kaufmann; 2011. [doi.org/10.1016/C2009-0-19715-5](https://doi.org/10.1016/C2009-0-19715-5).
