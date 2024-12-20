@@ -305,9 +305,14 @@ Fill Missing Column(s) Values:
 ### Workflows
 {: .no_toc }
 
+#### MA score case study
+{: .no_toc }
+* [Isalos workflow](files/Regression/MA score/ma_score_data.ekk)
+* [Report](files/Regression/MA score/MA score Data.pdf)
+
 #### Credit card case study
 {: .no_toc }
-* [Isalos workflow](files/Classification/Credit card/cd.ekk)
+* [Isalos workflow](files/Classification/Credit card/cc.ekk)
 * [Report](files/Classification/Credit card/Credit Card.pdf)
 
 ---

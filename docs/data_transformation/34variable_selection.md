@@ -121,6 +121,7 @@ Use the `Regression Analysis` variable selection by browsing in the top ribbon:
 {: .no_toc }
 ---
 
+-->
 
 ## Tips
 * Ensure your dataset is preprocessed correctly before applying feature selection.
@@ -132,7 +133,32 @@ Explore further preprocessing steps in the [`Data Transformation`](https://www.d
 ### Workflows
 {: .no_toc }
 
-## References {#references-variable-selection}
+#### House pricing case study
+{: .no_toc }
+* [Isalos workflow](files/Regression/Housing prices/hp.ekk)
+* [Report](files/Regression/Housing prices/Housing Prices.pdf)
+
+#### Insurance charges case study
+{: .no_toc }
+* [Isalos workflow](files/Regression/Insurance charges/ic.ekk)
+* [Report](files/Regression/Insurance charges/Insurance Charges.pdf)
+
+#### Salary prediction case study
+{: .no_toc }
+* [Isalos workflow](files/Regression/Salary prediction/sp.ekk)
+* [Report](files/Regression/Salary prediction/Salary Prediction.pdf)
+
+#### Breast cancer case study
+{: .no_toc }
+* [Isalos workflow](files/Classification/Breast cancer/bc.ekk)
+* [Report](files/Classification/Breast cancer/Breast Cancer.pdf)
+
+#### Parkinson's disease case study
+{: .no_toc }
+* [Isalos workflow](files/Classification/Parkinson's disease/pd.ekk)
+* [Report](files/Classification/Parkinson's disease/Parkinson's Disease.pdf)
+
+<!--## References {#references-variable-selection}
 1. Witten Ian H and Frank, Eibe and Hall, Mark A and Pal CJ. Data Mining: Practical Machine Learning Tools and Techniques. Fourth. Morgan Kaufmann; 2011. [doi.org/10.1016/C2009-0-19715-5](https://doi.org/10.1016/C2009-0-19715-5).
 1. Varsou D-D, Afantitis A, Tsoumanis A, Papadiamantis AG, Valsami‐Jones E, Lynch I, et al. Zeta‐Potential Read‐Across Model Utilizing Nanodescriptors Extracted via the NanoXtract Image Analysis Tool Available on the Enalos Nanoinformatics Cloud Platform. Small 2020;16:1906588. [doi.org/10.1002/smll.201906588](https://doi.org/10.1002/smll.201906588).
 
