@@ -92,13 +92,13 @@ You can apply the trained `k Nearest Neighbors (kNN)` model to any external (tes
 
 ---
 
-## Multiple Layer Perceptron (MLP)
+## Fully Connected Neural Network 
 
-A multilayer perceptron (MLP) is a type of feedforward artificial neural network consisting of multiple layers of neurons. It consists of an input layer, one or more hidden layers and an outer layer, which are fully connected with each other. A variety of non-linear activation functions are typically used in the hidden layer, allowing the network to learn complex patterns in data. MLP uses a backpropagation algorithm to train the model and classify instances.<sup>[1,2](#references-classification)</sup>
+A type of feedforward artificial neural network consisting of multiple layers of neurons. It consists of an input layer, one or more hidden layers and an outer layer, which are fully connected with each other. A variety of non-linear activation functions are typically used in the hidden layer, allowing the network to learn complex patterns in data. MLP uses a backpropagation algorithm to train the model and classify instances.<sup>[1,2](#references-classification)</sup>
 
-Use the `Multiple Layer Perceptron (MLP)` function by browsing in the top ribbon: 
+Use the `Fully Connected Neural Network` function by browsing in the top ribbon: 
 
-|Analytics $$\rightarrow$$ Classification $$\rightarrow$$ Multiple Layer Perceptron (MLP)|
+|Analytics $$\rightarrow$$ Classification $$\rightarrow$$ Fully Connected Neural Network|
 
 ### Input
 {: .no_toc}
@@ -135,7 +135,7 @@ In the left-hand spreadsheet of the tab import the data matrix including the tar
 ##### Configuration
 {: .no_toc}
 
-1. Select `Analytics` $$\rightarrow$$ `Classification` $$\rightarrow$$ `Multiple Layer Perceptron (MLP)`
+1. Select `Analytics` $$\rightarrow$$ `Classification` $$\rightarrow$$ `Fully Connected Neural Network`
 1. Select the hyperparameters that determine the training procedure: the `Batch Size` [1], the `Number of Epochs` [2], the `Learning Rate` [3] and the `Momentum` [4].
 1. Select the hyperparameters that determine the `Hidden Layers` [5] of the neural network: the number of neurons [6] and the activation function [7] of each layer.
 1. Add [8] or remove [9] hidden layers to define the architecture of the neural network.
@@ -212,7 +212,7 @@ In the right-hand spreadsheet of the tab the output data matrix with the actual 
 ---
 -->
 
-## Radial basis function networks  (RBF)
+## Radial Basis Function Network
 
 Radial basis function networks (RBF) network is an artificial neural network that employs RBF kernels as activation functions. The network consists of three layers: the input layer modeling a vector that passes data, the hidden layer that performs computations and the output layer designated for classification problems. The output layer of the neural network is a linear combination of the activation (output) from the hidden units.<sup>[5,6](#references-classification)</sup>
 
@@ -305,9 +305,9 @@ $$
 
 where $\varepsilon$ is the shape parameter used to scale the input of the radial kernel.
 
-Use the `Radial Basis Function (RBF)` classification function by browsing in the top ribbon: 
+Use the `Radial Basis Function Network` classification function by browsing in the top ribbon: 
 
-|Analytics $$\rightarrow$$ Classification $$\rightarrow$$ Radial Basis Function (RBF)|
+|Analytics $$\rightarrow$$ Classification $$\rightarrow$$ Radial Basis Function Network|
 
 ### Input
 {: .no_toc}
@@ -340,7 +340,7 @@ In the left-hand spreadsheet of the tab import the data matrix including the tar
 <img src="images/Classification/rbf-input.png" alt="Rbf input" width="550" height="900" class="img-responsive">
 </div> 
 
-1. Select `Analytics` $$\rightarrow$$ `Classification` $$\rightarrow$$ `Radial Basis Function (RBF)`
+1. Select `Analytics` $$\rightarrow$$ `Classification` $$\rightarrow$$ `Radial Basis Function Network`
 1. Type the number (integer) of `Hidden Neurons` [1].
 1. Select the `RBF Kernel` [2] used as activation function of the hidden layer and subsequently select the `Epsilon` [3] or `K` parameter where applicable.
 1. Select the `Point Selection` [4] method to determine the center of the network.
@@ -436,13 +436,13 @@ In the right-hand spreadsheet of the tab the output data matrix with the actual 
 
 ---
 
-## J48
+## J48 Decision Tree
 
 J48 is an open-source Java implementation of the C4.5 statistical classifier, which performs classification based on pruned or unpruned decision trees or rules generated from them. In this interpretation, the algorithm uses the normalized information gain as criterion to split the dataset into subsets and uses the most influential attribute to make the decision in each node. J48 uses the pruning technique, which refers to the removal of branches from a decision tree that have limited contribution to the predictive performance of the model.<sup>[1,10](#references-classification)</sup>
 
-Use the `J48` classification function by browsing in the top ribbon: 
+Use the `J48 Decision Tree` classification function by browsing in the top ribbon: 
 
-|Analytics $$\rightarrow$$ Classification $$\rightarrow$$ J48|
+|Analytics $$\rightarrow$$ Classification $$\rightarrow$$ J48 Decision Tree|
 
 ### Input
 {: .no_toc}
@@ -476,7 +476,7 @@ In the left-hand spreadsheet of the tab import the data matrix including the tar
 ##### Configuration
 {: .no_toc}
 
-1.   Select `Analytics` $$\rightarrow$$ `Classification` $$\rightarrow$$ `J48`
+1.   Select `Analytics` $$\rightarrow$$ `Classification` $$\rightarrow$$ `J48 Decision Tree`
 1.   Select the hyperparameters that determine the structure of the decision tree: the `Min sample split` [1] and `Max Depth` [2]. Default values, data types and acceptable ranges are indicated as guidance on the input parameter values.
 1.   Select the column that is going to be predicted from the drop-down menu [3]. Only columns containing categorical features should be selected for prediction.
 1.   Click on the `Execute` button [4] to apply the training algorithm on the input columns.
@@ -580,7 +580,7 @@ k Nearest Νeighbors:
 
 <!--SOM: *-->
 
-RBF:
+Radial Basis Function Network:
 *   The number of neurons in the hidden layer has a high impact on the model performance, since a large number of neurons can lead to overfitting.
 
 XGBoost:
@@ -591,7 +591,7 @@ Random Forest:
 
 ## See also 
 
-The model generated by any of the `k Nearest Neighbors (kNN)`, `Multiple Layer Perceptron (MLP)`, `Radial Basis Function (RBF)`, `XGBoost`, `J48`, or `Random Forest` classification algorithms can be applied to any input data through the [`Existing Model Utilization`](https://www.docs.isalos.novamechanics.com/existing-model-utilization.html) function (e.g., a classification algorithm trained from the training set data of a machine learning model can be applied to the test/external set data).
+The model generated by any of the `k Nearest Neighbors (kNN)`, `Fully Connected Neural Network`, `Radial Basis Function Network`, `XGBoost`, `J48 Decision Tree`, or `Random Forest` classification algorithms can be applied to any input data through the [`Existing Model Utilization`](https://www.docs.isalos.novamechanics.com/existing-model-utilization.html) function (e.g., a classification algorithm trained from the training set data of a machine learning model can be applied to the test/external set data).
 
 ### Workflows
 {: .no_toc }
@@ -635,4 +635,4 @@ The model generated by any of the `k Nearest Neighbors (kNN)`, `Multiple Layer P
 ## Version History
 Introduced in Isalos Analytics Platform v0.1.18
 
-_Instructions last updated on July 2024_
+_Instructions last updated on January 2025_
