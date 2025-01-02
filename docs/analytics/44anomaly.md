@@ -18,7 +18,7 @@ Anomaly detection is an important technique in data analytics that involves iden
 
 ---
 
-### First Algorithm
+### One-Class SVM 
 The One-Class Support Vector Machine (One-Class SVM) anomaly detection algorithm is specifically designed to detect outliers or anomalies in a dataset by defining a normative region and identifying data points that deviate significantly from it. It accomplishes this by mapping the input data to a high-dimensional feature space using a kernel function. Subsequently, it seeks to find a hyperplane that maximizes the margin, separating most of the data points from the origin. The algorithm uses four types of kernel functions to achieve this transformation:<sup>[2](#anomaly-detection-references)</sup>
 
 ##### Linear Kernel
@@ -99,9 +99,9 @@ Similarly, to the polynomial kernel, this involves a dot product scaled by  and 
 
 One-Class SVM aims to maximize the margin between the data and the origin in the feature space, effectively identifying outliers in scenarios where a clear "normal" class exists. The parameters v(nu) and C determine the balance between capturing all the "normal" data points within the boundary and allowing flexibility for some outliers. This trade-off is crucial for accurate anomaly detection in applications like fraud detection and system health monitoring.
 
-Use the `First algorithm` function by browsing in the top ribbon: 
+Use the `One-Class SVM` function by browsing in the top ribbon: 
 
-|Analytics $$\rightarrow$$ Anomaly Detection $$\rightarrow$$ First algorithm|
+|Analytics $$\rightarrow$$ Anomaly Detection $$\rightarrow$$ One-Class SVM |
 
 ### Input
 {: .no_toc}
@@ -130,7 +130,7 @@ The data are inserted as shown below in the data input sheet on the left-hand si
 
 ##### Configuration
 {: .no_toc }
-1.   Select `Analytics` $$\rightarrow$$ `Anomaly Detection` $$\rightarrow$$ `First algorithm`
+1.   Select `Analytics` $$\rightarrow$$ `Anomaly Detection` $$\rightarrow$$ `One-Class SVM`
 1.   Select the `Type` of kernel [1] and specify the parameter values [2] in the kernel equation. Choose appropriate values for the `Generic parameters` to optimize the performance and efficiency of anomaly detection [3].
 1.   Click on the `Execute` button [4] to apply the anomaly detection calculation.
 
@@ -156,5 +156,5 @@ The right-hand spreadsheet tab presents two columns in the output: one for predi
 ## Version History
 Introduced in Isalos Analytics Platform v0.2.4
 
-_Instructions last updated on July 2024_
+_Instructions last updated on January 2025_
 
