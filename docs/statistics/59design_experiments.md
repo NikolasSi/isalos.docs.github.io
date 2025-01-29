@@ -21,7 +21,7 @@ Design of Experiments (DoE) is a systematic approach to planning, conducting, an
 
 ## Box Behnken
 
-Box-Behnken<sup>[1](#design-of-experiments)</sup> designs are an integral component of response surface methodology (RSM) in experimental statistics, tailored for optimizing systems with multiple interacting variables. Renowned for their efficiency, these designs effectively capture interactions among variables while avoiding some of the complexities and potential pitfalls of full factorial designs.
+Box-Behnken<sup>[1](#references-design-of-experiments)</sup> designs are an integral component of response surface methodology (RSM) in experimental statistics, tailored for optimizing systems with multiple interacting variables. Renowned for their efficiency, these designs effectively capture interactions among variables while avoiding some of the complexities and potential pitfalls of full factorial designs.
 
 A defining feature of Box-Behnken designs is the assignment of each factor to one of three equally spaced values: typically coded as -1, 0, and +1. These values correspond to the low, medium, and high levels for each factor, respectively. Such systematic placement of factors facilitates a comprehensive exploration of the response surface by allowing for a detailed investigation into how different factor levels influence the outcome.
 
@@ -93,7 +93,7 @@ The output list of experiments is generated for the three factors outlining a li
 
 ## Central Composite
 
-The Central Composite Design (CCD), introduced by George E. P. Box and K. B. Wilson in 1951 and followed up by Box and Hunder in 1957,<sup>[2](#design-of-experiments)</sup> is a foundational technique in Response Surface Methodology (RSM) designed to explore the entire response surface of a process and locate the optimal response within that surface. The structure of CCD includes a factorial or fractional factorial design, augmented with center points and a set of “star points”. These star points are strategically placed along the axes of the factors under investigation at a distance that extends beyond the factorial points, crucial for estimating the curvature of the response surface. This design is adept at fitting a full quadratic model, capturing both the interactions between factors and their squared effects.
+The Central Composite Design (CCD), introduced by George E. P. Box and K. B. Wilson in 1951 and followed up by Box and Hunder in 1957,<sup>[2](#references-design-of-experiments)</sup> is a foundational technique in Response Surface Methodology (RSM) designed to explore the entire response surface of a process and locate the optimal response within that surface. The structure of CCD includes a factorial or fractional factorial design, augmented with center points and a set of “star points”. These star points are strategically placed along the axes of the factors under investigation at a distance that extends beyond the factorial points, crucial for estimating the curvature of the response surface. This design is adept at fitting a full quadratic model, capturing both the interactions between factors and their squared effects.
 
 CCD is divided into three primary variations, each tailored to meet specific experimental needs and constraints:
 
@@ -175,6 +175,65 @@ Despite this trade-off, with meticulous design and a clear understanding of the 
 
 Moreover, fractional factorial designs prove exceptionally useful in scenarios where some factors are presumed to have minimal or no effect, or where certain interactions are deemed negligible. In these cases, the designs can provide nearly as comprehensive information as full factorial designs but at a fraction of the operational cost and effort. This makes fractional factorial designs a highly strategic tool in experimental research, balancing resource management with the acquisition of critical data points necessary for effective decision-making in system optimization and improvement.
 
+Isalos uses a term called “Fraction Relationship” to determine the confounding pattern the user wishes to use. The “Fraction Relationship” is a sequence of strings, separated by spaces, where the $k^{th}$ string specifies how  the $k^{th}$  factor is confounded. If a factor is not confounded with any other, it is represented by its corresponding single letter. For example, when conducting an experiment with 5 factors which we denote A, B, C, D and E, a valid “Fraction Relationship” would be “A B C AB AC” which determines that D = AB and E=AC.
+
+Resolution measures the extent to which effects—such as main effects and interactions between factors—can be uniquely estimated without confounding. It is determined by the shortest word in the defining relation of the design, which represents the smallest group of factors whose effects are confounded. The minimum acceptable resolution for a design is Resolution III, as resolutions below this result in main effects being confounded with one another, which is undesirable for meaningful analysis.
+
+To assist users in determining the required "Fraction Relationship," the software provides a comprehensive list of available designs that deliver maximum resolution for each case. These designs serve as a reliable reference, derived from authoritative sources <sup>[3, 4, 5](#references-design-of-experiments)</sup>.
+
+| Number of Factors | Fraction | Number of Runs | Design Generators | Fraction Relationship | Resolution |
+|------------------|----------|--------------|------------------|---------------------|------------|
+| 3  | "1/2"  | 4  | c=ab  | a b ab  | III |
+| 4  | "1/2"  | 8  | d=abc  | a b c abc  | IV |
+| 5  | "1/2"  | 16  | e=abcd  | a b c d abcd  | V |
+|    | "1/4"  | 8  | d=ab, e=ac  | a b c ab ac  | III |
+| 6  | "1/2"  | 32  | f=abcde  | a b c d e abcde  | VI |
+|    | "1/4"  | 16  | e=abc, f=bcd  | a b c d abc bcd  | IV |
+|    | "1/8"  | 8  | d=ab, e=ac, f=bc  | a b c ab ac bc  | III |
+| 7  | "1/2"  | 64  | g=abcdef  | a b c d e f abcdef  | VII |
+|    | "1/4"  | 32  | f=abcd, g=abde  | a b c d e abcd abde  | IV |
+|    | "1/8"  | 16  | e=abc, f=bcd, g=acd  | a b c d abc bcd acd  | IV |
+|    | "1/16"  | 8  | d=ab, e=ac, f=bc, g=abc  | a b c ab ac bc abc  | III |
+| 8  | "1/2"  | 128  | h=abcdefg  | a b c d e f g abcdefg  | VIII |
+|    | "1/4"  | 64  | g=abcd, h=abef  | a b c d e f abcd abef  | V |
+|    | "1/8"  | 32  | f=abc, g=abd, h=bcde  | a b c d e abc abd bcde  | IV |
+|    | "1/16"  | 16  | e=bcd, f=acd, g=abc, h=abd  | a b c d bcd acd abc abd  | IV |
+| 9  | "1/2"  | 256  | i=abcdefgh  | a b c d e f g h abcdefgh  | IX |
+|    | "1/4"  | 128  | h=acdfg, i=bcefg  | a b c d e f g acdfg bcefg  | VI |
+|    | "1/8"  | 64  | g=abcd, h=acef, i=cdef  | a b c d e f abcd acef cdef  | IV |
+|    | "1/16"  | 32  | f=bcde, g=acde, h=abde, i=abce  | a b c d e bcde acde abde abce  | IV |
+|    | "1/32"  | 16  | e=abc, f=bcd, g=acd, h=abd, i=abcd  | a b c d abc bcd acd abd abcd  | III |
+| 10  | "1/2"  | 512  | j=abcdefghi  | a b c d e f g h i abcdefghi  | X |
+|    | "1/8"  | 128  | h=abcg, i=bcde, j=acdf  | a b c d e f g abcg bcde acdf  | V |
+|    | "1/16"  | 64  | g=bcdf, h=acdf, i=abde, j=abce  | a b c d e f bcdf acdf abde abce  | IV |
+|    | "1/32"  | 32  | f=abcd, g=abce, h=abde, i=acde, j=bcde  | a b c d e abcd abce abde acde bcde  | IV |
+|    | "1/64"  | 16  | e=abc, f=bcd, g=acd, h=abd, i=abcd, j=ab  | a b c d abc bcd acd abd abcd ab  | III |
+| 11  | "1/2"  | 1024  | k=abcdefghij  | a b c d e f g h i j abcdefghij  | XI |
+|    | "1/16"  | 128  | h=abcg, i=bcde, j=acdf, k=abcdefg  | a b c d e f g abcg bcde acdf abcdefg  | V |
+|    | "1/32"  | 64  | g=cde, h=abcd, i=abf, j=bdef, k=adef  | a b c d e f cde abcd abf bdef adef  | IV |
+|    | "1/64"  | 32  | f=abc, g=bcd, h=cde, i=acd, j=ade, k=bde  | a b c d e abc bcd cde acd ade bde  | IV |
+|    | "1/128"  | 16  | e=abc, f=bcd, g=acd, h=abd, i=abcd, j=ab, k=ac  | a b c d abc bcd acd abd abcd ab ac  | III |
+| 12 | "1/2" | 2048 | l=abccdefghijk | a b c d e f g h i j k abccdefghijk | XII | 
+|    |"1/32" | 128 | h=acdg, i=abcd, j=bcfg, k=abcdefg, l=cdef | a b c d e f g acdg abcd bcfg abcdefg cdef | IV | 
+|    |"1/64" | 64 | g=def, h=abc, i=bcde, j=bcdf, k=abef, l=acef | a b c d e f def abc bcde bcdf abef acef | IV | 
+|    |"1/128" | 32 | f=ace, g=acd, h=abd, i=abe, j=cde, k=abcde, l=ade | a b c d e ace acd abd abe cde abcde ade | IV | 
+|    |"1/256" | 16 | e=abc, f=abd, g=acd, h=bcd, i=abcd, j=ab, k=ac, l=ad | a b c d abc abd acd bcd abcd ab ac ad | III | 
+| 13  | "1/2" | 4096 | m=abcdefghijkl | a b c d e f g h i j k l abcdefghijkl | XIII |
+|    |"1/64" | 128 | h=defg, i=bceg, j=bcdfg, k=abdef, l=acef, m=abc | a b c d e f g defg bceg bcdfg abdef acef abc | IV |
+|    |"1/128" | 64 | g=abc, h=def, i=bcdf, j=bcde, k=abef, l=acef, m=bcef | a b c d e f abc def bcdf bcde abef acef bcef | IV |
+|    |"1/256" | 32 | f=ace, g=bce, h=abc, i=cde, j=abcde, k=abe, l=acd, m=ade | a b c d e ace bce abc cde abcde abe acd ade | IV |
+|    |"1/512" | 16 | e=abc, f=abd, g=acd, h=bcd, i=abcd, j=ab, k=ac, l=ad, m=bc | a b c d abc abd acd bcd abcd ab ac ad bc | III |
+|14 | "1/2" | 8192 | n=abcdefghijklm | a b c d e f g h i j k l m abcdefghijklm | XIV | 
+|    |"1/128" | 128 | h=efg, i=bcfg, j=bceg, k=abef, l=acef, m=bcdef, n=abc | a b c d e f g efg bcdg bceg abef acef bcdef abc | IV | 
+|    |"1/256" | 64 | g=bef, h=bcf, i=def, j=cef, k=bce, l=cdf, m=acde, n=bcdef | a b c d e f bef bcf def cef bce cdf acde bcdef | IV | 
+|    |"1/512" | 32 | f=abc, g=abd, h=abe, i=acd, j=ace, k=ade, l=bcd, m=bce, n=bde | a b c d e abc abd abe acd ace ade bcd bce bde | IV | 
+|    |"1/1024" | 16 | e=abc, f=abd, g=acd, h=bcd, i=abcd, j=ab, k=ac, l=ad, m=bc, n=bd | a b c d abc abd acd bcd abcd ab ac ad bc bd | III | 
+| 15 | "1/2" | 16384 | o=abcdefghijklmn | a b c d e f g h i j k l m n abcdefghijklmn | XV | 
+|    |"1/256" | 128 | h=abfg, i=acdef, j=bef, k=abcdeg, l=cdfg, m=acdeg, n=efg, o=abdefg | a b c d e f g abfg acdef bef abcdeg cdfg acdeg efg abdefg | IV | 
+|    |"1/512" | 64 | g=abc, h=abd, i=abe, j=bcde, k=acf, l=adf, m=aef, n=cdef, o=abcdef | a b c d e f abc abd abe bcde acf adf aef cdef abcdef | IV | 
+|    |"1/1024" | 32 | f=abc, g=abd, h=abe, i=acd, j=ace, k=ade, l=bcd, m=bce, n=bde, o=cde | a b c d e abc abd abe acd ace ade bcd bce bde cde | IV | 
+|    |"1/2048" | 16 | e=abc, f=abd, g=acd, h=bcd, i=abcd, j=ab, k=ac, l=ad, m=bc, n=bd, o=cd | a b c d abc abd acd bcd abcd ab ac ad bc bd cd | III | 
+
 Use the `Fractional Factorial` function by browsing in the top ribbon: 
 
 | Statistics $$\rightarrow$$ Design of Experiments $$\rightarrow$$ Fractional Factorial|
@@ -191,7 +250,7 @@ Numerical values should be specified in the input datasheet. Fractional factoria
 |**Random Standard order** | You can tick/select the box if randomness is required in the output list of experiments. |
 |**Time-based RNG Seed** | If in the randomness is selected, then you have the option to also tick/select the box to set the random generated number seed based on time |
 |**RNG Seed** | Select manually the random generated number seed if required. |
-|**Fraction Relationship** | Select manually the `Fraction Relationship` to perform the desire Fractional Factorial design. |
+|**Fraction Relationship** | Insert manually the `Fraction Relationship` to define the desired Fractional Factorial design. The $k^{th}$ independent factor (column) corresponds to the $k^{th}$ letter of the alphabet (The letter "I" is not a special character and should be used for the $9^{th}$ if that exists). Only alphabetical characters, spaces, "+" and "-" are allowed.|
 |**Include/exclude columns** | Select manually the columns through the dialog window: Use the buttons to move columns between the `Included Columns` and `Excluded Columns` list. Single-arrow buttons will move all selected columns and double-arrow buttons will move all columns. |
 
 ### Output
@@ -217,7 +276,7 @@ In the input datasheet minimum requirement is to specify three factors (columns)
 1.   Select the `Number of Blocks` [2]. The lowest value that can be set is 1.
 1.   Select/tick if required the `Random Standard order` [3] to imply randomness in the output list of experiments.
 1.   If randomness is selected either select/tick to generate the number seed for randomness based on time [4] or by manually setting a value [5].
-1.   Select `Fraction Relationship` [6] lists.
+1.   Insert the `Fraction Relationship` [6].
 1.   Select the columns by clicking on the arrow buttons [9] and moving columns between the `Excluded Columns` [7] and `Included Columns` [8] lists.
 1.   Click on the `Execute` button [10] to perform Fractional Factorial design method.
 
@@ -929,16 +988,23 @@ A list of 14 experiments (combinations) is generated in the output datasheet alo
 <div style="text-align: center;">
 <img src="images/Design of experiments/uniform-output.png" alt="Uniform output" width="400" height="450" class="img-responsive">
 </div> 
+
 ---
 
-## References {#design-of-experiments}
-1. Box, G.E. and D.W. Behnken, Some new three level designs for the study of quantitative variables. Technometrics, 1960. 2(4): p. 455-475. [doi.org/10.1080/00401706.1960.10489912](https://doi.org/10.1080/00401706.1960.10489912).
+## References {#references-design-of-experiments}
+1. Box, G.E. and Behnken, D.W., Some new three level designs for the study of quantitative variables. Technometrics, 1960. 2(4): p. 455-475. [doi.org/10.1080/00401706.1960.10489912](https://doi.org/10.1080/00401706.1960.10489912).
 
-1. Box, G.E. and K.B. Wilson, On the experimental attainment of optimum conditions, in Breakthroughs in statistics: methodology and distribution. 1992, Springer. p. 270-310. [doi.org/10.1007/978-1-4612-4380-9_23](https://doi.org/10.1007/978-1-4612-4380-9_23).
+1. Box, G.E. and Wilson, K.B.,  On the experimental attainment of optimum conditions, in Breakthroughs in statistics: methodology and distribution. 1992, Springer. p. 270-310. [doi.org/10.1007/978-1-4612-4380-9_23](https://doi.org/10.1007/978-1-4612-4380-9_23).
+
+1. Montgomery, Douglas C. Design and analysis of experiments. John wiley & sons, 2017.
+
+1. Speed, Terry. Statistics for Experimenters: Design, Innovation, and Discovery. 2006.
+
+1. Wu, CF Jeff, and Michael S. Hamada. Experiments: planning, analysis, and optimization. John Wiley & Sons, 2011.
 
 ---
 
 ## Version History
 Introduced in Isalos Analytics Platform v0.2.4
 
-_Instructions last updated on December 2024_
+_Instructions last updated on January 2025_
