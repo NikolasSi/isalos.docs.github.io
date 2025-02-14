@@ -49,6 +49,7 @@ jobs:
         # Automatically uploads an artifact from the './_site' directory by default
         uses: actions/upload-artifact@v4
         with:
+          name: github-pages  # You can give any name you prefer
           path: ./_site        # The path to your Jekyll output directory
 
   # Deployment job
@@ -63,4 +64,4 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v2
         with:
-          artifact: site-artifact  # Explicitly specify the artifact name
+          artifact: github-pages  # Explicitly specify the artifact name
