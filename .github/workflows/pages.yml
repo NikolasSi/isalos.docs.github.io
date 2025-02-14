@@ -50,7 +50,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: site-artifact  # You can give any name you prefer
-          path: ./_includes        # The path to your Jekyll output directory
+          path: docs/_site/        # The path to your Jekyll output directory
 
   # Deployment job
   deploy:
