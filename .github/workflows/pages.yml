@@ -48,7 +48,8 @@ jobs:
       
        #Clearn hard links and symlinks
       - name: Clean hard links and symlinks
-        run: find ./_site -type -l -exec rm {} \;      
+        run: find ./_site -type l -exec rm {} \;
+      
       
       - name: Upload artifact
         # Automatically uploads an artifact from the './_site' directory by default
