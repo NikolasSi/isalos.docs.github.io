@@ -46,7 +46,9 @@ jobs:
         env:
           JEKYLL_ENV: production
       
-       #Clearn hard links and symlinks
+      - name: Clean hard links and symlinks
+        run: find ./_site -type l -exec rm {} \;
+
       - name: Break hard links
         run: cp -a ./_site ./_site_copy && rm -rf ./_site && mv ./_site_copy ./_site
 
