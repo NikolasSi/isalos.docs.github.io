@@ -11,12 +11,3 @@ aux_links:
 example: ok
 
 color_scheme: light
-
-exclude:
-  - "node_modules"
-  - ".git"
-  - "vendor"
-  - ".bundle"
-  - "Gemfile.lock"
-  - "README.md"
-  - ".github"
