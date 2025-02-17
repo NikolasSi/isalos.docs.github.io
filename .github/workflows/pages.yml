@@ -52,7 +52,10 @@ jobs:
       - name: Break hard links
         run: cp -a ./_site ./_site_copy && rm -rf ./_site && mv ./_site_copy ./_site
 
-      
+      - name: Clear GitHub Pages cache
+        run: |
+          rm -rf ./_site
+          bundle exec jekyll clean
       
       - name: Upload artifact
         # Automatically uploads an artifact from the './_site' directory by default
