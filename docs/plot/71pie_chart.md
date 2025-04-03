@@ -1,7 +1,7 @@
 ---
 layout: default
-title: 6.1 Pie Chart
-parent: 6. Plot
+title: 7.1 Pie Chart
+parent: 7. Plot
 nav_order: 1
 permalink: /pie-chart.html
 ---

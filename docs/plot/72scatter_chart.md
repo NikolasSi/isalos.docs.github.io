@@ -1,7 +1,7 @@
 ---
 layout: default
-title: 6.2 Scatter/Line Chart
-parent: 6. Plot
+title: 7.2 Scatter/Line Chart
+parent: 7. Plot
 nav_order: 2
 permalink: /scatter-line-chart.html
 ---
