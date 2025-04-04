@@ -1,7 +1,7 @@
 ---
 layout: default
-title: 6. Plot
-nav_order: 6
+title: 7. Plot
+nav_order: 7
 has_children: true
 permalink: /plot.html
 ---
