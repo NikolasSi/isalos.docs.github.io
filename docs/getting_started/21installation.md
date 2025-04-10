@@ -17,15 +17,23 @@ Getting started with Isalos is a straightforward process thanks to its plug-and-
 {:toc}
 
 ---
+## Install Isalos
+Visit [the official download page of NovaMechanics’s Isalos installers](https://enaloscloud.novamechanics.com/novamechanicssystem/userregistration/) to download the appropriate installer for your OS.
 
-## Download the Installer
-Download the Isalos installer using the provided distribution link to the installation package. Once it is downloaded, double click the .msi installer (Windows), the .dmg installer (MacOS), or the .deb installer (Linux).
+### Windows
 
-### Run the Installer
+
+#### Downloading the Installer
+{: .no_toc }
+Download the Isalos Windows installer package and once downloaded double click the .msi file.
+
+<div style="text-align: center;">
+<img src="images/Getting started/windows installer.png" alt="step1" width="80" class="img-responsive">
+</div>
+
+#### Run the Installer
 {: .no_toc }
 
-#### Windows
-{: .no_toc }
 After double clicking the installer, the installation wizard will pop up to guide you through the process of selecting your preferences for the installation of the program [1].
 
 <div style="text-align: center;">
@@ -71,16 +79,10 @@ Finally, Isalos is ready to be installed, by clicking the `Install` button [12],
 </div>
 
 
-#### MacOS
-{: .no_toc }
-
-#### Linux
-{: .no_toc }
-
-## First Launch and License Activation
+<!-- ### First Launch and License Activation-->
 After the installation is complete, there are a couple more steps that are needed to get the Isalos Analytics Platform up and running.
 
-### Placing License in Installation Folder
+#### Placing License in Installation Folder
 {: .no_toc }
 Before launching Isalos for the first time, you must place your valid license file in the installation directory. Depending on the location of your installation, you may need administrator access permissions to do so. Navigate to the installation directory of Isalos, and place your license file there [1]. Once you have done this, you can double click the Isalos executable [2] to launch the application successfully.
 
@@ -88,7 +90,7 @@ Before launching Isalos for the first time, you must place your valid license fi
 <img src="images/Getting started/license_folder.svg" alt="license folder" width="400" class="img-responsive">
 </div>
 
-### Activating the License
+#### Activating the License
 {: .no_toc }
 On launching Isalos for the first time, before being able to unlock and use the software, you will need to activate your license by reading and accepting the user terms and conditions. Navigate to the `File` button on the top ribbon [1], and select `Activate` [2].
 
@@ -104,11 +106,200 @@ A window with the End User License Agreement [3] will appear. After reading the 
 
 Upon accepting the terms, Isalos will be unlocked and ready to use.
 
+### MacOS
+
+
+### Linux
+
+#### Downloading the Installer
+{: .no_toc }
+Choose the appropriate package for your system:
+* Debian-based systems (Ubuntu, Debian, Linux Mint, etc.) $$\rightarrow$$ Download the .deb package.
+* RHEL-based systems (Fedora, CentOS, Oracle Linux, AlmaLinux, etc.) $$\rightarrow$$ Download the .rpm package.
+
+#### Verifying Package Signatures
+{: .no_toc }
+Before installing, you can verify the integrity and authenticity of the downloaded package.
+
+##### Debian-based Systems (.deb)
+{: .no_toc }
+Ensure gpg is installed before verifying the package:
+
+```js
+sudo apt install -y gnupg
+```
+Download the following files from the download page:
+* Application package: isalos-{version}.deb 
+* Signature file:  isalos-{version}.deb.sig 
+* Public key: isalos.key
+
+###### Import the Public Key
+{: .no_toc }
+To validate a build’s signature, you must first import and trust the Isalos’s public code-signing key.
+
+* Import the public key:
+
+```js
+gpg --import isalos.key
+```
+
+* Trust the Key (Optional but recommended to avoid warnings during verification). To trust the public key, extract its fingerprint:
+
+```js
+gpg --fingerprint
+```
+
+Edit the key and set the appropriate trust level:
+
+```js
+gpg --edit-key <fingerprint> trust
+```
+
+After running the command, you’ll enter the interactive key editing mode. The prompt will ask you to choose a trust level. Select the trust level and press Enter to confirm. Finally exit the edit mode by typing quit and pressing Enter.
+
+###### Verify the Signature
+{: .no_toc }
+
+Run the following gpg command to check the package signature:
+
+```js
+gpg --verify isalos-{version}.deb.sig isalos-{version}.deb
+```
+
+If the verification is successful, you should see a message like:
+
+```js
+gpg: Good signature from "NovaMSoft <projects@hermes.novamechanics.com>"
+```
+
+##### RHEL-based Systems (.rpm)
+{: .no_toc }
+
+Download the following files from the download page:
+* Application package: isalos-{version}-{release}.x86_64.rpm
+* Public key: isalos.key
+
+
+###### Import the Public Key
+{: .no_toc }
+On RedHat-based Linux systems, validation is built into the rpm command, however you first need to import the public key into rpm.
+
+Import it with the following command:
+
+```js
+rpm --import isalos.key
+```
+
+###### Verify the Signature
+{: .no_toc }
+Use the following command to verify the package signature:
+
+```js
+rpm --checksig isalos-{version}-{release}.x86_64.rpm
+```
+
+If the verification is successful, you should see a message like:
+
+```js
+isalos-{version}-{release}.x86_64.rpm: digests signatures OK
+```
+
+Another method to verify that the package signature exists or not is by running:
+
+```js
+rpm -qpi isalos-{version}-{release}.x86_64.rpm
+```
+
+The output should indicate a signature field with the signature present.
+
+#### Installing on Debian-based Systems (.deb)
+{: .no_toc }
+
+
+##### Prerequisites
+{: .no_toc }
+Ensure your system is up to date before installing:
+
+```js
+sudo apt update && sudo apt upgrade -y
+```
+
+##### Installation Steps
+{: .no_toc }
+1.	Navigate to the directory where the downloaded .deb file is located.
+1.	Run the following command to install:
+
+```js
+sudo apt install ./isalos-{version}.deb
+```
+
+This will install Isalos in the `</opt>` directory.
+
+##### Placing the License File
+{: .no_toc }
+Before running the application, ensure that the license file is placed in the lib folder of the installation directory:
+
+```js
+cp /path/to/nmsisalos.lic /opt/isalos/lib/
+```
+
+##### Running the Application
+{: .no_toc }
+Once installed, you can launch the application by:
+
+```js
+/opt/isalos/bin/Isalos
+```
+
+Or using the application menu.
+
+#### Installing on RHEL-based Systems (.rpm)
+{: .no_toc }
+
+##### Prerequisites
+{: .no_toc }
+Ensure your system is up to date before installing:
+
+```js
+sudo dnf update -y  
+```
+
+##### Installation Steps
+{: .no_toc }
+1.	Navigate to the directory where the downloaded .rpm file is located.
+1.	Run the following command to install:
+
+```js
+sudo dnf install isalos-{version}-{release}.x86_64.rpm
+```
+
+*For older CentOS versions using `<yum>`, replace `<dnf>` with `<yum>`.*
+
+This will install Isalos in the `</opt>` directory.
+
+
+##### Placing the License File
+{: .no_toc }
+Before running the application, ensure that the license file is placed in the lib folder of the installation directory:
+
+```js
+cp /path/to/nmsisalos.lic /opt/isalos/lib/
+```
+
+##### Running the Application
+{: .no_toc }
+Once installed, you can launch the application by:
+
+```js
+/opt/isalos/bin/Isalos
+```
+
+Or using the application menu.
+
 ## Uninstall Isalos
 To uninstall Isalos, please follow the steps specific to your computer's operating system.
 
-#### Windows
-{: .no_toc }
+### Windows
 To uninstall Isalos, there are two alternative options: 
 
 1. Go to Windows Settings $$\rightarrow$$ Apps & features $$\rightarrow$$ Installed Apps, find Isalos, click the three dots [1], and select Uninstall [2].
@@ -125,12 +316,27 @@ To uninstall Isalos, there are two alternative options:
 
 
 
-#### MacOS
-{: .no_toc }
+### MacOS
 
-#### Linux
+
+### Linux
+
+#### Debian-based Systems
 {: .no_toc }
+To remove the application, run:
+
+```js
+sudo apt remove isalos -y
+```
+
+#### RHEL-based Systems
+{: .no_toc }
+To remove the application, run:
+
+```js
+sudo dnf remove isalos -y
+```
 
 ---
 
-_Instructions last updated on December 2024_
+_Instructions last updated on April 2025_

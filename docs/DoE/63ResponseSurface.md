@@ -3,7 +3,7 @@ layout: default
 title: 6.3 Response Surface 
 parent: 6. DOE
 nav_order: 3
-permalink: /respons-surface.html
+permalink: /response-surface.html
 ---
 
 # Response Surface
