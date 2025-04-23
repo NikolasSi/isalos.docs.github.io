@@ -322,27 +322,27 @@ Explore further preprocessing steps in the [`Data Transformation`](https://www.d
 
 #### House pricing case study
 {: .no_toc }
-* [Isalos workflow](files/Regression/Housing prices/hp.ekk)
+* [Isalos workflow](files/Regression/Housing prices/house_pricing.iap)
 * [Report](files/Regression/Housing prices/Housing Prices.pdf)
 
 #### Insurance charges case study
 {: .no_toc }
-* [Isalos workflow](files/Regression/Insurance charges/ic.ekk)
+* [Isalos workflow](files/Regression/Insurance charges/insurance_charges.iap)
 * [Report](files/Regression/Insurance charges/Insurance Charges.pdf)
 
 #### Salary prediction case study
 {: .no_toc }
-* [Isalos workflow](files/Regression/Salary prediction/sp.ekk)
+* [Isalos workflow](files/Regression/Salary prediction/salary_prediction.iap)
 * [Report](files/Regression/Salary prediction/Salary Prediction.pdf)
 
 #### Breast cancer case study
 {: .no_toc }
-* [Isalos workflow](files/Classification/Breast cancer/bc.ekk)
+* [Isalos workflow](files/Classification/Breast cancer/breast_cancer.iap)
 * [Report](files/Classification/Breast cancer/Breast Cancer.pdf)
 
 #### Parkinson's disease case study
 {: .no_toc }
-* [Isalos workflow](files/Classification/Parkinson's disease/pd.ekk)
+* [Isalos workflow](files/Classification/Parkinson's disease/parkinsons_disease.iap)
 * [Report](files/Classification/Parkinson's disease/Parkinson's Disease.pdf)
 
 ## References {#references-variable-selection}
