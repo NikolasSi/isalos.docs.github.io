@@ -26,7 +26,7 @@ To start a new project, select `File` $$\rightarrow$$ `New` [1] or press `Ctrl` 
 </div>
 
 ## Saving Projects/Models
-At any point during your work, select `File` $$\rightarrow$$ `Save As` [1] from the menu to save the entire project, including all data, models, and configurations. This will save your project in Isalos’ native format for project files (.ekk file). 
+At any point during your work, select `File` $$\rightarrow$$ `Save As` [1] from the menu to save the entire project, including all data, models, and configurations. This will save your project in Isalos’ native format for project files (.iap file). 
 
 Make sure to also click `File` $$\rightarrow$$ `Save` [2] or press `Ctrl` + `S` on your keyboard periodically to ensure you don't lose any progress. This will update the current project with the latest changes.
 
@@ -34,7 +34,7 @@ Make sure to also click `File` $$\rightarrow$$ `Save` [2] or press `Ctrl` + `S` 
 <img src="images/Getting started/save.svg" alt="save" width="500" class="img-responsive">
 </div>
 
-To save a specific model in your project, you must select `File` $$\rightarrow$$ `Import Model from` $$\rightarrow$$ `Current project` [3] and select the model you would like to import [4]. This will save the model in Isalos’ native format for models (.ekkm file), in the application models folder [6] within your Isalos installation directory.
+To save a specific model in your project, you must select `File` $$\rightarrow$$ `Import Model from` $$\rightarrow$$ `Current project` [3] and select the model you would like to import [4]. This will save the model in Isalos’ native format for models (.iapm file), in the application models folder [6] within your Isalos installation directory.
 
 <div style="text-align: center;">
 <img src="images/Getting started/save model.svg" alt="save model" width="800" class="img-responsive">
