@@ -90,23 +90,51 @@ Before launching Isalos for the first time, you must place your valid license fi
 <img src="images/Getting started/license_folder.svg" alt="license folder" width="400" class="img-responsive">
 </div>
 
-#### Activating the License
-{: .no_toc }
-On launching Isalos for the first time, before being able to unlock and use the software, you will need to activate your license by reading and accepting the user terms and conditions. Navigate to the `File` button on the top ribbon [1], and select `Activate` [2].
-
-<div style="text-align: center;">
-<img src="images/Getting started/license_activation1.svg" alt="license activation1" width="600" class="img-responsive">
-</div>
-
-A window with the End User License Agreement [3] will appear. After reading the terms, you can accept [4] them and your license will be activated. 
-
-<div style="text-align: center;">
-<img src="images/Getting started/license_activation2.svg" alt="license activation2" width="600" class="img-responsive">
-</div>
-
-Upon accepting the terms, Isalos will be unlocked and ready to use.
-
 ### MacOS
+
+#### Downloading the Installer
+{: .no_toc }
+Download the Isalos macOS installer .dmg file. Once the download is complete, double-click the .dmg file to open the disk image [1].
+
+<div style="text-align: center;">
+<img src="images/Getting started/MacOS_1.svg" alt="step1" width="100" class="img-responsive">
+</div>
+
+#### Run the Installer
+{: .no_toc }
+After opening the disk image, a new Finder window will appear showing the Isalos application icon. Drag and drop the Isalos icon into your Applications folder. This installs the application on your system.
+
+<div style="text-align: center;">
+<img src="images/Getting started/MacOS_2.jpg" alt="step2" width="400" class="img-responsive">
+</div>
+
+#### Placing License in Installation Folder
+{: .no_toc }
+Before launching Isalos for the first time, you must place your valid license file within the application's internal folder structure. This step is essential for the application to recognize your license.
+
+Open the Applications folder. Right-click on the `Isalos.app` icon and select `Show Package Contents` [2]. 
+
+<div style="text-align: center;">
+<img src="images/Getting started/MacOS_3.svg" alt="step3" width="800" class="img-responsive">
+</div>
+
+Navigate to the `Contents/` folder [3] and place your valid license file inside this folder [4]. You may be prompted to authenticate with an administrator password to complete this step. 
+
+<div style="text-align: center;">
+<img src="images/Getting started/MacOS_4.svg" alt="step4" width="400" class="img-responsive">
+</div>
+
+<div style="text-align: center;">
+<img src="images/Getting started/MacOS_5.svg" alt="step5" width="700" class="img-responsive">
+</div>
+
+_Note: Ensure the license file is named correctly and has not been modified. Improper placement or filename issues may prevent the app from detecting your license._
+
+Once the license file is correctly placed, you can double-click the Isalos application [5] to launch it successfully.
+
+<div style="text-align: center;">
+<img src="images/Getting started/MacOS_6.svg" alt="step6" width="400" class="img-responsive">
+</div>
 
 
 ### Linux
@@ -296,19 +324,34 @@ Once installed, you can launch the application by:
 
 Or using the application menu.
 
+## Activating the license
+On launching Isalos for the first time, before being able to unlock and use the software, you will need to activate your license by reading and accepting the user terms and conditions. Navigate to the `File` button on the top ribbon [1], and select `Activate` [2].
+
+<div style="text-align: center;">
+<img src="images/Getting started/license_activation1.svg" alt="license activation1" width="600" class="img-responsive">
+</div>
+
+A window with the End User License Agreement [3] will appear. After reading the terms, you can accept [4] them and your license will be activated. 
+
+<div style="text-align: center;">
+<img src="images/Getting started/license_activation2.svg" alt="license activation2" width="600" class="img-responsive">
+</div>
+
+Upon accepting the terms, Isalos will be unlocked and ready to use.
+
 ## Uninstall Isalos
 To uninstall Isalos, please follow the steps specific to your computer's operating system.
 
 ### Windows
 To uninstall Isalos, there are two alternative options: 
 
-1. Go to Windows Settings $$\rightarrow$$ Apps & features $$\rightarrow$$ Installed Apps, find Isalos, click the three dots [1], and select Uninstall [2].
+* Go to `Windows Settings` $$\rightarrow$$ `Apps & features` $$\rightarrow$$ `Installed Apps`, find Isalos, click the three dots [1], and select `Uninstall` [2].
 
 <div style="text-align: center;">
 <img src="images/Getting started/Uninstall_windows1.svg" alt="license activation2" width="600" class="img-responsive">
 </div>
 
-2. Go to Control Panel $$\rightarrow$$ Programs and Features, find Isalos, right-click on it, and select Uninstall [1].
+* Go to `Control Panel` $$\rightarrow$$ `Programs and Features`, find Isalos, right-click on it, and select `Uninstall` [1].
 
 <div style="text-align: center;">
 <img src="images/Getting started/Uninstall_windows2.svg" alt="license activation2" width="600" class="img-responsive">
@@ -317,6 +360,9 @@ To uninstall Isalos, there are two alternative options:
 
 
 ### MacOS
+To uninstall Isalos from your Mac:
+1.	Go to your Applications folder.
+1.	Locate `Isalos.app`, right-click on it, and select `Move to Trash`.
 
 
 ### Linux
