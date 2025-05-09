@@ -571,6 +571,46 @@ In the right-hand spreadsheet of the tab the output data matrix with the actual 
 </div>
 
 ---
+
+## Generalized Linear Models
+
+##### Binary Logistic Regression
+{: .no_toc}
+
+##### Ordinal Logistic Regression
+{: .no_toc}
+
+##### Multinomial Logistic Regression
+{: .no_toc}
+
+##### Probit Regression
+{: .no_toc}
+
+##### CLogLog Regression
+{: .no_toc}
+
+### Input
+{: .no_toc }
+
+### Configuration
+{: .no_toc }
+
+### Output
+{: .no_toc }
+
+### Example
+{: .no_toc }
+
+##### Input
+{: .no_toc }
+
+##### Configuration
+{: .no_toc }
+
+##### Output
+{: .no_toc }
+
+---
  
 ## Tips
 
