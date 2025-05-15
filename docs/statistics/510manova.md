@@ -37,6 +37,10 @@ permalink: /manova.html
 ##### Configuration
 {: .no_toc }
 
+<div style="text-align: center;">
+<img src="images/ANOVA/manova.png" alt="manova-configuration" width="400" height="300" class="img-responsive">
+</div>
+
 ##### Output
 {: .no_toc }
 
@@ -61,6 +65,10 @@ permalink: /manova.html
 
 ##### Configuration
 {: .no_toc }
+
+<div style="text-align: center;">
+<img src="images/ANOVA/mancova.png" alt="mancova-configuration" width="400" height="300" class="img-responsive">
+</div>
 
 ##### Output
 {: .no_toc }
