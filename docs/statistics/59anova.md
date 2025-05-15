@@ -37,6 +37,10 @@ permalink: /anova.html
 ##### Configuration
 {: .no_toc }
 
+<div style="text-align: center;">
+<img src="images/ANOVA/one-way-anova.png" alt="one-way-anova-configuration" width="400" height="300" class="img-responsive">
+</div>
+
 ##### Output
 {: .no_toc }
 
@@ -61,6 +65,10 @@ permalink: /anova.html
 
 ##### Configuration
 {: .no_toc }
+
+<div style="text-align: center;">
+<img src="images/ANOVA/two-way-anova.png" alt="two-way-anova-configuration" width="400" height="300" class="img-responsive">
+</div>
 
 ##### Output
 {: .no_toc }
@@ -87,6 +95,10 @@ permalink: /anova.html
 ##### Configuration
 {: .no_toc }
 
+<div style="text-align: center;">
+<img src="images/ANOVA/factorial-anova.png" alt="factorial-anova-configuration" width="400" height="300" class="img-responsive">
+</div>
+
 ##### Output
 {: .no_toc }
 
@@ -111,6 +123,10 @@ permalink: /anova.html
 
 ##### Configuration
 {: .no_toc }
+
+<div style="text-align: center;">
+<img src="images/ANOVA/ancova.png" alt="ancova-configuration" width="400" height="300" class="img-responsive">
+</div>
 
 ##### Output
 {: .no_toc }
@@ -137,6 +153,10 @@ permalink: /anova.html
 ##### Configuration
 {: .no_toc }
 
+<div style="text-align: center;">
+<img src="images/ANOVA/repeated-features-anova.png" alt="repeated-features-anova-configuration" width="400" height="300" class="img-responsive">
+</div>
+
 ##### Output
 {: .no_toc }
 
@@ -161,6 +181,10 @@ permalink: /anova.html
 
 ##### Configuration
 {: .no_toc }
+
+<div style="text-align: center;">
+<img src="images/ANOVA/mixed-anova.png" alt="mixed-anova-configuration" width="400" height="300" class="img-responsive">
+</div>
 
 ##### Output
 {: .no_toc }

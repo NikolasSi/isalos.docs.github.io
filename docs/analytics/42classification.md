@@ -577,17 +577,29 @@ In the right-hand spreadsheet of the tab the output data matrix with the actual 
 ##### Binary Logistic Regression
 {: .no_toc}
 
+<div style="text-align: center;">
+<img src="images/Classification/glm.png" alt="glm-configuration" width="400" height="300" class="img-responsive">
+</div>
+
 ##### Ordinal Logistic Regression
 {: .no_toc}
 
 ##### Multinomial Logistic Regression
 {: .no_toc}
 
+<div style="text-align: center;">
+<img src="images/Classification/glmm.png" alt="glmm-configuration" width="400" height="300" class="img-responsive">
+</div>
+
 ##### Probit Regression
 {: .no_toc}
 
 ##### CLogLog Regression
 {: .no_toc}
+
+<div style="text-align: center;">
+<img src="images/Classification/loglinear.png" alt="loglinear-configuration" width="400" height="300" class="img-responsive">
+</div>
 
 ### Input
 {: .no_toc }
