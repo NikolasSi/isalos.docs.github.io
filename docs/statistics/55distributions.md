@@ -1,8 +1,8 @@
 ---
 layout: default
-title: 5.3 Probability Distribution Functions
+title: 5.5 Probability Distribution Functions
 parent: 5. Statistics
-nav_order: 3
+nav_order: 5
 permalink: /distributions.html
 ---
 

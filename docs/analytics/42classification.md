@@ -572,47 +572,12 @@ In the right-hand spreadsheet of the tab the output data matrix with the actual 
 
 ---
 
-## Generalized Linear Models
+## Statistical fitting
 
-##### Binary Logistic Regression
+### Generalized Linear Models
+
+#### Binary Logistic
 {: .no_toc}
-
-<div style="text-align: center;">
-<img src="images/Classification/glm.png" alt="glm-configuration" width="400" height="300" class="img-responsive">
-</div>
-
-##### Ordinal Logistic Regression
-{: .no_toc}
-
-##### Multinomial Logistic Regression
-{: .no_toc}
-
-<div style="text-align: center;">
-<img src="images/Classification/glmm.png" alt="glmm-configuration" width="400" height="300" class="img-responsive">
-</div>
-
-##### Probit Regression
-{: .no_toc}
-
-##### CLogLog Regression
-{: .no_toc}
-
-<div style="text-align: center;">
-<img src="images/Classification/loglinear.png" alt="loglinear-configuration" width="400" height="300" class="img-responsive">
-</div>
-
-### Input
-{: .no_toc }
-
-### Configuration
-{: .no_toc }
-
-### Output
-{: .no_toc }
-
-### Example
-{: .no_toc }
-
 ##### Input
 {: .no_toc }
 
@@ -621,6 +586,255 @@ In the right-hand spreadsheet of the tab the output data matrix with the actual 
 
 ##### Output
 {: .no_toc }
+
+##### Example
+{: .no_toc }
+
+###### Input
+{: .no_toc }
+
+###### Configuration
+{: .no_toc }
+
+###### Output
+{: .no_toc }
+
+#### Probit 
+{: .no_toc}
+##### Input
+{: .no_toc }
+
+##### Configuration
+{: .no_toc }
+
+##### Output
+{: .no_toc }
+
+##### Example
+{: .no_toc }
+
+###### Input
+{: .no_toc }
+
+###### Configuration
+{: .no_toc }
+
+###### Output
+{: .no_toc }
+
+#### Complementary Log-Log 
+{: .no_toc}
+##### Input
+{: .no_toc }
+
+##### Configuration
+{: .no_toc }
+
+##### Output
+{: .no_toc }
+
+##### Example
+{: .no_toc }
+
+###### Input
+{: .no_toc }
+
+###### Configuration
+{: .no_toc }
+
+###### Output
+{: .no_toc }
+
+#### Ordinal Logistic
+{: .no_toc}
+##### Input
+{: .no_toc }
+
+##### Configuration
+{: .no_toc }
+
+##### Output
+{: .no_toc }
+
+##### Example
+{: .no_toc }
+
+###### Input
+{: .no_toc }
+
+###### Configuration
+{: .no_toc }
+
+###### Output
+{: .no_toc }
+
+#### Ordinal Probit
+{: .no_toc}
+##### Input
+{: .no_toc }
+
+##### Configuration
+{: .no_toc }
+
+##### Output
+{: .no_toc }
+
+##### Example
+{: .no_toc }
+
+###### Input
+{: .no_toc }
+
+###### Configuration
+{: .no_toc }
+
+###### Output
+{: .no_toc }
+
+#### Multinomial Logistic 
+{: .no_toc}
+##### Input
+{: .no_toc }
+
+##### Configuration
+{: .no_toc }
+
+##### Output
+{: .no_toc }
+
+##### Example
+{: .no_toc }
+
+###### Input
+{: .no_toc }
+
+###### Configuration
+{: .no_toc }
+
+###### Output
+{: .no_toc }
+
+### Generalized Estimating Equations
+
+#### Binary Logistic
+{: .no_toc}
+##### Input
+{: .no_toc }
+
+##### Configuration
+{: .no_toc }
+
+##### Output
+{: .no_toc }
+
+##### Example
+{: .no_toc }
+
+###### Input
+{: .no_toc }
+
+###### Configuration
+{: .no_toc }
+
+###### Output
+{: .no_toc }
+
+#### Probit 
+{: .no_toc}
+##### Input
+{: .no_toc }
+
+##### Configuration
+{: .no_toc }
+
+##### Output
+{: .no_toc }
+
+##### Example
+{: .no_toc }
+
+###### Input
+{: .no_toc }
+
+###### Configuration
+{: .no_toc }
+
+###### Output
+{: .no_toc }
+
+#### Complementary Log-Log 
+{: .no_toc}
+##### Input
+{: .no_toc }
+
+##### Configuration
+{: .no_toc }
+
+##### Output
+{: .no_toc }
+
+##### Example
+{: .no_toc }
+
+###### Input
+{: .no_toc }
+
+###### Configuration
+{: .no_toc }
+
+###### Output
+{: .no_toc }
+
+
+#### Ordinal Logistic
+{: .no_toc}
+##### Input
+{: .no_toc }
+
+##### Configuration
+{: .no_toc }
+
+##### Output
+{: .no_toc }
+
+##### Example
+{: .no_toc }
+
+###### Input
+{: .no_toc }
+
+###### Configuration
+{: .no_toc }
+
+###### Output
+{: .no_toc }
+
+#### Ordinal Probit
+{: .no_toc}
+##### Input
+{: .no_toc }
+
+##### Configuration
+{: .no_toc }
+
+##### Output
+{: .no_toc }
+
+##### Example
+{: .no_toc }
+
+###### Input
+{: .no_toc }
+
+###### Configuration
+{: .no_toc }
+
+###### Output
+{: .no_toc }
+
+
+
+
 
 ---
  

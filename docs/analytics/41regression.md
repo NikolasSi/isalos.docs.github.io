@@ -506,33 +506,19 @@ In the right-hand spreadsheet of the tab the output data matrix with the actual 
 </div>
 ---
 
-## Generalized Linear Models
+## Statistical fitting
 
-##### Linear Regression
-{: .no_toc}
-
-##### Negative Binomial Regression
-{: .no_toc}
-
-##### Poisson Regression
-{: .no_toc}
-
-##### Gamma Regression
-{: .no_toc}
-
-##### Tweedie Regression
-{: .no_toc}
-
-### Input
+### MLR
+#### Input
 {: .no_toc }
 
-### Configuration
+#### Configuration
 {: .no_toc }
 
-### Output
+#### Output
 {: .no_toc }
 
-### Example
+#### Example
 {: .no_toc }
 
 ##### Input
@@ -544,6 +530,290 @@ In the right-hand spreadsheet of the tab the output data matrix with the actual 
 ##### Output
 {: .no_toc }
 
+
+### Generalized Linear Models
+
+#### Linear
+{: .no_toc}
+##### Input
+{: .no_toc }
+
+##### Configuration
+{: .no_toc }
+
+##### Output
+{: .no_toc }
+
+##### Example
+{: .no_toc }
+
+###### Input
+{: .no_toc }
+
+###### Configuration
+{: .no_toc }
+
+###### Output
+{: .no_toc }
+
+#### Negative Binomial 
+{: .no_toc}
+##### Input
+{: .no_toc }
+
+##### Configuration
+{: .no_toc }
+
+##### Output
+{: .no_toc }
+
+##### Example
+{: .no_toc }
+
+###### Input
+{: .no_toc }
+
+###### Configuration
+{: .no_toc }
+
+###### Output
+{: .no_toc }
+
+#### Poisson 
+{: .no_toc}
+##### Input
+{: .no_toc }
+
+##### Configuration
+{: .no_toc }
+
+##### Output
+{: .no_toc }
+
+##### Example
+{: .no_toc }
+
+###### Input
+{: .no_toc }
+
+###### Configuration
+{: .no_toc }
+
+###### Output
+{: .no_toc }
+
+#### Gamma 
+{: .no_toc}
+##### Input
+{: .no_toc }
+
+##### Configuration
+{: .no_toc }
+
+##### Output
+{: .no_toc }
+
+##### Example
+{: .no_toc }
+
+###### Input
+{: .no_toc }
+
+###### Configuration
+{: .no_toc }
+
+###### Output
+{: .no_toc }
+
+#### Tweedie with Identity Link
+{: .no_toc}
+
+##### Input
+{: .no_toc }
+
+##### Configuration
+{: .no_toc }
+
+##### Output
+{: .no_toc }
+
+##### Example
+{: .no_toc }
+
+###### Input
+{: .no_toc }
+
+###### Configuration
+{: .no_toc }
+
+###### Output
+{: .no_toc }
+
+#### Tweedie with Log Link
+{: .no_toc}
+
+##### Input
+{: .no_toc }
+
+##### Configuration
+{: .no_toc }
+
+##### Output
+{: .no_toc }
+
+##### Example
+{: .no_toc }
+
+###### Input
+{: .no_toc }
+
+###### Configuration
+{: .no_toc }
+
+###### Output
+{: .no_toc }
+
+### Generalized Estimating Equations
+
+#### Linear
+{: .no_toc}
+##### Input
+{: .no_toc }
+
+##### Configuration
+{: .no_toc }
+
+##### Output
+{: .no_toc }
+
+##### Example
+{: .no_toc }
+
+###### Input
+{: .no_toc }
+
+###### Configuration
+{: .no_toc }
+
+###### Output
+{: .no_toc }
+
+#### Negative Binomial 
+{: .no_toc}
+##### Input
+{: .no_toc }
+
+##### Configuration
+{: .no_toc }
+
+##### Output
+{: .no_toc }
+
+##### Example
+{: .no_toc }
+
+###### Input
+{: .no_toc }
+
+###### Configuration
+{: .no_toc }
+
+###### Output
+{: .no_toc }
+
+#### Poisson 
+{: .no_toc}
+##### Input
+{: .no_toc }
+
+##### Configuration
+{: .no_toc }
+
+##### Output
+{: .no_toc }
+
+##### Example
+{: .no_toc }
+
+###### Input
+{: .no_toc }
+
+###### Configuration
+{: .no_toc }
+
+###### Output
+{: .no_toc }
+
+#### Gamma 
+{: .no_toc}
+##### Input
+{: .no_toc }
+
+##### Configuration
+{: .no_toc }
+
+##### Output
+{: .no_toc }
+
+##### Example
+{: .no_toc }
+
+###### Input
+{: .no_toc }
+
+###### Configuration
+{: .no_toc }
+
+###### Output
+{: .no_toc }
+
+#### Tweedie with Identity Link
+{: .no_toc}
+
+##### Input
+{: .no_toc }
+
+##### Configuration
+{: .no_toc }
+
+##### Output
+{: .no_toc }
+
+##### Example
+{: .no_toc }
+
+###### Input
+{: .no_toc }
+
+###### Configuration
+{: .no_toc }
+
+###### Output
+{: .no_toc }
+
+#### Tweedie with Log Link
+{: .no_toc}
+
+##### Input
+{: .no_toc }
+
+##### Configuration
+{: .no_toc }
+
+##### Output
+{: .no_toc }
+
+##### Example
+{: .no_toc }
+
+###### Input
+{: .no_toc }
+
+###### Configuration
+{: .no_toc }
+
+###### Output
+{: .no_toc }
 ---
 
 ## Tips

@@ -1,12 +1,12 @@
 ---
 layout: default
-title: 5.1 Domain-APD
+title: 5.1 Applicability Domain
 parent: 5. Statistics
 nav_order: 1
 permalink: /domain-apd.html
 ---
 
-# Domain-APD
+# Applicability Domain - APD
 {: .no_toc }
 The main goal of models’ development and machine learning applications is the possibility of facilitating strategic decisions by providing reliable predictions. However, stakeholders need to build a level of confidence towards the produced predictions to employ it in real-life applications. Therefore, every theoretical model should be accepted in practical use via the definition of an area of accepted (reliable) predictions. This can be achieved by defining the applicability domain of the model, for example, by comparing the relative “position” of the test instances to the space limits framed by the training instances.<sup>[1](#references-domain)</sup>
 
@@ -32,7 +32,7 @@ Initially, all Euclidean distances between all training instances are calculated
 
 Use the `Domain – APD` function by browsing in the top ribbon: 
 
-| Statistics $$\rightarrow$$ Domain – APD |
+| Statistics $$\rightarrow$$ Applicability Domain $$\rightarrow$$ APD |
 
 ### Input
 {: .no_toc }
@@ -63,7 +63,7 @@ In the left-hand spreadsheet of the tab insert the training set data. In case th
 ##### Configuration
 {: .no_toc }
 
-1. Select `Statistics` $$\rightarrow$$ `Domain – APD`.
+1. Select `Statistics` $$\rightarrow$$ `Applicability Domain` $$\rightarrow$$ `APD`.
 1. Define the `Z` value [1].
 1. Select from the `Perform Computations` dropdown list whether calculations are performed on CPU or on GPU [2].
 1. Click on the `Execute` button [3] to calculate the applicability domain limits.
