@@ -532,52 +532,188 @@ In the right-hand spreadsheet of the tab the output data matrix with the actual 
 
 
 ### Generalized Linear Models
+Generalized Linear Models (GLMs) are a flexible class of regression models that generalize ordinary linear regression to allow for response variables that have error distributions other than the normal distribution. GLMs are particularly useful when the response variable is categorical (e.g., binary outcomes) or count data, where assumptions of normality and constant variance are inappropriate.
+A GLM consists of three components:
+1. 	Random Component: The response variable $$y_i$$  is assumed to follow a distribution from the exponential family (e.g., Normal, Binomial, Poisson, Gamma).
+1. 	Systematic Component: A linear predictor  $$\eta_i= x_i^T \beta$$, where $$x_i$$ is the vector of predictors for the i-th observation, and $$\beta$$ is the vector of coefficients.
+1. 	Link Function: A smooth, monotonic function $$g(⋅)$$ that relates the mean  $$\mu_i= E[y_i]$$ of the response to the linear predictor via $$g(\mu_i )= \eta_i$$.
+
+Unlike traditional linear regression, GLMs do not assume a linear relationship between the predictors and the response. Instead, the link function transforms the expected value of the response variable to a scale where it can be modeled as a linear combination of the predictors.
+GLM parameters are estimated using Maximum Likelihood Estimation (MLE). The likelihood is constructed based on the assumed distribution of the response variable, and the log-likelihood function is maximized to obtain the parameter estimates.
+Because log-likelihood is usually a nonlinear function of the parameters, iterative optimization method such as Newton-Raphson and Fisher Scoring are used to obtain the maximum likelihood estimates of the parameters of each model.
+Categorical variables are encoded using one-hot encoding, where each category is represented by a binary (0 or 1) dummy variable. The reference category for each categorical variable is the first observed category, and its corresponding dummy variable is omitted to avoid multicollinearity. This omission allows the reference category to be implicitly represented in the model intercept, providing a baseline for interpreting the effects of the other categories.
+
 
 #### Linear
 {: .no_toc}
+The classical linear regression model assumes that the response variable follows a normal (Gaussian) distribution, conditional on the explanatory variables. Specifically, for a continuous dependent variable $$Y$$, the model expresses $$Y$$ as a linear function of one or more independent variables $$X_1, X_2, …, X_p$$, plus a normally distributed error term:
+<div id="linear regression equation" style="text-align: center;">
+    $$
+    \begin{equation}
+    Y = \beta_0 + \beta_1X_1 + ... + \beta_pX_p + \epsilon \text{  ,  } \epsilon \sim \mathcal{N}(0,\sigma^2)
+    \end{equation}
+    $$
+</div> 
+
+Within the framework of Generalized Linear Models (GLMs), linear regression corresponds to the case where the distribution of the dependent variable is Gaussian, and the link function is the identity function:   
+<div id="linear regression link function" style="text-align: center;">
+    $$
+    \begin{equation}
+    g(\mu) = \mu \text{, where } \mu = \mathbb{E}[Y]
+    \end{equation}
+    $$
+</div>                        
+
+This identity link implies that the expected value of the outcome is directly modeled as a linear combination of the predictors.
+Linear regression is the most used when the dependent variable is continuous, unbounded, and approximately normally distributed, and when the relationship between the predictors and the outcome is assumed to be additive and linear.
+
+Use the Linear Regression method by browsing in the top ribbon: 
+
+| Analytics $$\rightarrow$$ Regression $$\rightarrow$$ Statistical fitting $$\rightarrow$$ Generalized Linear Models |
+
+And then choosing "Linear" as the `Type`.
+
+
 ##### Input
 {: .no_toc }
+All variables need to be specified in the datasheet. Numerical values will be used for the covariates and the dependent variable. Factors, however, can be textual as well as numerical. The design for Linear Regression requires at least two columns in the input sheet: one column representing either a categorical factor or a covariate (independent variable), and another column for the numerical response. Each row represents a single observation.
 
 ##### Configuration
 {: .no_toc }
 
+|**Confidence Level (%)**| Specify the confidence level of the analysis. Values should range from 0 to 100 and correspond to percentages. |
+|**Dependent Variable**| Select the column that corresponds to values of the dependent variable. |
+|**Scale Parameter Method**| Determines how the scale (error variance) parameter is estimated. Options include: Fixed value, Deviance, or Pearson Chi-square. |
+|**Value**| Specifies the scale parameter value manually, only when Fixed value is selected in the Scale Parameter Method. |
+|**Factors/Covariates/Excluded Columns**| Select manually the columns that correspond to factors and the columns that correspond to covariates through the dialog window: Use the buttons to move columns between the Factors and Covariates list and Excluded Columns list. Single-arrow buttons will move all selected columns and double-arrow buttons will move all columns. At least one covariate  or factor column should be specified.|
+|**Custom/Include All Main Effects/Full Factorial**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Include All Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. Note that the Include All Main Effects and Full Factorial options do not allow the use of a formula.|
+|**Formula**| Specify the model formula used for the analysis if the Custom option is selected. Include all variables listed under Factors or Covariates, separated by “+”. To include interaction terms, use the format VariableA:VariableB. If interaction terms are included, the dataset must contain all combinations of the levels of the involved categorical variables — i.e., the design must be fully crossed — to ensure the model can be properly estimated.|
+
 ##### Output
 {: .no_toc }
+The output of the linear regression procedure is organized into:
+1. The Predicted Values Table contains the actual values of the dependent variable and the corresponding predicted values generated by the model for each observation.
+1. The Goodness of Fit Table includes statistical measures that assess how well the model fits the data, such as Deviance, Log-Likelihood, AIC, BIC, and related metrics.
+1. The Parameter Estimates Table displays the estimated coefficients for each variable in the model, along with standard errors, confidence intervals, test statistics, degrees of freedom, and p-values.
+
 
 ##### Example
 {: .no_toc }
 
 ###### Input
 {: .no_toc }
+The input datasheet must include one continuous dependent variable, which will serve as the target, and at least one column with a continuous or categorical independent variable.
+<div style="text-align: center;">
+<img src="images/GLM/LinearGLM_Input.png" alt="linearGLM-input" width="400" height="300" class="img-responsive">
+</div>
 
 ###### Configuration
 {: .no_toc }
+1. Select `Analytics` → `Regression` → `Statistical fitting` → `Generalized Linear Models`
+1. Set the `Type` [1] of regression to Linear.
+1. Specify the `Confidence Level (%)` [2] for the test.
+1. Select the `Dependent Variable` [3].
+1. Select the `Scale Parameter Method` [4].
+1. Specify the Value [5] of the scale parameter method if the Fixed value option was chosen as the scale parameter method.
+1. Select the columns by clicking on the arrow buttons [9] and moving columns between the `Excluded Columns` [6] and `Factors` [7] and `Covariates` [8] lists.
+1. Select your preferred option to define the model you want to analyze [10].
+1. If the `Custom` option is selected, specify the `Formula` [11] for the analysis.
+1. Click on the `Execute` button [12] to perform the Linear Regression method.
+
+<div style="text-align: center;">
+<img src="images/GLM/LinearGLM_Configuration.png" alt="linearGLM-config" width="400" height="300" class="img-responsive">
+</div>
 
 ###### Output
 {: .no_toc }
+The predictions, Goodness of Fit table and Parameter Estimates table are shown in the output spreadsheet.
+<div style="text-align: center;">
+<img src="images/GLM/LinearGLM_Output.png" alt="linearGLM-output" width="400" height="300" class="img-responsive">
+</div>
 
 #### Negative Binomial 
 {: .no_toc}
+Negative Binomial Regression is a type of generalized linear model (GLM) used for modeling count data that exhibit overdispersion – that is, when the variance exceeds the mean. It assumes that the dependent variable follows a Negative Binomial distribution, which is a generalization of the Poisson distribution that introduces an additional dispersion parameter to account for variability beyond the mean. The most  commonly used link function is the log link, which models the logarithm of the expected count as a linear combination of the predictors:
+<div id="negative binomial regression link function" style="text-align: center;">
+    $$
+    \begin{equation}
+    g(\mu) = log(\mu) = x\beta
+    \end{equation}
+    $$
+</div>       
+Negative Binomial Regression is particularly useful in scenarios such as modeling the number of hospital visits, insurance claims, or any count-based outcome where the data are not well-fitted by Poisson model due to excess variation.
+
+Use the Negative Binomial Regression method by browsing in the top ribbon: 
+
+| Analytics $$\rightarrow$$ Regression $$\rightarrow$$ Statistical fitting $$\rightarrow$$ Generalized Linear Models |
+
+And then choosing "Negative Binomial" as the `Type`.
+
 ##### Input
 {: .no_toc }
+All variables must be specified in the datasheet. The dependent variable must be a non-negative integer count, as Negative Binomial Regression is designed for modeling count data. The dependent variable should not contain decimal values, negative numbers, or missing entries. Independent variables may be either numerical or categorical. Categorical variables can be represented using either text labels or numerical codes. The input datasheet must contain at least two columns: one for the dependent variable and one or more for the independent variables. Each row corresponds to single observation. This model is especially appropriate when the count data show overdispersion, meaning that the variance is greater than the mean – something that the standard Poisson model cannot adequately handle.
 
 ##### Configuration
 {: .no_toc }
 
+|**Confidence Level (%)**| Specify the confidence level of the analysis. Values should range from 0 to 100 and correspond to percentages. |
+|**Max Iterations**| Defines the maximum number of iterations the model is allowed to perform during the estimation process. If the model fails to converge before reaching this number, the algorithm stops and returns the values of the last iteration.|
+|**Maximum Step-Halving**| Controls how many times the algorithm is allowed to halve the step size during parameter updates when an iteration leads to worse model fit.|
+|**Dependent Variable**| Select the column that corresponds to values of the dependent variable. |
+|**Parameter Estimation**| This option lets you choose how the model parameters will be estimated, Newton-Raphson, Fisher Scoring or Hybrid.|
+|**Maximum Scoring Iterations**| The "Maximum Scoring Iterations" parameter is used when the hybrid estimation method is selected, instead of Newton-Raphson or Fisher scoring alone, and specifies the maximum number of iterations to be performed during the scoring phase.|
+|**Minimum Change in Parameter Estimates**| Sets the tolerance level for convergence — the smallest change in parameter estimates between iterations required to continue optimization. If the change in all parameters is below this value, the algorithm assumes convergence has been reached.|
+|**Scale Parameter Method**| Determines how the scale (error variance) parameter is estimated. Options include: Fixed value, Deviance, or Pearson Chi-square. |
+|**Value**| Specifies the scale parameter value manually, only when Fixed value is selected in the Scale Parameter Method. |
+|**Factors/Covariates/Excluded Columns**| Select manually the columns that correspond to factors and the columns that correspond to covariates through the dialog window: Use the buttons to move columns between the Factors and Covariates list and Excluded Columns list. Single-arrow buttons will move all selected columns and double-arrow buttons will move all columns. At least one covariate  or factor column should be specified.|
+|**Custom/Include All Main Effects/Full Factorial**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Include All Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. Note that the Include All Main Effects and Full Factorial options do not allow the use of a formula.|
+|**Formula**| Specify the model formula used for the analysis if the Custom option is selected. Include all variables listed under Factors or Covariates, separated by “+”. To include interaction terms, use the format VariableA:VariableB. If interaction terms are included, the dataset must contain all combinations of the levels of the involved categorical variables — i.e., the design must be fully crossed — to ensure the model can be properly estimated.|
+
 ##### Output
 {: .no_toc }
+The output of the Negative Binomial regression procedure is organized into three main sections: the Predicted Values Table, the Goodness of Fit Statistics, and the Parameter Estimates Table.
+1. The Predicted Values Table contains the actual values of the dependent variable and the corresponding predicted values generated by the model for each observation.
+1. The Goodness of Fit Table includes statistical measures that assess how well the model fits the data, such as Deviance, Log-Likelihood, AIC, BIC, and related metrics.
+1. The Parameter Estimates Table displays the estimated coefficients for each variable in the model, along with standard errors, confidence intervals, test statistics, degrees of freedom, and p-values.
+
 
 ##### Example
 {: .no_toc }
 
 ###### Input
 {: .no_toc }
+The input datasheet must include one continuous, non-negative dependent variable, which will serve as the target, and at least one column with a continuous or categorical independent variable. Optionally, an exposure variable can be included to account for different observation times or risk levels.
+<div style="text-align: center;">
+<img src="images/GLM/NegBinGLM_Input.png" alt="negbinGLM-input" width="400" height="300" class="img-responsive">
+</div>
 
 ###### Configuration
 {: .no_toc }
+1.	Select `Analytics` → `Regression` → `Statistical fitting`  → `Generalized Linear Models`
+1.	Set the `Type` [1] of regression to Negative Binomial.
+1.	Specify the `Confidence Level (%)` [2] for the test.
+1.	Specify `Max Iterations` [3].
+1.	Specify the `Maximum Step-Halving` [4].
+1.	Select the `Dependent Variable` [5].
+1.	Select the `Parameter Estimation Method` [6].
+1.	Specify the `Maximum Scoring Iterations` if Hybrid option is selected as the `Parameter Estimation Method`[7].
+1.	Specify the `Minimum Change in Parameter Estimates` [8].
+1.	Select the `Scale Parameter Method` [9].
+1.	Specify the `Value` [10] of the scale parameter method if the Fixed value option was chosen as the scale parameter method.
+1.	Select the columns by clicking on the arrow buttons [14] and moving columns between the `Excluded Columns` [11] and `Factors` [12] and `Covariates` [13] lists.
+1.	Select your preferred option to define the model you want to analyze [15].
+1.	If the `Custom` option is selected, specify the `Formula` [16] for the analysis.
+1.	Click on the `Execute` button [17] to perform the Negative Binomial Regression method.
+<div style="text-align: center;">
+<img src="images/GLM/NegBinGLM_Configuration.png" alt="negbinGLM-config" width="400" height="300" class="img-responsive">
+</div>
 
 ###### Output
 {: .no_toc }
+The predictions, Goodness of Fit table and Parameter Estimates table are shown in the output spreadsheet
+<div style="text-align: center;">
+<img src="images/GLM/NegBinGLM_Output.png" alt="negbinGLM-output" width="400" height="300" class="img-responsive">
+</div>
 
 #### Poisson 
 {: .no_toc}
