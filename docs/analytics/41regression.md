@@ -609,7 +609,7 @@ The input datasheet must include one continuous dependent variable, which will s
 
 ###### Configuration
 {: .no_toc }
-1. Select `Analytics` → `Regression` → `Statistical fitting` → `Generalized Linear Models`
+1. Select `Analytics` $$\rightarrow$$ `Regression` $$\rightarrow$$ `Statistical fitting` $$\rightarrow$$ `Generalized Linear Models`
 1. Set the `Type` [1] of regression to Linear.
 1. Specify the `Confidence Level (%)` [2] for the test.
 1. Select the `Dependent Variable` [3].
@@ -689,7 +689,7 @@ The input datasheet must include one continuous, non-negative dependent variable
 
 ###### Configuration
 {: .no_toc }
-1.	Select `Analytics` → `Regression` → `Statistical fitting`  → `Generalized Linear Models`
+1.	Select `Analytics` $$\rightarrow$$ `Regression` $$\rightarrow$$ `Statistical fitting`  $$\rightarrow$$ `Generalized Linear Models`
 1.	Set the `Type` [1] of regression to Negative Binomial.
 1.	Specify the `Confidence Level (%)` [2] for the test.
 1.	Specify `Max Iterations` [3].
@@ -717,97 +717,345 @@ The predictions, Goodness of Fit table and Parameter Estimates table are shown i
 
 #### Poisson 
 {: .no_toc}
+Poisson Regression is type of generalized linear model (GLM) used for modeling count data, where the dependent variable represents the number of times an event occurs within a fixed period, space, or exposure. It assumes that the response variable follows a Poisson distribution, where the mean is equal to the variance. The most common link function used is the log link, which relates the natural logarithm of the expected count to a linear combination of independent variables..
+<div id="poisson regression link function" style="text-align: center;">
+    $$
+    \begin{equation}
+    g(\mu) = log(\mu) = x\beta
+    \end{equation}
+    $$
+</div>   
+The independent variables can be either numerical or categorical, and they are used to explain variation in the count outcome. Poisson Regression is typically applied in cases such as modeling the number of doctor visits, traffic accidents, or product defects.
+
+Use the Poisson Regression method by browsing in the top ribbon: 
+
+| Analytics $$\rightarrow$$ Regression $$\rightarrow$$ Statistical fitting $$\rightarrow$$ Generalized Linear Models |
+
+And then choosing "Poisson" as the `Type`.
+
 ##### Input
 {: .no_toc }
+All variables must be specified in the datasheet. The dependent variable must be a non-negative integer count, as Poisson Regression is designed for modeling count data. The dependent variable should not contain decimal values, negative numbers, or missing entries. Independent variables may be either numerical or categorical. Categorical variables can be represented using either text labels or numerical codes. The input datasheet must include at least two columns: one for the dependent variable and one or more for the independent variables. Each row corresponds to a single observation. This model is appropriate when the count data has a variance approximately equal to the mean.
 
 ##### Configuration
 {: .no_toc }
 
+|**Confidence Level (%)**| Specify the confidence level of the analysis. Values should range from 0 to 100 and correspond to percentages. |
+|**Max Iterations**| Defines the maximum number of iterations the model is allowed to perform during the estimation process. If the model fails to converge before reaching this number, the algorithm stops and returns the values of the last iteration.|
+|**Maximum Step-Halving**| Controls how many times the algorithm is allowed to halve the step size during parameter updates when an iteration leads to worse model fit.|
+|**Dependent Variable**| Select the column that corresponds to values of the dependent variable. |
+|**Parameter Estimation**| This option lets you choose how the model parameters will be estimated, Newton-Raphson, Fisher Scoring or Hybrid.|
+|**Maximum Scoring Iterations**| The "Maximum Scoring Iterations" parameter is used when the hybrid estimation method is selected, instead of Newton-Raphson or Fisher scoring alone, and specifies the maximum number of iterations to be performed during the scoring phase.|
+|**Minimum Change in Parameter Estimates**| Sets the tolerance level for convergence — the smallest change in parameter estimates between iterations required to continue optimization. If the change in all parameters is below this value, the algorithm assumes convergence has been reached.|
+|**Scale Parameter Method**| Determines how the scale (error variance) parameter is estimated. Options include: Fixed value, Deviance, or Pearson Chi-square. |
+|**Value**| Specifies the scale parameter value manually, only when Fixed value is selected in the Scale Parameter Method. |
+|**Factors/Covariates/Excluded Columns**| Select manually the columns that correspond to factors and the columns that correspond to covariates through the dialog window: Use the buttons to move columns between the Factors and Covariates list and Excluded Columns list. Single-arrow buttons will move all selected columns and double-arrow buttons will move all columns. At least one covariate  or factor column should be specified.|
+|**Custom/Include All Main Effects/Full Factorial**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Include All Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. Note that the Include All Main Effects and Full Factorial options do not allow the use of a formula.|
+|**Formula**| Specify the model formula used for the analysis if the Custom option is selected. Include all variables listed under Factors or Covariates, separated by “+”. To include interaction terms, use the format VariableA:VariableB. If interaction terms are included, the dataset must contain all combinations of the levels of the involved categorical variables — i.e., the design must be fully crossed — to ensure the model can be properly estimated.|
+
 ##### Output
 {: .no_toc }
+The output of the Poisson regression procedure is organized into three main sections: the Predicted Values Table, the Goodness of Fit Statistics, and the Parameter Estimates Table. 
+1. The Predicted Values Table contains the actual values of the dependent variable and the corresponding predicted values generated by the model for each observation.
+1. The Goodness of Fit Table includes statistical measures that assess how well the model fits the data, such as Deviance, Log-Likelihood, AIC, BIC, and related metrics.
+1. The Parameter Estimates Table displays the estimated coefficients for each variable in the model, along with standard errors, confidence intervals, test statistics, degrees of freedom, and p-values.
+
 
 ##### Example
 {: .no_toc }
 
 ###### Input
 {: .no_toc }
+Τhe dataset must include a target variable consisting of non-negative integer counts, appropriate for modeling with Poisson regression, and at least one column with a continuous or categorical independent variable. Optionally, an exposure variable can be included to account for varying observation times or risk levels.
+<div style="text-align: center;">
+<img src="images/GLM/PoissonGLM_Input.png" alt="poissonGLM-input" width="400" height="300" class="img-responsive">
+</div>
 
 ###### Configuration
 {: .no_toc }
+1.	Select `Analytics` $$\rightarrow$$ `Regression` $$\rightarrow$$ `Statistical fitting`  $$\rightarrow$$ `Generalized Linear Models`
+1.	Set the `Type` [1] of regression to Poisson.
+1.	Specify the `Confidence Level (%)` [2] for the test.
+1.	Specify `Max Iterations` [3].
+1.	Specify the `Maximum Step-Halving` [4].
+1.	Select the `Dependent Variable` [5].
+1.	Select the `Parameter Estimation Method` [6].
+1.	Specify the `Maximum Scoring Iterations` if Hybrid option is selected as the `Parameter Estimation Method`[7].
+1.	Specify the `Minimum Change in Parameter Estimates` [8].
+1.	Select the `Scale Parameter Method` [9].
+1.	Specify the `Value` [10] of the scale parameter method if the Fixed value option was chosen as the scale parameter method.
+1.	Select the columns by clicking on the arrow buttons [14] and moving columns between the `Excluded Columns` [11] and `Factors` [12] and `Covariates` [13] lists.
+1.	Select your preferred option to define the model you want to analyze [15].
+1.	If the `Custom` option is selected, specify the `Formula` [16] for the analysis.
+1.	Click on the `Execute` button [17] to perform the Poisson Regression method.
+<div style="text-align: center;">
+<img src="images/GLM/PoissonGLM_Configuration.png" alt="poissonGLM-config" width="400" height="300" class="img-responsive">
+</div>
+
 
 ###### Output
 {: .no_toc }
+The predictions, Goodness of Fit table and Parameter Estimates table are shown in the output spreadsheet.
+<div style="text-align: center;">
+<img src="images/GLM/PoissonGLM_Output.png" alt="poissonGLM-output" width="400" height="300" class="img-responsive">
+</div>
 
 #### Gamma 
 {: .no_toc}
+Gamma regression is a type of generalized linear model (GLM) used when the response variable is continuous, strictly positive, and right-skewed behavior. It assumes that the dependent variable follows a Gamma distribution, which is well-suited for modeling non-negative data with a variance that increases with the mean. A common choice for the link function in Gamma regression is the log link, which relates the mean of the response variable to the linear predictors via the natural logarithm.
+<div id="gamma link function" style="text-align: center;">
+    $$
+    \begin{equation}
+    g(\mu) = log(\mu) = x\beta
+    \end{equation}
+    $$
+</div> 
+Gamma regression is particularly useful in applications such as modeling costs, waiting times, insurance claims, or any scenario where the outcome is positive and skewed. It provides a flexible framework to account for heteroscedasticity and asymmetry in data.
+
+Use the Gamma Regression method by browsing in the top ribbon: 
+
+| Analytics $$\rightarrow$$ Regression $$\rightarrow$$ Statistical fitting $$\rightarrow$$ Generalized Linear Models |
+
+And then choosing "Gamma" as the `Type`.
+
 ##### Input
 {: .no_toc }
+All variables must be specified in the datasheet. The dependent variable must be strictly positive continuous numerical variable, as Gamma regression is not defined for zero or negative values. Independent variables may be either numerical or numerical. Categorical factors can be represented as text labels or coded numerically. The input datasheet must include at least two columns: one for the dependent variable and one or more columns for the independent variables. Each row in the datasheet represents a single observation. It is important to check for zero or missing values in the dependent variable, as they may cause the model to fail or produce invalid estimates.
 
 ##### Configuration
 {: .no_toc }
 
+|**Confidence Level (%)**| Specify the confidence level of the analysis. Values should range from 0 to 100 and correspond to percentages. |
+|**Max Iterations**| Defines the maximum number of iterations the model is allowed to perform during the estimation process. If the model fails to converge before reaching this number, the algorithm stops and returns the values of the last iteration.|
+|**Maximum Step-Halving**| Controls how many times the algorithm is allowed to halve the step size during parameter updates when an iteration leads to worse model fit.|
+|**Dependent Variable**| Select the column that corresponds to values of the dependent variable. |
+|**Parameter Estimation**| This option lets you choose how the model parameters will be estimated, Newton-Raphson, Fisher Scoring or Hybrid.|
+|**Maximum Scoring Iterations**| The "Maximum Scoring Iterations" parameter is used when the hybrid estimation method is selected, instead of Newton-Raphson or Fisher scoring alone, and specifies the maximum number of iterations to be performed during the scoring phase.|
+|**Minimum Change in Parameter Estimates**| Sets the tolerance level for convergence — the smallest change in parameter estimates between iterations required to continue optimization. If the change in all parameters is below this value, the algorithm assumes convergence has been reached.|
+|**Scale Parameter Method**| Determines how the scale (error variance) parameter is estimated. Options include: Fixed value, Deviance, or Pearson Chi-square. |
+|**Value**| Specifies the scale parameter value manually, only when Fixed value is selected in the Scale Parameter Method. |
+|**Factors/Covariates/Excluded Columns**| Select manually the columns that correspond to factors and the columns that correspond to covariates through the dialog window: Use the buttons to move columns between the Factors and Covariates list and Excluded Columns list. Single-arrow buttons will move all selected columns and double-arrow buttons will move all columns. At least one covariate  or factor column should be specified.|
+|**Custom/Include All Main Effects/Full Factorial**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Include All Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. Note that the Include All Main Effects and Full Factorial options do not allow the use of a formula.|
+|**Formula**| Specify the model formula used for the analysis if the Custom option is selected. Include all variables listed under Factors or Covariates, separated by “+”. To include interaction terms, use the format VariableA:VariableB. If interaction terms are included, the dataset must contain all combinations of the levels of the involved categorical variables — i.e., the design must be fully crossed — to ensure the model can be properly estimated.|
+
 ##### Output
 {: .no_toc }
+The output of the Gamma regression procedure is organized into three main sections: the Predicted Values Table, the Goodness of Fit Statistics, and the Parameter Estimates Table. 
+1. The Predicted Values Table contains the actual values of the dependent variable and the corresponding predicted values 1. generated by the model for each observation.
+1. The Goodness of Fit Table includes statistical measures that assess how well the model fits the data, such as Deviance, Log-Likelihood, AIC, BIC, and related metrics.
+1. The Parameter Estimates Table displays the estimated coefficients for each variable in the model, along with standard errors, confidence intervals, test statistics, degrees of freedom, and p-values.
+
 
 ##### Example
 {: .no_toc }
 
 ###### Input
 {: .no_toc }
+The input datasheet must include one continuous, positive dependent variable, which will serve as the target, and at least one column with a continuous or categorical independent variable.
+<div style="text-align: center;">
+<img src="images/GLM/GammaGLM_Input.png" alt="gammaGLM-input" width="400" height="300" class="img-responsive">
+</div>
 
 ###### Configuration
 {: .no_toc }
+###### Configuration
+{: .no_toc }
+1.	Select `Analytics` $$\rightarrow$$ `Regression` $$\rightarrow$$ `Statistical fitting`  $$\rightarrow$$ `Generalized Linear Models`
+1.	Set the `Type` [1] of regression to Gamma.
+1.	Specify the `Confidence Level (%)` [2] for the test.
+1.	Specify `Max Iterations` [3].
+1.	Specify the `Maximum Step-Halving` [4].
+1.	Select the `Dependent Variable` [5].
+1.	Select the `Parameter Estimation Method` [6].
+1.	Specify the `Maximum Scoring Iterations` if Hybrid option is selected as the `Parameter Estimation Method`[7].
+1.	Specify the `Minimum Change in Parameter Estimates` [8].
+1.	Select the `Scale Parameter Method` [9].
+1.	Specify the `Value` [10] of the scale parameter method if the Fixed value option was chosen as the scale parameter method.
+1.	Select the columns by clicking on the arrow buttons [14] and moving columns between the `Excluded Columns` [11] and `Factors` [12] and `Covariates` [13] lists.
+1.	Select your preferred option to define the model you want to analyze [15].
+1.	If the `Custom` option is selected, specify the `Formula` [16] for the analysis.
+1.	Click on the `Execute` button [17] to perform the Gamma Regression method.
+<div style="text-align: center;">
+<img src="images/GLM/GammaGLM_Configuration.png" alt="gammaGLM-config" width="400" height="300" class="img-responsive">
+</div>
 
 ###### Output
 {: .no_toc }
+The predictions, Goodness of Fit table and Parameter Estimates table are shown in the output spreadsheet.
+<div style="text-align: center;">
+<img src="images/GLM/GammaGLM_Output.png" alt="gammaGLM-output" width="400" height="300" class="img-responsive">
+</div>
 
 #### Tweedie with Identity Link
 {: .no_toc}
+Tweedie Regression is a type of generalized linear model (GLM) designed to handle semi-continuous response variables, variables that exhibit a combination of many exact zeros and positive, continuous values. It assumes the response variable follows a Tweedie distribution, a member of the exponential dispersion family that encompasses distributions such as the normal, Poisson, gamma, and inverse Gaussian as special cases.
+When the Tweedie power parameter lies between 1 and 2, the distribution corresponds to a compound Poisson–Gamma process, which makes it particularly suitable for modeling zero-inflated, right-skewed data—such as insurance claim amounts, healthcare costs, or ecological measurements.
+In this formulation, the identity link function is used, meaning that the expected value of the response variable is modeled directly as a linear function of the predictors:
+<div id="tweedie regression identity link function" style="text-align: center;">
+    $$
+    \begin{equation}
+    g(\mu) = \mu = x\beta
+    \end{equation}
+    $$
+</div>       
+
+This link is appropriate when the response values are already on a meaningful scale and do not require transformation. However, care must be taken to ensure that the predicted values remain in a valid range (e.g., non-negative), since the identity link does not constrain the output.
+
+Use the Tweedie Regression method with identity link by browsing in the top ribbon: 
+
+| Analytics $$\rightarrow$$ Regression $$\rightarrow$$ Statistical fitting $$\rightarrow$$ Generalized Linear Models |
+
+And then choosing "Tweedie with Identity Link" as the `Type`.
+
 
 ##### Input
 {: .no_toc }
+All variables must be specified in the datasheet. The dependent variable must be a non-negative continuous numeric value, which may include many zeros alongside positive, right-skewed values. This reflects the typical structure of semi-continuous data for which Tweedie Regression with identity link is appropriate. Because the identity link function models the expected value directly, care should be taken to ensure that the response values are within a reasonable range, and that the model will not predict invalid (e.g., negative) values. The dependent variable should not contain negative numbers or missing entries. Independent variables may be either numerical or categorical. Categorical variables can be represented using text labels or numerical codes. The input datasheet must include at least two columns: one for the dependent variable and one or more for the independent variables. Each row should represent a single observation.
 
 ##### Configuration
 {: .no_toc }
 
+|**Confidence Level (%)**| Specify the confidence level of the analysis. Values should range from 0 to 100 and correspond to percentages. |
+|**Max Iterations**| Defines the maximum number of iterations the model is allowed to perform during the estimation process. If the model fails to converge before reaching this number, the algorithm stops and returns the values of the last iteration.|
+|**Maximum Step-Halving**| Controls how many times the algorithm is allowed to halve the step size during parameter updates when an iteration leads to worse model fit.|
+|**Dependent Variable**| Select the column that corresponds to values of the dependent variable. |
+|**Parameter Estimation**| This option lets you choose how the model parameters will be estimated, Newton-Raphson, Fisher Scoring or Hybrid.|
+|**Maximum Scoring Iterations**| The "Maximum Scoring Iterations" parameter is used when the hybrid estimation method is selected, instead of Newton-Raphson or Fisher scoring alone, and specifies the maximum number of iterations to be performed during the scoring phase.|
+|**Minimum Change in Parameter Estimates**| Sets the tolerance level for convergence — the smallest change in parameter estimates between iterations required to continue optimization. If the change in all parameters is below this value, the algorithm assumes convergence has been reached.|
+|**Scale Parameter Method**| Determines how the scale (error variance) parameter is estimated. Options include: Fixed value, Deviance, or Pearson Chi-square. |
+|**Value**| Specifies the scale parameter value manually, only when Fixed value is selected in the Scale Parameter Method. |
+|**Factors/Covariates/Excluded Columns**| Select manually the columns that correspond to factors and the columns that correspond to covariates through the dialog window: Use the buttons to move columns between the Factors and Covariates list and Excluded Columns list. Single-arrow buttons will move all selected columns and double-arrow buttons will move all columns. At least one covariate  or factor column should be specified.|
+|**Custom/Include All Main Effects/Full Factorial**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Include All Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. Note that the Include All Main Effects and Full Factorial options do not allow the use of a formula.|
+|**Formula**| Specify the model formula used for the analysis if the Custom option is selected. Include all variables listed under Factors or Covariates, separated by “+”. To include interaction terms, use the format VariableA:VariableB. If interaction terms are included, the dataset must contain all combinations of the levels of the involved categorical variables — i.e., the design must be fully crossed — to ensure the model can be properly estimated.|
+
 ##### Output
 {: .no_toc }
+The output of the Tweedie regression with identity link procedure is organized into three main sections: the Predicted Values Table, the Goodness of Fit Statistics, and the Parameter Estimates Table. 
+1. The Predicted Values Table contains the actual values of the dependent variable and the corresponding predicted values generated by the model for each observation.
+1. The Goodness of Fit Table includes statistical measures that assess how well the model fits the data, such as Deviance, Log-Likelihood, AIC, BIC, and related metrics.
+1. The Parameter Estimates Table displays the estimated coefficients for each variable in the model, along with standard errors, confidence intervals, test statistics, degrees of freedom, and p-values.
+
 
 ##### Example
 {: .no_toc }
 
 ###### Input
 {: .no_toc }
+The input datasheet must include one non-negative continuous dependent variable, which will serve as the target, and at least one column with a continuous or categorical independent variable.
+<div style="text-align: center;">
+<img src="images/GLM/TweedieIdentityGLM_Input.png" alt="tweedieidentityGLM-input" width="400" height="300" class="img-responsive">
+</div>
 
 ###### Configuration
 {: .no_toc }
+1.	Select `Analytics` $$\rightarrow$$ `Regression` $$\rightarrow$$ `Statistical fitting`  $$\rightarrow$$ `Generalized Linear Models`
+1.	Set the `Type` [1] of regression to Tweedie with Identity Link.
+1.	Specify the `Confidence Level (%)` [2] for the test.
+1.	Specify `Max Iterations` [3].
+1.	Specify the `Maximum Step-Halving` [4].
+1.	Select the `Dependent Variable` [5].
+1.	Select the `Parameter Estimation Method` [6].
+1.	Specify the `Maximum Scoring Iterations` if Hybrid option is selected as the `Parameter Estimation Method`[7].
+1.	Specify the `Minimum Change in Parameter Estimates` [8].
+1.	Select the `Scale Parameter Method` [9].
+1.	Specify the `Value` [10] of the scale parameter method if the Fixed value option was chosen as the scale parameter method.
+1.	Select the columns by clicking on the arrow buttons [14] and moving columns between the `Excluded Columns` [11] and `Factors` [12] and `Covariates` [13] lists.
+1.	Select your preferred option to define the model you want to analyze [15].
+1.	If the `Custom` option is selected, specify the `Formula` [16] for the analysis.
+1.	Click on the `Execute` button [17] to perform the Tweedie Regression with Identity Link method.
+<div style="text-align: center;">
+<img src="images/GLM/TweedieIdentityGLM_Configuration.png" alt="tweedieidentityGLM-config" width="400" height="300" class="img-responsive">
+</div>
 
 ###### Output
 {: .no_toc }
+The predictions, Goodness of Fit table and Parameter Estimates table are shown in the output spreadsheet.
+<div style="text-align: center;">
+<img src="images/GLM/TweedieIdentityGLM_Output.png" alt="tweedieidentityGLM-output" width="400" height="300" class="img-responsive">
+</div>
 
 #### Tweedie with Log Link
 {: .no_toc}
+Tweedie Regression is a type of generalized linear model (GLM) designed to handle semi-continuous response variables – that is, variables that take on many exact zeros and positive, continuous values otherwise. It assumes the response variable follows a Tweedie distribution, which belongs to the exponential dispersion family and includes the normal, Poisson, gamma and inverse Gaussian distributions as special cases. When the Tweedie power parameter lies between 1 and 2, the distribution corresponds to a compound Poisson- Gamma process, making it ideal for modeling zero-inflated, right-skewed data such as insurance claim amounts, healthcare expenditures, or ecological measurements. The most common link function used is the log link, where the logarithm of the expected value is modeled as a linear function of the predictors.
+<div id="tweedie regression log link function" style="text-align: center;">
+    $$
+    \begin{equation}
+    g(\mu) = log(\mu) = x\beta
+    \end{equation}
+    $$
+</div>    
+
+Use the Tweedie Regression with Log Link method by browsing in the top ribbon: 
+
+| Analytics $$\rightarrow$$ Regression $$\rightarrow$$ Statistical fitting $$\rightarrow$$ Generalized Linear Models |
+
+And then choosing "Tweedie with Log Link" as the `Type`.
 
 ##### Input
 {: .no_toc }
+All variables must be specified in the datasheet. The dependent variable must be a non-negative continuous numeric value, which may include many zeros alongside positive, right-skewed continuous values. This reflects the typical structure of semi-continuous data for which Tweedie Regression is appropriate. The dependent variable should not contain negative numbers or missing entries. Independent variables may be either numerical or categorical. Categorical variables can be represented using text labels or numerical codes. The input datasheet must include at least two columns: one for the dependent variable and one or more for the independent variables. Each row should represent a single observation.
 
 ##### Configuration
 {: .no_toc }
 
+|**Confidence Level (%)**| Specify the confidence level of the analysis. Values should range from 0 to 100 and correspond to percentages. |
+|**Max Iterations**| Defines the maximum number of iterations the model is allowed to perform during the estimation process. If the model fails to converge before reaching this number, the algorithm stops and returns the values of the last iteration.|
+|**Maximum Step-Halving**| Controls how many times the algorithm is allowed to halve the step size during parameter updates when an iteration leads to worse model fit.|
+|**Dependent Variable**| Select the column that corresponds to values of the dependent variable. |
+|**Parameter Estimation**| This option lets you choose how the model parameters will be estimated, Newton-Raphson, Fisher Scoring or Hybrid.|
+|**Maximum Scoring Iterations**| The "Maximum Scoring Iterations" parameter is used when the hybrid estimation method is selected, instead of Newton-Raphson or Fisher scoring alone, and specifies the maximum number of iterations to be performed during the scoring phase.|
+|**Minimum Change in Parameter Estimates**| Sets the tolerance level for convergence — the smallest change in parameter estimates between iterations required to continue optimization. If the change in all parameters is below this value, the algorithm assumes convergence has been reached.|
+|**Scale Parameter Method**| Determines how the scale (error variance) parameter is estimated. Options include: Fixed value, Deviance, or Pearson Chi-square. |
+|**Value**| Specifies the scale parameter value manually, only when Fixed value is selected in the Scale Parameter Method. |
+|**Factors/Covariates/Excluded Columns**| Select manually the columns that correspond to factors and the columns that correspond to covariates through the dialog window: Use the buttons to move columns between the Factors and Covariates list and Excluded Columns list. Single-arrow buttons will move all selected columns and double-arrow buttons will move all columns. At least one covariate  or factor column should be specified.|
+|**Custom/Include All Main Effects/Full Factorial**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Include All Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. Note that the Include All Main Effects and Full Factorial options do not allow the use of a formula.|
+|**Formula**| Specify the model formula used for the analysis if the Custom option is selected. Include all variables listed under Factors or Covariates, separated by “+”. To include interaction terms, use the format VariableA:VariableB. If interaction terms are included, the dataset must contain all combinations of the levels of the involved categorical variables — i.e., the design must be fully crossed — to ensure the model can be properly estimated.|
+
 ##### Output
 {: .no_toc }
+The output of the Tweedie regression with log link procedure is organized into three main sections: the Predicted Values Table, the Goodness of Fit Statistics, and the Parameter Estimates Table. 
+1. The Predicted Values Table contains the actual values of the dependent variable and the corresponding predicted values generated by the model for each observation.
+1. he Goodness of Fit Table includes statistical measures that assess how well the model fits the data, such as Deviance, Log-Likelihood, AIC, BIC, and related metrics.
+1. The Parameter Estimates Table displays the estimated coefficients for each variable in the model, along with standard errors, confidence intervals, test statistics, degrees of freedom, and p-values.
+
 
 ##### Example
 {: .no_toc }
 
 ###### Input
 {: .no_toc }
+The input datasheet must include one non-negative continuous dependent variable, which will serve as the target, and at least one column with a continuous or categorical independent variable.
+<div style="text-align: center;">
+<img src="images/GLM/TweedieLogGLM_Input.png" alt="tweedielogGLM-input" width="400" height="300" class="img-responsive">
+</div>
 
 ###### Configuration
 {: .no_toc }
+1.	Select `Analytics` $$\rightarrow$$ `Regression` $$\rightarrow$$ `Statistical fitting`  $$\rightarrow$$ `Generalized Linear Models`
+1.	Set the `Type` [1] of regression to Tweedie with Log Link.
+1.	Specify the `Confidence Level (%)` [2] for the test.
+1.	Specify `Max Iterations` [3].
+1.	Specify the `Maximum Step-Halving` [4].
+1.	Select the `Dependent Variable` [5].
+1.	Select the `Parameter Estimation Method` [6].
+1.	Specify the `Maximum Scoring Iterations` if Hybrid option is selected as the `Parameter Estimation Method`[7].
+1.	Specify the `Minimum Change in Parameter Estimates` [8].
+1.	Select the `Scale Parameter Method` [9].
+1.	Specify the `Value` [10] of the scale parameter method if the Fixed value option was chosen as the scale parameter method.
+1.	Select the columns by clicking on the arrow buttons [14] and moving columns between the `Excluded Columns` [11] and `Factors` [12] and `Covariates` [13] lists.
+1.	Select your preferred option to define the model you want to analyze [15].
+1.	If the `Custom` option is selected, specify the `Formula` [16] for the analysis.
+1.	Click on the `Execute` button [17] to perform the Tweedie Regression with Log Link method.
+<div style="text-align: center;">
+<img src="images/GLM/TweedieLogGLM_Configuration.png" alt="tweedielogGLM-config" width="400" height="300" class="img-responsive">
+</div>
 
 ###### Output
 {: .no_toc }
+The predictions, Goodness of Fit table and Parameter Estimates table are shown in the output spreadsheet.
+<div style="text-align: center;">
+<img src="images/GLM/TweedieLogGLM_Output.png" alt="tweedielogGLM-output" width="400" height="300" class="img-responsive">
+</div>
 
 ### Generalized Estimating Equations
 
