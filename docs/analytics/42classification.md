@@ -575,7 +575,7 @@ In the right-hand spreadsheet of the tab the output data matrix with the actual 
 ## Statistical fitting
 
 ### Generalized Linear Models
-Generalized Linear Models (GLMs) are a flexible class of regression models that generalize ordinary linear regression to allow for response variables that have error distributions other than the normal distribution. GLMs are particularly useful when the response variable is categorical (e.g., binary outcomes) or count data, where assumptions of normality and constant variance are inappropriate.
+Generalized Linear Models (GLMs) are a flexible class of regression and classification models that generalize ordinary linear regression to allow for response variables that have error distributions other than the normal distribution. GLMs are particularly useful when the response variable is categorical (e.g., binary outcomes) or count data, where assumptions of normality and constant variance are inappropriate.
 A GLM consists of three components:
 1. 	Random Component: The response variable $$y_i$$  is assumed to follow a distribution from the exponential family (e.g., Normal, Binomial, Poisson, Gamma).
 1. 	Systematic Component: A linear predictor  $$\eta_i= x_i^T \beta$$, where $$x_i$$ is the vector of predictors for the i-th observation, and $$\beta$$ is the vector of coefficients.
@@ -588,7 +588,7 @@ Categorical variables are encoded using one-hot encoding, where each category is
 
 #### Binary Logistic
 {: .no_toc}
-Binary Logistic Regression is a type of generalized linear model used when the dependent variable is binary, meaning it takes only two possible outcomes (e.g., success/failure, yes/no, 1/0). The response variable is assumed to follow a binomial distribution, where each observation represents a single Bernoulli trial.
+Binary Logistic Classification is a type of generalized linear model used when the dependent variable is binary, meaning it takes only two possible outcomes (e.g., success/failure, yes/no, 1/0). The response variable is assumed to follow a binomial distribution, where each observation represents a single Bernoulli trial.
 Unlike linear regression, logistic regression uses the logit link function, defined as:
 <div id="logit link function" style="text-align: center;">
     $$
@@ -599,7 +599,7 @@ Unlike linear regression, logistic regression uses the logit link function, defi
 </div>
 
 Where $$\mu$$ is the probability of the event occurring (i.e., the probability that the dependent variable equals 1). This transformation ensures that the predicted probabilities always fall within the [0,1] interval.
-Binary logistic regression is widely used in fields such as medicine, social sciences, marketing, and machine learning, particularly when the goal is to model and predict a binary outcome based on one or more predictor variables (either continuous or categorical).
+Binary logistic classification is widely used in fields such as medicine, social sciences, marketing, and machine learning, particularly when the goal is to model and predict a binary outcome based on one or more predictor variables (either continuous or categorical).
 
 Use the Binary Logistic Classification method by browsing in the top ribbon: 
 
@@ -609,7 +609,7 @@ And then choosing “Binary Logistic” as the `Type`.
 
 ##### Input
 {: .no_toc }
-All variables must be specified in the datasheet. Numerical values are required for covariates, while factors may be either textual or numerical. The dependent variable must be binary, typically coded as 0 and 1, representing the two possible outcome categories. The design for Binary Logistic Regression requires at least two columns in the input sheet: one column for the binary dependent variable and at least one column for an independent variable (either a categorical factor or a numerical covariate). Each row corresponds to a single observation.
+All variables must be specified in the datasheet. Numerical values are required for covariates, while factors may be either textual or numerical. The dependent variable must be binary, typically coded as 0 and 1, representing the two possible outcome categories. The design for Binary Logistic Classification requires at least two columns in the input sheet: one column for the binary dependent variable and at least one column for an independent variable (either a categorical factor or a numerical covariate). Each row corresponds to a single observation.
 
 ##### Configuration
 {: .no_toc }
@@ -630,7 +630,7 @@ All variables must be specified in the datasheet. Numerical values are required 
 
 ##### Output
 {: .no_toc }
-The output of the binary logistic regression procedure is organized into three main sections: the Predicted Values Table, the Goodness of Fit Statistics, and the Parameter Estimates Table. 
+The output of the binary logistic clasification procedure is organized into three main sections: the Predicted Values Table, the Goodness of Fit Statistics, and the Parameter Estimates Table. 
 1. The Predicted Values Table contains the actual values of the dependent variable and the corresponding predicted values generated by the model for each observation.
 1. The Goodness of Fit Table includes statistical measures that assess how well the model fits the data, such as Deviance, Log-Likelihood, AIC, BIC, and related metrics.
 1. The Parameter Estimates Table displays the estimated coefficients for each variable in the model, along with standard errors, confidence intervals, test statistics, degrees of freedom, and p-values.
@@ -649,7 +649,7 @@ The input datasheet must include one binary dependent variable, which will serve
 ###### Configuration
 {: .no_toc }
 1.	Select `Analytics` $$\rightarrow$$ `Classification` $$\rightarrow$$ `Statistical fitting`  $$\rightarrow$$ `Generalized Linear Models`
-1.	Set the `Type` [1] of regression to Binary Logistic.
+1.	Set the `Type` [1] of classification to Binary Logistic.
 1.	Specify the `Confidence Level (%)` [2] for the test.
 1.	Specify `Max Iterations` [3].
 1.	Specify the `Maximum Step-Halving` [4].
@@ -677,7 +677,7 @@ The predictions, Goodness of Fit table and Parameter Estimates table are shown i
 
 #### Probit 
 {: .no_toc}
-Probit regression is a type of generalized linear model (GLM) used for modeling a binary outcome variable, like logistic regression. The key difference lies in the link function: while logistic regression uses the logit link, probit regression uses the probit link, which is the inverse of the standard normal cumulative distribution function (CDF). Mathematically, this is expressed as:
+Probit classification is a type of generalized linear model (GLM) used for modeling a binary outcome variable, like logistic regression. The key difference lies in the link function: while logistic classification uses the logit link, probit classification uses the probit link, which is the inverse of the standard normal cumulative distribution function (CDF). Mathematically, this is expressed as:
 <div id="probit link function" style="text-align: center;">
     $$
     \begin{equation}
@@ -688,7 +688,7 @@ Probit regression is a type of generalized linear model (GLM) used for modeling 
 
 Where $$\Phi^{-1}$$ is the probit link, and $$\mu$$ is the probability of success.
 The underlying assumption is that there exists a latent (unobserved) continuous variable that follows a standard normal distribution, and the observed binary response is a result of whether this latent variable crosses a certain threshold.
-Probit regression is often used when the assumption of a normal distribution for the underlying latent variable is justified or preferred, or when the differences in tail behavior between the logistic and normal distributions are relevant.
+Probit classification is often used when the assumption of a normal distribution for the underlying latent variable is justified or preferred, or when the differences in tail behavior between the logistic and normal distributions are relevant.
 
 Use the Probit Classification method by browsing in the top ribbon: 
 
@@ -699,7 +699,7 @@ And then choosing “Probit” as the `Type`.
 
 ##### Input
 {: .no_toc }
-All variables must be specified in the datasheet. Numerical values are required for covariates, while factors may be either textual or numerical. The dependent variable must be binary, consisting of exactly two distinct categories, which can be coded as 0 and 1 or as two unique labels. The design for Probit Regression requires at least two columns in the input sheet: one column for the binary dependent variable and at least one column for an independent variable (either a categorical factor or a numerical covariate). Each row corresponds to a single observation.
+All variables must be specified in the datasheet. Numerical values are required for covariates, while factors may be either textual or numerical. The dependent variable must be binary, consisting of exactly two distinct categories, which can be coded as 0 and 1 or as two unique labels. The design for Probit classification requires at least two columns in the input sheet: one column for the binary dependent variable and at least one column for an independent variable (either a categorical factor or a numerical covariate). Each row corresponds to a single observation.
 
 ##### Configuration
 {: .no_toc }
@@ -720,7 +720,7 @@ All variables must be specified in the datasheet. Numerical values are required 
 
 ##### Output
 {: .no_toc }
-The output of the Probit regression procedure is organized into three main sections: the Predicted Values Table, the Goodness of Fit Statistics, and the Parameter Estimates Table. 
+The output of the Probit classification procedure is organized into three main sections: the Predicted Values Table, the Goodness of Fit Statistics, and the Parameter Estimates Table. 
 1. The Predicted Values Table contains the actual values of the dependent variable and the corresponding predicted values generated by the model for each observation.
 1. The Goodness of Fit Table includes statistical measures that assess how well the model fits the data, such as Deviance, Log-Likelihood, AIC, BIC, and related metrics.
 1. The Parameter Estimates Table displays the estimated coefficients for each variable in the model, along with standard errors, confidence intervals, test statistics, degrees of freedom, and p-values.
@@ -739,7 +739,7 @@ The input datasheet must include one binary dependent variable, which will serve
 ###### Configuration
 {: .no_toc }
 1.	Select `Analytics` $$\rightarrow$$ `Classification` $$\rightarrow$$ `Statistical fitting`  $$\rightarrow$$ `Generalized Linear Models`
-1.	Set the `Type` [1] of regression to Probit.
+1.	Set the `Type` [1] of classification to Probit.
 1.	Specify the `Confidence Level (%)` [2] for the test.
 1.	Specify `Max Iterations` [3].
 1.	Specify the `Maximum Step-Halving` [4].
@@ -767,7 +767,7 @@ The predictions, Goodness of Fit table and Parameter Estimates table are shown i
 
 #### Complementary Log-Log 
 {: .no_toc}
-Complementary log-log regression is a type of generalized linear model (GLM) used for modeling binary outcome data, where the dependent variable consists of two categories (e.g., success/failure, event/no event). Unlike the logit or probit link functions, the cloglog link is defined as: 
+Complementary log-log classification is a type of generalized linear model (GLM) used for modeling binary outcome data, where the dependent variable consists of two categories (e.g., success/failure, event/no event). Unlike the logit or probit link functions, the cloglog link is defined as: 
 <div id="cloglog link function" style="text-align: center;">
     $$
     \begin{equation}
@@ -775,7 +775,7 @@ Complementary log-log regression is a type of generalized linear model (GLM) use
     \end{equation}
     $$
 </div>
-Where $$\mu$$ is the probability of the event occurring. This link function is asymmetric, making it particularly useful when the probability of the event is either very small or very large (i.e., skewed response probabilities). Complementary log-log regression is commonly applied in time-to-event analyses, extreme value modeling, and situations involving hazard functions, such as survival analysis or epidemiological studies, where the event of the interest becomes more likely over time or under certain conditions.
+Where $$\mu$$ is the probability of the event occurring. This link function is asymmetric, making it particularly useful when the probability of the event is either very small or very large (i.e., skewed response probabilities). Complementary log-log classification is commonly applied in time-to-event analyses, extreme value modeling, and situations involving hazard functions, such as survival analysis or epidemiological studies, where the event of the interest becomes more likely over time or under certain conditions.
 
 Use the Complementary Log-Log Classification method by browsing in the top ribbon: 
 
@@ -807,7 +807,7 @@ All variables must be specified in the datasheet. The dependent variable must be
 
 ##### Output
 {: .no_toc }
-The output of the Complementary Log-Log regression procedure is organized into three main sections: the Predicted Values Table, the Goodness of Fit Statistics, and the Parameter Estimates Table. 
+The output of the Complementary Log-Log classification procedure is organized into three main sections: the Predicted Values Table, the Goodness of Fit Statistics, and the Parameter Estimates Table. 
 1. The Predicted Values Table contains the actual values of the dependent variable and the corresponding predicted values generated by the model for each observation.
 1. The Goodness of Fit Table includes statistical measures that assess how well the model fits the data, such as Deviance, Log-Likelihood, AIC, BIC, and related metrics.
 1. The Parameter Estimates Table displays the estimated coefficients for each variable in the model, along with standard errors, confidence intervals, test statistics, degrees of freedom, and p-values.
@@ -826,7 +826,7 @@ The input datasheet must include one binary dependent variable, which will serve
 ###### Configuration
 {: .no_toc }
 1.	Select `Analytics` $$\rightarrow$$ `Classification` $$\rightarrow$$ `Statistical fitting`  $$\rightarrow$$ `Generalized Linear Models`
-1.	Set the `Type` [1] of regression to Complementary Log-Log.
+1.	Set the `Type` [1] of classification to Complementary Log-Log.
 1.	Specify the `Confidence Level (%)` [2] for the test.
 1.	Specify `Max Iterations` [3].
 1.	Specify the `Maximum Step-Halving` [4].
@@ -854,7 +854,7 @@ The predictions, Goodness of Fit table and Parameter Estimates table are shown i
 
 #### Ordinal Logistic
 {: .no_toc}
-Ordinal Logistic Regression is a type of generalized linear model (GLM) used when the dependent variable is ordinal-that is, it consists of categories with a natural order but unknown or unequal spacing (e.g., “low”, “medium”, “high”). The most common model used is the proportional odds model, which assumes that the relationship between the predictors and the cumulative probabilities of being at or below a given category is the same across all categories. The typical link function used is the logit link, applied to the cumulative probabilities, resulting in a model of the form:
+Ordinal Logistic Classification is a type of generalized linear model (GLM) used when the dependent variable is ordinal-that is, it consists of categories with a natural order but unknown or unequal spacing (e.g., “low”, “medium”, “high”). The most common model used is the proportional odds model, which assumes that the relationship between the predictors and the cumulative probabilities of being at or below a given category is the same across all categories. The typical link function used is the logit link, applied to the cumulative probabilities, resulting in a model of the form:
 <div id="ordinal logit link function" style="text-align: center;">
     $$
     \begin{equation}
@@ -862,7 +862,7 @@ Ordinal Logistic Regression is a type of generalized linear model (GLM) used whe
     \end{equation}
     $$
 </div>
-Where j indexes the thresholds between categories. Ordinal logistic regression is widely used in fields such as social sciences, medicine, and market research, especially when modeling outcomes like satisfaction ratings, disease severity, or agreement levels. 
+Where j indexes the thresholds between categories. Ordinal logistic Classification is widely used in fields such as social sciences, medicine, and market research, especially when modeling outcomes like satisfaction ratings, disease severity, or agreement levels. 
 
 Use the Ordinal Logistic Classification method by browsing in the top ribbon:
 
@@ -892,7 +892,7 @@ All variables must be specified in the datasheet. The dependent variable must be
 
 ##### Output
 {: .no_toc }
-The output of the ordinal logistic regression procedure is organized into three main sections: the Predicted Probabilities Table, the Goodness of Fit Statistics, and the Parameter Estimates Table. 
+The output of the ordinal logistic Classification procedure is organized into three main sections: the Predicted Probabilities Table, the Goodness of Fit Statistics, and the Parameter Estimates Table. 
 1. The Predicted Probabilities Table displays the actual observed values of the ordinal dependent variable in the first column, followed by the predicted probabilities of each observation belonging to each outcome category. These probabilities are based on the fitted model and indicate how likely each case is to fall into each level of the ordinal outcome.
 1. The Goodness of Fit Table includes statistical measures that assess how well the model fits the data, such as Deviance, Log-Likelihood, AIC, BIC, and related metrics.
 1. The Parameter Estimates Table displays the estimated coefficients for the model. The first rows refer to the thresholds (cut-points) between the ordinal categories of the dependent variable. These are followed by the coefficients for the independent variables, showing their effect on the likelihood of being in a higher category. The table also includes the standard errors, 95% confidence intervals, test statistics, degrees of freedom, and p-values used to assess the statistical significance of each term in the model.
@@ -911,7 +911,7 @@ The input datasheet must include one target variable with ordered categories, an
 ###### Configuration
 {: .no_toc }
 1.	Select `Analytics` $$\rightarrow$$ `Classification` $$\rightarrow$$ `Statistical fitting`  $$\rightarrow$$ `Generalized Linear Models`
-1.	Set the `Type` [1] of regression to Ordinal Logistic.
+1.	Set the `Type` [1] of classification to Ordinal Logistic.
 1.	Specify the `Confidence Level (%)` [2] for the test.
 1.	Specify `Max Iterations` [3].
 1.	Specify the `Maximum Step-Halving` [4].
@@ -938,7 +938,7 @@ The predictions, Goodness of Fit table and Parameter Estimates table are shown i
 
 #### Ordinal Probit
 {: .no_toc}
-Ordinal Regression, as discussed earlier, is a type of generalized linear model (GLM) used when the dependent variable is ordinal—that is, it consists of categories with a natural order but unknown or unequal spacing (e.g., “low”, “medium”, “high”). A common variant of this model uses the probit link function, which, instead of the logistic function, applies to the standard normal cumulative distribution function (CDF) to model the cumulative probabilities. The model takes the following form:
+Ordinal Classification, as discussed earlier, is a type of generalized linear model (GLM) used when the dependent variable is ordinal—that is, it consists of categories with a natural order but unknown or unequal spacing (e.g., “low”, “medium”, “high”). A common variant of this model uses the probit link function, which, instead of the logistic function, applies to the standard normal cumulative distribution function (CDF) to model the cumulative probabilities. The model takes the following form:
 <div id="ordinal probit link function" style="text-align: center;">
     $$
     \begin{equation}
@@ -976,7 +976,7 @@ All variables must be specified in the datasheet. The dependent variable must be
 
 ##### Output
 {: .no_toc }
-The output of the ordinal logistic regression procedure is organized into three main sections: the Predicted Probabilities Table, the Goodness of Fit Statistics, and the Parameter Estimates Table. 
+The output of the ordinal probit classification procedure is organized into three main sections: the Predicted Probabilities Table, the Goodness of Fit Statistics, and the Parameter Estimates Table. 
 1. The Predicted Probabilities Table displays the actual observed values of the ordinal dependent variable in the first column, followed by the predicted probabilities of each observation belonging to each outcome category. These probabilities are based on the fitted model and indicate how likely each case is to fall into each level of the ordinal outcome.
 1. The Goodness of Fit Table includes statistical measures that assess how well the model fits the data, such as Deviance, Log-Likelihood, AIC, BIC, and related metrics.
 1. The Parameter Estimates Table displays the estimated coefficients for the model. The first rows refer to the thresholds (cut-points) between the ordinal categories of the dependent variable. These are followed by the coefficients for the independent variables, showing their effect on the likelihood of being in a higher category. The table also includes the standard errors, 95% confidence intervals, test statistics, degrees of freedom, and p-values used to assess the statistical significance of each term in the model.
@@ -995,7 +995,7 @@ The input datasheet must include one target variable with ordered categories, an
 ###### Configuration
 {: .no_toc }
 1.	Select `Analytics` $$\rightarrow$$ `Classification` $$\rightarrow$$ `Statistical fitting`  $$\rightarrow$$ `Generalized Linear Models`
-1.	Set the `Type` [1] of regression to Ordinal Probit.
+1.	Set the `Type` [1] of classification to Ordinal Probit.
 1.	Specify the `Confidence Level (%)` [2] for the test.
 1.	Specify `Max Iterations` [3].
 1.	Specify the `Maximum Step-Halving` [4].
@@ -1022,7 +1022,7 @@ The predictions, Goodness of Fit table and Parameter Estimates table are shown i
 
 #### Multinomial Logistic 
 {: .no_toc}
-Multinomial Logistic Regression is a classification method that generalizes logistic regression to multiclass problems, i.e. with more than two possible discrete outcomes that cannot be ordered.
+Multinomial Logistic Classification is a classification method that generalizes logistic classification to multiclass problems, i.e. with more than two possible discrete outcomes that cannot be ordered.
 This type of GLM assumes the response variable follows a multinomial distribution which is a generalization of the binomial distribution for more than two categories. 
 The link function used is the SoftMax function which for a response variable Y with K possible classes is defined as:
 <div id="multinomial non reference function" style="text-align: center;">
@@ -1069,8 +1069,8 @@ All variables must be specified in the datasheet. The dependent variable must be
 
 ##### Output
 {: .no_toc }
-The output of the multinomial logistic regression procedure is organized into three main sections: the Predicted Probabilities Table, the Goodness of Fit Statistics, and the Parameter Estimates Table. 
-1. The Predicted Probabilities Table lists, for each observation, the predicted probability of belonging to each possible outcome category, along with the corresponding category label.Each row represents the model's estimated probability that a specific case falls into a given outcome category, based on the fitted multinomial logistic regression model.
+The output of the multinomial logistic classification procedure is organized into three main sections: the Predicted Probabilities Table, the Goodness of Fit Statistics, and the Parameter Estimates Table. 
+1. The Predicted Probabilities Table lists, for each observation, the predicted probability of belonging to each possible outcome category, along with the corresponding category label.Each row represents the model's estimated probability that a specific case falls into a given outcome category, based on the fitted multinomial logistic classification model.
 1. The Goodness of Fit Table includes statistical measures that assess how well the model fits the data, such as Deviance, Log-Likelihood, AIC, BIC, and related metrics.
 1. The Parameter Estimates Table displays the estimated coefficients for the model. The first rows refer to the thresholds (cut-points) between the ordinal categories of the dependent variable. These are followed by the coefficients for the independent variables, showing their effect on the likelihood of being in a higher category. The table also includes the standard errors, 95% confidence intervals, test statistics, degrees of freedom, and p-values used to assess the statistical significance of each term in the model.
 
@@ -1088,7 +1088,7 @@ The input datasheet must include one nominal dependent variable with three or mo
 ###### Configuration
 {: .no_toc }
 1.	Select `Analytics` $$\rightarrow$$ `Classification` $$\rightarrow$$ `Statistical fitting`  $$\rightarrow$$ `Generalized Linear Models`
-1.	Set the `Type` [1] of regression to Multinomial Logistic.
+1.	Set the `Type` [1] of classification to Multinomial Logistic.
 1.	Specify the `Confidence Level (%)` [2] for the test.
 1.	Specify `Max Iterations` [3].
 1.	Specify the `Maximum Step-Halving` [4].
@@ -1113,123 +1113,432 @@ The predictions, Goodness of Fit table and Parameter Estimates table are shown i
 </div>
 
 ### Generalized Estimating Equations
+Generalized Estimating Equations (GEEs) extend Generalized Linear Models (GLMs) to handle correlated or clustered response data, such as repeated measures or longitudinal observations. GEEs are particularly useful when responses are not independent, as they allow for within-subject correlation, making them ideal for analyzing data collected over time or across related units.
+A GEE model consists of the following key components:
+1.  Mean Structure: Like GLMs, the expected value of the response variable is modeled using a linear predictor :
+<div id="linear predictor" style="text-align: center;">
+    $$
+    \begin{equation}
+    \eta_i = x_i^T\beta
+    \end{equation}
+    $$
+</div> 
+
+Where $$x_i$$ is the vector of predictors and $$\beta$$ is the vector of coefficients.
+1. 	Link Function: A monotonic function $$g(∙)$$ that links the mean of the response $$\mu_i= E[y_i]$$ to the linear predictor, so that $$g(\mu_i)=\eta_i$$.
+1. Working Correlation Matrix: Specifies the assumed correlation structure among repeated observations within the same subject. Common structures include:
+    1. Independent: assumes no within-subject correlation.
+    1. Exchangeable: assumes equal correlation between all pairs of observations.
+    1. AR(1): assumes correlations decrease with time distance.
+    1. Unstructured: allows a distinct correlation for each pair of observations, with no constraints.
+    1. M-dependent: assumes nonzero correlations only up to lag M, and zero correlations beyond that distance.
+
+GEE estimation relies on solving quasi-likelihood equations rather than maximizing a full likelihood function, making it a semi-parametric approach. Parameters are estimated using iterative methods such as iteratively reweighted least squares (IRLS), and standard errors are typically computed using robust estimators to ensure valid inference even if the correlation structure is misspecified.
+In GEE models, a subject variable is required to identify the unit over which repeated measurements occur (e.g., patient ID). Optionally, a within-subject variable (e.g., time or visit number) can be specified to define the ordering of repeated measurements. Cases are usually sorted by subject and within-subject variables to ensure correct modeling of correlation patterns.
+The robust covariance estimator is the default choice, providing consistent standard errors under mild assumptions. The model-based estimator may be more efficient if the correlation structure is correctly specified, but it is more sensitive to misspecification.
+Categorical variables are encoded using dummy coding, as in GLMs. The reference category is omitted by default to avoid multicollinearity and serve as a baseline for interpreting effects.
+
+Each variant of this method is specified by the distribution of the response variable and the link function used. In the table below we specify the distribution and link function used for each variant:
+
+|**GEE Variant**|**Distribution**|**Link Function**|
+|Binary Logistic|Binomial|Logit|
+|Probit|Binomial|Probit|
+|Complementary Log-Log|Binomial|CLogLog|
+|Ordinal Logistic|Multinomial|Logit|
+|Ordinal Probit|Multinomial|Probit|
+
 
 #### Binary Logistic
 {: .no_toc}
+Use the Binary Logistic Classification method by browsing in the top ribbon: 
+
+| Analytics $$\rightarrow$$ Classification $$\rightarrow$$ Statistical fitting $$\rightarrow$$ Generalized Estimating Equations |
+
+And then choosing “Binary Logistic” as the `Type`.
+
 ##### Input
 {: .no_toc }
+All variables must be specified in the datasheet. The dependent variable must be binary, as Binary Logistic Classification within the GEE framework models dichotomous outcomes. The binary outcome should be coded as 0 and 1. Covariates should be numerical, while categorical predictors (factors) can be represented using either text labels or numeric codes. The input datasheet must include at least two columns: one for the dependent variable and one or more for the independent variables (covariates or factors). Each row should correspond to a single observation. Additionally, a subject identifier column is required to define clusters of repeated measurements, and optionally a within-subject variable (e.g., time) to specify the order of observations within each subject.
 
 ##### Configuration
 {: .no_toc }
 
+|**Confidence Level (%)**| Specify the confidence level of the analysis. Values should range from 0 to 100 and correspond to percentages. |
+|**Max Iterations**|Defines the maximum number of iterations the model is allowed to perform during the estimation process. If the model fails to converge before reaching this number, the algorithm stops and returns the values of the last iteration.|
+|**Iterations Between Updates**|Defines how often the working correlation matrix is updated during estimation.|
+|**Dependent Variable**| Select the column that corresponds to values of the dependent variable. |
+|**Reference Category**| Specifies which category of the dependent variable should be used as the reference level when calculating parameter estimates.|
+|**Minimum Change in Parameter Estimates**| Sets the tolerance level for convergence — the smallest change in parameter estimates between iterations required to continue optimization. If the change in all parameters is below this value, the algorithm assumes convergence has been reached. |
+|**Hessian Convergence**| Specifies a threshold for convergence based on the second derivatives (Hessian matrix). |
+|**Scale Parameter**| Adjusts the variance of the model. |
+|**Within Subject**| Selects the column that defines the ordering of repeated observations within each subject.|
+|**Structure**| Defines the working correlation structure for repeated measurements within subjects. Choices include Independent, Exchangeable, AR(1), Unstructured and M-Dependent.|
+|**M**|In the M-Dependent correlation structure, M specifies the maximum number of consecutive observations within each cluster that are assumed to be correlated, with correlations set to zero for observations more than M time points apart. M must be an integer in the range from 1 to (number of within-subject observations – 1).|
+|**Covariance Matrix**|In the Covariance Matrix option, the user selects how the model's standard errors will be estimated. The Robust estimator is resistant to misspecification of the correlation structure, while the Model-based estimator assumes the specified correlation is correct.|
+|**Subjects/Factors/Covariates/Excluded Columns**| Select manually the columns that correspond to subjects, factors and the columns that correspond to covariates through the dialog window: Use the buttons to move columns between the Subjects, Factors and Covariates list and Excluded Columns list. Single-arrow buttons will move all selected columns. At least one covariate or factor column should be specified. Also, a column for the Subject is required. |
+|**Custom/Include All Main Effects/Full Factorial**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Include All Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. Note that the Include All Main Effects and Full Factorial options do not allow the use of a formula.|
+|**Formula**| Specify the model formula used for the analysis if the Custom option is selected. Include all variables listed under Factors or Covariates, separated by “+”. To include interaction terms, use the format VariableA:VariableB. If interaction terms are included, the dataset must contain all combinations of the levels of the involved categorical variables — i.e., the design must be fully crossed — to ensure the model can be properly estimated.|
+
 ##### Output
 {: .no_toc }
+The output of the Generalized Estimating Equations (GEEs) procedure is organized into three main sections: the Predicted Values Table, the Parameter Estimates Table and the Working Correlation Matrix. 
+1. The Predicted Values Table shows the fitted values for the dependent variable on the specified model. 
+1. The Parameter Estimates Table includes the estimated coefficients for the independent variables. Each row corresponds to a predictor and includes its coefficient, standard error, confidence interval, test statistic, degrees of freedom, and p-value.
+1. The Working Correlation Matrix displays the estimated correlations between repeated measurements of the same subject over time.
+
 
 ##### Example
 {: .no_toc }
 
 ###### Input
 {: .no_toc }
+The dataset must include a binary target variable suitable for modeling with binary logistic classification. The binary outcome should be coded as 0 and 1. It should also contain at least one independent variable, which can be continuous or categorical. In addition, the dataset must include a subject identifier to group repeated observations from the same individual or unit, as well as a within-subject time or measurement indicator to reflect the longitudinal or clustered nature of the data.
+<div style="text-align: center;">
+<img src="images/GEE/BinLogGEE_Input.png" alt="binlogGEE-input" width="400" height="300" class="img-responsive">
+</div>
 
 ###### Configuration
 {: .no_toc }
+1. Select `Analytics` $$\rightarrow$$ `Classification` $$\rightarrow$$ `Statistical fitting` $$\rightarrow$$ `Generalized Estimating Equations`.
+1.	Set the `Type` [1] of classification to Binary Logistic.
+1.	Specify the `Confidence Level (%)` [2] for the test.
+1.	Specify `Max Iterations` [3].
+1.	Specify `Iterations Between Updates` [4].
+1.	Select the `Dependent Variable` [5].
+1.	Select the `Reference Category` [6].
+1.	Specify the `Minimum Change in Parameter Estimates` [7].
+1.	Specify the `Hessian Convergence` [8].
+1.	Specify the `Scale Parameter` [9].
+1.	Select the `Within Subject` [10].
+1.	Select the `working correlation Structure` and specify the value of `M` if you select M-Dependent as the correlation structure. [11].
+1.	Select the method used to estimate the `covariance matrix` [12] of the standard errors.
+1.	Select the columns by clicking on the arrow buttons [17] and moving columns between the `Excluded Columns` [13] and `Subjects` [14] and `Factors` [15] and `Covariates `[16] lists.
+1.	Select your preferred option to define the model you want to analyze [18].
+1.	If the `Custom` option is selected, specify the `Formula` [19] for the analysis.
+1.	Click on the `Execute` button [20] to perform the Binary Logistic Classification method.
+<div style="text-align: center;">
+<img src="images/GEE/BinLogGEE_Configuration.png" alt="binlogGEE-config" width="400" height="300" class="img-responsive">
+</div>
 
 ###### Output
 {: .no_toc }
+The Predictions, Parameter Estimates table and Working Correlation Matrix are shown in the output spreadsheet.
+<div style="text-align: center;">
+<img src="images/GEE/BinLogGEE_Output.png" alt="binlogGEE-output" width="400" height="300" class="img-responsive">
+</div>
 
 #### Probit 
 {: .no_toc}
+Use the Probit Classification method by browsing in the top ribbon: 
+
+| Analytics $$\rightarrow$$ Classification $$\rightarrow$$ Statistical fitting $$\rightarrow$$ Generalized Estimating Equations |
+
+And then choosing “Probit” as the `Type`.
+
 ##### Input
 {: .no_toc }
+All variables must be specified in the datasheet. The dependent variable must be binary, as Probit Classification within the GEE framework models dichotomous outcomes using a cumulative normal (probit) link function. The binary outcome should be coded as 0 and 1. Covariates should be numerical, while categorical predictors (factors) can be represented using either text labels or numeric codes. The input datasheet must include at least two columns: one for the dependent variable and one or more for the independent variables (covariates or factors). Each row should correspond to a single observation. Additionally, a subject identifier column is required to define clusters of repeated measurements, and optionally a within-subject variable (e.g., time) to specify the order of observations within each subject.
 
 ##### Configuration
 {: .no_toc }
 
+|**Confidence Level (%)**| Specify the confidence level of the analysis. Values should range from 0 to 100 and correspond to percentages. |
+|**Max Iterations**|Defines the maximum number of iterations the model is allowed to perform during the estimation process. If the model fails to converge before reaching this number, the algorithm stops and returns the values of the last iteration.|
+|**Iterations Between Updates**|Defines how often the working correlation matrix is updated during estimation.|
+|**Dependent Variable**| Select the column that corresponds to values of the dependent variable. |
+|**Reference Category**| Specifies which category of the dependent variable should be used as the reference level when calculating parameter estimates.|
+|**Minimum Change in Parameter Estimates**| Sets the tolerance level for convergence — the smallest change in parameter estimates between iterations required to continue optimization. If the change in all parameters is below this value, the algorithm assumes convergence has been reached. |
+|**Hessian Convergence**| Specifies a threshold for convergence based on the second derivatives (Hessian matrix). |
+|**Scale Parameter**| Adjusts the variance of the model. |
+|**Within Subject**| Selects the column that defines the ordering of repeated observations within each subject.|
+|**Structure**| Defines the working correlation structure for repeated measurements within subjects. Choices include Independent, Exchangeable, AR(1), Unstructured and M-Dependent.|
+|**M**|In the M-Dependent correlation structure, M specifies the maximum number of consecutive observations within each cluster that are assumed to be correlated, with correlations set to zero for observations more than M time points apart. M must be an integer in the range from 1 to (number of within-subject observations – 1).|
+|**Covariance Matrix**|In the Covariance Matrix option, the user selects how the model's standard errors will be estimated. The Robust estimator is resistant to misspecification of the correlation structure, while the Model-based estimator assumes the specified correlation is correct.|
+|**Subjects/Factors/Covariates/Excluded Columns**| Select manually the columns that correspond to subjects, factors and the columns that correspond to covariates through the dialog window: Use the buttons to move columns between the Subjects, Factors and Covariates list and Excluded Columns list. Single-arrow buttons will move all selected columns. At least one covariate or factor column should be specified. Also, a column for the Subject is required. |
+|**Custom/Include All Main Effects/Full Factorial**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Include All Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. Note that the Include All Main Effects and Full Factorial options do not allow the use of a formula.|
+|**Formula**| Specify the model formula used for the analysis if the Custom option is selected. Include all variables listed under Factors or Covariates, separated by “+”. To include interaction terms, use the format VariableA:VariableB. If interaction terms are included, the dataset must contain all combinations of the levels of the involved categorical variables — i.e., the design must be fully crossed — to ensure the model can be properly estimated.|
+
 ##### Output
 {: .no_toc }
+The output of the Generalized Estimating Equations (GEEs) procedure is organized into three main sections: the Predicted Values Table, the Parameter Estimates Table and the Working Correlation Matrix. 
+1. The Predicted Values Table shows the fitted values for the dependent variable on the specified model. 
+1. The Parameter Estimates Table includes the estimated coefficients for the independent variables. Each row corresponds to a predictor and includes its coefficient, standard error, confidence interval, test statistic, degrees of freedom, and p-value.
+1. The Working Correlation Matrix displays the estimated correlations between repeated measurements of the same subject over time.
+
 
 ##### Example
 {: .no_toc }
 
 ###### Input
 {: .no_toc }
+The dataset must include a binary target variable suitable for modeling with binary probit classification. The binary outcome should be coded as 0 and 1. It should also contain at least one independent variable, which can be continuous or categorical. In addition, the dataset must include a subject identifier to group repeated observations from the same individual or unit, as well as a within-subject time or measurement indicator to reflect the longitudinal or clustered nature of the data. The structure of the dataset should allow for the modeling of within-cluster correlation using a probit link function in the GEE framework.
+<div style="text-align: center;">
+<img src="images/GEE/ProbitGEE_Input.png" alt="probitGEE-input" width="400" height="300" class="img-responsive">
+</div>
 
 ###### Configuration
 {: .no_toc }
+1. Select `Analytics` $$\rightarrow$$ `Classification` $$\rightarrow$$ `Statistical fitting` $$\rightarrow$$ `Generalized Estimating Equations`.
+1.	Set the `Type` [1] of classification to Probit.
+1.	Specify the `Confidence Level (%)` [2] for the test.
+1.	Specify `Max Iterations` [3].
+1.	Specify `Iterations Between Updates` [4].
+1.	Select the `Dependent Variable` [5].
+1.	Select the `Reference Category` [6].
+1.	Specify the `Minimum Change in Parameter Estimates` [7].
+1.	Specify the `Hessian Convergence` [8].
+1.	Specify the `Scale Parameter` [9].
+1.	Select the `Within Subject` [10].
+1.	Select the `working correlation Structure` and specify the value of `M` if you select M-Dependent as the correlation structure. [11].
+1.	Select the method used to estimate the `covariance matrix` [12] of the standard errors.
+1.	Select the columns by clicking on the arrow buttons [17] and moving columns between the `Excluded Columns` [13] and `Subjects` [14] and `Factors` [15] and `Covariates `[16] lists.
+1.	Select your preferred option to define the model you want to analyze [18].
+1.	If the `Custom` option is selected, specify the `Formula` [19] for the analysis.
+1.	Click on the `Execute` button [20] to perform the Probit Classification method.
+<div style="text-align: center;">
+<img src="images/GEE/ProbitGEE_Configuration.png" alt="probitGEE-config" width="400" height="300" class="img-responsive">
+</div>
 
 ###### Output
 {: .no_toc }
+The Predictions, Parameter Estimates table and Working Correlation Matrix are shown in the output spreadsheet.
+<div style="text-align: center;">
+<img src="images/GEE/ProbitGEE_Output.png" alt="probitGEE-output" width="400" height="300" class="img-responsive">
+</div>
 
 #### Complementary Log-Log 
 {: .no_toc}
+Use the Complementary Log-Log Classification method by browsing in the top ribbon: 
+
+| Analytics $$\rightarrow$$ Classification $$\rightarrow$$ Statistical fitting $$\rightarrow$$ Generalized Estimating Equations |
+
+And then choosing "Complementary Log-Log" as the `Type`.
+
 ##### Input
 {: .no_toc }
+All variables must be specified in the datasheet. The dependent variable must be a binary categorical variable, containing exactly two distinct outcomes (e.g., 0 and 1, or two unique labels). The dependent variable should not contain missing entries or values outside the two defined categories. Independent variables may be either numerical or categorical. Categorical variables can be represented using either text labels or numerical codes. The input datasheet must include at least two columns: one for the dependent variable and one or more for the independent variables. Each row should represent a single observation. This model is particularly useful when the probability of the event is highly skewed (close to 0 or 1) and is often applied in contexts involving time-to-event outcomes or hazard-based modeling.
 
 ##### Configuration
 {: .no_toc }
 
+|**Confidence Level (%)**| Specify the confidence level of the analysis. Values should range from 0 to 100 and correspond to percentages. |
+|**Max Iterations**|Defines the maximum number of iterations the model is allowed to perform during the estimation process. If the model fails to converge before reaching this number, the algorithm stops and returns the values of the last iteration.|
+|**Iterations Between Updates**|Defines how often the working correlation matrix is updated during estimation.|
+|**Dependent Variable**| Select the column that corresponds to values of the dependent variable. |
+|**Reference Category**| Specifies which category of the dependent variable should be used as the reference level when calculating parameter estimates.|
+|**Minimum Change in Parameter Estimates**| Sets the tolerance level for convergence — the smallest change in parameter estimates between iterations required to continue optimization. If the change in all parameters is below this value, the algorithm assumes convergence has been reached. |
+|**Hessian Convergence**| Specifies a threshold for convergence based on the second derivatives (Hessian matrix). |
+|**Scale Parameter**| Adjusts the variance of the model. |
+|**Within Subject**| Selects the column that defines the ordering of repeated observations within each subject.|
+|**Structure**| Defines the working correlation structure for repeated measurements within subjects. Choices include Independent, Exchangeable, AR(1), Unstructured and M-Dependent.|
+|**M**|In the M-Dependent correlation structure, M specifies the maximum number of consecutive observations within each cluster that are assumed to be correlated, with correlations set to zero for observations more than M time points apart. M must be an integer in the range from 1 to (number of within-subject observations – 1).|
+|**Covariance Matrix**|In the Covariance Matrix option, the user selects how the model's standard errors will be estimated. The Robust estimator is resistant to misspecification of the correlation structure, while the Model-based estimator assumes the specified correlation is correct.|
+|**Subjects/Factors/Covariates/Excluded Columns**| Select manually the columns that correspond to subjects, factors and the columns that correspond to covariates through the dialog window: Use the buttons to move columns between the Subjects, Factors and Covariates list and Excluded Columns list. Single-arrow buttons will move all selected columns. At least one covariate or factor column should be specified. Also, a column for the Subject is required. |
+|**Custom/Include All Main Effects/Full Factorial**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Include All Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. Note that the Include All Main Effects and Full Factorial options do not allow the use of a formula.|
+|**Formula**| Specify the model formula used for the analysis if the Custom option is selected. Include all variables listed under Factors or Covariates, separated by “+”. To include interaction terms, use the format VariableA:VariableB. If interaction terms are included, the dataset must contain all combinations of the levels of the involved categorical variables — i.e., the design must be fully crossed — to ensure the model can be properly estimated.|
+
 ##### Output
 {: .no_toc }
+The output of the Generalized Estimating Equations (GEEs) procedure is organized into three main sections: the Predicted Values Table, the Parameter Estimates Table and the Working Correlation Matrix. 
+1. The Predicted Values Table shows the fitted values for the dependent variable on the specified model. 
+1. The Parameter Estimates Table includes the estimated coefficients for the independent variables. Each row corresponds to a predictor and includes its coefficient, standard error, confidence interval, test statistic, degrees of freedom, and p-value.
+1. The Working Correlation Matrix displays the estimated correlations between repeated measurements of the same subject over time
+
 
 ##### Example
 {: .no_toc }
 
 ###### Input
 {: .no_toc }
+The dataset must include a binary outcome variable coded as 0 and 1, suitable for modeling with a complementary log-log (cloglog) link function. Cloglog classification within the GEE framework is particularly appropriate for modeling asymmetric binary outcomes, such as rare events or time-to-event responses observed over discrete intervals. The dataset should also include at least one independent variable, which can be continuous or categorical, a subject identifier to define repeated measurements within clusters, and a within-subject time or measurement variable to indicate the order of observations. The data structure should support modeling within-cluster correlation under the binomial distribution assumption using the complementary log-log link function in the GEE framework
+<div style="text-align: center;">
+<img src="images/GEE/CLogLogGEE_Input.png" alt="cloglogGEE-input" width="400" height="300" class="img-responsive">
+</div>
 
 ###### Configuration
 {: .no_toc }
+1. Select `Analytics` $$\rightarrow$$ `Classification` $$\rightarrow$$ `Statistical fitting` $$\rightarrow$$ `Generalized Estimating Equations`.
+1.	Set the `Type` [1] of classification to Complementary Log-Log.
+1.	Specify the `Confidence Level (%)` [2] for the test.
+1.	Specify `Max Iterations` [3].
+1.	Specify `Iterations Between Updates` [4].
+1.	Select the `Dependent Variable` [5].
+1.	Select the `Reference Category` [6].
+1.	Specify the `Minimum Change in Parameter Estimates` [7].
+1.	Specify the `Hessian Convergence` [8].
+1.	Specify the `Scale Parameter` [9].
+1.	Select the `Within Subject` [10].
+1.	Select the `working correlation Structure` and specify the value of `M` if you select M-Dependent as the correlation structure. [11].
+1.	Select the method used to estimate the `covariance matrix` [12] of the standard errors.
+1.	Select the columns by clicking on the arrow buttons [17] and moving columns between the `Excluded Columns` [13] and `Subjects` [14] and `Factors` [15] and `Covariates `[16] lists.
+1.	Select your preferred option to define the model you want to analyze [18].
+1.	If the `Custom` option is selected, specify the `Formula` [19] for the analysis.
+1.	Click on the `Execute` button [20] to perform the Complementary Log-Log Classification method.
+<div style="text-align: center;">
+<img src="images/GEE/CLogLogGEE_Configuration.png" alt="cloglogGEE-config" width="400" height="300" class="img-responsive">
+</div>
 
 ###### Output
 {: .no_toc }
-
+The Predictions, Parameter Estimates table and Working Correlation Matrix are shown in the output spreadsheet.
+<div style="text-align: center;">
+<img src="images/GEE/CLogLogGEE_Output.png" alt="cloglogGEE-output" width="400" height="300" class="img-responsive">
+</div>
 
 #### Ordinal Logistic
 {: .no_toc}
+Use the Ordinal Logistic Classification method by browsing in the top ribbon:
+
+| Analytics $$\rightarrow$$ Classification $$\rightarrow$$ Statistical fitting $$\rightarrow$$ Generalized Estimating Equations|
+
+And then choosing "Ordinal Logistic" as the `Type`. 
+
 ##### Input
 {: .no_toc }
+All variables must be specified in the datasheet. The dependent variable must be ordinal, coded as ordered categories (e.g., integers 1, 2, 3, …) and suitable for modeling with a cumulative logit (proportional odds) link function within the GEE framework for ordinal outcomes. Covariates should be numerical, while categorical predictors can be represented using either text labels or numeric codes. The input datasheet must include at least two columns: one for the dependent variable and one or more for the independent variables (covariates or factors). Each row should correspond to a single observation. Additionally, a subject identifier column is required to define clusters of repeated measurements, and optionally a within-subject variable to specify the order of observations within each subject. The structure of the dataset should support modeling intra-subject correlation under the multinomial/ordinal distribution assumption using the cumulative logit link within the GEE framework.
 
 ##### Configuration
 {: .no_toc }
 
+|**Confidence Level (%)**| Specify the confidence level of the analysis. Values should range from 0 to 100 and correspond to percentages. |
+|**Max Iterations**|Defines the maximum number of iterations the model is allowed to perform during the estimation process. If the model fails to converge before reaching this number, the algorithm stops and returns the values of the last iteration.|
+|**Iterations Between Updates**|Defines how often the working correlation matrix is updated during estimation.|
+|**Dependent Variable**| Select the column that corresponds to values of the dependent variable. |
+|**Minimum Change in Parameter Estimates**| Sets the tolerance level for convergence — the smallest change in parameter estimates between iterations required to continue optimization. If the change in all parameters is below this value, the algorithm assumes convergence has been reached. |
+|**Hessian Convergence**| Specifies a threshold for convergence based on the second derivatives (Hessian matrix). |
+|**Scale Parameter**| Adjusts the variance of the model. |
+|**Within Subject**| Selects the column that defines the ordering of repeated observations within each subject.|
+|**Structure**| Defines the working correlation structure for repeated measurements within subjects. Choices include Independent, Exchangeable, AR(1), Unstructured and M-Dependent.|
+|**M**|In the M-Dependent correlation structure, M specifies the maximum number of consecutive observations within each cluster that are assumed to be correlated, with correlations set to zero for observations more than M time points apart. M must be an integer in the range from 1 to (number of within-subject observations – 1).|
+|**Covariance Matrix**|In the Covariance Matrix option, the user selects how the model's standard errors will be estimated. The Robust estimator is resistant to misspecification of the correlation structure, while the Model-based estimator assumes the specified correlation is correct.|
+|**Subjects/Factors/Covariates/Excluded Columns**| Select manually the columns that correspond to subjects, factors and the columns that correspond to covariates through the dialog window: Use the buttons to move columns between the Subjects, Factors and Covariates list and Excluded Columns list. Single-arrow buttons will move all selected columns. At least one covariate or factor column should be specified. Also, a column for the Subject is required. |
+|**Custom/Include All Main Effects/Full Factorial**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Include All Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. Note that the Include All Main Effects and Full Factorial options do not allow the use of a formula.|
+|**Formula**| Specify the model formula used for the analysis if the Custom option is selected. Include all variables listed under Factors or Covariates, separated by “+”. To include interaction terms, use the format VariableA:VariableB. If interaction terms are included, the dataset must contain all combinations of the levels of the involved categorical variables — i.e., the design must be fully crossed — to ensure the model can be properly estimated.|
+
 ##### Output
 {: .no_toc }
+The output of the ordinal logistic classification procedure is organized into three main sections: the Predicted Probabilities Table, the Parameter Estimates Table and the Working Correlation Matrix. 
+1. The Predicted Probabilities Table displays the actual observed values of the ordinal dependent variable in the first column, followed by the predicted probabilities of each observation belonging to each outcome category. These probabilities are based on the fitted model and indicate how likely each case is to fall into each level of the ordinal outcome.
+1. The Parameter Estimates Table includes the estimated coefficients for the independent variables. Each row corresponds to a predictor and includes its coefficient, standard error, confidence interval, test statistic, degrees of freedom, and p-value.
+1. The Working Correlation Matrix displays the estimated correlations between repeated measurements of the same subject over time.
+
 
 ##### Example
 {: .no_toc }
 
 ###### Input
 {: .no_toc }
+All variables must be specified in the datasheet. The dependent variable must be ordinal, coded strictly as numeric ordered categories (e.g., 1, 2, 3, …). The dataset must include at least one independent variable (continuous or categorical), a subject identifier to define repeated measurements, and optionally a within-subject time variable to indicate observation order. Each row should represent a single observation, and the data structure should support modeling intra-subject correlation under the ordinal distribution assumption using the cumulative logit link.
+<div style="text-align: center;">
+<img src="images/GEE/OrdLogGEE_Input.png" alt="ordlogGEE-input" width="400" height="300" class="img-responsive">
+</div>
 
 ###### Configuration
 {: .no_toc }
+1. Select `Analytics` $$\rightarrow$$ `Classification` $$\rightarrow$$ `Statistical fitting` $$\rightarrow$$ `Generalized Estimating Equations`.
+1.	Set the `Type` [1] of classification to Ordinal Logistic.
+1.	Specify the `Confidence Level (%)` [2] for the test.
+1.	Specify `Max Iterations` [3].
+1.	Specify `Iterations Between Updates` [4].
+1.	Select the `Dependent Variable` [5].
+1.	Specify the `Minimum Change in Parameter Estimates` [6].
+1.	Specify the `Hessian Convergence` [7].
+1.	Specify the `Scale Parameter` [8].
+1.	Select the `Within Subject` [9].
+1.	Select the `working correlation Structure` and specify the value of `M` if you select M-Dependent as the correlation structure. [10].
+1.	Select the method used to estimate the `covariance matrix` [11] of the standard errors.
+1.	Select the columns by clicking on the arrow buttons [16] and moving columns between the `Excluded Columns` [12] and `Subjects` [13] and `Factors` [14] and `Covariates `[15] lists.
+1.	Select your preferred option to define the model you want to analyze [17].
+1.	If the `Custom` option is selected, specify the `Formula` [18] for the analysis.
+1.	Click on the `Execute` button [19] to perform the Ordinal Logistic Classification method.
+<div style="text-align: center;">
+<img src="images/GEE/OrdLogGEE_Configuration.png" alt="ordlogGEE-config" width="400" height="300" class="img-responsive">
+</div>
 
 ###### Output
 {: .no_toc }
+The Predictions, Parameter Estimates table and Working Correlation Matrix are shown in the output spreadsheet.
+<div style="text-align: center;">
+<img src="images/GEE/OrdLogGEE_Output.png" alt="ordlogGEE-output" width="400" height="300" class="img-responsive">
+</div>
 
 #### Ordinal Probit
 {: .no_toc}
+Use the Ordinal Probit Classification method by browsing in the top ribbon:
+
+| Analytics $$\rightarrow$$ Classification $$\rightarrow$$ Statistical fitting $$\rightarrow$$ Generalized Estimating Equations |
+
+And then choosing "Ordinal Probit" as the `Type`. 
+
 ##### Input
 {: .no_toc }
+All variables must be specified in the datasheet. The dependent variable must be ordinal, coded as ordered categories (e.g., integers 1, 2, 3, …) and suitable for modeling with a cumulative probit link function within the GEE framework for ordinal outcomes. Covariates should be numerical, while categorical predictors can be represented using either text labels or numeric codes. The input datasheet must include at least two columns: one for the dependent variable and one or more for the independent variables (covariates or factors). Each row should correspond to a single observation. Additionally, a subject identifier column is required to define clusters of repeated measurements, and optionally a within-subject variable to specify the order of observations within each subject. The structure of the dataset should support modeling intra-subject correlation under the multinomial/ordinal distribution assumption using the cumulative probit link within the GEE framework.
 
 ##### Configuration
 {: .no_toc }
 
+|**Confidence Level (%)**| Specify the confidence level of the analysis. Values should range from 0 to 100 and correspond to percentages. |
+|**Max Iterations**|Defines the maximum number of iterations the model is allowed to perform during the estimation process. If the model fails to converge before reaching this number, the algorithm stops and returns the values of the last iteration.|
+|**Iterations Between Updates**|Defines how often the working correlation matrix is updated during estimation.|
+|**Dependent Variable**| Select the column that corresponds to values of the dependent variable. |
+|**Minimum Change in Parameter Estimates**| Sets the tolerance level for convergence — the smallest change in parameter estimates between iterations required to continue optimization. If the change in all parameters is below this value, the algorithm assumes convergence has been reached. |
+|**Hessian Convergence**| Specifies a threshold for convergence based on the second derivatives (Hessian matrix). |
+|**Scale Parameter**| Adjusts the variance of the model. |
+|**Within Subject**| Selects the column that defines the ordering of repeated observations within each subject.|
+|**Structure**| Defines the working correlation structure for repeated measurements within subjects. Choices include Independent, Exchangeable, AR(1), Unstructured and M-Dependent.|
+|**M**|In the M-Dependent correlation structure, M specifies the maximum number of consecutive observations within each cluster that are assumed to be correlated, with correlations set to zero for observations more than M time points apart. M must be an integer in the range from 1 to (number of within-subject observations – 1).|
+|**Covariance Matrix**|In the Covariance Matrix option, the user selects how the model's standard errors will be estimated. The Robust estimator is resistant to misspecification of the correlation structure, while the Model-based estimator assumes the specified correlation is correct.|
+|**Subjects/Factors/Covariates/Excluded Columns**| Select manually the columns that correspond to subjects, factors and the columns that correspond to covariates through the dialog window: Use the buttons to move columns between the Subjects, Factors and Covariates list and Excluded Columns list. Single-arrow buttons will move all selected columns. At least one covariate or factor column should be specified. Also, a column for the Subject is required. |
+|**Custom/Include All Main Effects/Full Factorial**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Include All Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. Note that the Include All Main Effects and Full Factorial options do not allow the use of a formula.|
+|**Formula**| Specify the model formula used for the analysis if the Custom option is selected. Include all variables listed under Factors or Covariates, separated by “+”. To include interaction terms, use the format VariableA:VariableB. If interaction terms are included, the dataset must contain all combinations of the levels of the involved categorical variables — i.e., the design must be fully crossed — to ensure the model can be properly estimated.|
+
 ##### Output
 {: .no_toc }
+The output of the ordinal probit classification procedure is organized into three main sections: the Predicted Probabilities Table, the Parameter Estimates Table and the Working Correlation Matrix. 
+1. The Predicted Probabilities Table displays the actual observed values of the ordinal dependent variable in the first column, followed by the predicted probabilities of each observation belonging to each outcome category. These probabilities are based on the fitted model and indicate how likely each case is to fall into each level of the ordinal outcome.
+1. The Parameter Estimates Table includes the estimated coefficients for the independent variables. Each row corresponds to a predictor and includes its coefficient, standard error, confidence interval, test statistic, degrees of freedom, and p-value.
+1. The Working Correlation Matrix displays the estimated correlations between repeated measurements of the same subject over time.
+
 
 ##### Example
 {: .no_toc }
 
 ###### Input
 {: .no_toc }
+All variables must be specified in the datasheet. The dependent variable must be ordinal, coded strictly as numeric ordered categories (e.g., 1, 2, 3,). The dataset must include at least one independent variable (continuous or categorical), a subject identifier to define repeated measurements, and optionally a within-subject time variable to indicate observation order. Each row should represent a single observation, and the data structure should support modeling intra-subject correlation under the ordinal distribution assumption using the cumulative probit link.
+<div style="text-align: center;">
+<img src="images/GEE/OrdProbitGEE_Input.png" alt="ordprobitGEE-input" width="400" height="300" class="img-responsive">
+</div>
 
 ###### Configuration
 {: .no_toc }
+1. Select `Analytics` $$\rightarrow$$ `Classification` $$\rightarrow$$ `Statistical fitting` $$\rightarrow$$ `Generalized Estimating Equations`.
+1.	Set the `Type` [1] of classification to Ordinal Probit.
+1.	Specify the `Confidence Level (%)` [2] for the test.
+1.	Specify `Max Iterations` [3].
+1.	Specify `Iterations Between Updates` [4].
+1.	Select the `Dependent Variable` [5].
+1.	Specify the `Minimum Change in Parameter Estimates` [6].
+1.	Specify the `Hessian Convergence` [7].
+1.	Specify the `Scale Parameter` [8].
+1.	Select the `Within Subject` [9].
+1.	Select the `working correlation Structure` and specify the value of `M` if you select M-Dependent as the correlation structure. [10].
+1.	Select the method used to estimate the `covariance matrix` [11] of the standard errors.
+1.	Select the columns by clicking on the arrow buttons [16] and moving columns between the `Excluded Columns` [12] and `Subjects` [13] and `Factors` [14] and `Covariates `[15] lists.
+1.	Select your preferred option to define the model you want to analyze [17].
+1.	If the `Custom` option is selected, specify the `Formula` [18] for the analysis.
+1.	Click on the `Execute` button [19] to perform the Ordinal Probit Classification method.
+<div style="text-align: center;">
+<img src="images/GEE/OrdProbitGEE_Configuration.png" alt="ordprobitGEE-config" width="400" height="300" class="img-responsive">
+</div>
+
 
 ###### Output
 {: .no_toc }
-
+The Predictions, Parameter Estimates table and Working Correlation Matrix are shown in the output spreadsheet.
+<div style="text-align: center;">
+<img src="images/GEE/OrdProbitGEE_Output.png" alt="ordprobitGEE-output" width="400" height="300" class="img-responsive">
+</div>
 
 
 
@@ -1293,6 +1602,11 @@ The model generated by any of the `k Nearest Neighbors (kNN)`, `Fully Connected 
 1.  Chen T, Guestrin C. XGBoost: A Scalable Tree Boosting System. Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining, 2016, p. 785–94. [https://doi.org/10.1145/2939672.2939785](https://doi.org/10.1145/2939672.2939785).
 1. Salzberg SL. C4.5: Programs for Machine Learning by J. Ross Quinlan. Morgan Kaufmann Publishers, Inc., 1993. Mach Learn 1994;16:235–40. [https://doi.org/10.1007/BF00993309](https://doi.org/10.1007/BF00993309).
 1. Breiman L. Random Forests. Machine Learning 2001;45:5–32. [https://doi.org/10.1023/A:1010933404324](https://doi.org/10.1023/A:1010933404324).
+1. Nelder JA, Wedderburn RWM. Generalized linear models. J R Stat Soc A. 1972;135(3):370-84.[https://doi.org/10.2307/2344614](https://doi.org/10.2307/2344614).
+1. McCullagh P, Nelder JA. Generalized linear models. 2nd ed. London: Chapman & Hall/CRC; 1989. [https://doi.org/10.1201/9780203753736](https://doi.org/10.1201/9780203753736).
+1. McCullagh P. Regression models for ordinal data. J R Stat Soc B. 1980;42(2):109-42. [https://doi.org/10.1111/j.2517-6161.1980.tb01109.x](https://doi.org/10.1111/j.2517-6161.1980.tb01109.x).
+1. Liang KY, Zeger SL. Longitudinal data analysis using generalized linear models. Biometrika. 1986;73(1):13-22. [https://doi.org/10.1093/biomet/73.1.13](https://doi.org/10.1093/biomet/73.1.13).
+1. Piegorsch WW, Casella G. Complementary log regression for generalized linear models. Am Stat. 1992;46(3):199-200.[ https://doi.org/10.1080/00031305.1992.10475858]( https://doi.org/10.1080/00031305.1992.10475858).
 
 ---
 

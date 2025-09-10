@@ -509,26 +509,72 @@ In the right-hand spreadsheet of the tab the output data matrix with the actual 
 ## Statistical fitting
 
 ### MLR
+Multiple Linear Regression is a statistical technique that predicts a dependent variable using two or more independent variables. MLR models the relationship between the dependent variable and the predictor using a linear equation. It is an extension of the simple linear regression allowing for more than one independent variable. An MLR model consists of the following key components:
+1. Mean Structure: The expected value of the response variable is modeled as a linear combination of predictors:
+<div id="mean structure" style="text-align: center;">
+    $$
+    \begin{equation}
+    y_i = \beta_0 + \beta_1 x_{i1} + \beta_2 x_{i2} + ... + \beta_p x_{ip} + \epsilon_i
+    \end{equation}
+    $$
+</div> 
+where $$\beta_0$$ is the intercept, $$\beta_j$$ are regression coefficients, $$x_{ij}$$  are predictor values, and $$\epsilon_i$$ is the error term.
+
+1.	Assumptions: MLR relies on several key assumptions for valid inference:
+    1. Linearity: The relationship between predictors and outcome is linear.
+    1. Independence: Observations are independent of each other.
+    1. Homoscedasticity: Errors have constant variance across all levels of predictors.
+    1. Normality of errors: Residuals are normally distributed (for hypothesis testing).
+    1. No multicollinearity: Predictors are not highly correlated with each other.
+1.  Estimation Method: Coefficients are typically estimated using Ordinary Least Squares (OLS), which minimizes the sum of squared residuals.
+1. 	Interpretation of Coefficients: Each $$\beta_j$$ represents the expected change in the dependent variable for a one-unit change in predictor , $$x_{ij}$$, holding all other predictors constant.
+1. 	Model Evaluation: Goodness of fit and explanatory power are commonly assessed with metrics such as $$R^2$$, adjusted $$R^2$$, F-tests, and residual diagnostics.
+
+This method is a simpler implementation allowing only for continuous data and main effects to be included in the model, if you want to perform multiple linear regression with categorical data and more complex options you can refer to Analytics $$\rightarrow$$ Regression $$\rightarrow$$ Statistical fitting $$\rightarrow$$ Generalized Linear Models.
+
+Use the MLR method by browsing in the top ribbon: 
+
+| Analytics $$\rightarrow$$ Classification $$\rightarrow$$ Statistical fitting $$\rightarrow$$ MLR |
+
 #### Input
 {: .no_toc }
+The input should contain only numerical data and at least 2 columns should be specified, one corresponding to the target variable and at least 1 more to act as an independent predictor. All columns included in the input spreadsheet will be included in the analysis.
 
 #### Configuration
 {: .no_toc }
 
+|**Target Column**| Select from the drop-down menu the column containing the target variable that is going to be predicted. Columns with categorical features cannot be selected as targets.|
+
 #### Output
 {: .no_toc }
+A data matrix including the actual target value and the value predicted by the MLR method.  Also the regression coefficients are present next to the predictions.
 
 #### Example
 {: .no_toc }
 
 ##### Input
 {: .no_toc }
+In the left-hand spreadsheet of the tab import the data matrix including the target variable for prediction.
+<div style="text-align: center;">
+<img src="images/MLR/MLR_Input.png" alt="MLR-input" width="400" height="300" class="img-responsive">
+</div>
 
 ##### Configuration
 {: .no_toc }
+1. Select `Analytics` $$\rightarrow$$ `Classification` $$\rightarrow$$ `Statistical fitting` $$\rightarrow$$ `MLR`.
+1.	Select the column that is going to be the `Target Column` [1].
+1.	Click on the `Execute` button [2] to apply the algorithm on the input table.
+<div style="text-align: center;">
+<img src="images/MLR/MLR_Configuration.png" alt="MLR-config" width="400" height="300" class="img-responsive">
+</div>
+
 
 ##### Output
 {: .no_toc }
+In the right-hand spreadsheet of the tab the output data matrix with the actual and the predicted value of the target is presented. Also, the coefficients of the regression model are shown. The coefficient below “1” corresponds to the intercept and all other coefficients corresponds to the variable which has the name specified above the value.
+<div style="text-align: center;">
+<img src="images/MLR/MLR_Output.png" alt="MLR-output" width="400" height="300" class="img-responsive">
+</div>
 
 
 ### Generalized Linear Models
@@ -614,7 +660,7 @@ The input datasheet must include one continuous dependent variable, which will s
 1. Specify the `Confidence Level (%)` [2] for the test.
 1. Select the `Dependent Variable` [3].
 1. Select the `Scale Parameter Method` [4].
-1. Specify the Value [5] of the scale parameter method if the Fixed value option was chosen as the scale parameter method.
+1. Specify the `Value` [5] of the scale parameter method if the Fixed value option was chosen as the scale parameter method.
 1. Select the columns by clicking on the arrow buttons [9] and moving columns between the `Excluded Columns` [6] and `Factors` [7] and `Covariates` [8] lists.
 1. Select your preferred option to define the model you want to analyze [10].
 1. If the `Custom` option is selected, specify the `Formula` [11] for the analysis.
@@ -682,7 +728,7 @@ The output of the Negative Binomial regression procedure is organized into three
 
 ###### Input
 {: .no_toc }
-The input datasheet must include one continuous, non-negative dependent variable, which will serve as the target, and at least one column with a continuous or categorical independent variable. Optionally, an exposure variable can be included to account for different observation times or risk levels.
+The input datasheet must include one continuous, non-negative dependent variable, which will serve as the target, and at least one column with a continuous or categorical independent variable.
 <div style="text-align: center;">
 <img src="images/GLM/NegBinGLM_Input.png" alt="negbinGLM-input" width="400" height="300" class="img-responsive">
 </div>
@@ -766,7 +812,7 @@ The output of the Poisson regression procedure is organized into three main sect
 
 ###### Input
 {: .no_toc }
-Τhe dataset must include a target variable consisting of non-negative integer counts, appropriate for modeling with Poisson regression, and at least one column with a continuous or categorical independent variable. Optionally, an exposure variable can be included to account for varying observation times or risk levels.
+Τhe dataset must include a target variable consisting of non-negative integer counts, appropriate for modeling with Poisson regression, and at least one column with a continuous or categorical independent variable.
 <div style="text-align: center;">
 <img src="images/GLM/PoissonGLM_Input.png" alt="poissonGLM-input" width="400" height="300" class="img-responsive">
 </div>
@@ -1058,146 +1104,510 @@ The predictions, Goodness of Fit table and Parameter Estimates table are shown i
 </div>
 
 ### Generalized Estimating Equations
+Generalized Estimating Equations (GEEs) extend Generalized Linear Models (GLMs) to handle correlated or clustered response data, such as repeated measures or longitudinal observations. GEEs are particularly useful when responses are not independent, as they allow for within-subject correlation, making them ideal for analyzing data collected over time or across related units.
+A GEE model consists of the following key components:
+1.  Mean Structure: Like GLMs, the expected value of the response variable is modeled using a linear predictor :
+<div id="linear predictor" style="text-align: center;">
+    $$
+    \begin{equation}
+    \eta_i = x_i^T\beta
+    \end{equation}
+    $$
+</div> 
+
+Where $$x_i$$ is the vector of predictors and $$\beta$$ is the vector of coefficients.
+1. 	Link Function: A monotonic function $$g(∙)$$ that links the mean of the response $$\mu_i= E[y_i]$$ to the linear predictor, so that $$g(\mu_i)=\eta_i$$.
+1. Working Correlation Matrix: Specifies the assumed correlation structure among repeated observations within the same subject. Common structures include:
+    1. Independent: assumes no within-subject correlation.
+    1. Exchangeable: assumes equal correlation between all pairs of observations.
+    1. AR(1): assumes correlations decrease with time distance.
+    1. Unstructured: allows a distinct correlation for each pair of observations, with no constraints.
+    1. M-dependent: assumes nonzero correlations only up to lag M, and zero correlations beyond that distance.
+
+GEE estimation relies on solving quasi-likelihood equations rather than maximizing a full likelihood function, making it a semi-parametric approach. Parameters are estimated using iterative methods such as iteratively reweighted least squares (IRLS), and standard errors are typically computed using robust estimators to ensure valid inference even if the correlation structure is misspecified.
+In GEE models, a subject variable is required to identify the unit over which repeated measurements occur (e.g., patient ID). Optionally, a within-subject variable (e.g., time or visit number) can be specified to define the ordering of repeated measurements. Cases are usually sorted by subject and within-subject variables to ensure correct modeling of correlation patterns.
+The robust covariance estimator is the default choice, providing consistent standard errors under mild assumptions. The model-based estimator may be more efficient if the correlation structure is correctly specified, but it is more sensitive to misspecification.
+Categorical variables are encoded using dummy coding, as in GLMs. The reference category is omitted by default to avoid multicollinearity and serve as a baseline for interpreting effects.
+
+Each variant of this method is specified by the distribution of the response variable and the link function used. In the table below we specify the distribution and link function used for each variant:
+
+|**GEE Variant**|**Distribution**|**Link Function**|
+|Linear|Normal|Identity|
+|Negative Binomial|Negative Binomial|Log|
+|Poisson|Poisson|Log|
+|Gamma|Gamma|Log|
+|Tweedie with Identity Link|Tweedie|Identity|
+|Tweedie with Log Link|Tweedie|Log|
+
 
 #### Linear
 {: .no_toc}
+Use the Linear Regression method by browsing in the top ribbon: 
+
+| Analytics $$\rightarrow$$ Regression $$\rightarrow$$ Statistical fitting $$\rightarrow$$ Generalized Estimating Equations |
+
+And then choosing "Linear" as the `Type`.
+
 ##### Input
 {: .no_toc }
+All variables must be specified in the datasheet. The dependent variable must be numerical, as Linear Regression within the GEE framework models continuous outcomes. Covariates should also be numerical, while categorical predictors (factors) can be represented using either text labels or numeric codes. The input datasheet must include at least two columns: one for the dependent variable and one or more for the independent variables (covariates or factors). Each row should correspond to a single observation. Additionally, a subject identifier column is required to define clusters of repeated measurements, and optionally a within-subject variable (e.g., time) to specify the order of observations within each subject.
 
 ##### Configuration
 {: .no_toc }
 
+|**Confidence Level (%)**| Specify the confidence level of the analysis. Values should range from 0 to 100 and correspond to percentages. |
+|**Max Iterations**|Defines the maximum number of iterations the model is allowed to perform during the estimation process. If the model fails to converge before reaching this number, the algorithm stops and returns the values of the last iteration.|
+|**Iterations Between Updates**|Defines how often the working correlation matrix is updated during estimation.|
+|**Dependent Variable**| Select the column that corresponds to values of the dependent variable. |
+|**Minimum Change in Parameter Estimates**| Sets the tolerance level for convergence — the smallest change in parameter estimates between iterations required to continue optimization. If the change in all parameters is below this value, the algorithm assumes convergence has been reached. |
+|**Hessian Convergence**| Specifies a threshold for convergence based on the second derivatives (Hessian matrix). |
+|**Scale Parameter**| Adjusts the variance of the model. |
+|**Within Subject**| Selects the column that defines the ordering of repeated observations within each subject.|
+|**Structure**| Defines the working correlation structure for repeated measurements within subjects. Choices include Independent, Exchangeable, AR(1), Unstructured and M-Dependent.|
+|**M**|In the M-Dependent correlation structure, M specifies the maximum number of consecutive observations within each cluster that are assumed to be correlated, with correlations set to zero for observations more than M time points apart. M must be an integer in the range from 1 to (number of within-subject observations – 1).|
+|**Covariance Matrix**|In the Covariance Matrix option, the user selects how the model's standard errors will be estimated. The Robust estimator is resistant to misspecification of the correlation structure, while the Model-based estimator assumes the specified correlation is correct.|
+|**Subjects/Factors/Covariates/Excluded Columns**| Select manually the columns that correspond to subjects, factors and the columns that correspond to covariates through the dialog window: Use the buttons to move columns between the Subjects, Factors and Covariates list and Excluded Columns list. Single-arrow buttons will move all selected columns. At least one covariate or factor column should be specified. Also, a column for the Subject is required. |
+|**Custom/Include All Main Effects/Full Factorial**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Include All Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. Note that the Include All Main Effects and Full Factorial options do not allow the use of a formula.|
+|**Formula**| Specify the model formula used for the analysis if the Custom option is selected. Include all variables listed under Factors or Covariates, separated by “+”. To include interaction terms, use the format VariableA:VariableB. If interaction terms are included, the dataset must contain all combinations of the levels of the involved categorical variables — i.e., the design must be fully crossed — to ensure the model can be properly estimated.|
+
 ##### Output
 {: .no_toc }
+The output of the Generalized Estimating Equations (GEEs) procedure is organized into three main sections: the Predicted Values Table, the Parameter Estimates Table and the Working Correlation Matrix. 
+1. The Predicted Values Table shows the fitted values for the dependent variable on the specified model. 
+1. The Parameter Estimates Table includes the estimated coefficients for the independent variables. Each row corresponds to a predictor and includes its coefficient, standard error, confidence interval, test statistic, degrees of freedom, and p-value.
+1. The Working Correlation Matrix displays the estimated correlations between repeated measurements of the same subject over time.
+
 
 ##### Example
 {: .no_toc }
 
 ###### Input
 {: .no_toc }
+The dataset must include a continuous target variable suitable for modeling with linear regression. It should also contain at least one independent variable, which can be continuous or categorical. In addition, the dataset must include a subject identifier to group repeated observations from the same individual or unit, as well as a within-subject time or measurement indicator to reflect the longitudinal or clustered nature of the data.
+<div style="text-align: center;">
+<img src="images/GEE/LinearGEE_Input.png" alt="linearGEE-input" width="400" height="300" class="img-responsive">
+</div>
 
 ###### Configuration
 {: .no_toc }
+1. Select `Analytics` $$\rightarrow$$ `Regression` $$\rightarrow$$ `Statistical fitting` $$\rightarrow$$ `Generalized Estimating Equations`.
+1.	Set the `Type` [1] of regression to Linear.
+1.	Specify the `Confidence Level (%)` [2] for the test.
+1.	Specify `Max Iterations` [3].
+1.	Specify `Iterations Between Updates` [4].
+1.	Select the `Dependent Variable` [5].
+1.	Specify the `Minimum Change in Parameter Estimates` [6].
+1.	Specify the `Hessian Convergence` [7].
+1.	Specify the `Scale Parameter` [8].
+1.	Select the `Within Subject` [9].
+1.	Select the `working correlation Structure` and specify the value of `M` if you select M-Dependent as the correlation structure. [10].
+1.	Select the method used to estimate the `covariance matrix` [11] of the standard errors.
+1.	Select the columns by clicking on the arrow buttons [16] and moving columns between the `Excluded Columns` [12] and `Subjects` [13] and `Factors` [14] and `Covariates `[15] lists.
+1.	Select your preferred option to define the model you want to analyze [17].
+1.	If the `Custom` option is selected, specify the `Formula` [18] for the analysis.
+1.	Click on the `Execute` button [19] to perform the Linear Regression method.
+<div style="text-align: center;">
+<img src="images/GEE/LinearGEE_Configuration.png" alt="linearGEE-config" width="400" height="300" class="img-responsive">
+</div>
 
 ###### Output
 {: .no_toc }
+The Predictions, Parameter Estimates table and Working Correlation Matrix are shown in the output spreadsheet.
+<div style="text-align: center;">
+<img src="images/GEE/LinearGEE_Output.png" alt="linearGEE-output" width="400" height="300" class="img-responsive">
+</div>
 
 #### Negative Binomial 
 {: .no_toc}
+Use the Negative Binomial Regression method by browsing in the top ribbon: 
+
+| Analytics $$\rightarrow$$ Regression $$\rightarrow$$ Statistical fitting $$\rightarrow$$ Generalized Estimating Equations |
+
+And then choosing "Negative Binomial" as the `Type`.
+
 ##### Input
 {: .no_toc }
+All variables must be specified in the datasheet. The dependent variable must be a count variable, consisting of non-negative integers, and suitable for modeling with a Negative Binomial distribution. Negative Binomial Regression within the GEE framework is appropriate for overdispersed count data where the variance exceeds the mean, such as the number of events, visits, or occurrences over time. Covariates should be numerical, while categorical predictors can be represented using either text labels or numeric codes. The input datasheet must include at least two columns: one for the dependent variable and one or more for the independent variables (covariates or factors). Each row should correspond to a single observation. Additionally, a subject identifier column is required to define clusters of repeated measurements, and optionally a within-subject variable (e.g., time or measurement occasion) to specify the order of observations within each subject. The structure of the dataset should support modeling intra-subject correlation under the Negative Binomial distribution assumption using an appropriate link function (e.g., log link) within the GEE framework.
 
 ##### Configuration
 {: .no_toc }
 
+|**Confidence Level (%)**| Specify the confidence level of the analysis. Values should range from 0 to 100 and correspond to percentages. |
+|**Max Iterations**|Defines the maximum number of iterations the model is allowed to perform during the estimation process. If the model fails to converge before reaching this number, the algorithm stops and returns the values of the last iteration.|
+|**Iterations Between Updates**|Defines how often the working correlation matrix is updated during estimation.|
+|**Dependent Variable**| Select the column that corresponds to values of the dependent variable. |
+|**Minimum Change in Parameter Estimates**| Sets the tolerance level for convergence — the smallest change in parameter estimates between iterations required to continue optimization. If the change in all parameters is below this value, the algorithm assumes convergence has been reached. |
+|**Hessian Convergence**| Specifies a threshold for convergence based on the second derivatives (Hessian matrix). |
+|**Scale Parameter**| Adjusts the variance of the model. |
+|**Within Subject**| Selects the column that defines the ordering of repeated observations within each subject.|
+|**Structure**| Defines the working correlation structure for repeated measurements within subjects. Choices include Independent, Exchangeable, AR(1), Unstructured and M-Dependent.|
+|**M**|In the M-Dependent correlation structure, M specifies the maximum number of consecutive observations within each cluster that are assumed to be correlated, with correlations set to zero for observations more than M time points apart. M must be an integer in the range from 1 to (number of within-subject observations – 1).|
+|**Covariance Matrix**|In the Covariance Matrix option, the user selects how the model's standard errors will be estimated. The Robust estimator is resistant to misspecification of the correlation structure, while the Model-based estimator assumes the specified correlation is correct.|
+|**Subjects/Factors/Covariates/Excluded Columns**| Select manually the columns that correspond to subjects, factors and the columns that correspond to covariates through the dialog window: Use the buttons to move columns between the Subjects, Factors and Covariates list and Excluded Columns list. Single-arrow buttons will move all selected columns. At least one covariate or factor column should be specified. Also, a column for the Subject is required. |
+|**Custom/Include All Main Effects/Full Factorial**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Include All Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. Note that the Include All Main Effects and Full Factorial options do not allow the use of a formula.|
+|**Formula**| Specify the model formula used for the analysis if the Custom option is selected. Include all variables listed under Factors or Covariates, separated by “+”. To include interaction terms, use the format VariableA:VariableB. If interaction terms are included, the dataset must contain all combinations of the levels of the involved categorical variables — i.e., the design must be fully crossed — to ensure the model can be properly estimated.|
+
 ##### Output
 {: .no_toc }
+The output of the Generalized Estimating Equations (GEEs) procedure is organized into three main sections: the Predicted Values Table, the Parameter Estimates Table and the Working Correlation Matrix. 
+1. The Predicted Values Table shows the fitted values for the dependent variable on the specified model. 
+1. The Parameter Estimates Table includes the estimated coefficients for the independent variables. Each row corresponds to a predictor and includes its coefficient, standard error, confidence interval, test statistic, degrees of freedom, and p-value.
+1. The Working Correlation Matrix displays the estimated correlations between repeated measurements of the same subject over time
+
 
 ##### Example
 {: .no_toc }
 
 ###### Input
 {: .no_toc }
+The dataset must include a count target variable suitable for modeling with negative binomial regression. The dependent variable should consist of non-negative integer values and must exhibit overdispersion, which is a key condition for using the negative binomial distribution. It should also contain at least one independent variable, which can be continuous or categorical. In addition, the dataset must include a subject identifier to group repeated observations from the same individual or unit, as well as a within-subject time or measurement indicator to reflect the longitudinal or clustered nature of the data. The structure of the dataset should allow for the modeling of within-cluster correlation using a log link function under the negative binomial distribution assumption in the GEE framework.
+<div style="text-align: center;">
+<img src="images/GEE/NegBinGEE_Input.png" alt="negbinGEE-input" width="400" height="300" class="img-responsive">
+</div>
+
 
 ###### Configuration
 {: .no_toc }
+1. Select `Analytics` $$\rightarrow$$ `Regression` $$\rightarrow$$ `Statistical fitting` $$\rightarrow$$ `Generalized Estimating Equations`.
+1.	Set the `Type` [1] of regression to Negative Binomial.
+1.	Specify the `Confidence Level (%)` [2] for the test.
+1.	Specify `Max Iterations` [3].
+1.	Specify `Iterations Between Updates` [4].
+1.	Select the `Dependent Variable` [5].
+1.	Specify the `Minimum Change in Parameter Estimates` [6].
+1.	Specify the `Hessian Convergence` [7].
+1.	Specify the `Scale Parameter` [8].
+1.	Select the `Within Subject` [9].
+1.	Select the `working correlation Structure` and specify the value of `M` if you select M-Dependent as the correlation structure. [10].
+1.	Select the method used to estimate the `covariance matrix` [11] of the standard errors.
+1.	Select the columns by clicking on the arrow buttons [16] and moving columns between the `Excluded Columns` [12] and `Subjects` [13] and `Factors` [14] and `Covariates `[15] lists.
+1.	Select your preferred option to define the model you want to analyze [17].
+1.	If the `Custom` option is selected, specify the `Formula` [18] for the analysis.
+1.	Click on the `Execute` button [19] to perform the Negative Binomial Regression method.
+<div style="text-align: center;">
+<img src="images/GEE/NegBinGEE_Configuration.png" alt="negbinGEE-config" width="400" height="300" class="img-responsive">
+</div>
 
 ###### Output
 {: .no_toc }
+The Predictions, Parameter Estimates table and Working Correlation Matrix are shown in the output spreadsheet.
+<div style="text-align: center;">
+<img src="images/GEE/NegBinGEE_Output.png" alt="negbinGEE-output" width="400" height="300" class="img-responsive">
+</div>
+
 
 #### Poisson 
 {: .no_toc}
+Use the Poisson Regression method by browsing in the top ribbon: 
+
+| Analytics $$\rightarrow$$ Regression $$\rightarrow$$ Statistical fitting $$\rightarrow$$ Generalized Estimating Equations |
+
+And then choosing "Poisson" as the `Type`.
+
 ##### Input
 {: .no_toc }
+count variable, consisting of non-negative integer values and suitable for modeling with a Poisson distribution, as Poisson Regression within the GEE framework is used for modeling count data such as number of events, visits, or occurrences over time. Covariates should be numerical, while categorical predictors can be represented using either text labels or numeric codes. The input datasheet must include at least two columns: one for the dependent variable and one or more for the independent variables (covariates or factors). Each row should correspond to a single observation. Additionally, a subject identifier column is required to define clusters of repeated measurements, and optionally a within-subject variable to specify the order of observations within each subject. The structure of the dataset should support modeling intra-subject correlation under the Poisson distribution assumption using an appropriate link function (e.g., log link) within the GEE framework.
 
 ##### Configuration
 {: .no_toc }
 
+|**Confidence Level (%)**| Specify the confidence level of the analysis. Values should range from 0 to 100 and correspond to percentages. |
+|**Max Iterations**|Defines the maximum number of iterations the model is allowed to perform during the estimation process. If the model fails to converge before reaching this number, the algorithm stops and returns the values of the last iteration.|
+|**Iterations Between Updates**|Defines how often the working correlation matrix is updated during estimation.|
+|**Dependent Variable**| Select the column that corresponds to values of the dependent variable. |
+|**Minimum Change in Parameter Estimates**| Sets the tolerance level for convergence — the smallest change in parameter estimates between iterations required to continue optimization. If the change in all parameters is below this value, the algorithm assumes convergence has been reached. |
+|**Hessian Convergence**| Specifies a threshold for convergence based on the second derivatives (Hessian matrix). |
+|**Scale Parameter**| Adjusts the variance of the model. |
+|**Within Subject**| Selects the column that defines the ordering of repeated observations within each subject.|
+|**Structure**| Defines the working correlation structure for repeated measurements within subjects. Choices include Independent, Exchangeable, AR(1), Unstructured and M-Dependent.|
+|**M**|In the M-Dependent correlation structure, M specifies the maximum number of consecutive observations within each cluster that are assumed to be correlated, with correlations set to zero for observations more than M time points apart. M must be an integer in the range from 1 to (number of within-subject observations – 1).|
+|**Covariance Matrix**|In the Covariance Matrix option, the user selects how the model's standard errors will be estimated. The Robust estimator is resistant to misspecification of the correlation structure, while the Model-based estimator assumes the specified correlation is correct.|
+|**Subjects/Factors/Covariates/Excluded Columns**| Select manually the columns that correspond to subjects, factors and the columns that correspond to covariates through the dialog window: Use the buttons to move columns between the Subjects, Factors and Covariates list and Excluded Columns list. Single-arrow buttons will move all selected columns. At least one covariate or factor column should be specified. Also, a column for the Subject is required. |
+|**Custom/Include All Main Effects/Full Factorial**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Include All Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. Note that the Include All Main Effects and Full Factorial options do not allow the use of a formula.|
+|**Formula**| Specify the model formula used for the analysis if the Custom option is selected. Include all variables listed under Factors or Covariates, separated by “+”. To include interaction terms, use the format VariableA:VariableB. If interaction terms are included, the dataset must contain all combinations of the levels of the involved categorical variables — i.e., the design must be fully crossed — to ensure the model can be properly estimated.|
+
 ##### Output
 {: .no_toc }
+The output of the Generalized Estimating Equations (GEEs) procedure is organized into three main sections: the Predicted Values Table, the Parameter Estimates Table and the Working Correlation Matrix. 
+1. The Predicted Values Table shows the fitted values for the dependent variable on the specified model. 
+1. The Parameter Estimates Table includes the estimated coefficients for the independent variables. Each row corresponds to a predictor and includes its coefficient, standard error, confidence interval, test statistic, degrees of freedom, and p-value.
+1. The Working Correlation Matrix displays the estimated correlations between repeated measurements of the same subject over time
+
 
 ##### Example
 {: .no_toc }
 
 ###### Input
 {: .no_toc }
+The dataset must include a count outcome variable with non-negative integers suitable for Poisson regression. It should also include at least one independent variable (continuous or categorical), a subject identifier to group repeated measures, and a within-subject time or measurement variable to indicate observation order. The data structure should support modeling within-cluster correlation using a log link under the Poisson distribution in the GEE framework.
+<div style="text-align: center;">
+<img src="images/GEE/PoissonGEE_Input.png" alt="poissonGEE-input" width="400" height="300" class="img-responsive">
+</div>
 
 ###### Configuration
 {: .no_toc }
+1. Select `Analytics` $$\rightarrow$$ `Regression` $$\rightarrow$$ `Statistical fitting` $$\rightarrow$$ `Generalized Estimating Equations`.
+1.	Set the `Type` [1] of regression to Poisson.
+1.	Specify the `Confidence Level (%)` [2] for the test.
+1.	Specify `Max Iterations` [3].
+1.	Specify `Iterations Between Updates` [4].
+1.	Select the `Dependent Variable` [5].
+1.	Specify the `Minimum Change in Parameter Estimates` [6].
+1.	Specify the `Hessian Convergence` [7].
+1.	Specify the `Scale Parameter` [8].
+1.	Select the `Within Subject` [9].
+1.	Select the `working correlation Structure` and specify the value of `M` if you select M-Dependent as the correlation structure. [10].
+1.	Select the method used to estimate the `covariance matrix` [11] of the standard errors.
+1.	Select the columns by clicking on the arrow buttons [16] and moving columns between the `Excluded Columns` [12] and `Subjects` [13] and `Factors` [14] and `Covariates `[15] lists.
+1.	Select your preferred option to define the model you want to analyze [17].
+1.	If the `Custom` option is selected, specify the `Formula` [18] for the analysis.
+1.	Click on the `Execute` button [19] to perform the Poisson Regression method.
+<div style="text-align: center;">
+<img src="images/GEE/PoissonGEE_Configuration.png" alt="poissonGEE-config" width="400" height="300" class="img-responsive">
+</div>
 
 ###### Output
 {: .no_toc }
+The Predictions, Parameter Estimates table and Working Correlation Matrix are shown in the output spreadsheet.
+<div style="text-align: center;">
+<img src="images/GEE/PoissonGEE_Output.png" alt="poissonGEE-output" width="400" height="300" class="img-responsive">
+</div>
 
 #### Gamma 
 {: .no_toc}
+Use the Gamma Regression method by browsing in the top ribbon: 
+
+| Analytics $$\rightarrow$$ Regression $$\rightarrow$$ Statistical fitting $$\rightarrow$$ Generalized Estimating Equations |
+
+And then choosing "Gamma" as the `Type`.
+
 ##### Input
 {: .no_toc }
+All variables must be specified in the datasheet. The dependent variable must be continuous, strictly positive, and suitable for modeling with a Gamma distribution, as Gamma Regression within the GEE framework is used for positively skewed outcomes such as cost, time, or rates. Covariates should be numerical, while categorical predictors can be represented using either text labels or numeric codes. The input datasheet must include at least two columns: one for the dependent variable and one or more for the independent variables (covariates or factors). Each row should correspond to a single observation. Additionally, a subject identifier column is required to define clusters of repeated measurements, and optionally a within-subject variable to specify the order of observations within each subject. The structure of the dataset should support modeling intra-subject correlation under the Gamma distribution assumption using an appropriate link function (e.g., log link) within the GEE framework.
 
 ##### Configuration
 {: .no_toc }
 
+|**Confidence Level (%)**| Specify the confidence level of the analysis. Values should range from 0 to 100 and correspond to percentages. |
+|**Max Iterations**|Defines the maximum number of iterations the model is allowed to perform during the estimation process. If the model fails to converge before reaching this number, the algorithm stops and returns the values of the last iteration.|
+|**Iterations Between Updates**|Defines how often the working correlation matrix is updated during estimation.|
+|**Dependent Variable**| Select the column that corresponds to values of the dependent variable. |
+|**Minimum Change in Parameter Estimates**| Sets the tolerance level for convergence — the smallest change in parameter estimates between iterations required to continue optimization. If the change in all parameters is below this value, the algorithm assumes convergence has been reached. |
+|**Hessian Convergence**| Specifies a threshold for convergence based on the second derivatives (Hessian matrix). |
+|**Scale Parameter**| Adjusts the variance of the model. |
+|**Within Subject**| Selects the column that defines the ordering of repeated observations within each subject.|
+|**Structure**| Defines the working correlation structure for repeated measurements within subjects. Choices include Independent, Exchangeable, AR(1), Unstructured and M-Dependent.|
+|**M**|In the M-Dependent correlation structure, M specifies the maximum number of consecutive observations within each cluster that are assumed to be correlated, with correlations set to zero for observations more than M time points apart. M must be an integer in the range from 1 to (number of within-subject observations – 1).|
+|**Covariance Matrix**|In the Covariance Matrix option, the user selects how the model's standard errors will be estimated. The Robust estimator is resistant to misspecification of the correlation structure, while the Model-based estimator assumes the specified correlation is correct.|
+|**Subjects/Factors/Covariates/Excluded Columns**| Select manually the columns that correspond to subjects, factors and the columns that correspond to covariates through the dialog window: Use the buttons to move columns between the Subjects, Factors and Covariates list and Excluded Columns list. Single-arrow buttons will move all selected columns. At least one covariate or factor column should be specified. Also, a column for the Subject is required. |
+|**Custom/Include All Main Effects/Full Factorial**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Include All Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. Note that the Include All Main Effects and Full Factorial options do not allow the use of a formula.|
+|**Formula**| Specify the model formula used for the analysis if the Custom option is selected. Include all variables listed under Factors or Covariates, separated by “+”. To include interaction terms, use the format VariableA:VariableB. If interaction terms are included, the dataset must contain all combinations of the levels of the involved categorical variables — i.e., the design must be fully crossed — to ensure the model can be properly estimated.|
+
 ##### Output
 {: .no_toc }
+The output of the Generalized Estimating Equations (GEEs) procedure is organized into three main sections: the Predicted Values Table, the Parameter Estimates Table and the Working Correlation Matrix. 
+1. The Predicted Values Table shows the fitted values for the dependent variable on the specified model. 
+1. The Parameter Estimates Table includes the estimated coefficients for the independent variables. Each row corresponds to a predictor and includes its coefficient, standard error, confidence interval, test statistic, degrees of freedom, and p-value.
+1. The Working Correlation Matrix displays the estimated correlations between repeated measurements of the same subject over time.
+
 
 ##### Example
 {: .no_toc }
 
 ###### Input
 {: .no_toc }
+The dataset must include a positive continuous target variable suitable for modeling with Gamma regression. The outcome should be strictly positive and continuous, reflecting a right-skewed distribution typical of Gamma-distributed data. It should also contain at least one independent variable, which can be continuous or categorical. In addition, the dataset must include a subject identifier to group repeated observations from the same individual or unit, as well as a within-subject time or measurement indicator to reflect the longitudinal or clustered nature of the data. The structure of the dataset should allow for the modeling of within-cluster correlation using a log link function in the GEE framework.
+<div style="text-align: center;">
+<img src="images/GEE/GammaGEE_Input.png" alt="gammaGEE-input" width="400" height="300" class="img-responsive">
+</div>
 
 ###### Configuration
 {: .no_toc }
+1. Select `Analytics` $$\rightarrow$$ `Regression` $$\rightarrow$$ `Statistical fitting` $$\rightarrow$$ `Generalized Estimating Equations`.
+1.	Set the `Type` [1] of regression to Gamma.
+1.	Specify the `Confidence Level (%)` [2] for the test.
+1.	Specify `Max Iterations` [3].
+1.	Specify `Iterations Between Updates` [4].
+1.	Select the `Dependent Variable` [5].
+1.	Specify the `Minimum Change in Parameter Estimates` [6].
+1.	Specify the `Hessian Convergence` [7].
+1.	Specify the `Scale Parameter` [8].
+1.	Select the `Within Subject` [9].
+1.	Select the `working correlation Structure` and specify the value of `M` if you select M-Dependent as the correlation structure. [10].
+1.	Select the method used to estimate the `covariance matrix` [11] of the standard errors.
+1.	Select the columns by clicking on the arrow buttons [16] and moving columns between the `Excluded Columns` [12] and `Subjects` [13] and `Factors` [14] and `Covariates `[15] lists.
+1.	Select your preferred option to define the model you want to analyze [17].
+1.	If the `Custom` option is selected, specify the `Formula` [18] for the analysis.
+1.	Click on the `Execute` button [19] to perform the Gamma Regression method.
+<div style="text-align: center;">
+<img src="images/GEE/GammaGEE_Configuration.png" alt="gammaGEE-config" width="400" height="300" class="img-responsive">
+</div>
 
 ###### Output
 {: .no_toc }
+The Predictions, Parameter Estimates table and Working Correlation Matrix are shown in the output spreadsheet.
+<div style="text-align: center;">
+<img src="images/GEE/GammaGEE_Output.png" alt="gammaGEE-output" width="400" height="300" class="img-responsive">
+</div>
 
 #### Tweedie with Identity Link
 {: .no_toc}
+Use the Tweedie Regression method with identity link by browsing in the top ribbon: 
+
+| Analytics $$\rightarrow$$ Regression $$\rightarrow$$ Statistical fitting $$\rightarrow$$ Generalized Estimating Equations |
+
+And then choosing "Tweedie with Identity Link" as the `Type`.
 
 ##### Input
 {: .no_toc }
+The dataset must be appropriately structured to support Tweedie regression with an identity link function within the framework of Generalized Estimating Equations (GEE). The dependent variable should be continuous and non-negative, and exhibit characteristics suitable for modeling with the Tweedie distribution, which is particularly well-suited to semicontinuous outcomes that contain a point mass at zero and positive continuous values. Such outcomes commonly arise in fields such as actuarial science, health economics, and environmental studies, where responses like claim amounts, medical costs, or precipitation levels often exhibit a 
+The dataset must include at least the following components: a dependent variable, one or more independent variables (which may be numerical or categorical, with categorical variables represented as text labels or numeric codes), a subject identifier column to define clusters of repeated observations from the same unit or individual, and optionally, a within-subject measurement indicator to capture the temporal or sequential structure of the observations within each cluster.
+Each row in the dataset must correspond to a single observation. The data structure must support the estimation of within-cluster correlation using GEE under the Tweedie distribution with an identity link, which enables modeling of repeated or correlated data where the response variable reflects non-negative semicontinuous behavior, and where a direct, untransformed relationship between the predictors and the mean of the response is appropriate.
+
 
 ##### Configuration
 {: .no_toc }
 
+|**Confidence Level (%)**| Specify the confidence level of the analysis. Values should range from 0 to 100 and correspond to percentages. |
+|**Max Iterations**|Defines the maximum number of iterations the model is allowed to perform during the estimation process. If the model fails to converge before reaching this number, the algorithm stops and returns the values of the last iteration.|
+|**Iterations Between Updates**|Defines how often the working correlation matrix is updated during estimation.|
+|**Dependent Variable**| Select the column that corresponds to values of the dependent variable. |
+|**Minimum Change in Parameter Estimates**| Sets the tolerance level for convergence — the smallest change in parameter estimates between iterations required to continue optimization. If the change in all parameters is below this value, the algorithm assumes convergence has been reached. |
+|**Hessian Convergence**| Specifies a threshold for convergence based on the second derivatives (Hessian matrix). |
+|**Scale Parameter**| Adjusts the variance of the model. |
+|**Within Subject**| Selects the column that defines the ordering of repeated observations within each subject.|
+|**Structure**| Defines the working correlation structure for repeated measurements within subjects. Choices include Independent, Exchangeable, AR(1), Unstructured and M-Dependent.|
+|**M**|In the M-Dependent correlation structure, M specifies the maximum number of consecutive observations within each cluster that are assumed to be correlated, with correlations set to zero for observations more than M time points apart. M must be an integer in the range from 1 to (number of within-subject observations – 1).|
+|**Covariance Matrix**|In the Covariance Matrix option, the user selects how the model's standard errors will be estimated. The Robust estimator is resistant to misspecification of the correlation structure, while the Model-based estimator assumes the specified correlation is correct.|
+|**Subjects/Factors/Covariates/Excluded Columns**| Select manually the columns that correspond to subjects, factors and the columns that correspond to covariates through the dialog window: Use the buttons to move columns between the Subjects, Factors and Covariates list and Excluded Columns list. Single-arrow buttons will move all selected columns. At least one covariate or factor column should be specified. Also, a column for the Subject is required. |
+|**Custom/Include All Main Effects/Full Factorial**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Include All Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. Note that the Include All Main Effects and Full Factorial options do not allow the use of a formula.|
+|**Formula**| Specify the model formula used for the analysis if the Custom option is selected. Include all variables listed under Factors or Covariates, separated by “+”. To include interaction terms, use the format VariableA:VariableB. If interaction terms are included, the dataset must contain all combinations of the levels of the involved categorical variables — i.e., the design must be fully crossed — to ensure the model can be properly estimated.|
+
 ##### Output
 {: .no_toc }
+The output of the Generalized Estimating Equations (GEEs) procedure is organized into three main sections: the Predicted Values Table, the Parameter Estimates Table and the Working Correlation Matrix. 
+1. The Predicted Values Table shows the fitted values for the dependent variable on the specified model. 
+1. The Parameter Estimates Table includes the estimated coefficients for the independent variables. Each row corresponds to a predictor and includes its coefficient, standard error, confidence interval, test statistic, degrees of freedom, and p-value.
+1. The Working Correlation Matrix displays the estimated correlations between repeated measurements of the same subject over time.
+
 
 ##### Example
 {: .no_toc }
 
 ###### Input
 {: .no_toc }
+The dataset must include a continuous, non-negative outcome variable suitable for Tweedie regression with an identity link function. The dependent variable should reflect semicontinuous data with a mass at zero and positive continuous values, as commonly observed in applications such as insurance claims, healthcare expenditures, or environmental measures. The dataset should also include at least one independent variable, which may be continuous or categorical, a subject identifier to define clusters of repeated measurements from the same individual or unit, and a within-subject time or measurement variable to indicate the order of observations within each subject. The data structure should support the modeling of within-cluster correlation using an identity link under the Tweedie distribution in the GEE framework, allowing for a direct linear relationship between the covariates and the expected value of the outcome.
+<div style="text-align: center;">
+<img src="images/GEE/TweedieIdentityGEE_Input.png" alt="tweedieidentityGEE-input" width="400" height="300" class="img-responsive">
+</div>
 
 ###### Configuration
 {: .no_toc }
+1. Select `Analytics` $$\rightarrow$$ `Regression` $$\rightarrow$$ `Statistical fitting` $$\rightarrow$$ `Generalized Estimating Equations`.
+1.	Set the `Type` [1] of regression to Tweedie with Identity Link.
+1.	Specify the `Confidence Level (%)` [2] for the test.
+1.	Specify `Max Iterations` [3].
+1.	Specify `Iterations Between Updates` [4].
+1.	Select the `Dependent Variable` [5].
+1.	Specify the `Minimum Change in Parameter Estimates` [6].
+1.	Specify the `Hessian Convergence` [7].
+1.	Specify the `Scale Parameter` [8].
+1.	Select the `Within Subject` [9].
+1.	Select the `working correlation Structure` and specify the value of `M` if you select M-Dependent as the correlation structure. [10].
+1.	Select the method used to estimate the `covariance matrix` [11] of the standard errors.
+1.	Select the columns by clicking on the arrow buttons [16] and moving columns between the `Excluded Columns` [12] and `Subjects` [13] and `Factors` [14] and `Covariates `[15] lists.
+1.	Select your preferred option to define the model you want to analyze [17].
+1.	If the `Custom` option is selected, specify the `Formula` [18] for the analysis.
+1.	Click on the `Execute` button [19] to perform the Tweedie Regression with Identity Link method.
+<div style="text-align: center;">
+<img src="images/GEE/TweedieIdentityGEE_Configuration.png" alt="tweedieidentityGEE-config" width="400" height="300" class="img-responsive">
+</div>
 
 ###### Output
 {: .no_toc }
+The Predictions, Parameter Estimates table and Working Correlation Matrix are shown in the output spreadsheet.
+<div style="text-align: center;">
+<img src="images/GEE/TweedieIdentityGEE_Output.png" alt="tweedieidentityGEE-output" width="400" height="300" class="img-responsive">
+</div>
 
 #### Tweedie with Log Link
 {: .no_toc}
+Use the Tweedie Regression with Log Link method by browsing in the top ribbon: 
+
+| Analytics $$\rightarrow$$ Regression $$\rightarrow$$ Statistical fitting $$\rightarrow$$ Generalized Estimating Equations |
+
+And then choosing "Tweedie with Log Link" as the `Type`.
 
 ##### Input
 {: .no_toc }
+All variables must be specified in the datasheet. The dataset must be appropriately structured to support the application of Tweedie regression with a log link function within the Generalized Estimating Equations (GEE) framework. The dependent variable should be continuous, non-negative, and exhibit characteristics consistent with the Tweedie distribution, which is particularly suitable for semicontinuous outcomes that contain a point mass at zero alongside positive continuous values. Common examples of such data include insurance claim amounts, healthcare expenditures, and rainfall measurements.
+The dataset must include, at minimum, the following columns: a dependent variable, one or more independent variables, which may be numeric or categorical (categorical predictors can be represented either by text labels or numeric codes), and a subject identifier that defines clusters of subject measurement indicator, representing the order or timing of observations within each cluster.
+Each row of the dataset should correspond to single observation. The overall structure must support the modeling of within-cluster correlation under the Tweedie distribution assumption with a log link, enabling the analysis of longitudinal or clustered data where the response variable combines features of both count and continuous distributions-such as zero inflation and positive skewness commonly observed in real world outcomes.
 
 ##### Configuration
 {: .no_toc }
 
+|**Confidence Level (%)**| Specify the confidence level of the analysis. Values should range from 0 to 100 and correspond to percentages. |
+|**Max Iterations**|Defines the maximum number of iterations the model is allowed to perform during the estimation process. If the model fails to converge before reaching this number, the algorithm stops and returns the values of the last iteration.|
+|**Iterations Between Updates**|Defines how often the working correlation matrix is updated during estimation.|
+|**Dependent Variable**| Select the column that corresponds to values of the dependent variable. |
+|**Minimum Change in Parameter Estimates**| Sets the tolerance level for convergence — the smallest change in parameter estimates between iterations required to continue optimization. If the change in all parameters is below this value, the algorithm assumes convergence has been reached. |
+|**Hessian Convergence**| Specifies a threshold for convergence based on the second derivatives (Hessian matrix). |
+|**Scale Parameter**| Adjusts the variance of the model. |
+|**Within Subject**| Selects the column that defines the ordering of repeated observations within each subject.|
+|**Structure**| Defines the working correlation structure for repeated measurements within subjects. Choices include Independent, Exchangeable, AR(1), Unstructured and M-Dependent.|
+|**M**|In the M-Dependent correlation structure, M specifies the maximum number of consecutive observations within each cluster that are assumed to be correlated, with correlations set to zero for observations more than M time points apart. M must be an integer in the range from 1 to (number of within-subject observations – 1).|
+|**Covariance Matrix**|In the Covariance Matrix option, the user selects how the model's standard errors will be estimated. The Robust estimator is resistant to misspecification of the correlation structure, while the Model-based estimator assumes the specified correlation is correct.|
+|**Subjects/Factors/Covariates/Excluded Columns**| Select manually the columns that correspond to subjects, factors and the columns that correspond to covariates through the dialog window: Use the buttons to move columns between the Subjects, Factors and Covariates list and Excluded Columns list. Single-arrow buttons will move all selected columns. At least one covariate or factor column should be specified. Also, a column for the Subject is required. |
+|**Custom/Include All Main Effects/Full Factorial**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Include All Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. Note that the Include All Main Effects and Full Factorial options do not allow the use of a formula.|
+|**Formula**| Specify the model formula used for the analysis if the Custom option is selected. Include all variables listed under Factors or Covariates, separated by “+”. To include interaction terms, use the format VariableA:VariableB. If interaction terms are included, the dataset must contain all combinations of the levels of the involved categorical variables — i.e., the design must be fully crossed — to ensure the model can be properly estimated.|
+
 ##### Output
 {: .no_toc }
+The output of the Generalized Estimating Equations (GEEs) procedure is organized into three main sections: the Predicted Values Table, the Parameter Estimates Table and the Working Correlation Matrix. 
+1. The Predicted Values Table shows the fitted values for the dependent variable on the specified model. 
+1. The Parameter Estimates Table includes the estimated coefficients for the independent variables. Each row corresponds to a predictor and includes its coefficient, standard error, confidence interval, test statistic, degrees of freedom, and p-value.
+1. The Working Correlation Matrix displays the estimated correlations between repeated measurements of the same subject over time.
+
 
 ##### Example
 {: .no_toc }
 
 ###### Input
 {: .no_toc }
+The dataset must include a non-negative, continuous outcome variable suitable for Tweedie regression with a log link. The dependent variable should reflect semicontinuous data with a mass at zero and positive continuous values, as seen in insurance claims, healthcare costs, or rainfall. It must also contain at least one independent variable (continuous or categorical), a subject identifier to define clusters of repeated measures, and a within-subject measurement variable to indicate the order of observations. The dataset structure should support within-cluster correlation modeling using a log link under the Tweedie distribution in the GEE framework, allowing for a multiplicative relationship between predictors and the expected outcome.
+<div style="text-align: center;">
+<img src="images/GEE/TweedieLogGEE_Input.png" alt="tweedielogGEE-input" width="400" height="300" class="img-responsive">
+</div>
 
 ###### Configuration
 {: .no_toc }
+1. Select `Analytics` $$\rightarrow$$ `Regression` $$\rightarrow$$ `Statistical fitting` $$\rightarrow$$ `Generalized Estimating Equations`.
+1.	Set the `Type` [1] of regression to Tweedie with Log Link.
+1.	Specify the `Confidence Level (%)` [2] for the test.
+1.	Specify `Max Iterations` [3].
+1.	Specify `Iterations Between Updates` [4].
+1.	Select the `Dependent Variable` [5].
+1.	Specify the `Minimum Change in Parameter Estimates` [6].
+1.	Specify the `Hessian Convergence` [7].
+1.	Specify the `Scale Parameter` [8].
+1.	Select the `Within Subject` [9].
+1.	Select the `working correlation Structure` and specify the value of `M` if you select M-Dependent as the correlation structure. [10].
+1.	Select the method used to estimate the `covariance matrix` [11] of the standard errors.
+1.	Select the columns by clicking on the arrow buttons [16] and moving columns between the `Excluded Columns` [12] and `Subjects` [13] and `Factors` [14] and `Covariates `[15] lists.
+1.	Select your preferred option to define the model you want to analyze [17].
+1.	If the `Custom` option is selected, specify the `Formula` [18] for the analysis.
+1.	Click on the `Execute` button [19] to perform the Tweedie Regression with Log Link method.
+<div style="text-align: center;">
+<img src="images/GEE/TweedieLogGEE_Configuration.png" alt="tweedielogGEE-config" width="400" height="300" class="img-responsive">
+</div>
 
 ###### Output
 {: .no_toc }
+The Predictions, Parameter Estimates table and Working Correlation Matrix are shown in the output spreadsheet.
+<div style="text-align: center;">
+<img src="images/GEE/TweedieLogGEE_Output.png" alt="tweedielogGEE-output" width="400" height="300" class="img-responsive">
+</div>
 ---
 
 ## Tips
@@ -1262,6 +1672,10 @@ The model generated by either the `k Nearest Neighbors (kNN)`, `Fully Connected 
 1.	Hastie T, Tibshirani R, Friedman J. The Elements of Statistical Learning. New York, NY: Springer New York; 2009. [https://doi.org/10.1007/978-0-387-84858-7](https://doi.org/10.1007/978-0-387-84858-7).
 1.	Chen T, Guestrin C. XGBoost: A Scalable Tree Boosting System. Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining, 2016, p. 785–94. [https://doi.org/10.1145/2939672.2939785](https://doi.org/10.1145/2939672.2939785).
 1.	Breiman L. Random Forests. Machine Learning 2001;45:5–32. [https://doi.org/10.1023/A:1010933404324](https://doi.org/10.1023/A:1010933404324).
+1. Nelder JA, Wedderburn RWM. Generalized linear models. J R Stat Soc A. 1972;135(3):370-84.[https://doi.org/10.2307/2344614](https://doi.org/10.2307/2344614).
+1. McCullagh P, Nelder JA. Generalized linear models. 2nd ed. London: Chapman & Hall/CRC; 1989. [https://doi.org/10.1201/9780203753736](https://doi.org/10.1201/9780203753736).
+1. McCullagh P. Regression models for ordinal data. J R Stat Soc B. 1980;42(2):109-42. [https://doi.org/10.1111/j.2517-6161.1980.tb01109.x](https://doi.org/10.1111/j.2517-6161.1980.tb01109.x).
+1. Liang KY, Zeger SL. Longitudinal data analysis using generalized linear models. Biometrika. 1986;73(1):13-22. [https://doi.org/10.1093/biomet/73.1.13](https://doi.org/10.1093/biomet/73.1.13).
 
 ---
 
