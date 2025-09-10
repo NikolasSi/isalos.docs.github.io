@@ -3,13 +3,11 @@ title: 1. Introduction
 layout: home
 nav_order: 1
 ---
-<!--
-<div style="text-align: center;">
-<img src="images/icons/Isalos2.png" alt="core-concept" width="200" height="200" class="img-responsive">
+
+<div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+  <h1>Introduction</h1>
+  <img src="images/icons/isalos-logo-01.svg" alt="isalos-logo" width="120" height="120">
 </div>
--->
-# Introduction
-{: .no_toc }
 <br>
 The Isalos Predictive Analytics Platform (Isalos) is a simple, user-friendly software designed to facilitate data manipulation and model development without requiring programming  skills. This platform empowers non-programmers to engage in data analytics through an intuitive interface, which leverages commonly used computer functions such as menus, buttons, and spreadsheets. Isalos is designed to streamline the development of predictive models by allowing users to manipulate and process data in an accessible, visual format. The platform’s primary goal is to enable data analysis without needing to write code, making it highly accessible to business professionals, analysts, or anyone with basic computer skills.
 <br>
