@@ -575,144 +575,542 @@ In the right-hand spreadsheet of the tab the output data matrix with the actual 
 ## Statistical fitting
 
 ### Generalized Linear Models
+Generalized Linear Models (GLMs) are a flexible class of regression models that generalize ordinary linear regression to allow for response variables that have error distributions other than the normal distribution. GLMs are particularly useful when the response variable is categorical (e.g., binary outcomes) or count data, where assumptions of normality and constant variance are inappropriate.
+A GLM consists of three components:
+1. 	Random Component: The response variable $$y_i$$  is assumed to follow a distribution from the exponential family (e.g., Normal, Binomial, Poisson, Gamma).
+1. 	Systematic Component: A linear predictor  $$\eta_i= x_i^T \beta$$, where $$x_i$$ is the vector of predictors for the i-th observation, and $$\beta$$ is the vector of coefficients.
+1. 	Link Function: A smooth, monotonic function $$g(⋅)$$ that relates the mean  $$\mu_i= E[y_i]$$ of the response to the linear predictor via $$g(\mu_i )= \eta_i$$.
+
+Unlike traditional linear regression, GLMs do not assume a linear relationship between the predictors and the response. Instead, the link function transforms the expected value of the response variable to a scale where it can be modeled as a linear combination of the predictors.
+GLM parameters are estimated using Maximum Likelihood Estimation (MLE). The likelihood is constructed based on the assumed distribution of the response variable, and the log-likelihood function is maximized to obtain the parameter estimates.
+Because log-likelihood is usually a nonlinear function of the parameters, iterative optimization method such as Newton-Raphson and Fisher Scoring are used to obtain the maximum likelihood estimates of the parameters of each model.
+Categorical variables are encoded using one-hot encoding, where each category is represented by a binary (0 or 1) dummy variable. The reference category for each categorical variable is the first observed category, and its corresponding dummy variable is omitted to avoid multicollinearity. This omission allows the reference category to be implicitly represented in the model intercept, providing a baseline for interpreting the effects of the other categories.
 
 #### Binary Logistic
 {: .no_toc}
+Binary Logistic Regression is a type of generalized linear model used when the dependent variable is binary, meaning it takes only two possible outcomes (e.g., success/failure, yes/no, 1/0). The response variable is assumed to follow a binomial distribution, where each observation represents a single Bernoulli trial.
+Unlike linear regression, logistic regression uses the logit link function, defined as:
+<div id="logit link function" style="text-align: center;">
+    $$
+    \begin{equation}
+    g(\mu) = logit(\mu) = log(\frac{\mu}{1-\mu})
+    \end{equation}
+    $$
+</div>
+
+Where $$\mu$$ is the probability of the event occurring (i.e., the probability that the dependent variable equals 1). This transformation ensures that the predicted probabilities always fall within the [0,1] interval.
+Binary logistic regression is widely used in fields such as medicine, social sciences, marketing, and machine learning, particularly when the goal is to model and predict a binary outcome based on one or more predictor variables (either continuous or categorical).
+
+Use the Binary Logistic Classification method by browsing in the top ribbon: 
+
+| Analytics $$\rightarrow$$ Classification $$\rightarrow$$ Statistical fitting $$\rightarrow$$ Generalized Linear Models |
+
+And then choosing “Binary Logistic” as the `Type`.
+
 ##### Input
 {: .no_toc }
+All variables must be specified in the datasheet. Numerical values are required for covariates, while factors may be either textual or numerical. The dependent variable must be binary, typically coded as 0 and 1, representing the two possible outcome categories. The design for Binary Logistic Regression requires at least two columns in the input sheet: one column for the binary dependent variable and at least one column for an independent variable (either a categorical factor or a numerical covariate). Each row corresponds to a single observation.
 
 ##### Configuration
 {: .no_toc }
 
+|**Confidence Level (%)**| Specify the confidence level of the analysis. Values should range from 0 to 100 and correspond to percentages. |
+|**Max Iterations**| Defines the maximum number of iterations the model is allowed to perform during the estimation process. If the model fails to converge before reaching this number, the algorithm stops and returns the values of the last iteration.|
+|**Maximum Step-Halving**| Controls how many times the algorithm is allowed to halve the step size during parameter updates when an iteration leads to worse model fit.|
+|**Dependent Variable**| Select the column that corresponds to values of the dependent variable. |
+|**Reference Category**| Specifies which category of the dependent variable should be used as the reference level when calculating parameter estimates.|
+|**Parameter Estimation**| This option lets you choose how the model parameters will be estimated, Newton-Raphson, Fisher Scoring or Hybrid.|
+|**Maximum Scoring Iterations**| The "Maximum Scoring Iterations" parameter is used when the hybrid estimation method is selected, instead of Newton-Raphson or Fisher scoring alone, and specifies the maximum number of iterations to be performed during the scoring phase.|
+|**Minimum Change in Parameter Estimates**| Sets the tolerance level for convergence — the smallest change in parameter estimates between iterations required to continue optimization. If the change in all parameters is below this value, the algorithm assumes convergence has been reached.|
+|**Scale Parameter Method**| Determines how the scale (error variance) parameter is estimated. Options include: Fixed value, Deviance, or Pearson Chi-square. |
+|**Value**| Specifies the scale parameter value manually, only when Fixed value is selected in the Scale Parameter Method. |
+|**Factors/Covariates/Excluded Columns**| Select manually the columns that correspond to factors and the columns that correspond to covariates through the dialog window: Use the buttons to move columns between the Factors and Covariates list and Excluded Columns list. Single-arrow buttons will move all selected columns and double-arrow buttons will move all columns. At least one covariate  or factor column should be specified.|
+|**Custom/Include All Main Effects/Full Factorial**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Include All Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. Note that the Include All Main Effects and Full Factorial options do not allow the use of a formula.|
+|**Formula**| Specify the model formula used for the analysis if the Custom option is selected. Include all variables listed under Factors or Covariates, separated by “+”. To include interaction terms, use the format VariableA:VariableB. If interaction terms are included, the dataset must contain all combinations of the levels of the involved categorical variables — i.e., the design must be fully crossed — to ensure the model can be properly estimated.|
+
 ##### Output
 {: .no_toc }
+The output of the binary logistic regression procedure is organized into three main sections: the Predicted Values Table, the Goodness of Fit Statistics, and the Parameter Estimates Table. 
+1. The Predicted Values Table contains the actual values of the dependent variable and the corresponding predicted values generated by the model for each observation.
+1. The Goodness of Fit Table includes statistical measures that assess how well the model fits the data, such as Deviance, Log-Likelihood, AIC, BIC, and related metrics.
+1. The Parameter Estimates Table displays the estimated coefficients for each variable in the model, along with standard errors, confidence intervals, test statistics, degrees of freedom, and p-values.
+
 
 ##### Example
 {: .no_toc }
 
 ###### Input
 {: .no_toc }
+The input datasheet must include one binary dependent variable, which will serve as the target, and at least one column with a continuous or categorical independent variable.
+<div style="text-align: center;">
+<img src="images/GLM/BinLogGLM_Input.png" alt="binlogGLM-input" width="400" height="300" class="img-responsive">
+</div>
 
 ###### Configuration
 {: .no_toc }
+1.	Select `Analytics` $$\rightarrow$$ `Classification` $$\rightarrow$$ `Statistical fitting`  $$\rightarrow$$ `Generalized Linear Models`
+1.	Set the `Type` [1] of regression to Binary Logistic.
+1.	Specify the `Confidence Level (%)` [2] for the test.
+1.	Specify `Max Iterations` [3].
+1.	Specify the `Maximum Step-Halving` [4].
+1.	Select the `Dependent Variable` [5].
+1.	Select the `Reference Category` [6].
+1.	Select the `Parameter Estimation Method` [7].
+1.	Specify the `Maximum Scoring Iterations` if Hybrid option is selected as the `Parameter Estimation Method`[8].
+1.	Specify the `Minimum Change in Parameter Estimates` [9].
+1.	Select the `Scale Parameter Method` [10].
+1.	Specify the `Value` [11] of the scale parameter method if the Fixed value option was chosen as the scale parameter method.
+1.	Select the columns by clicking on the arrow buttons [15] and moving columns between the `Excluded Columns` [12] and `Factors` [13] and `Covariates` [14] lists.
+1.	Select your preferred option to define the model you want to analyze [16].
+1.	If the `Custom` option is selected, specify the `Formula` [17] for the analysis.
+1.	Click on the `Execute` button [18] to perform the Binary Logistic Classification method.
+<div style="text-align: center;">
+<img src="images/GLM/BinLogGLM_Configuration.png" alt="binlogGLM-config" width="400" height="300" class="img-responsive">
+</div>
 
 ###### Output
 {: .no_toc }
+The predictions, Goodness of Fit table and Parameter Estimates table are shown in the output spreadsheet.
+<div style="text-align: center;">
+<img src="images/GLM/BinLogGLM_Output.png" alt="binlogGLM-output" width="400" height="300" class="img-responsive">
+</div>
 
 #### Probit 
 {: .no_toc}
+Probit regression is a type of generalized linear model (GLM) used for modeling a binary outcome variable, like logistic regression. The key difference lies in the link function: while logistic regression uses the logit link, probit regression uses the probit link, which is the inverse of the standard normal cumulative distribution function (CDF). Mathematically, this is expressed as:
+<div id="probit link function" style="text-align: center;">
+    $$
+    \begin{equation}
+    g(\mu) = \Phi^{-1} (\mu) = X \beta
+    \end{equation}
+    $$
+</div>
+
+Where $$\Phi^{-1}$$ is the probit link, and $$\mu$$ is the probability of success.
+The underlying assumption is that there exists a latent (unobserved) continuous variable that follows a standard normal distribution, and the observed binary response is a result of whether this latent variable crosses a certain threshold.
+Probit regression is often used when the assumption of a normal distribution for the underlying latent variable is justified or preferred, or when the differences in tail behavior between the logistic and normal distributions are relevant.
+
+Use the Probit Classification method by browsing in the top ribbon: 
+
+| Analytics $$\rightarrow$$ Classification $$\rightarrow$$ Statistical fitting $$\rightarrow$$ Generalized Linear Models |
+
+And then choosing “Probit” as the `Type`.
+
+
 ##### Input
 {: .no_toc }
+All variables must be specified in the datasheet. Numerical values are required for covariates, while factors may be either textual or numerical. The dependent variable must be binary, consisting of exactly two distinct categories, which can be coded as 0 and 1 or as two unique labels. The design for Probit Regression requires at least two columns in the input sheet: one column for the binary dependent variable and at least one column for an independent variable (either a categorical factor or a numerical covariate). Each row corresponds to a single observation.
 
 ##### Configuration
 {: .no_toc }
 
+|**Confidence Level (%)**| Specify the confidence level of the analysis. Values should range from 0 to 100 and correspond to percentages. |
+|**Max Iterations**| Defines the maximum number of iterations the model is allowed to perform during the estimation process. If the model fails to converge before reaching this number, the algorithm stops and returns the values of the last iteration.|
+|**Maximum Step-Halving**| Controls how many times the algorithm is allowed to halve the step size during parameter updates when an iteration leads to worse model fit.|
+|**Dependent Variable**| Select the column that corresponds to values of the dependent variable. |
+|**Reference Category**| Specifies which category of the dependent variable should be used as the reference level when calculating parameter estimates.|
+|**Parameter Estimation**| This option lets you choose how the model parameters will be estimated, Newton-Raphson, Fisher Scoring or Hybrid.|
+|**Maximum Scoring Iterations**| The "Maximum Scoring Iterations" parameter is used when the hybrid estimation method is selected, instead of Newton-Raphson or Fisher scoring alone, and specifies the maximum number of iterations to be performed during the scoring phase.|
+|**Minimum Change in Parameter Estimates**| Sets the tolerance level for convergence — the smallest change in parameter estimates between iterations required to continue optimization. If the change in all parameters is below this value, the algorithm assumes convergence has been reached.|
+|**Scale Parameter Method**| Determines how the scale (error variance) parameter is estimated. Options include: Fixed value, Deviance, or Pearson Chi-square. |
+|**Value**| Specifies the scale parameter value manually, only when Fixed value is selected in the Scale Parameter Method. |
+|**Factors/Covariates/Excluded Columns**| Select manually the columns that correspond to factors and the columns that correspond to covariates through the dialog window: Use the buttons to move columns between the Factors and Covariates list and Excluded Columns list. Single-arrow buttons will move all selected columns and double-arrow buttons will move all columns. At least one covariate  or factor column should be specified.|
+|**Custom/Include All Main Effects/Full Factorial**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Include All Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. Note that the Include All Main Effects and Full Factorial options do not allow the use of a formula.|
+|**Formula**| Specify the model formula used for the analysis if the Custom option is selected. Include all variables listed under Factors or Covariates, separated by “+”. To include interaction terms, use the format VariableA:VariableB. If interaction terms are included, the dataset must contain all combinations of the levels of the involved categorical variables — i.e., the design must be fully crossed — to ensure the model can be properly estimated.|
+
 ##### Output
 {: .no_toc }
+The output of the Probit regression procedure is organized into three main sections: the Predicted Values Table, the Goodness of Fit Statistics, and the Parameter Estimates Table. 
+1. The Predicted Values Table contains the actual values of the dependent variable and the corresponding predicted values generated by the model for each observation.
+1. The Goodness of Fit Table includes statistical measures that assess how well the model fits the data, such as Deviance, Log-Likelihood, AIC, BIC, and related metrics.
+1. The Parameter Estimates Table displays the estimated coefficients for each variable in the model, along with standard errors, confidence intervals, test statistics, degrees of freedom, and p-values.
+
 
 ##### Example
 {: .no_toc }
 
 ###### Input
 {: .no_toc }
+The input datasheet must include one binary dependent variable, which will serve as the target, and at least one column with a continuous or categorical independent variable.
+<div style="text-align: center;">
+<img src="images/GLM/ProbitGLM_Input.png" alt="probitGLM-input" width="400" height="300" class="img-responsive">
+</div>
 
 ###### Configuration
 {: .no_toc }
+1.	Select `Analytics` $$\rightarrow$$ `Classification` $$\rightarrow$$ `Statistical fitting`  $$\rightarrow$$ `Generalized Linear Models`
+1.	Set the `Type` [1] of regression to Probit.
+1.	Specify the `Confidence Level (%)` [2] for the test.
+1.	Specify `Max Iterations` [3].
+1.	Specify the `Maximum Step-Halving` [4].
+1.	Select the `Dependent Variable` [5].
+1.	Select the `Reference Category` [6].
+1.	Select the `Parameter Estimation Method` [7].
+1.	Specify the `Maximum Scoring Iterations` if Hybrid option is selected as the `Parameter Estimation Method`[8].
+1.	Specify the `Minimum Change in Parameter Estimates` [9].
+1.	Select the `Scale Parameter Method` [10].
+1.	Specify the `Value` [11] of the scale parameter method if the Fixed value option was chosen as the scale parameter method.
+1.	Select the columns by clicking on the arrow buttons [15] and moving columns between the `Excluded Columns` [12] and `Factors` [13] and `Covariates` [14] lists.
+1.	Select your preferred option to define the model you want to analyze [16].
+1.	If the `Custom` option is selected, specify the `Formula` [17] for the analysis.
+1.	Click on the `Execute` button [18] to perform the Probit Classification method.
+<div style="text-align: center;">
+<img src="images/GLM/ProbitGLM_Configuration.png" alt="probitGLM-config" width="400" height="300" class="img-responsive">
+</div>
 
 ###### Output
 {: .no_toc }
+The predictions, Goodness of Fit table and Parameter Estimates table are shown in the output spreadsheet.
+<div style="text-align: center;">
+<img src="images/GLM/ProbitGLM_Output.png" alt="probitGLM-output" width="400" height="300" class="img-responsive">
+</div>
 
 #### Complementary Log-Log 
 {: .no_toc}
+Complementary log-log regression is a type of generalized linear model (GLM) used for modeling binary outcome data, where the dependent variable consists of two categories (e.g., success/failure, event/no event). Unlike the logit or probit link functions, the cloglog link is defined as: 
+<div id="cloglog link function" style="text-align: center;">
+    $$
+    \begin{equation}
+    g(\mu) = cloglog(\mu) = ln(-ln(1-\mu))
+    \end{equation}
+    $$
+</div>
+Where $$\mu$$ is the probability of the event occurring. This link function is asymmetric, making it particularly useful when the probability of the event is either very small or very large (i.e., skewed response probabilities). Complementary log-log regression is commonly applied in time-to-event analyses, extreme value modeling, and situations involving hazard functions, such as survival analysis or epidemiological studies, where the event of the interest becomes more likely over time or under certain conditions.
+
+Use the Complementary Log-Log Classification method by browsing in the top ribbon: 
+
+| Analytics $$\rightarrow$$ Classification $$\rightarrow$$ Statistical fitting $$\rightarrow$$ Generalized Linear Models |
+
+And then choosing "Complementary Log-Log" as the `Type`.
+
 ##### Input
 {: .no_toc }
+All variables must be specified in the datasheet. The dependent variable must be a binary categorical variable, containing exactly two distinct outcomes (e.g., 0 and 1, or two unique labels). The dependent variable should not contain missing entries or values outside the two defined categories. Independent variables may be either numerical or categorical. Categorical variables can be represented using either text labels or numerical codes. The input datasheet must include at least two columns: one for the dependent variable and one or more for the independent variables. Each row should represent a single observation. This model is particularly useful when the probability of the event is highly skewed (close to 0 or 1) and is often applied in contexts involving time-to-event outcomes or hazard-based modeling.
 
 ##### Configuration
 {: .no_toc }
 
+
+|**Confidence Level (%)**| Specify the confidence level of the analysis. Values should range from 0 to 100 and correspond to percentages. |
+|**Max Iterations**| Defines the maximum number of iterations the model is allowed to perform during the estimation process. If the model fails to converge before reaching this number, the algorithm stops and returns the values of the last iteration.|
+|**Maximum Step-Halving**| Controls how many times the algorithm is allowed to halve the step size during parameter updates when an iteration leads to worse model fit.|
+|**Dependent Variable**| Select the column that corresponds to values of the dependent variable. |
+|**Reference Category**| Specifies which category of the dependent variable should be used as the reference level when calculating parameter estimates.|
+|**Parameter Estimation**| This option lets you choose how the model parameters will be estimated, Newton-Raphson, Fisher Scoring or Hybrid.|
+|**Maximum Scoring Iterations**| The "Maximum Scoring Iterations" parameter is used when the hybrid estimation method is selected, instead of Newton-Raphson or Fisher scoring alone, and specifies the maximum number of iterations to be performed during the scoring phase.|
+|**Minimum Change in Parameter Estimates**| Sets the tolerance level for convergence — the smallest change in parameter estimates between iterations required to continue optimization. If the change in all parameters is below this value, the algorithm assumes convergence has been reached.|
+|**Scale Parameter Method**| Determines how the scale (error variance) parameter is estimated. Options include: Fixed value, Deviance, or Pearson Chi-square. |
+|**Value**| Specifies the scale parameter value manually, only when Fixed value is selected in the Scale Parameter Method. |
+|**Factors/Covariates/Excluded Columns**| Select manually the columns that correspond to factors and the columns that correspond to covariates through the dialog window: Use the buttons to move columns between the Factors and Covariates list and Excluded Columns list. Single-arrow buttons will move all selected columns and double-arrow buttons will move all columns. At least one covariate  or factor column should be specified.|
+|**Custom/Include All Main Effects/Full Factorial**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Include All Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. Note that the Include All Main Effects and Full Factorial options do not allow the use of a formula.|
+|**Formula**| Specify the model formula used for the analysis if the Custom option is selected. Include all variables listed under Factors or Covariates, separated by “+”. To include interaction terms, use the format VariableA:VariableB. If interaction terms are included, the dataset must contain all combinations of the levels of the involved categorical variables — i.e., the design must be fully crossed — to ensure the model can be properly estimated.|
+
 ##### Output
 {: .no_toc }
+The output of the Complementary Log-Log regression procedure is organized into three main sections: the Predicted Values Table, the Goodness of Fit Statistics, and the Parameter Estimates Table. 
+1. The Predicted Values Table contains the actual values of the dependent variable and the corresponding predicted values generated by the model for each observation.
+1. The Goodness of Fit Table includes statistical measures that assess how well the model fits the data, such as Deviance, Log-Likelihood, AIC, BIC, and related metrics.
+1. The Parameter Estimates Table displays the estimated coefficients for each variable in the model, along with standard errors, confidence intervals, test statistics, degrees of freedom, and p-values.
+
 
 ##### Example
 {: .no_toc }
 
 ###### Input
 {: .no_toc }
+The input datasheet must include one binary dependent variable, which will serve as the target, and at least one column with a continuous or categorical independent variable.
+<div style="text-align: center;">
+<img src="images/GLM/CLogLogGLM_Input.png" alt="cloglogGLM-input" width="400" height="300" class="img-responsive">
+</div>
 
 ###### Configuration
 {: .no_toc }
+1.	Select `Analytics` $$\rightarrow$$ `Classification` $$\rightarrow$$ `Statistical fitting`  $$\rightarrow$$ `Generalized Linear Models`
+1.	Set the `Type` [1] of regression to Complementary Log-Log.
+1.	Specify the `Confidence Level (%)` [2] for the test.
+1.	Specify `Max Iterations` [3].
+1.	Specify the `Maximum Step-Halving` [4].
+1.	Select the `Dependent Variable` [5].
+1.	Select the `Reference Category` [6].
+1.	Select the `Parameter Estimation Method` [7].
+1.	Specify the `Maximum Scoring Iterations` if Hybrid option is selected as the `Parameter Estimation Method`[8].
+1.	Specify the `Minimum Change in Parameter Estimates` [9].
+1.	Select the `Scale Parameter Method` [10].
+1.	Specify the `Value` [11] of the scale parameter method if the Fixed value option was chosen as the scale parameter method.
+1.	Select the columns by clicking on the arrow buttons [15] and moving columns between the `Excluded Columns` [12] and `Factors` [13] and `Covariates` [14] lists.
+1.	Select your preferred option to define the model you want to analyze [16].
+1.	If the `Custom` option is selected, specify the `Formula` [17] for the analysis.
+1.	Click on the `Execute` button [18] to perform the Complementary Log-Log Classification method.
+<div style="text-align: center;">
+<img src="images/GLM/CLogLogGLM_Configuration.png" alt="cloglogGLM-config" width="400" height="300" class="img-responsive">
+</div>
 
 ###### Output
 {: .no_toc }
+The predictions, Goodness of Fit table and Parameter Estimates table are shown in the output spreadsheet.
+<div style="text-align: center;">
+<img src="images/GLM/CLogLogGLM_Output.png" alt="cloglogGLM-output" width="400" height="300" class="img-responsive">
+</div>
 
 #### Ordinal Logistic
 {: .no_toc}
+Ordinal Logistic Regression is a type of generalized linear model (GLM) used when the dependent variable is ordinal-that is, it consists of categories with a natural order but unknown or unequal spacing (e.g., “low”, “medium”, “high”). The most common model used is the proportional odds model, which assumes that the relationship between the predictors and the cumulative probabilities of being at or below a given category is the same across all categories. The typical link function used is the logit link, applied to the cumulative probabilities, resulting in a model of the form:
+<div id="ordinal logit link function" style="text-align: center;">
+    $$
+    \begin{equation}
+    g(\mu) = logit(P(Y \leq j)) = a_j - x\beta
+    \end{equation}
+    $$
+</div>
+Where j indexes the thresholds between categories. Ordinal logistic regression is widely used in fields such as social sciences, medicine, and market research, especially when modeling outcomes like satisfaction ratings, disease severity, or agreement levels. 
+
+Use the Ordinal Logistic Classification method by browsing in the top ribbon:
+
+| Analytics $$\rightarrow$$ Classification $$\rightarrow$$ Statistical fitting $$\rightarrow$$ Generalized Linear Models |
+
+And then choosing "Ordinal Logistic" as the `Type`. 
+
 ##### Input
 {: .no_toc }
+All variables must be specified in the datasheet. The dependent variable must be ordinal and expressed using numerical codes only (e.g., 1, 2, 3), where higher values represent higher levels in the ordering. It should consist of three or more ordered categories and must not contain any missing values or codes outside the defined ordinal range. For logical and interpretable results, the values in the dependent variable column should reflect the correct ordinal ranking for each observation. Independent variables may be either numerical or categorical. Categorical predictors can be represented using either text labels or numerical codes, but each entry should clearly correspond to the level of the factor it represents. The input datasheet must include at least two columns: one for the numerically coded ordinal dependent variable, and one or more for the independent variables. Each row must represent a single observation. This model is particularly suited for estimating the likelihood of an observation falling into a higher or lower category along an ordered scale.
 
 ##### Configuration
 {: .no_toc }
 
+|**Confidence Level (%)**| Specify the confidence level of the analysis. Values should range from 0 to 100 and correspond to percentages. |
+|**Max Iterations**| Defines the maximum number of iterations the model is allowed to perform during the estimation process. If the model fails to converge before reaching this number, the algorithm stops and returns the values of the last iteration.|
+|**Maximum Step-Halving**| Controls how many times the algorithm is allowed to halve the step size during parameter updates when an iteration leads to worse model fit.|
+|**Dependent Variable**| Select the column that corresponds to values of the dependent variable. |
+|**Parameter Estimation**| This option lets you choose how the model parameters will be estimated, Newton-Raphson, Fisher Scoring or Hybrid.|
+|**Maximum Scoring Iterations**| The "Maximum Scoring Iterations" parameter is used when the hybrid estimation method is selected, instead of Newton-Raphson or Fisher scoring alone, and specifies the maximum number of iterations to be performed during the scoring phase.|
+|**Minimum Change in Parameter Estimates**| Sets the tolerance level for convergence — the smallest change in parameter estimates between iterations required to continue optimization. If the change in all parameters is below this value, the algorithm assumes convergence has been reached.|
+|**Scale Parameter Method**| Determines how the scale (error variance) parameter is estimated. Options include: Fixed value, Deviance, or Pearson Chi-square. |
+|**Value**| Specifies the scale parameter value manually, only when Fixed value is selected in the Scale Parameter Method. |
+|**Factors/Covariates/Excluded Columns**| Select manually the columns that correspond to factors and the columns that correspond to covariates through the dialog window: Use the buttons to move columns between the Factors and Covariates list and Excluded Columns list. Single-arrow buttons will move all selected columns and double-arrow buttons will move all columns. At least one covariate  or factor column should be specified.|
+|**Custom/Include All Main Effects/Full Factorial**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Include All Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. Note that the Include All Main Effects and Full Factorial options do not allow the use of a formula.|
+|**Formula**| Specify the model formula used for the analysis if the Custom option is selected. Include all variables listed under Factors or Covariates, separated by “+”. To include interaction terms, use the format VariableA:VariableB. If interaction terms are included, the dataset must contain all combinations of the levels of the involved categorical variables — i.e., the design must be fully crossed — to ensure the model can be properly estimated.|
+
 ##### Output
 {: .no_toc }
+The output of the ordinal logistic regression procedure is organized into three main sections: the Predicted Probabilities Table, the Goodness of Fit Statistics, and the Parameter Estimates Table. 
+1. The Predicted Probabilities Table displays the actual observed values of the ordinal dependent variable in the first column, followed by the predicted probabilities of each observation belonging to each outcome category. These probabilities are based on the fitted model and indicate how likely each case is to fall into each level of the ordinal outcome.
+1. The Goodness of Fit Table includes statistical measures that assess how well the model fits the data, such as Deviance, Log-Likelihood, AIC, BIC, and related metrics.
+1. The Parameter Estimates Table displays the estimated coefficients for the model. The first rows refer to the thresholds (cut-points) between the ordinal categories of the dependent variable. These are followed by the coefficients for the independent variables, showing their effect on the likelihood of being in a higher category. The table also includes the standard errors, 95% confidence intervals, test statistics, degrees of freedom, and p-values used to assess the statistical significance of each term in the model.
+
 
 ##### Example
 {: .no_toc }
 
 ###### Input
 {: .no_toc }
+The input datasheet must include one target variable with ordered categories, and at least one continuous or categorical independent variable.
+<div style="text-align: center;">
+<img src="images/GLM/OrdLogGLM_Input.png" alt="ordlogGLM-input" width="400" height="300" class="img-responsive">
+</div>
 
 ###### Configuration
 {: .no_toc }
+1.	Select `Analytics` $$\rightarrow$$ `Classification` $$\rightarrow$$ `Statistical fitting`  $$\rightarrow$$ `Generalized Linear Models`
+1.	Set the `Type` [1] of regression to Ordinal Logistic.
+1.	Specify the `Confidence Level (%)` [2] for the test.
+1.	Specify `Max Iterations` [3].
+1.	Specify the `Maximum Step-Halving` [4].
+1.	Select the `Dependent Variable` [5].
+1.	Select the `Parameter Estimation Method` [6].
+1.	Specify the `Maximum Scoring Iterations` if Hybrid option is selected as the `Parameter Estimation Method`[7].
+1.	Specify the `Minimum Change in Parameter Estimates` [8].
+1.	Select the `Scale Parameter Method` [9].
+1.	Specify the `Value` [10] of the scale parameter method if the Fixed value option was chosen as the scale parameter method.
+1.	Select the columns by clicking on the arrow buttons [14] and moving columns between the `Excluded Columns` [11] and `Factors` [12] and `Covariates` [13] lists.
+1.	Select your preferred option to define the model you want to analyze [15].
+1.	If the `Custom` option is selected, specify the `Formula` [16] for the analysis.
+1.	Click on the `Execute` button [17] to perform the Ordinal Logistic Classification method.
+<div style="text-align: center;">
+<img src="images/GLM/OrdLogGLM_Configuration.png" alt="ordlogGLM-config" width="400" height="300" class="img-responsive">
+</div>
 
 ###### Output
 {: .no_toc }
+The predictions, Goodness of Fit table and Parameter Estimates table are shown in the output spreadsheet.
+<div style="text-align: center;">
+<img src="images/GLM/OrdLogGLM_Output.png" alt="ordlogGLM-output" width="400" height="300" class="img-responsive">
+</div>
 
 #### Ordinal Probit
 {: .no_toc}
+Ordinal Regression, as discussed earlier, is a type of generalized linear model (GLM) used when the dependent variable is ordinal—that is, it consists of categories with a natural order but unknown or unequal spacing (e.g., “low”, “medium”, “high”). A common variant of this model uses the probit link function, which, instead of the logistic function, applies to the standard normal cumulative distribution function (CDF) to model the cumulative probabilities. The model takes the following form:
+<div id="ordinal probit link function" style="text-align: center;">
+    $$
+    \begin{equation}
+    g(\mu) = probit(P(Y \leq j)) = a_j - x\beta
+    \end{equation}
+    $$
+</div>
+Where j indexes the thresholds between categories, xβ represents the linear predictor, and the probit function is the inverse of the standard normal CDF ($$\Phi^{-1}$$). The interpretation is broadly like that of the proportional odds model with the logit link, although the probit model assumes that the underlying latent errors follow a standard normal distribution, as opposed to the logistic distribution assumed in the logit case. The probit link is commonly used in fields such as psychometrics and economics, where the assumption of normally distributed errors may be more appropriate. It is also useful when comparing different GLM approaches or when theoretical considerations favor the normal distribution over the logistic.
+
+Use the Ordinal Probit Classification method by browsing in the top ribbon:
+
+| Analytics $$\rightarrow$$ Classification $$\rightarrow$$ Statistical fitting $$\rightarrow$$ Generalized Linear Models |
+
+And then choosing "Ordinal Probit" as the `Type`. 
+
 ##### Input
 {: .no_toc }
+All variables must be specified in the datasheet. The dependent variable must be ordinal and expressed using numerical codes only (e.g., 1, 2, 3), where higher values represent higher levels in the ordering. It should consist of three or more ordered categories and must not contain any missing values or codes outside the defined ordinal range. For logical and interpretable results, the values in the dependent variable column should reflect the correct ordinal ranking for each observation. Independent variables may be either numerical or categorical. Categorical predictors can be represented using either text labels or numerical codes, but each entry should clearly correspond to the level of the factor it represents. The input datasheet must include at least two columns: one for the numerically coded ordinal dependent variable, and one or more for the independent variables. Each row must represent a single observation. This model is particularly suited for estimating the likelihood of an observation falling into a higher or lower category along an ordered scale.
 
 ##### Configuration
 {: .no_toc }
 
+|**Confidence Level (%)**| Specify the confidence level of the analysis. Values should range from 0 to 100 and correspond to percentages. |
+|**Max Iterations**| Defines the maximum number of iterations the model is allowed to perform during the estimation process. If the model fails to converge before reaching this number, the algorithm stops and returns the values of the last iteration.|
+|**Maximum Step-Halving**| Controls how many times the algorithm is allowed to halve the step size during parameter updates when an iteration leads to worse model fit.|
+|**Dependent Variable**| Select the column that corresponds to values of the dependent variable. |
+|**Parameter Estimation**| This option lets you choose how the model parameters will be estimated, Newton-Raphson, Fisher Scoring or Hybrid.|
+|**Maximum Scoring Iterations**| The "Maximum Scoring Iterations" parameter is used when the hybrid estimation method is selected, instead of Newton-Raphson or Fisher scoring alone, and specifies the maximum number of iterations to be performed during the scoring phase.|
+|**Minimum Change in Parameter Estimates**| Sets the tolerance level for convergence — the smallest change in parameter estimates between iterations required to continue optimization. If the change in all parameters is below this value, the algorithm assumes convergence has been reached.|
+|**Scale Parameter Method**| Determines how the scale (error variance) parameter is estimated. Options include: Fixed value, Deviance, or Pearson Chi-square. |
+|**Value**| Specifies the scale parameter value manually, only when Fixed value is selected in the Scale Parameter Method. |
+|**Factors/Covariates/Excluded Columns**| Select manually the columns that correspond to factors and the columns that correspond to covariates through the dialog window: Use the buttons to move columns between the Factors and Covariates list and Excluded Columns list. Single-arrow buttons will move all selected columns and double-arrow buttons will move all columns. At least one covariate  or factor column should be specified.|
+|**Custom/Include All Main Effects/Full Factorial**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Include All Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. Note that the Include All Main Effects and Full Factorial options do not allow the use of a formula.|
+|**Formula**| Specify the model formula used for the analysis if the Custom option is selected. Include all variables listed under Factors or Covariates, separated by “+”. To include interaction terms, use the format VariableA:VariableB. If interaction terms are included, the dataset must contain all combinations of the levels of the involved categorical variables — i.e., the design must be fully crossed — to ensure the model can be properly estimated.|
+
 ##### Output
 {: .no_toc }
+The output of the ordinal logistic regression procedure is organized into three main sections: the Predicted Probabilities Table, the Goodness of Fit Statistics, and the Parameter Estimates Table. 
+1. The Predicted Probabilities Table displays the actual observed values of the ordinal dependent variable in the first column, followed by the predicted probabilities of each observation belonging to each outcome category. These probabilities are based on the fitted model and indicate how likely each case is to fall into each level of the ordinal outcome.
+1. The Goodness of Fit Table includes statistical measures that assess how well the model fits the data, such as Deviance, Log-Likelihood, AIC, BIC, and related metrics.
+1. The Parameter Estimates Table displays the estimated coefficients for the model. The first rows refer to the thresholds (cut-points) between the ordinal categories of the dependent variable. These are followed by the coefficients for the independent variables, showing their effect on the likelihood of being in a higher category. The table also includes the standard errors, 95% confidence intervals, test statistics, degrees of freedom, and p-values used to assess the statistical significance of each term in the model.
+
 
 ##### Example
 {: .no_toc }
 
 ###### Input
 {: .no_toc }
+The input datasheet must include one target variable with ordered categories, and at least one continuous or categorical independent variable.
+<div style="text-align: center;">
+<img src="images/GLM/OrdProbitGLM_Input.png" alt="ordprobitGLM-input" width="400" height="300" class="img-responsive">
+</div>
 
 ###### Configuration
 {: .no_toc }
+1.	Select `Analytics` $$\rightarrow$$ `Classification` $$\rightarrow$$ `Statistical fitting`  $$\rightarrow$$ `Generalized Linear Models`
+1.	Set the `Type` [1] of regression to Ordinal Probit.
+1.	Specify the `Confidence Level (%)` [2] for the test.
+1.	Specify `Max Iterations` [3].
+1.	Specify the `Maximum Step-Halving` [4].
+1.	Select the `Dependent Variable` [5].
+1.	Select the `Parameter Estimation Method` [6].
+1.	Specify the `Maximum Scoring Iterations` if Hybrid option is selected as the `Parameter Estimation Method`[7].
+1.	Specify the `Minimum Change in Parameter Estimates` [8].
+1.	Select the `Scale Parameter Method` [9].
+1.	Specify the `Value` [10] of the scale parameter method if the Fixed value option was chosen as the scale parameter method.
+1.	Select the columns by clicking on the arrow buttons [14] and moving columns between the `Excluded Columns` [11] and `Factors` [12] and `Covariates` [13] lists.
+1.	Select your preferred option to define the model you want to analyze [15].
+1.	If the `Custom` option is selected, specify the `Formula` [16] for the analysis.
+1.	Click on the `Execute` button [17] to perform the Ordinal Probit Classification method.
+<div style="text-align: center;">
+<img src="images/GLM/OrdProbitGLM_Configuration.png" alt="ordprobitGLM-config" width="400" height="300" class="img-responsive">
+</div>
 
 ###### Output
 {: .no_toc }
+The predictions, Goodness of Fit table and Parameter Estimates table are shown in the output spreadsheet.
+<div style="text-align: center;">
+<img src="images/GLM/OrdProbitGLM_Output.png" alt="ordprobitGLM-output" width="400" height="300" class="img-responsive">
+</div>
 
 #### Multinomial Logistic 
 {: .no_toc}
+Multinomial Logistic Regression is a classification method that generalizes logistic regression to multiclass problems, i.e. with more than two possible discrete outcomes that cannot be ordered.
+This type of GLM assumes the response variable follows a multinomial distribution which is a generalization of the binomial distribution for more than two categories. 
+The link function used is the SoftMax function which for a response variable Y with K possible classes is defined as:
+<div id="multinomial non reference function" style="text-align: center;">
+    $$
+    \begin{equation}
+    P(Y = k) = \frac{e^{\eta_k}}{1 + \sum_{j=1}^{K-1}e^{\eta_j}}, \text{ for (k = 1,.., K - 1)}
+    \end{equation}
+    $$
+</div>
+<div id="multinomial reference function" style="text-align: center;">
+    $$
+    \begin{equation}
+    P(Y = k) = \frac{1}{1 + \sum_{j=1}^{K-1}e^{\eta_j}}, \text{ for the reference category}
+    \end{equation}
+    $$
+</div>
+
+Use the Multinomial Logistic Classification method by browsing in the top ribbon:
+
+| Analytics $$\rightarrow$$ Classification $$\rightarrow$$ Statistical fitting $$\rightarrow$$ Generalized Linear Models |
+
+And then choosing "Multinomial Logistic" as the `Type`. 
+
+
 ##### Input
 {: .no_toc }
+All variables must be specified in the datasheet. The dependent variable must be categorical with more than two distinct values that do not follow any inherent or numerical order (e.g., categories such as “red”, “yellow”, “blue”). The dependent variable should not contain missing values or categories outside the defined set. Independent variables may be either numerical or categorical. Categorical variables can be represented using either text labels or numerical codes. The input datasheet must include at least two columns: one for the dependent variable and one or more for the independent variables. Each row should represent a single observation. This model is appropriate when the outcome involves nominal categories with no meaningful order and is typically used in multi-class classification problems.
 
 ##### Configuration
 {: .no_toc }
 
+|**Confidence Level (%)**| Specify the confidence level of the analysis. Values should range from 0 to 100 and correspond to percentages. |
+|**Max Iterations**| Defines the maximum number of iterations the model is allowed to perform during the estimation process. If the model fails to converge before reaching this number, the algorithm stops and returns the values of the last iteration.|
+|**Maximum Step-Halving**| Controls how many times the algorithm is allowed to halve the step size during parameter updates when an iteration leads to worse model fit.|
+|**Dependent Variable**| Select the column that corresponds to values of the dependent variable. |
+|**Reference Category**| Specifies which category of the dependent variable should be used as the reference level when calculating parameter estimates.|
+|**Minimum Change in Parameter Estimates**| Sets the tolerance level for convergence — the smallest change in parameter estimates between iterations required to continue optimization. If the change in all parameters is below this value, the algorithm assumes convergence has been reached.|
+|**Scale Parameter Method**| Determines how the scale (error variance) parameter is estimated. Options include: Fixed value, Deviance, or Pearson Chi-square. |
+|**Value**| Specifies the scale parameter value manually, only when Fixed value is selected in the Scale Parameter Method. |
+|**Factors/Covariates/Excluded Columns**| Select manually the columns that correspond to factors and the columns that correspond to covariates through the dialog window: Use the buttons to move columns between the Factors and Covariates list and Excluded Columns list. Single-arrow buttons will move all selected columns and double-arrow buttons will move all columns. At least one covariate  or factor column should be specified.|
+|**Custom/Include All Main Effects/Full Factorial**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Include All Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. Note that the Include All Main Effects and Full Factorial options do not allow the use of a formula.|
+|**Formula**| Specify the model formula used for the analysis if the Custom option is selected. Include all variables listed under Factors or Covariates, separated by “+”. To include interaction terms, use the format VariableA:VariableB. If interaction terms are included, the dataset must contain all combinations of the levels of the involved categorical variables — i.e., the design must be fully crossed — to ensure the model can be properly estimated.|
+
+
 ##### Output
 {: .no_toc }
+The output of the multinomial logistic regression procedure is organized into three main sections: the Predicted Probabilities Table, the Goodness of Fit Statistics, and the Parameter Estimates Table. 
+1. The Predicted Probabilities Table lists, for each observation, the predicted probability of belonging to each possible outcome category, along with the corresponding category label.Each row represents the model's estimated probability that a specific case falls into a given outcome category, based on the fitted multinomial logistic regression model.
+1. The Goodness of Fit Table includes statistical measures that assess how well the model fits the data, such as Deviance, Log-Likelihood, AIC, BIC, and related metrics.
+1. The Parameter Estimates Table displays the estimated coefficients for the model. The first rows refer to the thresholds (cut-points) between the ordinal categories of the dependent variable. These are followed by the coefficients for the independent variables, showing their effect on the likelihood of being in a higher category. The table also includes the standard errors, 95% confidence intervals, test statistics, degrees of freedom, and p-values used to assess the statistical significance of each term in the model.
+
 
 ##### Example
 {: .no_toc }
 
 ###### Input
 {: .no_toc }
+The input datasheet must include one nominal dependent variable with three or more unordered categories, which will serve as the target, and at least one column containing a continuous or categorical independent variable.
+<div style="text-align: center;">
+<img src="images/GLM/MultLogGLM_Input.png" alt="multlogGLM-input" width="400" height="300" class="img-responsive">
+</div>
 
 ###### Configuration
 {: .no_toc }
+1.	Select `Analytics` $$\rightarrow$$ `Classification` $$\rightarrow$$ `Statistical fitting`  $$\rightarrow$$ `Generalized Linear Models`
+1.	Set the `Type` [1] of regression to Multinomial Logistic.
+1.	Specify the `Confidence Level (%)` [2] for the test.
+1.	Specify `Max Iterations` [3].
+1.	Specify the `Maximum Step-Halving` [4].
+1.	Select the `Dependent Variable` [5].
+1.	Select the `Reference Category` [6].
+1.	Specify the `Minimum Change in Parameter Estimates` [7].
+1.	Select the `Scale Parameter Method` [8].
+1.	Specify the `Value` [9] of the scale parameter method if the Fixed value option was chosen as the scale parameter method.
+1.	Select the columns by clicking on the arrow buttons [13] and moving columns between the `Excluded Columns` [10] and `Factors` [11] and `Covariates` [12] lists.
+1.	Select your preferred option to define the model you want to analyze [14].
+1.	If the `Custom` option is selected, specify the `Formula` [15] for the analysis.
+1.	Click on the `Execute` button [16] to perform the Multinomial Logistic Classification method.
+<div style="text-align: center;">
+<img src="images/GLM/MultLogGLM_Configuration.png" alt="multlogGLM-config" width="400" height="300" class="img-responsive">
+</div>
 
 ###### Output
 {: .no_toc }
+The predictions, Goodness of Fit table and Parameter Estimates table are shown in the output spreadsheet.
+<div style="text-align: center;">
+<img src="images/GLM/MultLogGLM_Output.png" alt="multlogGLM-output" width="400" height="300" class="img-responsive">
+</div>
 
 ### Generalized Estimating Equations
 
