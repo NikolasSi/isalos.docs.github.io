@@ -322,7 +322,7 @@ In the input datasheet the requirement is to specify three columns  and insert t
 
 
 <div style="text-align: center;">
-<img src="images/ANOVA/rm_configuration.png" alt="rm-configuration" width="400" height="300" class="img-responsive">
+<img src="images/ANOVA/RM_configuration.png" alt="rm-configuration" width="400" height="300" class="img-responsive">
 </div>
 
 ##### Output
@@ -330,7 +330,7 @@ In the input datasheet the requirement is to specify three columns  and insert t
 The two tables analyzing the within-subject effects and the between-subject effects are shown in the output spreadsheet.
 
 <div style="text-align: center;">
-<img src="images/ANOVA/rm_output.png" alt="rm-output" width="400" height="300" class="img-responsive">
+<img src="images/ANOVA/RM_output.png" alt="rm-output" width="400" height="300" class="img-responsive">
 </div>
 ---
 
