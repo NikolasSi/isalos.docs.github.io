@@ -591,7 +591,6 @@ Categorical variables are encoded using one-hot encoding, where each category is
 
 
 #### Linear
-{: .no_toc}
 The classical linear regression model assumes that the response variable follows a normal (Gaussian) distribution, conditional on the explanatory variables. Specifically, for a continuous dependent variable $$Y$$, the model expresses $$Y$$ as a linear function of one or more independent variables $$X_1, X_2, …, X_p$$, plus a normally distributed error term:
 <div id="linear regression equation" style="text-align: center;">
     $$
@@ -678,7 +677,6 @@ The predictions, Goodness of Fit table and Parameter Estimates table are shown i
 </div>
 
 #### Negative Binomial 
-{: .no_toc}
 Negative Binomial Regression is a type of generalized linear model (GLM) used for modeling count data that exhibit overdispersion – that is, when the variance exceeds the mean. It assumes that the dependent variable follows a Negative Binomial distribution, which is a generalization of the Poisson distribution that introduces an additional dispersion parameter to account for variability beyond the mean. The most  commonly used link function is the log link, which models the logarithm of the expected count as a linear combination of the predictors:
 <div id="negative binomial regression link function" style="text-align: center;">
     $$
@@ -762,7 +760,6 @@ The predictions, Goodness of Fit table and Parameter Estimates table are shown i
 </div>
 
 #### Poisson 
-{: .no_toc}
 Poisson Regression is type of generalized linear model (GLM) used for modeling count data, where the dependent variable represents the number of times an event occurs within a fixed period, space, or exposure. It assumes that the response variable follows a Poisson distribution, where the mean is equal to the variance. The most common link function used is the log link, which relates the natural logarithm of the expected count to a linear combination of independent variables..
 <div id="poisson regression link function" style="text-align: center;">
     $$
@@ -847,7 +844,6 @@ The predictions, Goodness of Fit table and Parameter Estimates table are shown i
 </div>
 
 #### Gamma 
-{: .no_toc}
 Gamma regression is a type of generalized linear model (GLM) used when the response variable is continuous, strictly positive, and right-skewed behavior. It assumes that the dependent variable follows a Gamma distribution, which is well-suited for modeling non-negative data with a variance that increases with the mean. A common choice for the link function in Gamma regression is the log link, which relates the mean of the response variable to the linear predictors via the natural logarithm.
 <div id="gamma link function" style="text-align: center;">
     $$
@@ -933,7 +929,6 @@ The predictions, Goodness of Fit table and Parameter Estimates table are shown i
 </div>
 
 #### Tweedie with Identity Link
-{: .no_toc}
 Tweedie Regression is a type of generalized linear model (GLM) designed to handle semi-continuous response variables, variables that exhibit a combination of many exact zeros and positive, continuous values. It assumes the response variable follows a Tweedie distribution, a member of the exponential dispersion family that encompasses distributions such as the normal, Poisson, gamma, and inverse Gaussian as special cases.
 When the Tweedie power parameter lies between 1 and 2, the distribution corresponds to a compound Poisson–Gamma process, which makes it particularly suitable for modeling zero-inflated, right-skewed data—such as insurance claim amounts, healthcare costs, or ecological measurements.
 In this formulation, the identity link function is used, meaning that the expected value of the response variable is modeled directly as a linear function of the predictors:
@@ -1021,7 +1016,6 @@ The predictions, Goodness of Fit table and Parameter Estimates table are shown i
 </div>
 
 #### Tweedie with Log Link
-{: .no_toc}
 Tweedie Regression is a type of generalized linear model (GLM) designed to handle semi-continuous response variables – that is, variables that take on many exact zeros and positive, continuous values otherwise. It assumes the response variable follows a Tweedie distribution, which belongs to the exponential dispersion family and includes the normal, Poisson, gamma and inverse Gaussian distributions as special cases. When the Tweedie power parameter lies between 1 and 2, the distribution corresponds to a compound Poisson- Gamma process, making it ideal for modeling zero-inflated, right-skewed data such as insurance claim amounts, healthcare expenditures, or ecological measurements. The most common link function used is the log link, where the logarithm of the expected value is modeled as a linear function of the predictors.
 <div id="tweedie regression log link function" style="text-align: center;">
     $$
@@ -1103,6 +1097,152 @@ The predictions, Goodness of Fit table and Parameter Estimates table are shown i
 <img src="images/GLM/TweedieLogGLM_Output.png" alt="tweedielogGLM-output" width="400" height="300" class="img-responsive">
 </div>
 
+### Loglinear Models
+Log-linear models are a special case of generalized linear models that explain how cell counts vary across the levels of categorical variables in a contingency table. They also let us examine associations and interaction patterns among those variables. By default, these models treat the predictors (factors) as nominal, and the response is the count for each combination of factor levels—either the implicit number of times a combination appears in the raw data or, when present, the value in a frequency column.
+
+In practice, they fit a GLM with a logarithmic link function and a Poisson or a Multinomial distribution for the response variable, estimating:
+<div id="loglinear link" style="text-align: center;">
+    $$
+    \begin{equation}
+    log(\mu) = \alpha \beta_1 x_1 + ... + \beta_k x_k
+    \end{equation}
+    $$
+</div>
+where $$\mu$$ is the expected count for a given set of factor levels. The $$x_s$$ are indicator variables for factor levels and their interactions.
+
+A saturated log-linear model includes all main effects and all possible interactions among the factors. It exactly reproduces the observed cell counts, so the fitted means, $$\hat{\mu_i}$$, equal the data, $$y_i$$, the residual deviance is 0, and the residual degrees of freedom are 0. Because diagnostics like standardized/adjusted residuals can involve divisions by $$\sqrt{\hat{\mu_i}}$$, we optionally add a small positive constant $$\delta$$ when the model is saturated to avoid division by zero when $$𝑦_𝑖=0$$.
+
+Beyond the saturated case, there is also a custom model option where we include only the terms we want (e.g., main effects only, selected two-way interactions, etc.). 
+
+For each cell (factor combination) we provide the following cell diagnostics:
+1. Observed count:
+    <div id="observed count" style="text-align: center;">
+        $$
+        \begin{equation}
+        y_i
+        \end{equation}
+        $$
+    </div>
+1. Observed percentage:
+    <div id="observed percentage" style="text-align: center;">
+        $$
+        \begin{equation}
+        \frac{y_i}{\sum_{i=1}^n y_i}
+        \end{equation}
+        $$
+    </div>
+1. Expected count
+    <div id="expected count" style="text-align: center;">
+        $$
+        \begin{equation}
+        \hat{\mu_i}
+        \end{equation}
+        $$
+    </div>
+1. Expected percentage:
+    <div id="expected percentage" style="text-align: center;">
+        $$
+        \begin{equation}
+        \frac{\hat{\mu_i}}{\sum_{i=1}^n \hat{\mu_i}}
+        \end{equation}
+        $$
+    </div>
+1. Residual:
+    <div id="residual" style="text-align: center;">
+        $$
+        \begin{equation}
+        r_i = y_i - \hat{\mu_i}
+        \end{equation}
+        $$
+    </div>
+1. Standardized Residual:
+    <div id="standardized residual" style="text-align: center;">
+        $$
+        \begin{equation}
+        r_i^{std} = \frac{y_i - \hat{\mu_i}}{\sqrt{\hat{\mu_i}}}
+        \end{equation}
+        $$
+    </div>
+1. Adjusted Residual:
+    <div id="adjusted residual" style="text-align: center;">
+        $$
+        \begin{equation}
+        r_i^{adj} = \frac{y_i - \hat{\mu_i}}{\sqrt{\hat{\mu_i}}(1-h_{ii})}
+        \end{equation}
+        $$
+    </div>
+    where $$h_{ii}$$ is the i-th diagonal element of the hat matrix.
+1. Deviance Residual:
+    <div id="deviance residual" style="text-align: center;">
+        $$
+        \begin{equation}
+        d_i = 2sign(y_i-\hat{\mu_i})[y_ilog(\frac{y_i}{\hat{\mu_i}}) - (y_i \hat{\mu_i})]
+        \end{equation}
+        $$
+    </div>
+
+Use the Loglinear Model method by browsing in the top ribbon: 
+
+| Analytics $$\rightarrow$$ Regression $$\rightarrow$$ Statistical fitting $$\rightarrow$$ Loglinear Models |
+
+#### Input
+{: .no_toc}
+All variables need to be specified in the data sheet. Numerical values will be used for the cell covariates as well as for dependent variables, which is the cell count or frequency. Factors, however, can be textual as well as numerical. The design for log-linear modeling requires at least two elements in the input sheet: one or more columns representing the categorical factors that define the contingency cells, and either a numeric frequency column (for pre-aggregated tables) or raw rows with no frequency column (in which case counts are computed from the repetitions). Each row represents a single observation in the raw-data case and corresponds to a single cell in the aggregated-table case; optional cell covariates can be included as additional numeric columns.
+
+#### Configuration 
+{: .no_toc}
+
+|**Distribution of Cell Counts**|Specify the desired distribution of cell counts. Available options include Poisson and Multinomial.|
+|**Confidence Level(%)**| Specify the confidence level of the analysis. Values should range from 0 to 100 and correspond to percentages.|
+|**Max Iterations**|Defines the maximum number of iterations the model is allowed to perform during the estimation process. If the model fails to converge before reaching this number, the algorithm stops and returns the values of the last iteration.|
+|**Minimum Change in Parameter Estimates**|Sets the tolerance level for convergence — the smallest change in parameter estimates between iterations required to continue optimization. If the change in all parameters is below this value, the algorithm assumes convergence has been reached.|
+|**Delta**|Specify a small positive constant added only for numerical stability when the model is saturated (perfect fit).  Values should range from 0 to 1 with the default option being 0.5.|
+|**Do not weight cases/ Weight cases by**|Choose whether each row contributes equally or according to a weight variable. If the “Do not weight cases” option is selected, then each row counts as 1. If the “Weight cases by” option is selected, select a numeric column to be treated as the frequency. For each factor combination, the model uses the sum of that column as the cell frequency. Values must be numerical and non-negative.|
+|**Factors/Cell Covariates/Excluded Columns**|Select manually the columns that correspond to factors and the columns that correspond to cell covariates through the dialog window: Use the buttons to move columns between the Factors and Cell Covariates list and Excluded Columns list. Single-arrow buttons will move all selected columns and double-arrow buttons will move all columns. At least one factor column should be specified.|
+|**Saturated Model/Custom Model**|These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Saturated Model option includes both all main effects and all possible interaction terms to build a full model.Note that the Saturated Model option does not allow the use of a formula.|
+|**Formula**|Specify the model formula used for the analysis if the Custom Model option is selected. Include all variables listed under Factors or Covariates, separated by “+”. To include interaction terms, use the format VariableA:VariableB. If interaction terms are included, the dataset must contain all combinations of the levels of the categorical variables involved, i.e., the design must be fully crossed — to ensure the model can be properly estimated.|
+
+#### Output
+{: .no_toc}
+The output of the log-linear procedure is organized into four sections: the Counts & Residuals Table, the Covariance Matrix, the Correlations Matrix and the Parameter Estimates Table. 
+The Counts & Residuals Table provides the cell diagnostics we discussed earlier. For each cell we provide the Observed count, the Observed percentage, the Expected Count, The Expected Percentage, the Residual, the Standardized Residual, the Adjusted Residual and the Deviance.
+The Covariance and Correlations matrices show the covariance and correlation of each pair of variables in the model accordingly.
+The Parameter Estimates Table displays the estimated coefficients for each variable in the model, along with standard errors, confidence intervals, test statistics, degrees of freedom, and p-values.
+
+#### Example
+{: .no_toc}
+
+##### Input
+{: .no_toc}
+The input datasheet must include at least one factor variable, either numeric or textual.
+<div style="text-align: center;">
+<img src="images/Loglinear/Loglinear_Input.png" alt="loglinear-input" width="400" height="300" class="img-responsive">
+</div>
+
+##### Configuration
+{: .no_toc}
+1. Select `Analytics` $$\rightarrow$$ `Regression` $$\rightarrow$$ `Statistical fitting` $$\rightarrow$$ `Loglinear Models`.
+1.	Select the `Distribution of Cell Counts` [1].
+1.	Specify the `Confidence Level (%)` [2] for the test.
+1.	Specify `Max Iterations` [3].
+1.	Specify the `Minimum Change in Parameter Estimates` [4].
+1.	Specify the `Delta`[5] parameter for numerical stability.
+1.	Choose whether to `Do not weight cases` or `Weight cases by` [6]. If the `Weight cases by` option is selected, specify the `frequency` column[7].
+1.	Select the columns by clicking on the arrow buttons [11] and moving columns between the `Excluded Columns` [8] and `Factors` [9] and `Cell Covariates `[10] lists.
+1.	Select your preferred option to define the model you want to analyze [12].
+1.	If the `Custom Model` option is selected, specify the `Formula` [13] for the analysis.
+1.	Click on the `Execute` button [14] to perform the Loglinear method.
+<div style="text-align: center;">
+<img src="images/Loglinear/Loglinear_Configuration.png" alt="loglinear-config" width="400" height="300" class="img-responsive">
+</div>
+
+##### Output
+{: .no_toc}
+The Counts & Residuals Table, Covariance Matrix, Correlations Matrix and the Parameter Estimates Table are shown in the output spreadsheet.
+<div style="text-align: center;">
+<img src="images/Loglinear/Loglinear_Output.png" alt="loglinear-output" width="800" height="600" class="img-responsive">
+</div>
+
 ### Generalized Estimating Equations
 Generalized Estimating Equations (GEEs) extend Generalized Linear Models (GLMs) to handle correlated or clustered response data, such as repeated measures or longitudinal observations. GEEs are particularly useful when responses are not independent, as they allow for within-subject correlation, making them ideal for analyzing data collected over time or across related units.
 A GEE model consists of the following key components:
@@ -1141,7 +1281,6 @@ Each variant of this method is specified by the distribution of the response var
 
 
 #### Linear
-{: .no_toc}
 Use the Linear Regression method by browsing in the top ribbon: 
 
 | Analytics $$\rightarrow$$ Regression $$\rightarrow$$ Statistical fitting $$\rightarrow$$ Generalized Estimating Equations |
@@ -1218,7 +1357,6 @@ The Predictions, Parameter Estimates table and Working Correlation Matrix are sh
 </div>
 
 #### Negative Binomial 
-{: .no_toc}
 Use the Negative Binomial Regression method by browsing in the top ribbon: 
 
 | Analytics $$\rightarrow$$ Regression $$\rightarrow$$ Statistical fitting $$\rightarrow$$ Generalized Estimating Equations |
@@ -1297,7 +1435,6 @@ The Predictions, Parameter Estimates table and Working Correlation Matrix are sh
 
 
 #### Poisson 
-{: .no_toc}
 Use the Poisson Regression method by browsing in the top ribbon: 
 
 | Analytics $$\rightarrow$$ Regression $$\rightarrow$$ Statistical fitting $$\rightarrow$$ Generalized Estimating Equations |
@@ -1374,7 +1511,6 @@ The Predictions, Parameter Estimates table and Working Correlation Matrix are sh
 </div>
 
 #### Gamma 
-{: .no_toc}
 Use the Gamma Regression method by browsing in the top ribbon: 
 
 | Analytics $$\rightarrow$$ Regression $$\rightarrow$$ Statistical fitting $$\rightarrow$$ Generalized Estimating Equations |
@@ -1451,7 +1587,6 @@ The Predictions, Parameter Estimates table and Working Correlation Matrix are sh
 </div>
 
 #### Tweedie with Identity Link
-{: .no_toc}
 Use the Tweedie Regression method with identity link by browsing in the top ribbon: 
 
 | Analytics $$\rightarrow$$ Regression $$\rightarrow$$ Statistical fitting $$\rightarrow$$ Generalized Estimating Equations |
@@ -1531,7 +1666,6 @@ The Predictions, Parameter Estimates table and Working Correlation Matrix are sh
 </div>
 
 #### Tweedie with Log Link
-{: .no_toc}
 Use the Tweedie Regression with Log Link method by browsing in the top ribbon: 
 
 | Analytics $$\rightarrow$$ Regression $$\rightarrow$$ Statistical fitting $$\rightarrow$$ Generalized Estimating Equations |
