@@ -591,7 +591,6 @@ Categorical variables are encoded using one-hot encoding, where each category is
 
 
 #### Linear
-{: .no_toc}
 The classical linear regression model assumes that the response variable follows a normal (Gaussian) distribution, conditional on the explanatory variables. Specifically, for a continuous dependent variable $$Y$$, the model expresses $$Y$$ as a linear function of one or more independent variables $$X_1, X_2, …, X_p$$, plus a normally distributed error term:
 <div id="linear regression equation" style="text-align: center;">
     $$
@@ -678,7 +677,6 @@ The predictions, Goodness of Fit table and Parameter Estimates table are shown i
 </div>
 
 #### Negative Binomial 
-{: .no_toc}
 Negative Binomial Regression is a type of generalized linear model (GLM) used for modeling count data that exhibit overdispersion – that is, when the variance exceeds the mean. It assumes that the dependent variable follows a Negative Binomial distribution, which is a generalization of the Poisson distribution that introduces an additional dispersion parameter to account for variability beyond the mean. The most  commonly used link function is the log link, which models the logarithm of the expected count as a linear combination of the predictors:
 <div id="negative binomial regression link function" style="text-align: center;">
     $$
@@ -762,7 +760,6 @@ The predictions, Goodness of Fit table and Parameter Estimates table are shown i
 </div>
 
 #### Poisson 
-{: .no_toc}
 Poisson Regression is type of generalized linear model (GLM) used for modeling count data, where the dependent variable represents the number of times an event occurs within a fixed period, space, or exposure. It assumes that the response variable follows a Poisson distribution, where the mean is equal to the variance. The most common link function used is the log link, which relates the natural logarithm of the expected count to a linear combination of independent variables..
 <div id="poisson regression link function" style="text-align: center;">
     $$
@@ -847,7 +844,6 @@ The predictions, Goodness of Fit table and Parameter Estimates table are shown i
 </div>
 
 #### Gamma 
-{: .no_toc}
 Gamma regression is a type of generalized linear model (GLM) used when the response variable is continuous, strictly positive, and right-skewed behavior. It assumes that the dependent variable follows a Gamma distribution, which is well-suited for modeling non-negative data with a variance that increases with the mean. A common choice for the link function in Gamma regression is the log link, which relates the mean of the response variable to the linear predictors via the natural logarithm.
 <div id="gamma link function" style="text-align: center;">
     $$
@@ -933,7 +929,6 @@ The predictions, Goodness of Fit table and Parameter Estimates table are shown i
 </div>
 
 #### Tweedie with Identity Link
-{: .no_toc}
 Tweedie Regression is a type of generalized linear model (GLM) designed to handle semi-continuous response variables, variables that exhibit a combination of many exact zeros and positive, continuous values. It assumes the response variable follows a Tweedie distribution, a member of the exponential dispersion family that encompasses distributions such as the normal, Poisson, gamma, and inverse Gaussian as special cases.
 When the Tweedie power parameter lies between 1 and 2, the distribution corresponds to a compound Poisson–Gamma process, which makes it particularly suitable for modeling zero-inflated, right-skewed data—such as insurance claim amounts, healthcare costs, or ecological measurements.
 In this formulation, the identity link function is used, meaning that the expected value of the response variable is modeled directly as a linear function of the predictors:
@@ -1021,7 +1016,6 @@ The predictions, Goodness of Fit table and Parameter Estimates table are shown i
 </div>
 
 #### Tweedie with Log Link
-{: .no_toc}
 Tweedie Regression is a type of generalized linear model (GLM) designed to handle semi-continuous response variables – that is, variables that take on many exact zeros and positive, continuous values otherwise. It assumes the response variable follows a Tweedie distribution, which belongs to the exponential dispersion family and includes the normal, Poisson, gamma and inverse Gaussian distributions as special cases. When the Tweedie power parameter lies between 1 and 2, the distribution corresponds to a compound Poisson- Gamma process, making it ideal for modeling zero-inflated, right-skewed data such as insurance claim amounts, healthcare expenditures, or ecological measurements. The most common link function used is the log link, where the logarithm of the expected value is modeled as a linear function of the predictors.
 <div id="tweedie regression log link function" style="text-align: center;">
     $$
@@ -1243,6 +1237,7 @@ The input datasheet must include at least one factor variable, either numeric or
 </div>
 
 ##### Output
+{: .no_toc}
 The Counts & Residuals Table, Covariance Matrix, Correlations Matrix and the Parameter Estimates Table are shown in the output spreadsheet.
 <div style="text-align: center;">
 <img src="images/Loglinear/Loglinear_Output.png" alt="loglinear-output" width="800" height="600" class="img-responsive">
@@ -1286,7 +1281,6 @@ Each variant of this method is specified by the distribution of the response var
 
 
 #### Linear
-{: .no_toc}
 Use the Linear Regression method by browsing in the top ribbon: 
 
 | Analytics $$\rightarrow$$ Regression $$\rightarrow$$ Statistical fitting $$\rightarrow$$ Generalized Estimating Equations |
@@ -1363,7 +1357,6 @@ The Predictions, Parameter Estimates table and Working Correlation Matrix are sh
 </div>
 
 #### Negative Binomial 
-{: .no_toc}
 Use the Negative Binomial Regression method by browsing in the top ribbon: 
 
 | Analytics $$\rightarrow$$ Regression $$\rightarrow$$ Statistical fitting $$\rightarrow$$ Generalized Estimating Equations |
@@ -1442,7 +1435,6 @@ The Predictions, Parameter Estimates table and Working Correlation Matrix are sh
 
 
 #### Poisson 
-{: .no_toc}
 Use the Poisson Regression method by browsing in the top ribbon: 
 
 | Analytics $$\rightarrow$$ Regression $$\rightarrow$$ Statistical fitting $$\rightarrow$$ Generalized Estimating Equations |
@@ -1519,7 +1511,6 @@ The Predictions, Parameter Estimates table and Working Correlation Matrix are sh
 </div>
 
 #### Gamma 
-{: .no_toc}
 Use the Gamma Regression method by browsing in the top ribbon: 
 
 | Analytics $$\rightarrow$$ Regression $$\rightarrow$$ Statistical fitting $$\rightarrow$$ Generalized Estimating Equations |
@@ -1596,7 +1587,6 @@ The Predictions, Parameter Estimates table and Working Correlation Matrix are sh
 </div>
 
 #### Tweedie with Identity Link
-{: .no_toc}
 Use the Tweedie Regression method with identity link by browsing in the top ribbon: 
 
 | Analytics $$\rightarrow$$ Regression $$\rightarrow$$ Statistical fitting $$\rightarrow$$ Generalized Estimating Equations |
@@ -1676,7 +1666,6 @@ The Predictions, Parameter Estimates table and Working Correlation Matrix are sh
 </div>
 
 #### Tweedie with Log Link
-{: .no_toc}
 Use the Tweedie Regression with Log Link method by browsing in the top ribbon: 
 
 | Analytics $$\rightarrow$$ Regression $$\rightarrow$$ Statistical fitting $$\rightarrow$$ Generalized Estimating Equations |

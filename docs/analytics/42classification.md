@@ -587,7 +587,6 @@ Because log-likelihood is usually a nonlinear function of the parameters, iterat
 Categorical variables are encoded using one-hot encoding, where each category is represented by a binary (0 or 1) dummy variable. The reference category for each categorical variable is the first observed category, and its corresponding dummy variable is omitted to avoid multicollinearity. This omission allows the reference category to be implicitly represented in the model intercept, providing a baseline for interpreting the effects of the other categories.
 
 #### Binary Logistic
-{: .no_toc}
 Binary Logistic Classification is a type of generalized linear model used when the dependent variable is binary, meaning it takes only two possible outcomes (e.g., success/failure, yes/no, 1/0). The response variable is assumed to follow a binomial distribution, where each observation represents a single Bernoulli trial.
 Unlike linear regression, logistic regression uses the logit link function, defined as:
 <div id="logit link function" style="text-align: center;">
@@ -676,7 +675,6 @@ The predictions, Goodness of Fit table and Parameter Estimates table are shown i
 </div>
 
 #### Probit 
-{: .no_toc}
 Probit classification is a type of generalized linear model (GLM) used for modeling a binary outcome variable, like logistic regression. The key difference lies in the link function: while logistic classification uses the logit link, probit classification uses the probit link, which is the inverse of the standard normal cumulative distribution function (CDF). Mathematically, this is expressed as:
 <div id="probit link function" style="text-align: center;">
     $$
@@ -766,7 +764,6 @@ The predictions, Goodness of Fit table and Parameter Estimates table are shown i
 </div>
 
 #### Complementary Log-Log 
-{: .no_toc}
 Complementary log-log classification is a type of generalized linear model (GLM) used for modeling binary outcome data, where the dependent variable consists of two categories (e.g., success/failure, event/no event). Unlike the logit or probit link functions, the cloglog link is defined as: 
 <div id="cloglog link function" style="text-align: center;">
     $$
@@ -853,7 +850,6 @@ The predictions, Goodness of Fit table and Parameter Estimates table are shown i
 </div>
 
 #### Ordinal Logistic
-{: .no_toc}
 Ordinal Logistic Classification is a type of generalized linear model (GLM) used when the dependent variable is ordinal-that is, it consists of categories with a natural order but unknown or unequal spacing (e.g., “low”, “medium”, “high”). The most common model used is the proportional odds model, which assumes that the relationship between the predictors and the cumulative probabilities of being at or below a given category is the same across all categories. The typical link function used is the logit link, applied to the cumulative probabilities, resulting in a model of the form:
 <div id="ordinal logit link function" style="text-align: center;">
     $$
@@ -937,7 +933,6 @@ The predictions, Goodness of Fit table and Parameter Estimates table are shown i
 </div>
 
 #### Ordinal Probit
-{: .no_toc}
 Ordinal Classification, as discussed earlier, is a type of generalized linear model (GLM) used when the dependent variable is ordinal—that is, it consists of categories with a natural order but unknown or unequal spacing (e.g., “low”, “medium”, “high”). A common variant of this model uses the probit link function, which, instead of the logistic function, applies to the standard normal cumulative distribution function (CDF) to model the cumulative probabilities. The model takes the following form:
 <div id="ordinal probit link function" style="text-align: center;">
     $$
@@ -1021,7 +1016,6 @@ The predictions, Goodness of Fit table and Parameter Estimates table are shown i
 </div>
 
 #### Multinomial Logistic 
-{: .no_toc}
 Multinomial Logistic Classification is a classification method that generalizes logistic classification to multiclass problems, i.e. with more than two possible discrete outcomes that cannot be ordered.
 This type of GLM assumes the response variable follows a multinomial distribution which is a generalization of the binomial distribution for more than two categories. 
 The link function used is the SoftMax function which for a response variable Y with K possible classes is defined as:
@@ -1149,7 +1143,6 @@ Each variant of this method is specified by the distribution of the response var
 
 
 #### Binary Logistic
-{: .no_toc}
 Use the Binary Logistic Classification method by browsing in the top ribbon: 
 
 | Analytics $$\rightarrow$$ Classification $$\rightarrow$$ Statistical fitting $$\rightarrow$$ Generalized Estimating Equations |
@@ -1228,7 +1221,6 @@ The Predictions, Parameter Estimates table and Working Correlation Matrix are sh
 </div>
 
 #### Probit 
-{: .no_toc}
 Use the Probit Classification method by browsing in the top ribbon: 
 
 | Analytics $$\rightarrow$$ Classification $$\rightarrow$$ Statistical fitting $$\rightarrow$$ Generalized Estimating Equations |
@@ -1307,7 +1299,6 @@ The Predictions, Parameter Estimates table and Working Correlation Matrix are sh
 </div>
 
 #### Complementary Log-Log 
-{: .no_toc}
 Use the Complementary Log-Log Classification method by browsing in the top ribbon: 
 
 | Analytics $$\rightarrow$$ Classification $$\rightarrow$$ Statistical fitting $$\rightarrow$$ Generalized Estimating Equations |
@@ -1386,7 +1377,6 @@ The Predictions, Parameter Estimates table and Working Correlation Matrix are sh
 </div>
 
 #### Ordinal Logistic
-{: .no_toc}
 Use the Ordinal Logistic Classification method by browsing in the top ribbon:
 
 | Analytics $$\rightarrow$$ Classification $$\rightarrow$$ Statistical fitting $$\rightarrow$$ Generalized Estimating Equations|
@@ -1463,7 +1453,6 @@ The Predictions, Parameter Estimates table and Working Correlation Matrix are sh
 </div>
 
 #### Ordinal Probit
-{: .no_toc}
 Use the Ordinal Probit Classification method by browsing in the top ribbon:
 
 | Analytics $$\rightarrow$$ Classification $$\rightarrow$$ Statistical fitting $$\rightarrow$$ Generalized Estimating Equations |
