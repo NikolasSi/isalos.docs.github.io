@@ -1,8 +1,8 @@
 ---
 layout: default
-title: 6.6 Robust Parameter
+title: 6.7 Robust Parameter
 parent: 6. DOE
-nav_order: 6
+nav_order: 7
 permalink: /robust-parameter.html
 ---
 
@@ -43,7 +43,8 @@ Numerical values should be specified in the input datasheet. Minimum of three co
 ## Configuration
 {: .no_toc}
 
-|**Number of Blocks**| Select manually the Number of Blocks. The lowest value that can get is 1.|
+|**Number of Replicates**|Select manually the `Number of Replicates` which represents the number of times to replicate the entire design. This value should be an integer, and the lowest acceptable value is 1.|
+|**Number of Blocks**|Select from the list of available options the `Number of Blocks`. Currently, the only supported option is 1.|
 |**Random Standard order**|You can tick/select the box if randomness is required in the output list of experiments.|
 |**Time-based RNG Seed**|If in the randomness is selected, then you have the option to also tick/select the box to set the random generated number seed based on time.|
 |**RNG Seed**|Select manually the random generated number seed if required.|
@@ -54,7 +55,7 @@ Numerical values should be specified in the input datasheet. Minimum of three co
 ## Output
 {: .no_toc}
 
-A list of experiments (combinations) is generated in the output datasheet along with the Block number and the Standard order based on the Robust Parameter design method selected.
+A list of experiments (combinations) is generated in the output datasheet along with the Block number, the Replicate Number, the Standard order  and the Point type of each experiment based on the Robust Parameter design method selected.
 
 ## Example
 {: .no_toc}
@@ -72,23 +73,23 @@ In the input datasheet minimum requirement is to specify three factors (columns)
 {: .no_toc}
 
 1.   Select `DOE`$$\rightarrow$$ `Robust Parameter`.
-1.   Select the `Number of Blocks` [1]. The lowest value that can be set is 1.
+1.   Select the `Number of Replicates` [1]. The lowest value that can be set is 1.
+1.   Select the `Number of Blocks` [2]. 
 1.   Select/tick if required the `Random Standard order` [3] to imply randomness in the output list of experiments.
 1.   If randomness is selected either select/tick to generate the number seed for randomness based on time [4] or by manually setting a value [5].
-1.   Select/Tick either the `Taguchi Design` [5] radio button or the `Combined Design` [6] radio button.
-1.   Select the columns from the `Available Columns` window [7] that correspond to noise factors by using the arrows [10] to move them to the `Noise Factor` window [8] and the one that correspond to control factors by using the `arrows` [11] to move them to the `Control Factor` window [9].
-1.   Click on the `Execute` button [12] to perform `Robust Parameter design method.
+1.   Select/Tick either the `Taguchi Design` [6] radio button or the `Combined Design` [7] radio button.
+1.   Select the columns from the `Available Columns` window [8] that correspond to noise factors by using the arrows [11] to move them to the `Noise Factor` window [9] and the one that correspond to control factors by using the `arrows` [12] to move them to the `Control Factor` window [10].
+1.   Click on the `Execute` button [13] to perform `Robust Parameter design method.
 
 <div style="text-align: center;">
-<img src="images/Design of experiments/robust.svg" alt="Robust Parameter" width="400" height="450" class="img-responsive">
+<img src="images/Design of experiments/robust-config.png" alt="Robust Parameter" width="400" height="450" class="img-responsive">
 </div> 
 
 
 #### Output
 {: .no_toc}
 
-The output list of experiments is generated for the two control factors and one noise factor outlining a list of 16 experiments based on the Robust Parameter Taguchi design. Block number is presented in Col1 as shown below and the standard order is provided in Col2.
-
+The output list of experiments is generated for the two control factors and one noise factor outlining a list of 16 experiments based on the Robust Parameter Taguchi design. Standard Order, Block number, Replicate Number and Point Type are presented in Cols 2,3,4 and 5 accordingly as shown below. Column corresponding to Control Factors are shown first .
 <div style="text-align: center;">
 <img src="images/Design of experiments/robust-output.png" alt="Robust Parameter Output" width="400" height="400" class="img-responsive">
 </div> 

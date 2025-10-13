@@ -1,8 +1,8 @@
 ---
 layout: default
-title: 6.5 Mixtures
+title: 6.6 Mixtures
 parent: 6. DOE
-nav_order: 5
+nav_order: 6
 permalink: /mixtures.html
 ---
 
@@ -40,7 +40,8 @@ Input data for Mixtures design is not required.
 ### Configuration 
 {: .no_toc}
 
-| **Number of Blocks** | Select manually the `Number of Blocks`. The lowest value that can get is 1. |
+|**Number of Replicates**|Select manually the `Number of Replicates` which represents the number of times to replicate the entire design. This value should be an integer, and the lowest acceptable value is 1.|
+|**Number of Blocks**|Select from the list of available options the `Number of Blocks`. Currently, the only supported option is 1.|
 | **Random Standard order** | You can tick/select the box if randomness is required in the output list of experiments. |
 | **Time-based RNG Seed** | If randomness is selected, then you have the option to also tick/select the box to set the random generated number seed based on time. |
 | **RNG Seed** | Select manually the random generated number seed if required. |
@@ -54,7 +55,7 @@ Input data for Mixtures design is not required.
 ### Output 
 {: .no_toc}
 
-A list of experiments (combinations) is generated in the output datasheet along with the Block number and the Standard order based on the Mixtures design method selected.
+A list of experiments (combinations) is generated in the output datasheet along with the Block number, the Replicate Number, the Standard order  and the Point type of each experiment based on the Mixtures design method selected.
 
 ### Example 
 {: .no_toc}
@@ -68,25 +69,26 @@ No input data is required in the input datasheet.
 {: .no_toc}
 
 1.   Select `DOE`$$\rightarrow$$ `Mixtures` $$\rightarrow$$ `Mixtures Design`.
-1.   Select the `Number of Blocks` [1]. The lowest value that can be set is 1.
-1.   Select/tick if required the `Random Standard order` [2] to imply randomness in the output list of experiments.
-1.   If randomness is selected either select/tick to generate the number seed for randomness based on time [3] or by manually setting a value [4].
-1.   Select Design to be either `Simplex Centroid` or `Simplex Lattice` [5].
-1.   Select `Number of components` in the Mixture from the drop-down list [6].
-1.   If Simplex Lattice design method is selected, then select the Degree of Lattice from the drop-down list [7].
-1.   Select/tick to `Augment the Design with Axial Points` [8].
-1.   If `Simplex Lattice` design method is selected, then select/tick to `Augment the Design with Center Points` [9].
-1.   Drag the horizonal value bars for each component [10] and [11] to specify the min and max (composition) value for each component.
-1.   Click on the `Execute` button [12] to perform Mixtures design method.
+1.   Select the `Number of Replicates` [1]. The lowest value that can be set is 1.
+1.   Select the `Number of Blocks` [2]. 
+1.   Select/tick if required the `Random Standard order` [3] to imply randomness in the output list of experiments.
+1.   If randomness is selected either select/tick to generate the number seed for randomness based on time [4] or by manually setting a value [5].
+1.   Select Design to be either `Simplex Centroid` or `Simplex Lattice` [6].
+1.   Select `Number of components` in the Mixture from the drop-down list [7].
+1.   If Simplex Lattice design method is selected, then select the Degree of Lattice from the drop-down list [8].
+1.   Select/tick to `Augment the Design with Axial Points` [9].
+1.   If `Simplex Lattice` design method is selected, then select/tick to `Augment the Design with Center Points` [10].
+1.   Drag the horizonal value bars for each component [11],[12],[13] and [14] to specify the min and max (composition) value for each component.
+1.   Click on the `Execute` button [15] to perform Mixtures design method.
 
 <div style="text-align: center;">
-<img src="images/Design of experiments/mixtures.svg" alt="Mixtures" width="500" height="400" class="img-responsive">
+<img src="images/Design of experiments/mixtures-config.png" alt="Mixtures" width="500" height="400" class="img-responsive">
 </div> 
 
 ##### Output
 {: .no_toc}
 
-The output list of experiments is generated for the two components outlining a list of 4 experiments based on the Mixtures design. Block number is presented in Col1 as shown below and the standard order is provided in Col2.
+The output list of experiments is generated for the two components outlining a list of 4 experiments based on the Mixtures design. Standard Order, Block number, Replicate Number and Point Type are presented in Cols 2,3,4 and 5 accordingly as shown below.
 
 <div style="text-align: center;">
 <img src="images/Design of experiments/mixtures-output.png" alt="Mixtures output" width="400" height="400" class="img-responsive">

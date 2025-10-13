@@ -1,8 +1,8 @@
 ---
 layout: default
-title: 6.7 Post DoE Analysis
+title: 6.8 Post DoE Analysis
 parent: 6. DOE
-nav_order: 7
+nav_order: 8
 permalink: /post-doe-analysis.html
 ---
 

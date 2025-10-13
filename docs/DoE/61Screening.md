@@ -40,7 +40,8 @@ Numerical values should be specified in the input datasheet. Plackett-Burman des
 {: .no_toc}
 
 |**Number of Center Points**|Select manually the `Number of Center Points` to be included in the output list of experiments. There is no minimum requirement or any other limitation.|
-|**Number of Blocks**|Select manually the `Number of Blocks`. The lowest value that can get is 1.|
+|**Number of Replicates**|Select manually the `Number of Replicates` which represents the number of times to replicate the entire design. This value should be an integer, and the lowest acceptable value is 1.|
+|**Number of Blocks**|Select from the list of available options the `Number of Blocks`. Currently, the only supported option is 1.|
 |**Random Standard order**|You can tick/select the box if randomness is required in the output list of experiments.|
 |**Time-based RNG Seed**|If the randomness is selected, then you have the option to also tick/select the box to set the random generated number seed based on time.|
 |**RNG Seed**|Select manually the random generated number seed if required.|
@@ -48,7 +49,7 @@ Numerical values should be specified in the input datasheet. Plackett-Burman des
 
 ### Output
 {: .no_toc}
-A list of experiments (combinations) is generated in the output datasheet along with the Block number and the Standard order based on the Plackett-Burman design.
+A list of experiments (combinations) is generated in the output datasheet along with the Block number, the Replicate Number, the Standard order  and the Point type of each experiment based on the Plackett-Burman design.
 
 ### Example
 {: .no_toc}
@@ -65,19 +66,20 @@ In the input datasheet minimum requirement is to specify three factors (columns)
 {: .no_toc}
 1. Select `DOE` $$\rightarrow$$ `Screening` $$\rightarrow$$ `Plackett Burman`.
 1. Select the `Number of Center Points` [1] to be generated in the output list of experiments.
-1. Select the `Number of Blocks` [2]. The lowest value that can be set is 1.
-1. Select/tick if required the `Random Standard order` [3] to imply randomness in the output list of experiments.
-1. If randomness is selected either select/tick to generate the number seed for randomness based on time [4] or by manually setting a value [5].
-1. Select the columns by clicking on the arrow buttons [8] and moving columns between the `Excluded Columns` [6] and `Included Columns` [7] lists.
-1. Click on the `Execute` button [9] to perform Plackett-Burman design method.
+1. Select the `Number of Replicates` [2]. The lowest value that can be set is 1.
+1. Select the `Number of Blocks` [3]. 
+1. Select/tick if required the `Random Standard order` [4] to imply randomness in the output list of experiments.
+1. If randomness is selected either select/tick to generate the number seed for randomness based on time [5] or by manually setting a value [6].
+1. Select the columns by clicking on the arrow buttons [9] and moving columns between the `Excluded Columns` [7] and `Included Columns` [8] lists.
+1. Click on the `Execute` button [10] to perform Plackett-Burman design method.
 
 <div style="text-align: center;">
-<img src="images/Design of experiments/Plackett-Burman-configuration.svg" alt="Plackett-Burman Configuration" width="400" height="400" class="img-responsive">
+<img src="images/Design of experiments/Plackett-Burman-config.png" alt="Plackett-Burman Configuration" width="400" height="400" class="img-responsive">
 </div>
 
 ##### Output
 {: .no_toc}
-A list of experiments (combinations) is generated in the output datasheet along with the Block number based on the Plackett-Burman design method selected. The standard order is provided in Col2.
+A list of experiments (combinations) is generated in the output datasheet along with the Block number based on the Plackett-Burman design method selected. Standard Order, Block number, Replicate Number and Point Type are presented in Cols 2,3,4 and 5 accordingly as shown below.
 
 <div style="text-align: center;">
 <img src="images/Design of experiments/Plackett-Burman-output.png" alt="Plackett-Burman Output" width="400" height="400" class="img-responsive">
@@ -166,7 +168,8 @@ Numerical values should be specified in the input datasheet. Fractional factoria
 {: .no_toc }
 
 |**Number of Center Points** | Select manually the Number of `Center Points` to be included in the output list of experiments. There is no minimum requirement or any other limitation. |
-|**Number of Blocks** | Select manually the `Number of Blocks`. The lowest value that can get is 1. |
+|**Number of Replicates**|Select manually the `Number of Replicates` which represents the number of times to replicate the entire design. This value should be an integer, and the lowest acceptable value is 1.|
+|**Number of Blocks**|Select from the list of available options the `Number of Blocks`. Currently, the only supported option is 1.|
 |**Random Standard order** | You can tick/select the box if randomness is required in the output list of experiments. |
 |**Time-based RNG Seed** | If in the randomness is selected, then you have the option to also tick/select the box to set the random generated number seed based on time |
 |**RNG Seed** | Select manually the random generated number seed if required. |
@@ -175,7 +178,7 @@ Numerical values should be specified in the input datasheet. Fractional factoria
 
 ### Output
 {: .no_toc }
-A list of experiments (combinations) is generated in the output datasheet along with the Block number and the Standard order based on the Fractional Factorial design method selected.
+A list of experiments (combinations) is generated in the output datasheet along with the Block number, the Replicate Number, the Standard order  and the Point type of each experiment based on the Fractional Factorial design method selected.
 
 ### Example
 {: .no_toc }
@@ -193,21 +196,22 @@ In the input datasheet minimum requirement is to specify three factors (columns)
 
 1.   Select `DOE` $$\rightarrow$$ `Screening` $$\rightarrow$$ `Fractional Factorial`.
 1.   Select the `Number of Center Points` [1] to be generated in the output list of experiments.
-1.   Select the `Number of Blocks` [2]. The lowest value that can be set is 1.
-1.   Select/tick if required the `Random Standard order` [3] to imply randomness in the output list of experiments.
-1.   If randomness is selected either select/tick to generate the number seed for randomness based on time [4] or by manually setting a value [5].
-1.   Insert the `Fraction Relationship` [6].
-1.   Select the columns by clicking on the arrow buttons [9] and moving columns between the `Excluded Columns` [7] and `Included Columns` [8] lists.
-1.   Click on the `Execute` button [10] to perform Fractional Factorial design method.
+1.   Select the `Number of Replicates` [2]. The lowest value that can be set is 1.
+1.   Select the `Number of Blocks` [3]. 
+1.   Select/tick if required the `Random Standard order` [4] to imply randomness in the output list of experiments.
+1.   If randomness is selected either select/tick to generate the number seed for randomness based on time [5] or by manually setting a value [6].
+1.   Insert the `Fraction Relationship` [7].
+1.   Select the columns by clicking on the arrow buttons [10] and moving columns between the `Excluded Columns` [8] and `Included Columns` [9] lists.
+1.   Click on the `Execute` button [11] to perform Fractional Factorial design method.
 
 <div style="text-align: center;">
-<img src="images/Design of experiments/fractional.svg" alt="Franctional Factorial" width="400" height="300" class="img-responsive">
+<img src="images/Design of experiments/fractional-config.png" alt="Franctional Factorial" width="400" height="300" class="img-responsive">
 </div>
 
 ##### Output
 {: .no_toc }
 
-A list of experiments (combinations) is generated in the output datasheet along with the Block number based on the Fractional Factorial design method selected. The standard order is provided in Col2.
+A list of experiments (combinations) is generated in the output datasheet along with the Block number based on the Fractional Factorial design method selected. Standard Order, Block number, Replicate Number and Point Type are presented in Cols 2,3,4 and 5 accordingly as shown below.
 <div style="text-align: center;">
 <img src="images/Design of experiments/fractional-output.png" alt="Central Composite" width="400" height="300" class="img-responsive">
 </div>
