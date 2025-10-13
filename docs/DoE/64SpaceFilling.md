@@ -49,7 +49,8 @@ Numerical values should be specified in the input datasheet. Halton design is ap
 {: .no_toc}
 
 | **Number of Center Points** | Select manually the `Number of Center Points` to be included in the output list of experiments. There is no minimum requirement or any other limitation. |
-| **Number of Blocks** | Select manually the `Number of Blocks`. The lowest value that can get is 1. |
+|**Number of Replicates**|Select manually the `Number of Replicates` which represents the number of times to replicate the entire design. This value should be an integer, and the lowest acceptable value is 1.|
+|**Number of Blocks**|Select from the list of available options the `Number of Blocks`. Currently, the only supported option is 1.|
 | **Number of Samples**| Select manually the `Number of Samples` to be included in the output list of experiments. The lowest value that can get is 1.|
 | **Random Standard order** | You can tick/select the box if randomness is required in the output list of experiments. |
 | **Time-based RNG Seed** | If randomness is selected, then you have the option to also tick/select the box to set the random generated number seed based on time. |
@@ -58,7 +59,7 @@ Numerical values should be specified in the input datasheet. Halton design is ap
 
 ### Output
 {: .no_toc}
-A list of experiments (combinations) is generated in the output datasheet along with the Block number and the Standard order based on the Halton design.
+A list of experiments (combinations) is generated in the output datasheet along with the Block number, the Replicate Number, the Standard order  and the Point type of each experiment based on the  Halton design.
 
 ### Example
 {: .no_toc}
@@ -75,20 +76,21 @@ In the input datasheet minimum requirement is to specify one factor (column) and
 {: .no_toc}
 1. Select `DOE` $$\rightarrow$$ `Space Filling` $$\rightarrow$$ `Halton Design`.
 1. Select the `Number of Center Points` [1] to be generated in the output list of experiments.
-1. Select the `Number of Blocks` [2]. The lowest value that can be set is 1.
-1. Select the `Number of Samples` [3]  to be included in the output list of experiments. The lowest value that can get is 1.
-1. Select/tick if required the `Random Standard order` [4] to imply randomness in the output list of experiments.
-1. If randomness is selected either select/tick to generate the number seed for randomness based on time [5] or by manually setting a value [6].
-1. Select the columns by clicking on the arrow buttons [9] and moving columns between the `Excluded Columns` [7] and `Included Columns` [8] lists. 
-1. Click on the `Execute` button [10] to perform Halton design method.
+1. Select the `Number of Replicates` [2]. The lowest value that can be set is 1.
+1. Select the `Number of Blocks` [3]. 
+1. Select the `Number of Samples` [4]  to be included in the output list of experiments. The lowest value that can get is 1.
+1. Select/tick if required the `Random Standard order` [5] to imply randomness in the output list of experiments.
+1. If randomness is selected either select/tick to generate the number seed for randomness based on time [6] or by manually setting a value [7].
+1. Select the columns by clicking on the arrow buttons [10] and moving columns between the `Excluded Columns` [8] and `Included Columns` [9] lists. 
+1. Click on the `Execute` button [11] to perform Halton design method.
 
 <div style="text-align: center;">
-<img src="images/Design of experiments/halton-configuration.svg" alt="Halton Configuration" width="400" height="400" class="img-responsive">
+<img src="images/Design of experiments/halton-config.png" alt="Halton Configuration" width="400" height="400" class="img-responsive">
 </div> 
 
 ##### Output
 {: .no_toc}
-A list of experiments (combinations) is generated in the output datasheet along with the Block number based on the Halton design method selected. The standard order is provided in Col2.
+A list of experiments (combinations) is generated in the output datasheet along with the Block number based on the Halton design method selected. Standard Order, Block number, Replicate Number and Point Type are presented in Cols 2,3,4 and 5 accordingly as shown below.
 
 <div style="text-align: center;">
 <img src="images/Design of experiments/halton-output.png" alt="Halton Output" width="400" height="400" class="img-responsive">
@@ -139,7 +141,8 @@ Numerical values should be specified in the input datasheet. LHS is applied when
 {: .no_toc}
 
 | **Number of Center Points** | Select manually the `Number of Center Points` to be included in the output list of experiments. There is no minimum requirement or any other limitation. |
-| **Number of Blocks** | Select manually the `Number of Blocks`. The lowest value that can get is 1. |
+|**Number of Replicates**|Select manually the `Number of Replicates` which represents the number of times to replicate the entire design. This value should be an integer, and the lowest acceptable value is 1.|
+|**Number of Blocks**|Select from the list of available options the `Number of Blocks`. Currently, the only supported option is 1.|
 | **Number of Samples**| Select manually the `Number of Samples` to be included in the output list of experiments. The lowest value that can get is 1.|
 | **Random Standard order** | You can tick/select the box if randomness is required in the output list of experiments. |
 | **Time-based RNG Seed** | If randomness is selected, then you have the option to also tick/select the box to set the random generated number seed based on time. |
@@ -148,7 +151,7 @@ Numerical values should be specified in the input datasheet. LHS is applied when
 
 ### Output
 {: .no_toc}
-A list of experiments (combinations) is generated in the output datasheet along with the Block number and the Standard order based on the LHS design.
+A list of experiments (combinations) is generated in the output datasheet along with the Block number, the Replicate Number, the Standard order  and the Point type of each experiment based on the LHS design.
 
 ### Example
 {: .no_toc}
@@ -165,20 +168,21 @@ In the input datasheet minimum requirement is to specify one factor (column) and
 {: .no_toc}
 1. Select `DOE` $$\rightarrow$$ `Space Filling` $$\rightarrow$$ `LHS`.
 1. Select the `Number of Center Points` [1] to be generated in the output list of experiments.
-1. Select the `Number of Blocks` [2]. The lowest value that can be set is 1.
-1. Select the `Number of Samples` [3]  to be included in the output list of experiments. The lowest value that can get is 1.
-1. Select/tick if required the `Random Standard order` [4] to imply randomness in the output list of experiments.
-1. If randomness is selected either select/tick to generate the number seed for randomness based on time [5] or by manually setting a value [6].
-1. Select the columns by clicking on the arrow buttons [9] and moving columns between the `Excluded Columns` [7] and `Included Columns` [8] lists. 
-1. Click on the `Execute` button [10] to perform the LHS design method. 
+1. Select the `Number of Replicates` [2]. The lowest value that can be set is 1.
+1. Select the `Number of Blocks` [3]. 
+1. Select the `Number of Samples` [4]  to be included in the output list of experiments. The lowest value that can get is 1.
+1. Select/tick if required the `Random Standard order` [5] to imply randomness in the output list of experiments.
+1. If randomness is selected either select/tick to generate the number seed for randomness based on time [6] or by manually setting a value [7].
+1. Select the columns by clicking on the arrow buttons [10] and moving columns between the `Excluded Columns` [8] and `Included Columns` [9] lists. 
+1. Click on the `Execute` button [11] to perform the LHS design method. 
 
 <div style="text-align: center;">
-<img src="images/Design of experiments/lhs-configuration.svg" alt="LHS Configuration" width="400" height="400" class="img-responsive">
+<img src="images/Design of experiments/lhs-config.png" alt="LHS Configuration" width="400" height="400" class="img-responsive">
 </div> 
 
 ##### Output
 {: .no_toc}
-A list of experiments (combinations) is generated in the output datasheet along with the Block number based on the LHS method selected. The standard order is provided in Col2.
+A list of experiments (combinations) is generated in the output datasheet along with the Block number based on the LHS method selected. Standard Order, Block number, Replicate Number and Point Type are presented in Cols 2,3,4 and 5 accordingly as shown below.
 
 <div style="text-align: center;">
 <img src="images/Design of experiments/lhs-output.png" alt="LHS Output" width="400" height="400" class="img-responsive">
@@ -222,7 +226,8 @@ Numerical values should be specified in the input datasheet. Space-Filling LHS  
 {: .no_toc}
 
 | **Number of Center Points** | Select manually the `Number of Center Points` to be included in the output list of experiments. There is no minimum requirement or any other limitation. |
-| **Number of Blocks** | Select manually the `Number of Blocks`. The lowest value that can get is 1. |
+|**Number of Replicates**|Select manually the `Number of Replicates` which represents the number of times to replicate the entire design. This value should be an integer, and the lowest acceptable value is 1.|
+|**Number of Blocks**|Select from the list of available options the `Number of Blocks`. Currently, the only supported option is 1.|
 | **Number of Samples**| Select manually the `Number of Samples` to be included in the output list of experiments. The lowest value that can get is 1.|
 | **Random Standard order** | You can tick/select the box if randomness is required in the output list of experiments. |
 | **Time-based RNG Seed** | If randomness is selected, then you have the option to also tick/select the box to set the random generated number seed based on time. |
@@ -231,7 +236,7 @@ Numerical values should be specified in the input datasheet. Space-Filling LHS  
 
 ### Output
 {: .no_toc}
-A list of experiments (combinations) is generated in the output datasheet along with the Block number and the Standard order based on the Space – Filling LHS design.
+A list of experiments (combinations) is generated in the output datasheet along with the Block number, the Replicate Number, the Standard order  and the Point type of each experiment based on the Space – Filling LHS design.
 
 ### Example
 {: .no_toc}
@@ -248,20 +253,21 @@ In the input datasheet minimum requirement is to specify one factor (column) and
 {: .no_toc}
 1. Select `DOE` $$\rightarrow$$ `Space Filling` $$\rightarrow$$ `LHS Space Filling`.
 1. Select the `Number of Center Points` [1] to be generated in the output list of experiments.
-1. Select the `Number of Blocks` [2]. The lowest value that can be set is 1.
-1. Select the `Number of Samples` [3]  to be included in the output list of experiments. The lowest value that can get is 1.
-1. Select/tick if required the Random Standard order [4] to imply randomness in the output list of experiments.
-1. If randomness is selected either select/tick to generate the number seed for randomness based on time [5] or by manually setting a value [6].
-1. Select the columns by clicking on the arrow buttons [9] and moving columns between the `Excluded Columns` [7] and `Included Columns` [8] lists. 
-1. Click on the `Execute` button [10] to perform the Space Filling LHS design method. 
+1. Select the `Number of Replicates` [2]. The lowest value that can be set is 1.
+1. Select the `Number of Blocks` [3]. 
+1. Select the `Number of Samples` [4]  to be included in the output list of experiments. The lowest value that can get is 1.
+1. Select/tick if required the Random Standard order [5] to imply randomness in the output list of experiments.
+1. If randomness is selected either select/tick to generate the number seed for randomness based on time [6] or by manually setting a value [7].
+1. Select the columns by clicking on the arrow buttons [10] and moving columns between the `Excluded Columns` [8] and `Included Columns` [9] lists. 
+1. Click on the `Execute` button [11] to perform the Space Filling LHS design method. 
 
 <div style="text-align: center;">
-<img src="images/Design of experiments/lhs-space-configuration.svg" alt="LHS Spac Filling Configuration" width="400" height="400" class="img-responsive">
+<img src="images/Design of experiments/lhs-space-config.png" alt="LHS Spac Filling Configuration" width="400" height="400" class="img-responsive">
 </div> 
 
 ##### Output
 {: .no_toc}
-A list of experiments (combinations) is generated in the output datasheet along with the Block number based on the Space - Filling LHS method selected. The standard order is provided in Col2.
+A list of experiments (combinations) is generated in the output datasheet along with the Block number based on the Space - Filling LHS method selected. Standard Order, Block number, Replicate Number and Point Type are presented in Cols 2,3,4 and 5 accordingly as shown below.
 
 <div style="text-align: center;">
 <img src="images/Design of experiments/lhs-space-output.png" alt="LHS Space Filling Output" width="400" height="400" class="img-responsive">
@@ -297,7 +303,8 @@ Numerical values should be specified in the input datasheet. Sukharev grid is ap
 {: .no_toc}
 
 |**Number of Center Points**|Select manually the `Number of Center Points` to be included in the output list of experiments. There is no minimum requirement or any other limitation.|
-|**Number of Blocks**|Select manually the `Number of Blocks`. The lowest value that can get is 1.|
+|**Number of Replicates**|Select manually the `Number of Replicates` which represents the number of times to replicate the entire design. This value should be an integer, and the lowest acceptable value is 1.|
+|**Number of Blocks**|Select from the list of available options the `Number of Blocks`. Currently, the only supported option is 1.|
 |**Random Standard order**|You can tick/select the box if randomness is required in the output list of experiments.|
 |**Time-based RNG Seed**|If the randomness is selected, then you have the option to also tick/select the box to set the random generated number seed based on time.|
 |**RNG Seed**|Select manually the random generated number seed if required.|
@@ -306,7 +313,7 @@ Numerical values should be specified in the input datasheet. Sukharev grid is ap
 
 ### Output
 {: .no_toc}
-A list of experiments (combinations) is generated in the output datasheet along with the Block number and the Standard order based on the Sukharev Grid design method selected.
+A list of experiments (combinations) is generated in the output datasheet along with the Block number, the Replicate Number, the Standard order  and the Point type of each experiment based on the Sukharev Grid design method selected.
 
 ### Example
 {: .no_toc}
@@ -324,20 +331,21 @@ In the input datasheet minimum requirement is to specify three factors (columns)
 
 1. Select `DOE` $$\rightarrow$$ `Space Filling` $$\rightarrow$$ `Sukharev Grid`.
 1. Select the `Number of Center Points` [1] to be generated in the output list of experiments.
-1. Select the `Number of Blocks` [2]. The lowest value that can be set is 1.
-1. Select/tick if required the `Random Standard order` [3] to imply randomness in the output list of experiments.
-1. If randomness is selected either select/tick to generate the number seed for randomness based on time [4] or by manually setting a value [5].
-1. Select the columns by clicking on the arrow buttons [8] and moving columns between the `Excluded Columns` [6] and `Included Columns` [7] lists. 
-1. Select the `Number of Samples` [9] to be generated in the output list of experiments by selecting the desired number for the options provided in the list ($2^k$ to $9^k$, where $k$ is the number of included columns).
-1. Click on the `Execute` button [10] to perform Sukharev Grid method. 
+1. Select the `Number of Replicates` [2]. The lowest value that can be set is 1.
+1. Select the `Number of Blocks` [3]. 
+1. Select/tick if required the `Random Standard order` [4] to imply randomness in the output list of experiments.
+1. If randomness is selected either select/tick to generate the number seed for randomness based on time [5] or by manually setting a value [6].
+1. Select the columns by clicking on the arrow buttons [89 and moving columns between the `Excluded Columns` [7] and `Included Columns` [8] lists. 
+1. Select the `Number of Samples` [10] to be generated in the output list of experiments by selecting the desired number for the options provided in the list ($2^k$ to $9^k$, where $k$ is the number of included columns).
+1. Click on the `Execute` button [11] to perform Sukharev Grid method. 
 
 <div style="text-align: center;">
-<img src="images/Design of experiments/sukharev-configuration.svg" alt="Sukharev Grid Configuration" width="400" height="450" class="img-responsive">
+<img src="images/Design of experiments/sukharev-config.png" alt="Sukharev Grid Configuration" width="400" height="450" class="img-responsive">
 </div>
 
 ##### Output
 {: .no_toc}
-A list of 16 experiments (combinations) is generated in the output datasheet along with the Block number based on the Sukharev Grid method selected. The standard order is provided in Col2.
+A list of 16 experiments (combinations) is generated in the output datasheet along with the Block number based on the Sukharev Grid method selected. Standard Order, Block number, Replicate Number and Point Type are presented in Cols 2,3,4 and 5 accordingly as shown below.
 
 <div style="text-align: center;">
 <img src="images/Design of experiments/sukharev-output.png" alt="Sukharev Grid output" width="400" height="450" class="img-responsive">
@@ -364,7 +372,8 @@ Numerical values should be specified in the input datasheet. Uniform Design is a
 {: .no_toc}
 
 |**Number of Center Points**|Select manually the `Number of Center Points` to be included in the output list of experiments. There is no minimum requirement or any other limitation.|
-|**Number of Blocks**| Select manually the `Number of Blocks`. The lowest value that can get is 1.|
+|**Number of Replicates**|Select manually the `Number of Replicates` which represents the number of times to replicate the entire design. This value should be an integer, and the lowest acceptable value is 1.|
+|**Number of Blocks**|Select from the list of available options the `Number of Blocks`. Currently, the only supported option is 1.|
 |**Number of Samples**| Select manually the `Number of Samples` to be included in the resulting design. The lowest value it can get is 1. |
 |**Random Standard order**|You can tick/select the box if randomness is required in the output list of experiments.|
 |**Time-based RNG Seed**|If in the randomness is selected, then you have the option to also tick/select the box to set the random generated number seed based on time.|
@@ -373,7 +382,7 @@ Numerical values should be specified in the input datasheet. Uniform Design is a
 
 ### Output
 {: .no_toc}
-A list of experiments (combinations) is generated in the output datasheet along with the block number and the standard order based on the Uniform design method.
+A list of experiments (combinations) is generated in the output datasheet along with the Block number, the Replicate Number, the Standard order  and the Point type of each experiment based on the Uniform design method.
 
 ### Example
 {: .no_toc}
@@ -390,15 +399,16 @@ In the input datasheet minimum requirement is to specify three factors (columns)
 {: .no_toc}
 1. Select `DOE` $$\rightarrow$$ `Space Filling` $$\rightarrow$$ `Uniform`.
 1. Select the `Number of Center Points` [1] to be generated in the output list of experiments.
-1. Select the `Number of Blocks` [2]. The lowest value that can be set is 1.
-1. Select the `Number of Samples` [3] to be generated. The lowest value that can be set is 1.
-1. Select/tick if required the `Random Standard order` [4] to imply randomness in the output list of experiments.
-1. If randomness is selected either select/tick to generate the number seed for randomness based on time [5] or by manually setting a value [6].
-1. Select the columns by clicking on the arrow buttons [9] and moving columns between the `Excluded Columns` [7] and `Included Columns` [8] lists. 
-1. Click on the `Execute` button [10] to perform the Uniform design method. 
+1. Select the `Number of Replicates` [2]. The lowest value that can be set is 1.
+1. Select the `Number of Blocks` [3]. 
+1. Select the `Number of Samples` [4] to be generated. The lowest value that can be set is 1.
+1. Select/tick if required the `Random Standard order` [5] to imply randomness in the output list of experiments.
+1. If randomness is selected either select/tick to generate the number seed for randomness based on time [6] or by manually setting a value [7].
+1. Select the columns by clicking on the arrow buttons [10] and moving columns between the `Excluded Columns` [8] and `Included Columns` [9] lists. 
+1. Click on the `Execute` button [11] to perform the Uniform design method. 
 
 <div style="text-align: center;">
-<img src="images/Design of experiments/uniform-configuration.svg" alt="Uniform configuration" width="400" height="450" class="img-responsive">
+<img src="images/Design of experiments/uniform-config.png" alt="Uniform configuration" width="400" height="450" class="img-responsive">
 </div> 
 
 ##### Output

@@ -53,7 +53,8 @@ Numerical values should be specified in the input datasheet. The minimum require
 {: .no_toc}
 
 | **Number of Center Points** | Select manually the `Number of Center Points` to be included in the output list of experiments. There is no minimum requirement or any other limitation. |
-| **Number of Blocks** | Select manually the `Number of Blocks`. The lowest value that can get is 1. |
+|**Number of Replicates**|Select manually the `Number of Replicates` which represents the number of times to replicate the entire design. This value should be an integer, and the lowest acceptable value is 1.|
+|**Number of Blocks**|Select from the list of available options the `Number of Blocks`. Currently, the only supported option is 1.|
 | **Random Standard order** | You can tick/select the box if randomness is required in the output list of experiments. |
 | **Time-based RNG Seed** | If randomness is selected, then you have the option to also tick/select the box to set the random generated number seed based on time. |
 | **RNG Seed** | Select manually the random generated number seed if required. |
@@ -62,7 +63,7 @@ Numerical values should be specified in the input datasheet. The minimum require
 ### Output
 {: .no_toc}
 
-A list of experiments (combinations) is generated in the output datasheet along with the Block number and the Standard order based on the Full Factorial design method selected.
+A list of experiments (combinations) is generated in the output datasheet along with the Block number, the Replicate Number, the Standard order  and the Point type of each experiment based on the Full Factorial design method selected.
 
 ### Example
 {: .no_toc}
@@ -81,20 +82,21 @@ In the input datasheet minimum requirement is to specify two factors (columns) a
 
 1.   Select `DOE` $$\rightarrow$$ `Factorial` $$\rightarrow$$ `Full Factorial`.
 1.   Select the `Number of Center Points` [1] to be generated in the output list of experiments.
-1.   Select the `Number of Blocks` [2]. The lowest value that can be set is 1.
-1.   Select/tick if required the `Random Standard order` [3] to imply randomness in the output list of experiments.
-1.   If randomness is selected either select/tick to generate the number seed for randomness based on time [4] or by manually setting a value [5].
-1.   Select the columns by clicking on the arrow buttons [8] and moving columns between the `Excluded Columns` [6] and `Included Columns` [7] lists.
-1.   Click on the `Execute` button [9] to perform Full Factorial design method.
+1.   Select the `Number of Replicates` [2]. The lowest value that can be set is 1.
+1.   Select the `Number of Blocks` [3]. 
+1.   Select/tick if required the `Random Standard order` [4] to imply randomness in the output list of experiments.
+1.   If randomness is selected either select/tick to generate the number seed for randomness based on time [5] or by manually setting a value [6].
+1.   Select the columns by clicking on the arrow buttons [9] and moving columns between the `Excluded Columns` [7] and `Included Columns` [8] lists.
+1.   Click on the `Execute` button [10] to perform Full Factorial design method.
 
 <div style="text-align: center;">
-<img src="images/Design of experiments/full-factorial.svg" alt="Full Factorial" width="400" height="400" class="img-responsive">
+<img src="images/Design of experiments/full-factorial-config.png" alt="Full Factorial" width="400" height="400" class="img-responsive">
 </div> 
 
 ##### Output 
 {: .no_toc}
 
-The output list of experiments is generated for the two factors outlining a list of 4 experiments based on the Full Factorial design. Block number is presented in Col1 as shown below and the standard order is provided in Col2.
+The output list of experiments is generated for the two factors outlining a list of 4 experiments based on the Full Factorial design. Standard Order, Block number, Replicate Number and Point Type are presented in Cols 2,3,4 and 5 accordingly as shown below.
 
 <div style="text-align: center;">
 <img src="images/Design of experiments/full-factorial-output.png" alt="Full Factorial output" width="400" height="400" class="img-responsive">

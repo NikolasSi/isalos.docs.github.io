@@ -45,7 +45,8 @@ In the input data sheet, numerical values should be specified with minimum 3 col
 {: .no_toc }
 
 |**Number of Center Points**| Select manually the `Number of Center Points` to be included in the output list of experiments. There is no minimum requirement or any other limitation. |
-|**Number of Blocks**|Select manually the `Number of Blocks`. The lowest value that can get is 1.|
+|**Number of Replicates**|Select manually the `Number of Replicates` which represents the number of times to replicate the entire design. This value should be an integer, and the lowest acceptable value is 1.|
+|**Number of Blocks**|Select from the list of available options the `Number of Blocks`. Currently, the only supported option is 1.|
 |**Random Standard order**| You can tick/select the box if randomness is required in the output list of experiments. |
 |**Time-based RNG Seed**| If in the randomness is selected, then you have the option to also tick/select the box to set the random generated number seed based on time.   |
 |**RNG Seed**|Select manually the random generated number seed if required.    |
@@ -53,7 +54,7 @@ In the input data sheet, numerical values should be specified with minimum 3 col
 
 ### Output
 {: .no_toc }
-A list of experiments (combinations) is generated in the output datasheet along with the Block number based on the Box Behnken design method.
+A list of experiments (combinations) is generated in the output datasheet along with the Block number, the Replicate Number, the Standard order  and the Point type of each experiment based on the Box Behnken design method.
 
 ### Example
 {: .no_toc }
@@ -71,20 +72,22 @@ In the input datasheet in the right-hand side, you can specify minimum of three 
 
 1.   Select `DOE` $$\rightarrow$$ `Response Surface` $$\rightarrow$$ `Box Behnken`.
 1.   Type the `Number of Center Points` [1] to be generated in the output list of experiments.
-1.   Type the `Number of Blocks` [2]. The lowest value that can be set is 1.
-1.   Select/tick if required the `Random Standard order` [3] to imply randomness in the output list of experiments.
-1.   If randomness is selected either select/tick to generate the number seed for randomness based on time [4] or by manually setting a value [5].
-1.  Select the columns by clicking on the arrow buttons [8] and moving columns between the `Excluded Columns` [6] and `Included Columns` [7] lists.
-1.   Click on the `Execute` button [9] to perform Box Behnken design method.
+1.   Select the `Number of Replicates` [2]. The lowest value that can be set is 1.
+1.   Select the `Number of Blocks` [3]. 
+1.   Select/tick if required the `Random Standard order` [4] to imply randomness in the output list of experiments.
+1.   If randomness is selected either select/tick to generate the number seed for randomness based on time [5] or by manually setting a value [6].
+1.  Select the columns by clicking on the arrow buttons [9] and moving columns between the `Excluded Columns` [7] and `Included Columns` [8] lists.
+1.   Click on the `Execute` button [10] to perform Box Behnken design method.
 
 <div style="text-align: center;">
-<img src="images/Design of experiments/behnken.svg" alt="Box Behnken" width="400" height="300" class="img-responsive">
+<img src="images/Design of experiments/behnken-config.png" alt="Box Behnken" width="400" height="300" class="img-responsive">
 </div>
 
 ##### Output
 {: .no_toc }
 
-The output list of experiments is generated for the three factors outlining a list of 12 experiments based on the Box Behnken design. Block number is presented in Col1 as shown below.
+TThe output list of experiments is generated for the three factors outlining a list of 12 experiments based on the Box Behnken design. Standard Order, Block number, Replicate Number and Point Type are presented in Cols 2,3,4 and 5 accordingly as shown below.
+
 <div style="text-align: center;">
 <img src="images/Design of experiments/behnken-output.png" alt="Box Behnken" width="350" height="300" class="img-responsive">
 </div>
@@ -115,7 +118,8 @@ Numerical values should be specified in the input datasheet. The minimum require
 {: .no_toc }
 
 |**Number of Center Points** |Select manually the `Number of Center Points` to be included in the output list of experiments. There is no minimum requirement or any other limitation. |
-|**Number of Blocks** | Select manually the `Number of Blocks`. The lowest value that can get is 1. |
+|**Number of Replicates**|Select manually the `Number of Replicates` which represents the number of times to replicate the entire design. This value should be an integer, and the lowest acceptable value is 1.|
+|**Number of Blocks**|Select from the list of available options the `Number of Blocks`. Currently, the only supported option is 1.|
 |**Random Standard order** | You can tick/select the box if randomness is required in the output list of experiments. |
 |**Time-based RNG Seed** | If in the randomness is selected, then you have the option to also tick/select the box to set the random generated number seed based on time. |
 |**RNG Seed** | Select manually the random generated number seed if required. |
@@ -125,7 +129,7 @@ Numerical values should be specified in the input datasheet. The minimum require
 
 ### Output
 {: .no_toc }
-A list of experiments (combinations) is generated in the output datasheet along with the Block number and the Standard order based on the Fractional Factorial design method selected.
+A list of experiments (combinations) is generated in the datasheet along with the Block number, the Replicate Number, the Standard order  and the Point type of each experiment based on the Central Composite design method selected.
 
 ### Example
 {: .no_toc }
@@ -143,22 +147,23 @@ In the input datasheet minimum requirement is to specify three factors (columns)
 
 1.   Select `DOE` $$\rightarrow$$ `Response Surface` $$\rightarrow$$ `Central Composite`.
 1.   Select the `Number of Center Points` [1] to be generated in the output list of experiments.
-1.   Select the `Number of Blocks` [2]. The lowest value that can be set is 1.
-1.   Select/tick if required the `Random Standard order` [3] to imply randomness in the output list of experiments.
-1.   If randomness is selected either select/tick to generate the number seed for randomness based on time [4] or by manually setting a value [5].
-1.   Choose to `Select Design` [6] method among the options, `ccc`, `ccf` and `cci` representing circumscribed, faced and inscribed designs, respectively.
-1.   If ccc or cci designs are previously selected, then `Select alpha method` [7] either to have `orthogonal` or `rotatable` design.
-1.   Select the columns by clicking on the arrow buttons [10] and moving columns between the `Excluded Columns` [8] and `Included Columns` [9] lists.
-1.   Click on the `Execute` button [11] to apply the Central Composite design method.
+1.   Select the `Number of Replicates` [2]. The lowest value that can be set is 1.
+1.   Select the `Number of Blocks` [3]. 
+1.   Select/tick if required the `Random Standard order` [4] to imply randomness in the output list of experiments.
+1.   If randomness is selected either select/tick to generate the number seed for randomness based on time [5] or by manually setting a value [6].
+1.   Choose to `Select Design` [7] method among the options, `ccc`, `ccf` and `cci` representing circumscribed, faced and inscribed designs, respectively.
+1.   If ccc or cci designs are previously selected, then `Select alpha method` [8] either to have `orthogonal` or `rotatable` design.
+1.   Select the columns by clicking on the arrow buttons [11] and moving columns between the `Excluded Columns` [9] and `Included Columns` [10] lists.
+1.   Click on the `Execute` button [12] to apply the Central Composite design method.
 
 <div style="text-align: center;">
-<img src="images/Design of experiments/central.svg" alt="Central Composite" width="400" height="300" class="img-responsive">
+<img src="images/Design of experiments/central-config.png" alt="Central Composite" width="400" height="300" class="img-responsive">
 </div>
 
 ##### Output
 {: .no_toc }
 
-The output list of experiments is generated for the two factors outlining a list of 8 experiments based on the Central Composite Circumscribed (ccc) and orthogonal design. Block number is presented in Col1 as shown below and the standard order is provided in Col2.
+The output list of experiments is generated for the two factors outlining a list of 8 experiments based on the Central Composite Circumscribed (ccc) and orthogonal design. Standard Order, Block number, Replicate Number and Point Type are presented in Cols 2,3,4 and 5 accordingly as shown below. 
 
 <div style="text-align: center;">
 <img src="images/Design of experiments/central-output.png" alt="Central Composite" width="400" height="300" class="img-responsive">
@@ -182,4 +187,4 @@ The output list of experiments is generated for the two factors outlining a list
 ## Version History
 Introduced in Isalos Analytics Platform v0.2.4
 
-_Instructions last updated on January 2025_
+_Instructions last updated on October 2025_
