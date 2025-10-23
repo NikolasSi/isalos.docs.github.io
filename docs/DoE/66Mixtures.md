@@ -84,7 +84,7 @@ No input data is required in the input datasheet.
 1.   If Simplex Lattice design method is selected, then select the Degree of Lattice from the drop-down list [8].
 1.   Select/tick to `Augment the Design with Axial Points` [9].
 1.   If `Simplex Lattice` design method is selected, then select/tick to `Augment the Design with Center Points` [10].
-1.   Drag the horizonal value bars for each component [11],[12],[13] and [14] to specify the min and max (composition) value for each component.
+1.   Drag the horizonal value bars for each component to specify the min and max (composition) value for each component or enter them manually using the min and max text fields (which allow precision up to 1e-5) [11], [12],[13] and [14].
 1.   Click on the `Execute` button [15] to perform Mixtures design method.
 
 <div style="text-align: center;">
@@ -162,7 +162,7 @@ No input data is required in the input datasheet.
 1.   Select the `Degree of Design` from the drop-down list [8].
 1.   Select/tick to `Augment the Design with Axial Points` [9].
 1.   Select/tick to `Augment the Design with Center Points` [10].
-1.   Drag the horizonal value bars for each component [11],[12],[13] and [14] to specify the min and max (composition) value for each component.
+1.   Drag the horizonal value bars for each component to specify the min and max (composition) value for each component or enter them manually using the min and max text fields (which allow precision up to 1e-5) [11], [12],[13] and [14].
 1.	 Optionally specify `Linear Constraints`[15] by inputting the coefficient[16] for each component, the relation[17] of the constraint and the right-hand side coefficient[18] and then clicking `Add`[19]. If a constraint needs to be removed select it and use the `Remove Selected`[20] button. After inserting all constraints click on `OK` [21]
 1.   Click on the `Execute` button [22] to perform Extreme Vertices design method.
 
