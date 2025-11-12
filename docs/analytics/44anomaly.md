@@ -18,7 +18,7 @@ Anomaly detection is an important technique in data analytics that involves iden
 
 ---
 
-### One-Class SVM 
+## One-Class SVM 
 The One-Class Support Vector Machine (One-Class SVM) anomaly detection algorithm is specifically designed to detect outliers or anomalies in a dataset by defining a normative region and identifying data points that deviate significantly from it. It accomplishes this by mapping the input data to a high-dimensional feature space using a kernel function. Subsequently, it seeks to find a hyperplane that maximizes the margin, separating most of the data points from the origin. The algorithm uses four types of kernel functions to achieve this transformation:<sup>[2](#anomaly-detection-references)</sup>
 
 ##### Linear Kernel

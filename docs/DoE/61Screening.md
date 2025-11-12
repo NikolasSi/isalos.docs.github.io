@@ -39,7 +39,7 @@ Numerical values should be specified in the input datasheet. Plackett-Burman des
 ### Configuration
 {: .no_toc}
 
-|**Number of Center Points per Block**|Select manually the `Number of Center Points` to be included in the output list of experiments. There is no minimum requirement or any other limitation.|
+|**Number of Center Points per Block**|Select manually the `Number of Center Points per Block` to be included in the output list of experiments. There is no minimum requirement or any other limitation.|
 |**Number of Replicates**|Select manually the `Number of Replicates` which represents the number of times to replicate the entire design. This value should be an integer, and the lowest acceptable value is 1.|
 |**Number of Blocks**|Select from the list of available options the `Number of Blocks`. Plackett Burman designs can only be blocked on replicates, meaning each replicate defines a block, otherwise all points are put into a single block.|
 |**Random Standard order**|You can tick/select the box if randomness is required in the output list of experiments.|
@@ -66,7 +66,7 @@ In the input datasheet minimum requirement is to specify three factors (columns)
 ##### Configuration
 {: .no_toc}
 1. Select `DOE` $$\rightarrow$$ `Screening` $$\rightarrow$$ `Plackett Burman`.
-1. Select the `Number of Center Points` [1] to be generated in the output list of experiments.
+1. Select the `Number of Center Points per Block` [1] to be generated in the output list of experiments.
 1. Select the `Number of Replicates` [2]. The lowest value that can be set is 1.
 1. Select the `Number of Blocks` [3]. 
 1. Select/tick if required the `Random Standard order` [4] to imply randomness in the output list of experiments.
@@ -174,7 +174,7 @@ Numerical values should be specified in the input datasheet. Fractional factoria
 
 |**Available Designs**| Select one of the available design options for the number of factors you have selected. Choices include the fraction of the produced design, while the fraction relationship being used maximizes the resolution of the design. There is also the option to specify a custom design. |
 |**Fraction Relationship** | If the Custom option is selected from the Available Designs, insert manually the Fraction Relationship to define the desired Fractional Factorial design. The kth independent factor(column) corresponds to the kth letter of the alphabet (The letter I is not a special character and should be used for the 9th if that exists). Only alphabetical characters, spaces, '+' and '-' are allowed. |
-|**Number of Center Points per Block** | Select manually the Number of `Center Points` to be included in the output list of experiments. There is no minimum requirement or any other limitation. |
+|**Number of Center Points per Block** | Select manually the `Number of Center Points per Block` to be included in the output list of experiments. There is no minimum requirement or any other limitation. |
 |**Number of Replicates**|Select manually the `Number of Replicates` which represents the number of times to replicate the entire design. This value should be an integer, and the lowest acceptable value is 1.|
 |**Number of Blocks**| Select from the list of available options the Number of Blocks. Available options depend on the selected number of factors, the selected design and the number of replicates. |
 |**Random Standard order** | You can tick/select the box if randomness is required in the output list of experiments. |
@@ -241,4 +241,4 @@ A list of experiments (combinations) is generated in the output datasheet along 
 ## Version History
 Introduced in Isalos Analytics Platform v0.2.4
 
-_Instructions last updated on January 2025_
+_Instructions last updated on November 2025_

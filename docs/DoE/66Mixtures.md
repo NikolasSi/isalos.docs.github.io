@@ -47,7 +47,7 @@ Input data for Mixtures design is not required.
 {: .no_toc}
 
 |**Number of Replicates**|Select manually the `Number of Replicates` which represents the number of times to replicate the entire design. This value should be an integer, and the lowest acceptable value is 1.|
-|**Number of Blocks**|Select from the list of available options the `Number of Blocks`. Currently, the only supported option is 1.|
+|**Number of Blocks**|Select from the list of available options the `Number of Blocks`. These designs can only be blocked on replicates, so the available options include 1 and the selected `Number of Replicates`. |
 | **Random Standard order** | You can tick/select the box if randomness is required in the output list of experiments. |
 | **Time-based RNG Seed** | If randomness is selected, then you have the option to also tick/select the box to set the random generated number seed based on time. |
 | **RNG Seed** | Select manually the random generated number seed if required. |
@@ -88,7 +88,7 @@ No input data is required in the input datasheet.
 1.   Click on the `Execute` button [15] to perform Mixtures design method.
 
 <div style="text-align: center;">
-<img src="images/Design of experiments/mixtures-config.png" alt="Mixtures" width="500" height="400" class="img-responsive">
+<img src="images/Design of experiments/mixtures-config.png" alt="Mixtures" width="700" height="400" class="img-responsive">
 </div> 
 
 ###### Output
@@ -97,7 +97,7 @@ No input data is required in the input datasheet.
 The output list of experiments is generated for the two components outlining a list of 4 experiments based on the Mixtures design. Standard Order, Block number, Replicate Number and Point Type are presented in Cols 2,3,4 and 5 accordingly as shown below.
 
 <div style="text-align: center;">
-<img src="images/Design of experiments/mixtures-output.png" alt="Mixtures output" width="400" height="400" class="img-responsive">
+<img src="images/Design of experiments/mixtures-output.png" alt="Mixtures output" width="500" height="400" class="img-responsive">
 </div> 
 
 ### Extreme Vertices
@@ -124,7 +124,7 @@ Input data for Mixtures design is not required.
 {: .no_toc}
 
 |**Number of Replicates**|Select manually the `Number of Replicates` which represents the number of times to replicate the entire design. This value should be an integer, and the lowest acceptable value is 1.|
-|**Number of Blocks**|Select from the list of available options the `Number of Blocks`. Currently, the only supported option is 1.|
+|**Number of Blocks**|Select from the list of available options the `Number of Blocks`. These designs can only be blocked on replicates, so the available options include 1 and the selected `Number of Replicates`. |
 | **Random Standard order** | You can tick/select the box if randomness is required in the output list of experiments. |
 | **Time-based RNG Seed** | If randomness is selected, then you have the option to also tick/select the box to set the random generated number seed based on time. |
 | **RNG Seed** | Select manually the random generated number seed if required. |
@@ -167,7 +167,7 @@ No input data is required in the input datasheet.
 1.   Click on the `Execute` button [22] to perform Extreme Vertices design method.
 
 <div style="text-align: center;">
-<img src="images/Design of experiments/extreme-vertices-config.png" alt="Extreme Vertices" width="500" height="400" class="img-responsive">
+<img src="images/Design of experiments/extreme-vertices-config.png" alt="Extreme Vertices" width="700" height="600" class="img-responsive">
 </div> 
 
 ###### Output
@@ -203,4 +203,4 @@ The output list of experiments is generated for the two components outlining a l
 ## Version History
 Introduced in Isalos Analytics Platform v0.2.4
 
-_Instructions last updated on January 2025_
+_Instructions last updated on November 2025_
